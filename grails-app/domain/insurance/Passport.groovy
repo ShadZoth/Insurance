@@ -10,4 +10,8 @@ class Passport {
 
     static constraints = {
     }
+
+    private static enum Sex {
+        MALE, FEMALE
+    }
 }
