@@ -7,6 +7,9 @@ class Passport {
     String firstName
     String lastName
     Date birthDate
+    Person person
+
+    static belongsTo = Person
 
     static constraints = {
     }
