@@ -7,8 +7,9 @@ class Warrant {
     BigDecimal price
     String number
     Client client
+    Product product
 
-    static belongsTo = Client
+    static belongsTo = [Client, Product]
 
     static hasMany = [payments: Payment]
 

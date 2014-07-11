@@ -9,7 +9,7 @@ class Vehicle {
     Client owner
     Manufacturer manufacturer
 
-    static belongsTo = Client
+    static belongsTo = [Client, Manufacturer]
     static hasMany = [accidents: Accident, certificates: Certificate]
 
     static constraints = {
