@@ -5,7 +5,9 @@ class License {
     String number
     Date issueDate
     Date expirationDate
-    int categories
+    //TODO: Категории будут правильно преобразованы в битмапу.
+    //TODO: Предупреждение у констрейнта, вероятно, не пропадёт
+    Integer categories
     Person owner
 
     Set<Category> getCategories() {
@@ -34,6 +36,6 @@ class License {
         number(nullable: false)
         issueDate(nullable: false)
         expirationDate()
-        categories // TODO: Упаковать побитово - ?
+        categories()
     }
 }
