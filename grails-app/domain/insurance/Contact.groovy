@@ -4,6 +4,7 @@ class Contact {
 
     String value
     Client client
+    ContactType type
 
     static belongsTo = Client
 
