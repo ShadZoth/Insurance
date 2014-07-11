@@ -8,6 +8,9 @@ class Certificate {
     String ownerFirstName
     String ownerLastName
     String VIN
+    Vehicle vehicle
+
+    static belongsTo = Vehicle
 
     static constraints = {
     }

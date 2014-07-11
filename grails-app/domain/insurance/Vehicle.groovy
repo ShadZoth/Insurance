@@ -7,7 +7,7 @@ class Vehicle {
     BigDecimal price
     Category category
 
-    static hasMany = [accidents: Accident]
+    static hasMany = [accidents: Accident, certificates: Certificate]
 
     static constraints = {
     }
