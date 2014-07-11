@@ -10,8 +10,8 @@ class License {
     Integer categories
     Person owner
 
-    Set<Category> getCategories() {
-        def res = new HashSet<Category>()
+    String getCategories() {
+        /*def res = new HashSet<Category>()
         int cat = categories
         Category.values().each {
             if (cat % 2) {
@@ -19,14 +19,19 @@ class License {
             }
             cat /= 2
         }
-        res
+        res*/
+        def res = new ArrayList<Category>()
+        res.add(Category.A)
+        res.add(Category.C)
+        res.add(Category.Tb)
+        return res.toString()
     }
 
-    void setCategories(Set<Category> cat) {
-        categories = 0;
+    void setCategories(String cat) {
+        /*categories = 0;
         for (Category c : cat) {
             categories += c.value
-        }
+        }*/
     }
 
     static belongsTo = Person
