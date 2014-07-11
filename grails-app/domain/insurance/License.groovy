@@ -11,5 +11,10 @@ class License {
     static belongsTo = Person
 
     static constraints = {
+        owner()
+        number(nullable: false)
+        issueDate(nullable: false)
+        expirationDate()
+        categories() // TODO: Упаковать побитово - ?
     }
 }

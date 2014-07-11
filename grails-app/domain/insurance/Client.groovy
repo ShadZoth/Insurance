@@ -7,6 +7,7 @@ class Client {
     static hasMany = [vehicles: Vehicle, contacts: Contact, warrants: Warrant]
 
     static constraints = {
-
+        registrationDate(nullable: false)
+        archived()
     }
 }

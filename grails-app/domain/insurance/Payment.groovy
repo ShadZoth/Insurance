@@ -13,5 +13,6 @@ class Payment {
         date(nullable: false)
         amount(nullable: false)
         accident()
+        warrant()
     }
 }

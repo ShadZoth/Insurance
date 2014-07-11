@@ -13,5 +13,8 @@ class Product {
     }
 
     static constraints = {
+        name(nullable: false)
+        corporate()
+        individual()
     }
 }

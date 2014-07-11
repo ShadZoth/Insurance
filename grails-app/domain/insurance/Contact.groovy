@@ -9,6 +9,9 @@ class Contact {
     static belongsTo = Client
 
     static constraints = {
+        value()
+        client()
+        type()
     }
 
     private static enum ContactType {
