@@ -15,6 +15,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="Gorm" />
+          <unit-entry name="sessionFactory" />
         </datasource-map>
         <naming-strategy-map />
       </configuration>
@@ -59,6 +60,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="grails-2.3.11" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.3.11" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (Insurance-grailsPlugins)">

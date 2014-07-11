@@ -11,5 +11,8 @@ class Accident {
     static hasMany = [payments: Payment]
 
     static constraints = {
+        dateTime()
+        damage()
+        vehicle()
     }
 }
