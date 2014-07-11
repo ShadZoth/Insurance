@@ -8,6 +8,10 @@ class Product {
 
     Boolean individual
 
+    static hasMany = {
+        pricelist: Price
+    }
+
     static constraints = {
     }
 }

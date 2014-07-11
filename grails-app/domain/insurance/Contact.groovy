@@ -4,14 +4,11 @@ class Contact {
 
     String value
     Client client
-    ContactType contactType
+    ContactType type
 
     static belongsTo = Client
 
     static constraints = {
-        value()
-        client()
-        contactType()
     }
 
     private static enum ContactType {

@@ -7,8 +7,9 @@ class Vehicle {
     BigDecimal price
     Category category
     Client owner
+    Manufacturer manufacturer
 
-    static belongsTo = Client
+    static belongsTo = [Client, Manufacturer]
     static hasMany = [accidents: Accident, certificates: Certificate]
 
     static constraints = {
