@@ -10,6 +10,8 @@ class Warrant {
 
     static belongsTo = Client
 
+    static hasMany = [payments: Payment]
+
     static constraints = {
     }
 }
