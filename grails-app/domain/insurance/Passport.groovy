@@ -8,6 +8,7 @@ class Passport {
     String lastName
     Date birthDate
     Person person
+    Sex sex
 
     static belongsTo = Person
 
