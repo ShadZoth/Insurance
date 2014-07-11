@@ -34,6 +34,6 @@ class License {
         number(nullable: false)
         issueDate(nullable: false)
         expirationDate()
-        categories // TODO: Упаковать побитово - ?
+        categories() // TODO: Упаковать побитово - ?
     }
 }

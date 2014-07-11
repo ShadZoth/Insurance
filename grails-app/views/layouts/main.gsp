@@ -14,6 +14,8 @@
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+    %{--Шрифт--}%
+    <link href='http://fonts.googleapis.com/css?family=Lora&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <g:layoutHead/>
     <g:javascript library="application"/>
     <r:layoutResources/>
@@ -28,7 +30,7 @@
     </div>
 
     <div id="companyName">
-        <H1 align=center>Страховая компания ФОРС</H1>
+        <H1 align=center>Страховая компания %companyname%</H1>
     </div>
 
     <div id="loginForm">
@@ -40,7 +42,7 @@
 
         <div id="login_buttons">
             <p><input type="submit" value='Войти'></p>
-            <p>Забыли пароль?</p>
+            <p><a href="#">Забыли пароль?</a></p>
         </div>
     </div>
 </div>
@@ -48,7 +50,7 @@
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 
-<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+%{--<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>--}%
 <r:layoutResources/>
 </body>
 </html>
