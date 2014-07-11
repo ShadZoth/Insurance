@@ -18,5 +18,6 @@ class Vehicle {
         year(min: 1900)
         price()
         category()
+        manufacturer()
     }
 }
