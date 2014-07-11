@@ -8,6 +8,8 @@ class Vehicle {
 
     BigDecimal price
 
+    static hasMany = [accidents: Accident]
+
     static constraints = {
     }
 }
