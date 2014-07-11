@@ -12,5 +12,10 @@ class Vehicle {
     static hasMany = [accidents: Accident, certificates: Certificate]
 
     static constraints = {
+        owner()
+        model(maxSize: 30)
+        year(min: 1900)
+        price()
+        category()
     }
 }

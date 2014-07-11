@@ -9,5 +9,8 @@ class Payment {
     static belongsTo = Accident
 
     static constraints = {
+        date(nullable: false)
+        amount(nullable: false)
+        accident()
     }
 }
