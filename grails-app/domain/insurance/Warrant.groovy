@@ -6,6 +6,9 @@ class Warrant {
     Date expireDate
     BigDecimal price
     String number
+    Client client
+
+    static belongsTo = Client
 
     static constraints = {
     }
