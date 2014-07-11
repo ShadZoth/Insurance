@@ -8,6 +8,8 @@ class Accident {
 
     static belongsTo = Vehicle
 
+    static hasMany = [payments: Payment]
+
     static constraints = {
     }
 }
