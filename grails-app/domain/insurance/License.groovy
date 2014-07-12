@@ -11,7 +11,7 @@ class License {
     Person owner
 
     Set<Category> getCategories() {
-        def res = new HashSet<Category>()
+        def res = new TreeSet<Category>()
         int cat = categories
         Category.values().each {
             if (cat % 2) {
@@ -28,7 +28,7 @@ class License {
         gCategory(A)
     }
 
-    Boolean setA(Boolean b) {
+    void setA(Boolean b) {
         sCategory(b, A)
     }
 
@@ -36,7 +36,7 @@ class License {
         gCategory(B)
     }
 
-    Boolean setB(Boolean b) {
+    void setB(Boolean b) {
         sCategory(b, B)
     }
 
@@ -44,7 +44,7 @@ class License {
         gCategory(C)
     }
 
-    Boolean setC(Boolean b) {
+    void setC(Boolean b) {
         sCategory(b, C)
     }
 
@@ -52,7 +52,7 @@ class License {
         gCategory(D)
     }
 
-    Boolean setD(Boolean b) {
+    void setD(Boolean b) {
         sCategory(b, D)
     }
 
@@ -60,7 +60,7 @@ class License {
         gCategory(E)
     }
 
-    Boolean setE(Boolean b) {
+    void setE(Boolean b) {
         sCategory(b, E)
     }
 
@@ -68,7 +68,7 @@ class License {
         gCategory(Tb)
     }
 
-    Boolean setTb(Boolean b) {
+    void setTb(Boolean b) {
         sCategory(b, Tb)
     }
 
@@ -76,7 +76,7 @@ class License {
         gCategory(Tm)
     }
 
-    Boolean setTm(Boolean b) {
+    void setTm(Boolean b) {
         sCategory(b, Tm)
     }
 
