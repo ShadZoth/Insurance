@@ -1,7 +1,8 @@
 /* FONT STACK */
 body,
 input, select, textarea {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	/*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+    font-family: 'Lora', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,7 +41,7 @@ body {
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 960px;
+	width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
@@ -593,28 +594,31 @@ a.skip {
 	left: -9999px;
 }
 
+/*Header*/
 #header
 {
-    height:80px;
+    height:120px;
     background-image: url(../images/back.png);
     /*background-color: #abbf78;*/
 }
 
 #companyName
 {
-    padding-top: 10px;
-    width:480px;
+    /*padding-top: 10px;*/
+    width:600px;
     float:left;
 }
 
 #companyName h1
 {
     color:#ffffff;
+    font-size: 24pt;
 }
 
 #loginForm
 {
-    padding-top: 10px;
+    padding-top: 25px;
+    padding-left: 10px;
     float: right;
     width:240px;
     color:#ffffff;
@@ -622,7 +626,7 @@ a.skip {
 
 #grailsLogo {
     float:left;
-    width:240px;
+    width:110px;
 }
 
 #login_fields{
@@ -643,8 +647,11 @@ input[type="password"]{
  }
 input[type="submit"]{
     background: #ff8;
-    margin-top: 20px;
     width: 90px;
     height: 25px;
-    border: 0;
+}
+
+#login_buttons a
+{
+    color:#ff8;
 }
