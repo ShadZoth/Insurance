@@ -36,8 +36,8 @@
     <div id="loginForm">
         %{--<H2 align=center>Login Form</H2>--}%
         <div id="login_fields">
-            <p><input type="text"></p>
-            <p><input type="password"></p>
+            <p><input type="text" placeholder="Логин"></p>
+            <p><input type="password" placeholder="Пароль"></p>
         </div>
 
         <div id="login_buttons">
