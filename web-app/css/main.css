@@ -655,3 +655,8 @@ input[type="submit"]{
 {
     color:#ff8;
 }
+#loginForm p{
+    margin-top: 10px;
+}
+#loginForm a
+{}
