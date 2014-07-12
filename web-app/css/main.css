@@ -605,7 +605,7 @@ a.skip {
 #companyName
 {
     /*padding-top: 10px;*/
-    width:600px;
+    width:560px;
     float:left;
 }
 
@@ -620,7 +620,7 @@ a.skip {
     padding-top: 25px;
     padding-left: 10px;
     float: right;
-    width:240px;
+    width:280px;
     color:#ffffff;
 }
 
@@ -631,7 +631,7 @@ a.skip {
 
 #login_fields{
     float:left;
-    width:100px;
+    width:120px;
 }
 
 #login_buttons
@@ -639,11 +639,11 @@ a.skip {
 }
 
 input[type="text"]{
-    width:70px;
+    width:90px;
 }
 
 input[type="password"]{
-     width:70px;
+     width:90px;
  }
 input[type="submit"]{
     background: #ff8;
