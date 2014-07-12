@@ -5,13 +5,11 @@ class License {
     String number
     Date issueDate
     Date expirationDate
-    //TODO: Категории будут правильно преобразованы в битмапу.
-    //TODO: Предупреждение у констрейнта, вероятно, не пропадёт
-    Integer categories
+    Integer categories = 0
     Person owner
 
     String getCategories() {
-        /*def res = new HashSet<Category>()
+        def res = new ArrayList<Category>()
         int cat = categories
         Category.values().each {
             if (cat % 2) {
@@ -19,19 +17,20 @@ class License {
             }
             cat /= 2
         }
-        res*/
-        def res = new ArrayList<Category>()
-        res.add(Category.A)
-        res.add(Category.C)
-        res.add(Category.Tb)
-        return res.toString()
+        def rr = ""
+        res.each { rr += "$it " }
+        rr
     }
 
+    //TODO: Категории пишутся пользователем через пробел.
+    //TODO: Правильность ввода не проверяется. To be continued...
     void setCategories(String cat) {
-        /*categories = 0;
-        for (Category c : cat) {
-            categories += c.value
-        }*/
+        println cat
+        def c = 0
+        cat.split(" ").each {
+            c += Category.valueOf(it).value
+        }
+        categories = c
     }
 
     static belongsTo = Person
