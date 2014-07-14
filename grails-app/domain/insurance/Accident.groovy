@@ -18,7 +18,7 @@ class Accident {
 
     static mapping = {
         dateTime sqlType: "timestamp without time zone"
-        damage sqlType: "money"
+        // damage sqlType: "money"
     }
 
     @Override

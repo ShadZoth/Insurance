@@ -23,7 +23,7 @@ class Warrant {
     }
 
     static mapping = {
-        price sqlType: "money"
+        //    price sqlType: "money"
         issueDate sqlType: "date"
         expireDate sqlType: "date"
     }

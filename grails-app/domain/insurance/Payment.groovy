@@ -17,7 +17,7 @@ class Payment {
     }
 
     static mapping = {
-        amount sqlType: "money", length: 10
+        // amount sqlType: "money", length: 10
         date sqlType: "timestamp without time zone"
     }
 

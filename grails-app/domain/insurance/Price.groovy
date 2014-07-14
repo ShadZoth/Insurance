@@ -15,7 +15,7 @@ class Price {
 
     static mapping = {
         since sqlType: "date"
-        value sqlType: "money"
+        // value sqlType: "money"
     }
 
 
