@@ -15,4 +15,9 @@ class Accident {
         damage()
         vehicle()
     }
+
+    static mapping = {
+        dateTime sqlType: "timestamp without time zone"
+        damage sqlType: "money"
+    }
 }
