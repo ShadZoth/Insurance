@@ -32,7 +32,7 @@
     </g:hasErrors>
     <g:form url="[resource: accidentInstance, action: 'save']">
         <fieldset class="form">
-            <g:render template="form"/>
+            <g:render template="formc"/>
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
