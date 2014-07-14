@@ -1,8 +1,8 @@
 package insurance
 
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ClientController {
@@ -24,7 +24,7 @@ class ClientController {
     }
 
     def create() {
-        respond new Client(params)
+        redirect controller: params.cl, action: 'create'
     }
 
     @Transactional
