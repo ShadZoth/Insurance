@@ -14,7 +14,7 @@ class Warrant {
     static hasMany = [payments: Payment]
 
     static constraints = {
-        number(nullable: false)
+        number(readonly:true,  nullable: false)
         client()
         product()
         issueDate(nullable: false)

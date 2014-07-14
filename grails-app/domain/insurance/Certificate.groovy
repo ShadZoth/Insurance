@@ -25,7 +25,6 @@ class Certificate {
 
     @Override
     public String toString() {
-        return vehicle +
-                " : " + number;
+        return "${vehicle}, ${number}";
     }
 }

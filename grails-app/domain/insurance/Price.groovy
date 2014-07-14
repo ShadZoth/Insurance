@@ -21,6 +21,6 @@ class Price {
 
     @Override
     public String toString() {
-        return product + " " + value;
+        return "$product:  $value";
     }
 }

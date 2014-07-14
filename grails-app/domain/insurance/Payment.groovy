@@ -24,6 +24,6 @@ class Payment {
 
     @Override
     public String toString() {
-        return "" + date + " " + warrant + ":" + amount;
+        return "$date $warrant : $amount";
     }
 }
