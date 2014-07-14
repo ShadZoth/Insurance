@@ -18,7 +18,13 @@ class Warrant {
         product()
         issueDate(nullable: false)
         expireDate(nullable: false)
-        price() // TODO: в БД определить как money
+        price()
         number(nullable: false)
+    }
+
+    static mapping = {
+        price sqlType: "money"
+        issueDate sqlType: "date"
+        expireDate sqlType: "date"
     }
 }
