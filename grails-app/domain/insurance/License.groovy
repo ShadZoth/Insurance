@@ -120,6 +120,6 @@ class License {
 
     @Override
     public String toString() {
-        return owner + " " + number;
+        "${owner} ${number}"
     }
 }
