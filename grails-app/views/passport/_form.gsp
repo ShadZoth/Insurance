@@ -50,6 +50,16 @@
 
 </div>
 
+%{--Форма, отчество клиента--}%
+<div class="fieldcontain" ${hasErrors(bean: passportInstance, field: 'fathName', 'error')} required">
+    <label for="fathName">
+        <g:message code="passport.fathName.label" default="Fath Name" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="fathName" maxlength="40" required="" value="${passportInstance?.lastName}"/>
+
+</div>
+
 %{--Выбор даты, дата рождения--}%
 <div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'birthDate', 'error')} required">
 	<label for="birthDate">

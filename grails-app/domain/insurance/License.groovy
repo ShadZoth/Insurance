@@ -109,8 +109,7 @@ class License {
         owner()
         issueDate(nullable: false)
         expirationDate()
-        //TODO: Добавить констрейнт требующий,
-        //TODO: чтобы хотя бы одна категория была заполнена
+        categories validator: { val, obj -> (obj.a || obj.b || obj.c || obj.d || obj.e || obj.tb || obj.tm) }
     }
 
     static mapping = {
@@ -121,6 +120,6 @@ class License {
 
     @Override
     public String toString() {
-        return owner + " " + number;
+        "${owner} ${number}"
     }
 }

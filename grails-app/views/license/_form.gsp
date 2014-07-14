@@ -4,7 +4,7 @@
 %{--Выбор клиента. Название пункта содержит ссылку на создание клиента.--}%
 <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'owner', 'error')} required">
     <label for="owner">
-        <a href="../client/create.gsp"><g:message code="license.owner.label" default="Owner"/></a>
+        <a href="../person/create.gsp"><g:message code="license.owner.label" default="Owner"/></a>
         <span class="required-indicator">*</span>
     </label>
     <g:select id="owner" name="owner.id" from="${insurance.Person.list()}" optionKey="id" required=""
