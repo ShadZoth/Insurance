@@ -112,4 +112,9 @@ class License {
         //TODO: Добавить констрейнт требующий,
         //TODO: чтобы хотя бы одна категория была заполнена
     }
+
+    static mapping = {
+        issueDate sqlType: "date"
+        expirationDate sqlType: "date"
+    }
 }
