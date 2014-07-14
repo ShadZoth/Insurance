@@ -4,7 +4,7 @@ dataSource {
     driverClassName = "org.postgresql.Driver"
     username = "postgres"
     password = "qwerty"
-    //dialect = org.hibernate.dialect.PostgreSQLDialect
+    dialect = org.hibernate.dialect.PostgreSQLDialect
     cache.provider_class='org.hibernate.cache.EhCacheProvider'
 }
 hibernate {
@@ -29,7 +29,7 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url="jdbc:postgresql://localhost:5432/Insurance"
         }
     }
     production {
