@@ -24,6 +24,6 @@ class Person extends Client {
 
             return "${passport.lastName} ${passport.firstName.charAt(0)}. ${passport.fathName.charAt(0)}."
         } else
-            return "Информация о паспортных данных не предоставлена"
+            return "id${id}: Информация о паспортных данных не предоставлена"
     }
 }
