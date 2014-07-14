@@ -21,4 +21,16 @@ class Warrant {
         price() // TODO: в БД определить как money
         number(nullable: false)
     }
+
+    static mapping = {
+        price sqlType: "money"
+        issueDate sqlType: "date"
+        expireDate sqlType: "date"
+    }
+
+
+    @Override
+    public String toString() {
+        return number;
+    }
 }

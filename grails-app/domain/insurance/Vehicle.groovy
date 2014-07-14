@@ -20,4 +20,14 @@ class Vehicle {
         category()
         manufacturer()
     }
+
+    static mapping = {
+        price sqlType: "money"
+    }
+
+
+    @Override
+    public String toString() {
+        return manufacturer + " " + model + " "+ year;
+    }
 }

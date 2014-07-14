@@ -6,6 +6,7 @@ class Client {
 
     static mapping = {
         tablePerHierarchy(true)
+        registrationDate  sqlType: "date"
     }
 
     static hasMany = [vehicles: Vehicle, contacts: Contact, warrants: Warrant]
@@ -13,5 +14,11 @@ class Client {
     static constraints = {
         registrationDate(nullable: false)
         archived()
+    }
+
+
+    @Override
+    public String toString() {
+        return "";
     }
 }

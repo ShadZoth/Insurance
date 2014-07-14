@@ -25,4 +25,16 @@ class Passport {
     private static enum Sex {
         MALE, FEMALE
     }
+
+    static mapping = {
+        issueDate sqlType: "date"
+        birthDate sqlType: "date"
+    }
+
+    @Override
+    public String toString(){
+        lastName +" "+
+        firstName +" "+
+        number
+    }
 }

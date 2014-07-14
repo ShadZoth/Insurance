@@ -11,8 +11,18 @@ class Accident {
     static hasMany = [payments: Payment]
 
     static constraints = {
+        vehicle()
         dateTime()
         damage()
-        vehicle()
+    }
+
+    static mapping = {
+        dateTime sqlType: "timestamp without time zone"
+        damage sqlType: "money"
+    }
+
+    @Override
+    public String toString() {
+        return "$dateTime [$vehicle] : $damage";
     }
 }

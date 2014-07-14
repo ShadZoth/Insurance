@@ -12,4 +12,15 @@ class Price {
     }
 
     static belongsTo = Product
+
+    static mapping = {
+        since sqlType: "date"
+        value sqlType: "money"
+    }
+
+
+    @Override
+    public String toString() {
+        return product + " " + value;
+    }
 }
