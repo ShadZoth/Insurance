@@ -63,6 +63,7 @@ grails {
     }
 }
 
+grails.gorm.failOnError = true
 
 grails.converters.encoding = "UTF-8"
 // scaffolding templates configuration
