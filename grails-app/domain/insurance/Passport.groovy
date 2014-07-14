@@ -23,7 +23,17 @@ class Passport {
     }
 
     private static enum Sex {
-        MALE, FEMALE
+        MALE("Мужской"), FEMALE("Женский")
+
+        Sex(String s) {
+            russian = s
+        }
+
+        String russian
+
+        String toString() {
+            russian
+        }
     }
 
     static mapping = {

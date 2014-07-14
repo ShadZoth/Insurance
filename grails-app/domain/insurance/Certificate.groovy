@@ -15,7 +15,7 @@ class Certificate {
     static constraints = {
         number(nullable: false)
         vehicle()
-        color(size: 0..18)
+        color(maxSize: 18, nullable: true)
         issueDate(nullable: false)
         ownerFirstName(nullable: false, maxSize: 30)
         ownerLastName(nullable: false, maxSize: 30)
