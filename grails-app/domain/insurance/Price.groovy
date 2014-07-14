@@ -8,8 +8,13 @@ class Price {
     static constraints = {
         product()
         since()
-        value() // TODO: в БД определить как money
+        value()
     }
 
     static belongsTo = Product
+
+    static mapping = {
+        since sqlType: "date"
+        value sqlType: "money"
+    }
 }
