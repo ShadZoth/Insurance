@@ -15,7 +15,17 @@ class Contact {
     }
 
     private static enum ContactType {
-        ADRESS, PHONE, EMAIL
+        ADRESS("Адрес"), PHONE("Телефон"), EMAIL("Электронная почта")
+
+        ContactType(String s) {
+            russian = s
+        }
+
+        String russian
+
+        String toString() {
+            russian
+        }
     }
 
 }
