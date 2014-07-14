@@ -13,8 +13,8 @@ class Certificate {
     static belongsTo = Vehicle
 
     static constraints = {
-        vehicle()
         number(nullable: false)
+        vehicle()
         color(size: 0..18)
         issueDate(nullable: false)
         ownerFirstName(nullable: false, maxSize: 30)
