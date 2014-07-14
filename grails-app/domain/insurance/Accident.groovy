@@ -15,4 +15,12 @@ class Accident {
         damage()
         vehicle()
     }
+
+    @Override
+    public String toString() {
+        return dateTime +
+                " ["+
+                vehicle +
+                "] : " + damage;
+    }
 }

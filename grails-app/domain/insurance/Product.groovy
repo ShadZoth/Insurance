@@ -17,4 +17,10 @@ class Product {
         corporate()
         individual()
     }
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

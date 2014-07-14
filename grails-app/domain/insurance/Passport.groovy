@@ -25,4 +25,11 @@ class Passport {
     private static enum Sex {
         MALE, FEMALE
     }
+
+    @Override
+    public String toString(){
+        lastName +" "+
+        firstName +" "+
+        number
+    }
 }

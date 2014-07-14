@@ -15,4 +15,10 @@ class Payment {
         accident()
         warrant()
     }
+
+
+    @Override
+    public String toString() {
+        return "" + date + " " + warrant + ":" + amount;
+    }
 }

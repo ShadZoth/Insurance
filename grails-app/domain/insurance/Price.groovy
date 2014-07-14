@@ -12,4 +12,10 @@ class Price {
     }
 
     static belongsTo = Product
+
+
+    @Override
+    public String toString() {
+        return product + " " + value;
+    }
 }

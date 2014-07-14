@@ -21,4 +21,11 @@ class Certificate {
         ownerLastName(nullable: false, maxSize: 30)
         vin(maxSize: 17)
     }
+
+
+    @Override
+    public String toString() {
+        return vehicle +
+                " : " + number;
+    }
 }

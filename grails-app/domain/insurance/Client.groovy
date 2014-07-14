@@ -14,4 +14,10 @@ class Client {
         registrationDate(nullable: false)
         archived()
     }
+
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }

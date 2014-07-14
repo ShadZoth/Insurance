@@ -20,4 +20,10 @@ class Vehicle {
         category()
         manufacturer()
     }
+
+
+    @Override
+    public String toString() {
+        return manufacturer + " " + model + " "+ year;
+    }
 }

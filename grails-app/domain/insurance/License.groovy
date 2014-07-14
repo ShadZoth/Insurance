@@ -112,4 +112,10 @@ class License {
         //TODO: Добавить констрейнт требующий,
         //TODO: чтобы хотя бы одна категория была заполнена
     }
+
+
+    @Override
+    public String toString() {
+        return owner + " " + number;
+    }
 }

@@ -21,4 +21,10 @@ class Warrant {
         price() // TODO: в БД определить как money
         number(nullable: false)
     }
+
+
+    @Override
+    public String toString() {
+        return number;
+    }
 }
