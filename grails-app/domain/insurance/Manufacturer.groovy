@@ -8,4 +8,10 @@ class Manufacturer {
     static constraints = {
         name(maxSize: 30)
     }
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

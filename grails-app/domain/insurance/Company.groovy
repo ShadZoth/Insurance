@@ -9,4 +9,10 @@ class Company extends Client {
         name(nullable: false, maxSize: 30)
         inn(nullable: false, size: 10..12)
     }
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

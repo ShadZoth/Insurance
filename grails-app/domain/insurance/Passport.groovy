@@ -30,4 +30,11 @@ class Passport {
         issueDate sqlType: "date"
         birthDate sqlType: "date"
     }
+
+    @Override
+    public String toString(){
+        lastName +" "+
+        firstName +" "+
+        number
+    }
 }

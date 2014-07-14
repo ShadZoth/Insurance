@@ -18,7 +18,7 @@ class Warrant {
         product()
         issueDate(nullable: false)
         expireDate(nullable: false)
-        price()
+        price() // TODO: в БД определить как money
         number(nullable: false)
     }
 
@@ -26,5 +26,11 @@ class Warrant {
         price sqlType: "money"
         issueDate sqlType: "date"
         expireDate sqlType: "date"
+    }
+
+
+    @Override
+    public String toString() {
+        return number;
     }
 }

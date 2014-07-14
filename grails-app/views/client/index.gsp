@@ -1,4 +1,4 @@
-<%@ page import="insurance.Client" %>
+<%@ page import="insurance.Person; insurance.Client" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +16,14 @@
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message
                 code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message
-                code="default.new.label" args="[entityName]"/></g:link></li>
+        <li><g:link class="create" action="create"
+                    params="[cl: 'person']"><g:message
+                    code="default.new.label"
+                    args="${message(code: 'person.label', default: "Person")}"/></g:link></li>
+        <li><g:link class="create" action="create"
+                    params="[cl: 'company']"><g:message
+                    code="default.new.label"
+                    args="${message(code: 'company.label', default: "Company")}"/></g:link></li>
     </ul>
 </div>
 
@@ -41,16 +47,20 @@
         </thead>
         <tbody>
         <g:each in="${clientInstanceList}" status="i" var="clientInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+            <g:if test="${clientInstance.getClass() != Client.class}">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="show"
+                    <td><g:link action="show"
                             id="${clientInstance.id}">${fieldValue(bean: clientInstance, field: "registrationDate")}</g:link></td>
 
-                <td><g:formatBoolean boolean="${clientInstance.archived}"/></td>
+                    <td><g:formatBoolean
+                            boolean="${clientInstance.archived}"/></td>
 
-                <td>${clientInstance.getClass().getCanonicalName()}</td>
+                    <td>${clientInstance.getClass().getCanonicalName()}</td>
 
-            </tr>
+                </tr>
+            </g:if>
+
         </g:each>
         </tbody>
     </table>

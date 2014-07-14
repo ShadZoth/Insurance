@@ -20,4 +20,12 @@ class Accident {
         dateTime sqlType: "timestamp without time zone"
         damage sqlType: "money"
     }
+
+    @Override
+    public String toString() {
+        return dateTime +
+                " ["+
+                vehicle +
+                "] : " + damage;
+    }
 }

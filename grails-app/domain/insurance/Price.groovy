@@ -8,7 +8,7 @@ class Price {
     static constraints = {
         product()
         since()
-        value()
+        value() // TODO: в БД определить как money
     }
 
     static belongsTo = Product
@@ -16,5 +16,11 @@ class Price {
     static mapping = {
         since sqlType: "date"
         value sqlType: "money"
+    }
+
+
+    @Override
+    public String toString() {
+        return product + " " + value;
     }
 }

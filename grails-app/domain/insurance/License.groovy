@@ -117,4 +117,10 @@ class License {
         issueDate sqlType: "date"
         expirationDate sqlType: "date"
     }
+
+
+    @Override
+    public String toString() {
+        return owner + " " + number;
+    }
 }
