@@ -6,6 +6,7 @@ class Passport {
     Date issueDate
     String firstName
     String lastName
+    String fathName
     Date birthDate
     Person person
     Sex sex
@@ -18,12 +19,23 @@ class Passport {
         issueDate(nullable: false)
         firstName(maxSize: 40)
         lastName(maxSize: 40)
+        fathName(maxSize: 40)
         birthDate(nullable: false)
         sex()
     }
 
     private static enum Sex {
-        MALE, FEMALE
+        MALE("Мужской"), FEMALE("Женский")
+
+        Sex(String s) {
+            russian = s
+        }
+
+        String russian
+
+        String toString() {
+            russian
+        }
     }
 
     static mapping = {

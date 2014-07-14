@@ -10,6 +10,7 @@ class Person extends Client {
 
     @Override
     public String toString() {
+
         if (passports) {
             Passport passport = passports.findAll({
                 it.person == id
@@ -21,9 +22,8 @@ class Person extends Client {
                 }
             });
 
-            return "${passport.lastName} ${passport.firstName} ${passport.birthDate} ${passport.number}"
-        } else {
+            return "${passport.lastName} ${passport.firstName.charAt(0)}. ${passport.fathName.charAt(0)}."
+        } else
             return "Информация о пасспортных данных не предоставлена"
-        }
     }
 }

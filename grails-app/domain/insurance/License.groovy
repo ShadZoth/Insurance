@@ -105,8 +105,8 @@ class License {
     static belongsTo = Person
 
     static constraints = {
-        owner()
         number(nullable: false)
+        owner()
         issueDate(nullable: false)
         expirationDate()
         categories validator: { val, obj -> (obj.a || obj.b || obj.c || obj.d || obj.e || obj.tb || obj.tm) }
