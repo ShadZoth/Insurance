@@ -41,16 +41,20 @@
         </thead>
         <tbody>
         <g:each in="${clientInstanceList}" status="i" var="clientInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+            <g:if test="${clientInstance.getClass() != Client.class}">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="show"
+                    <td><g:link action="show"
                             id="${clientInstance.id}">${fieldValue(bean: clientInstance, field: "registrationDate")}</g:link></td>
 
-                <td><g:formatBoolean boolean="${clientInstance.archived}"/></td>
+                    <td><g:formatBoolean
+                            boolean="${clientInstance.archived}"/></td>
 
-                <td>${clientInstance.getClass().getCanonicalName()}</td>
+                    <td>${clientInstance.getClass().getCanonicalName()}</td>
 
-            </tr>
+                </tr>
+            </g:if>
+
         </g:each>
         </tbody>
     </table>
