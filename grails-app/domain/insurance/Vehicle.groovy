@@ -21,13 +21,13 @@ class Vehicle {
         manufacturer()
     }
 
-    static mapping = {
+    /*static mapping = {
         price sqlType: "money"
-    }
+    }*/
 
 
     @Override
     public String toString() {
-        return manufacturer + " " + model + " "+ year;
+        "$manufacturer $model $year"
     }
 }
