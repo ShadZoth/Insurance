@@ -20,4 +20,8 @@ class Vehicle {
         category()
         manufacturer()
     }
+
+    static mapping = {
+        price sqlType: "money"
+    }
 }
