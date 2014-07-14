@@ -10,11 +10,12 @@ class Payment {
     static belongsTo = [Accident, Warrant]
 
     static constraints = {
-        date(nullable: false)
-        amount(nullable: false)
-        accident()
         warrant()
+        accident()
+        amount(nullable: false)
+        date(nullable: false)
     }
+
     static mapping = {
         amount sqlType: "money", length: 10
         date sqlType: "timestamp without time zone"

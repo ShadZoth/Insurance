@@ -35,6 +35,8 @@
     <table>
         <thead>
         <tr>
+            <th><g:message code="clients.iden.label"
+                           default="Identification"/></th>
 
             <g:sortableColumn property="registrationDate"
                               title="${message(code: 'client.registrationDate.label', default: 'Registration Date')}"/>
@@ -51,7 +53,9 @@
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                     <td><g:link action="show"
-                            id="${clientInstance.id}">${fieldValue(bean: clientInstance, field: "registrationDate")}</g:link></td>
+                                id="${clientInstance.id}">${clientInstance}</g:link></td>
+
+                    <td>${fieldValue(bean: clientInstance, field: "registrationDate")}</td>
 
                     <td><g:formatBoolean
                             boolean="${clientInstance.archived}"/></td>
