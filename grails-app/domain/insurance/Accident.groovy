@@ -11,9 +11,9 @@ class Accident {
     static hasMany = [payments: Payment]
 
     static constraints = {
+        vehicle()
         dateTime()
         damage()
-        vehicle()
     }
 
     static mapping = {
@@ -23,9 +23,6 @@ class Accident {
 
     @Override
     public String toString() {
-        return dateTime +
-                " ["+
-                vehicle +
-                "] : " + damage;
+        return "$dateTime [$vehicle] : $damage";
     }
 }
