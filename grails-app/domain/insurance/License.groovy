@@ -105,8 +105,8 @@ class License {
     static belongsTo = Person
 
     static constraints = {
-        owner()
         number(nullable: false)
+        owner()
         issueDate(nullable: false)
         expirationDate()
         //TODO: Добавить констрейнт требующий,
