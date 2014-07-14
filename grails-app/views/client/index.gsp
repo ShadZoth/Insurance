@@ -16,14 +16,15 @@
     <ul>
         %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message
                 code="default.home.label"/></a></li>--}%
-        <li><g:link class="create" action="create"
-                    params="[cl: 'person']"><g:message
-                    code="default.new.label"
-                    args="${message(code: 'person.label', default: "Person")}"/></g:link></li>
-        <li><g:link class="create" action="create"
-                    params="[cl: 'company']"><g:message
-                    code="default.new.label"
-                    args="${message(code: 'company.label', default: "Company")}"/></g:link></li>
+        <g:set var="personName" value="${message(code: 'person.label', default: 'Person')}"/>
+        <g:set var="companyName" value="${message(code: 'company.label', default: 'Company')}"/>
+
+        <li><g:link class="create" action="create" params="[cl: 'person']">
+            <g:message code="default.new.label" args="[personName]"/></g:link>
+        </li>
+        <li><g:link class="create" action="create" params="[cl: 'company']">
+            <g:message code="default.new.label" args="[companyName]"/></g:link>
+        </li>
     </ul>
 </div>
 
