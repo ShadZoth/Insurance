@@ -28,4 +28,8 @@ class Contact {
         }
     }
 
+    String toString() {
+        "${type}: ${value}"
+    }
+
 }
