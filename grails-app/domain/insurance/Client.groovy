@@ -5,7 +5,7 @@ class Client {
     Boolean archived
 
     static mapping = {
-        tablePerHierarchy(false)
+        tablePerHierarchy(true)
     }
 
     static hasMany = [vehicles: Vehicle, contacts: Contact, warrants: Warrant]
