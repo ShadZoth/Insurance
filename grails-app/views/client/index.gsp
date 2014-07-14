@@ -19,8 +19,12 @@
         <g:set var="personName" value="${message(code: 'person.label', default: 'Person')}"/>
         <g:set var="companyName" value="${message(code: 'company.label', default: 'Company')}"/>
 
-        <li><g:link class="create" action="create" params="[cl: 'person']"><g:message code="default.new.label" args="[personName]"/></g:link></li>
-        <li><g:link class="create" action="create" params="[cl: 'company']"><g:message code="default.new.label" args="[companyName]"/></g:link></li>
+        <li><g:link class="create" action="create" params="[cl: 'person']">
+            <g:message code="default.new.label" args="[personName]"/></g:link>
+        </li>
+        <li><g:link class="create" action="create" params="[cl: 'company']">
+            <g:message code="default.new.label" args="[companyName]"/></g:link>
+        </li>
     </ul>
 </div>
 
