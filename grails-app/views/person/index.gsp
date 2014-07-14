@@ -27,6 +27,8 @@
     <table>
         <thead>
         <tr>
+            <th><g:message code="person.name.label"
+                           default="Name"/></th>
 
             <g:sortableColumn property="registrationDate"
                               title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
@@ -41,7 +43,9 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
-                            id="${personInstance.id}">${fieldValue(bean: personInstance, field: "registrationDate")}</g:link></td>
+                            id="${personInstance.id}">${personInstance}</g:link></td>
+
+                <td>${fieldValue(bean: personInstance, field: "registrationDate")}</td>
 
                 <td><g:formatBoolean boolean="${personInstance.archived}"/></td>
 
