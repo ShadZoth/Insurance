@@ -126,3 +126,9 @@ grails.gorm.default.constraints = {
             validator: { val -> val <= new Date() }
     )
 }
+
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'insurance.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'insurance.UserRole'
+grails.plugins.springsecurity.authority.className = 'insurance.Role'
