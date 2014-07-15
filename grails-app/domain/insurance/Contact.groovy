@@ -16,8 +16,6 @@ class Contact {
 
     static belongsTo = Client
 
-    static transient
-
     static constraints = {
         value()
         email email: true
