@@ -14,7 +14,7 @@ class Warrant {
     static hasMany = [payments: Payment]
 
     static constraints = {
-        number(nullable: false)
+        number(editable: false, nullable: false)
         client()
         product()
         issueDate(nullable: false)
@@ -32,5 +32,19 @@ class Warrant {
     @Override
     public String toString() {
         return number;
+    }
+
+    String getNumber() {
+        return "WR-2014-${get4Id()}"
+    }
+
+    /**
+     * Возвращает id приведенный к формату 0..id (4 символа)
+     * @return id приведенный к формату 0..id (4 символа)
+     */
+    String get4Id() {
+        StringBuilder result = new StringBuilder("0000")
+        result.append(id)
+        result.substring(result.length() - 4, result.length())
     }
 }

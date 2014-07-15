@@ -2,6 +2,15 @@
 
 
 
+%{--<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'number', 'error')} required">--}%
+	%{--<label for="number">--}%
+		%{--<g:message code="warrant.number.label" default="Number" />--}%
+		%{--<span class="required-indicator">*</span>--}%
+	%{--</label>--}%
+	%{--<g:textField name="number" required="" value="${warrantInstance?.number}"/>--}%
+
+%{--</div>--}%
+
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
 	<label for="client">
 		<g:message code="warrant.client.label" default="Client" />
@@ -44,15 +53,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="price" value="${fieldValue(bean: warrantInstance, field: 'price')}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'number', 'error')} required">
-	<label for="number">
-		<g:message code="warrant.number.label" default="Number" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="number" required="" value="${warrantInstance?.number}"/>
 
 </div>
 
