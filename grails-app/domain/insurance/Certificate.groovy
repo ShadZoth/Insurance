@@ -16,6 +16,8 @@ class Certificate {
         issueDate sqlType: "date"
     }
 
+    static searchable = true
+
     static constraints = {
         number(nullable: false)
         vehicle()
@@ -29,15 +31,6 @@ class Certificate {
         vin(maxSize: 17)
     }
 
-//    static def upToDate(Date val) {
-//        val <= new Date()
-//    }
-//
-//    static def moreThanLast(Date val, Certificate obj) {
-//        if (obj.vehicle.certificates) {
-//            val > obj.vehicle.certificates.issueDate.max()
-//        } else true
-//    }
 
     @Override
     public String toString() {

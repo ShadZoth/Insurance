@@ -9,6 +9,7 @@ class Manufacturer {
         name(maxSize: 30)
     }
 
+    static searchable = true
 
     @Override
     public String toString() {

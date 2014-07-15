@@ -18,6 +18,7 @@ class Product {
         individual()
     }
 
+    static searchable = true
 
     @Override
     public String toString() {

@@ -47,6 +47,13 @@
     </div>
 </div>
 
+<div id="search">
+    <form id="searchableForm" name="searchableForm" method="get" action="/Insurance/searchable">
+        <input id="querySearch" type="text" size="50" value="...поиск" name="q"></input>
+        <input type="submit" value="Найти"></input>
+    </form>
+</div>
+
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 

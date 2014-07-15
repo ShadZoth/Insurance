@@ -21,6 +21,8 @@ class Vehicle {
         manufacturer()
     }
 
+    static searchable = true
+
     /*static mapping = {
         price sqlType: "money"
     }*/

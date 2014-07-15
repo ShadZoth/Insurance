@@ -24,6 +24,7 @@ class Price {
         // value sqlType: "money"
     }
 
+    static searchable = true
 
     @Override
     public String toString() {

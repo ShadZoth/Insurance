@@ -12,9 +12,11 @@ class Client {
 
     }
 
+    static searchable = true
+
     static mapping = {
         tablePerHierarchy(true)
-        registrationDate  sqlType: "date"
+        registrationDate sqlType: "date"
     }
 
     static hasMany = [vehicles: Vehicle, contacts: Contact, warrants: Warrant]

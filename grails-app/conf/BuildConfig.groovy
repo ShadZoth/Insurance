@@ -46,6 +46,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
         //repo for spring-security
         mavenRepo "http://repo.spring.io/milestone/"
+        mavenRepo "http://repo.grails.org/grails/core"
     }
 
     dependencies {
@@ -65,7 +66,7 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.7'
         compile ":console:1.4.4"
         compile ":spring-security-core:1.2.7.4"
-
+        compile ":searchable:0.6.8"
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.16" // or ":hibernate4:4.3.5.4"
         runtime ":database-migration:1.4.0"
