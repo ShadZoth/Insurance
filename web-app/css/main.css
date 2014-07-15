@@ -660,3 +660,12 @@ input[type="submit"]{
 }
 #loginForm a
 {}
+
+#querySearch {
+    width: 200px;
+    float: right;
+}
+
+#qearch_button {
+    float: right;
+}

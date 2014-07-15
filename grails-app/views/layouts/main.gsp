@@ -37,11 +37,13 @@
         %{--<H2 align=center>Login Form</H2>--}%
         <div id="login_fields">
             <p><input type="text" placeholder="Логин"></p>
+
             <p><input type="password" placeholder="Пароль"></p>
         </div>
 
         <div id="login_buttons">
             <p><input type="submit" value='Войти'></p>
+
             <p><a href="#">Забыли пароль?</a></p>
         </div>
     </div>
@@ -49,8 +51,8 @@
 
 <div id="search">
     <form id="searchableForm" name="searchableForm" method="get" action="/Insurance/searchable">
-        <input id="querySearch" type="text" size="50" value="...поиск" name="q"></input>
-        <input type="submit" value="Найти"></input>
+        <input id="qearch_button" type="submit" value="Найти">
+        <input id="querySearch" type="text" size="50" value="поиск..." name="q">
     </form>
 </div>
 
