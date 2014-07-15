@@ -3,25 +3,30 @@ package insurance
 class Passport {
 
     String number
-    Date issueDate
-    String firstName
+    Person person
     String lastName
+    String firstName
     String fathName
     Date birthDate
-    Person person
+    Date issueDate
     Sex sex
 
     static belongsTo = Person
 
     static constraints = {
-        person()
         number(nullable: false)
-        issueDate(nullable: false)
-        firstName(maxSize: 40)
+        person()
         lastName(maxSize: 40)
+        firstName(maxSize: 40)
         fathName(maxSize: 40)
-        birthDate(nullable: false)
+        birthDate(nullable: false, shared: "upToDate")
         sex()
+        issueDate(nullable: false, validator: {
+            val, obj ->
+                def greg = obj.birthDate.toCalendar()
+                greg.add(Calendar.YEAR, 14)
+                val >= greg.time && val <= new Date()
+        })
     }
 
     private static enum Sex {
