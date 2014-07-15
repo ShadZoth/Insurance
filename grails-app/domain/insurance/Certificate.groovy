@@ -12,11 +12,20 @@ class Certificate {
 
     static belongsTo = Vehicle
 
+    static mapping = {
+        issueDate sqlType: "date"
+    }
+
+    static searchable = true
+
     static constraints = {
         number(nullable: false)
         vehicle()
         color(maxSize: 18, nullable: true)
-        issueDate(nullable: false)
+        issueDate(nullable: false, shared: 'upToDate')
+//                validator: {val, obj ->
+//                    moreThanLast(val, obj) && upToDate(val)
+//                })
         ownerFirstName(nullable: false, maxSize: 30)
         ownerLastName(nullable: false, maxSize: 30)
         vin(maxSize: 17)

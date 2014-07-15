@@ -629,7 +629,7 @@ a.skip {
     width:110px;
 }
 
-.login_fields{
+#login_fields{
     float:left;
     width:120px;
 }
@@ -655,10 +655,20 @@ input[type="submit"]{
 {
     color:#ff8;
 }
-#login_Form p{
+#loginForm p{
     margin-top: 10px;
 }
-#login_Form a
+#loginForm a
+{}
+
+#querySearch {
+    width: 200px;
+    float: right;
+}
+
+#qearch_button {
+    float: right;
+}#login_Form a
 {}
 
 #logout

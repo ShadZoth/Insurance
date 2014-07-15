@@ -15,11 +15,13 @@ class Vehicle {
     static constraints = {
         owner()
         model(maxSize: 30)
-        year(min: 1900)
+        year(min: 1900, max: Calendar.getInstance().get(Calendar.YEAR))
         price()
         category()
         manufacturer()
     }
+
+    static searchable = true
 
     /*static mapping = {
         price sqlType: "money"

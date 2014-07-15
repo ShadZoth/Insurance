@@ -6,13 +6,15 @@ class Accident {
     BigDecimal damage
     Vehicle vehicle
 
+    static searchable = true
+
     static belongsTo = Vehicle
 
     static hasMany = [payments: Payment]
 
     static constraints = {
         vehicle()
-        dateTime()
+        dateTime shared: 'upToDate'
         damage()
     }
 

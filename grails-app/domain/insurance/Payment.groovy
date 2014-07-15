@@ -21,6 +21,7 @@ class Payment {
         date sqlType: "timestamp without time zone"
     }
 
+    static searchable = true
 
     @Override
     public String toString() {

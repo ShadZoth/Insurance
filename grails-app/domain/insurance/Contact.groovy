@@ -14,6 +14,8 @@ class Contact {
         }
     }
 
+    static searchable = true
+
     static belongsTo = Client
 
     static constraints = {

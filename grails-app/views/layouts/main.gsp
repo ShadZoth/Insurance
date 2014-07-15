@@ -57,6 +57,14 @@
         </sec:ifLoggedIn>
     </div>
 </div>
+
+<div id="search">
+    <form id="searchableForm" name="searchableForm" method="get" action="/Insurance/searchable">
+        <input id="qearch_button" type="submit" value="Найти">
+        <input id="querySearch" type="text" size="50" value="поиск..." name="q">
+    </form>
+</div>
+
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 

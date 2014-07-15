@@ -26,4 +26,6 @@ class Person extends Client {
         } else
             return "id${id}: Информация о паспортных данных не предоставлена"
     }
+
+    static searchable = true
 }
