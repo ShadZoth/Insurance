@@ -17,7 +17,7 @@ class Warrant {
         number(editable: false, nullable: false)
         client()
         product()
-        issueDate(nullable: false)
+        issueDate(nullable: false, shared: 'upToDate')
         expireDate(nullable: false, validator: { val, obj ->
             val > obj.issueDate
         })
