@@ -47,6 +47,16 @@
     </div>
 </div>
 
+<div id="search">
+    <div id="search_field">
+        <input type="text" placeholder="поиск...">
+    </div>
+
+    <div id="search_button">
+        <input type="submit" value='Найти'>
+    </div>
+</div>
+
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 
