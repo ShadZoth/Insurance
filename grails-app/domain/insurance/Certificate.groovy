@@ -12,6 +12,8 @@ class Certificate {
 
     static belongsTo = Vehicle
 
+    static searchable = true
+
     static constraints = {
         number(nullable: false)
         vehicle()

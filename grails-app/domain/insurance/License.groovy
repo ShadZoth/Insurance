@@ -109,6 +109,8 @@ class License {
 
     static belongsTo = Person
 
+    static searchable = true
+
     static constraints = {
         number(nullable: false)
         owner()

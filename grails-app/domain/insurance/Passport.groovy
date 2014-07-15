@@ -43,6 +43,8 @@ class Passport {
         }
     }
 
+    static searchable = true
+
     static mapping = {
         issueDate sqlType: "date"
         birthDate sqlType: "date"

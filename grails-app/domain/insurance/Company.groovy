@@ -10,6 +10,7 @@ class Company extends Client {
         inn(nullable: false, size: 10..12)
     }
 
+    static searchable = true
 
     @Override
     public String toString() {

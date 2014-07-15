@@ -28,6 +28,7 @@ class Warrant {
         expireDate sqlType: "date"
     }
 
+    static searchable = true
 
     @Override
     public String toString() {
