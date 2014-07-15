@@ -48,13 +48,10 @@
 </div>
 
 <div id="search">
-    <div id="search_field">
-        <input type="text" placeholder="поиск...">
-    </div>
-
-    <div id="search_button">
-        <input type="submit" value='Найти'>
-    </div>
+    <form id="searchableForm" name="searchableForm" method="get" action="/Insurance/searchable">
+        <input id="querySearch" type="text" size="50" value="...поиск" name="q"></input>
+        <input type="submit" value="Найти"></input>
+    </form>
 </div>
 
 <g:layoutBody/>
