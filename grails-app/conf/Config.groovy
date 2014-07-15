@@ -120,3 +120,9 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+grails.gorm.default.constraints = {
+    upToDate(
+            validator: { val -> val <= new Date() }
+    )
+}
