@@ -27,15 +27,17 @@
         <thead>
         <tr>
 
+            <g:sortableColumn property="name"
+                              title="${message(code: 'company.name.label', default: 'Name')}"/>
+
+            <g:sortableColumn property="inn"
+                              title="${message(code: 'company.inn.label', default: 'Inn')}"/>
+
             <g:sortableColumn property="registrationDate"
                               title="${message(code: 'company.registrationDate.label', default: 'Registration Date')}"/>
 
             <g:sortableColumn property="archived"
                               title="${message(code: 'company.archived.label', default: 'Archived')}"/>
-
-            <g:sortableColumn property="name" title="${message(code: 'company.name.label', default: 'Name')}"/>
-
-            <g:sortableColumn property="inn" title="${message(code: 'company.inn.label', default: 'Inn')}"/>
 
         </tr>
         </thead>
@@ -44,13 +46,13 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
-                            id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "registrationDate")}</g:link></td>
-
-                <td><g:formatBoolean boolean="${companyInstance.archived}"/></td>
-
-                <td>${fieldValue(bean: companyInstance, field: "name")}</td>
+                            id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "name")}</g:link></td>
 
                 <td>${fieldValue(bean: companyInstance, field: "inn")}</td>
+
+                <td>${fieldValue(bean: companyInstance, field: "registrationDate")}</td>
+
+                <td><g:formatBoolean boolean="${companyInstance.archived}"/></td>
 
             </tr>
         </g:each>

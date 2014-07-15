@@ -6,9 +6,14 @@ class License {
 
     String number
     Date issueDate
-    Date expirationDate
     Integer categories = 0
     Person owner
+
+    Date getExpirationDate() {
+        def res = issueDate.toCalendar()
+        res.add(Calendar.YEAR, 10)
+        res.time
+    }
 
     Set<Category> getCategories() {
         def res = new TreeSet<Category>()
