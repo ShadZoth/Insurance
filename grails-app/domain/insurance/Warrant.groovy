@@ -17,8 +17,10 @@ class Warrant {
         number(editable: false, nullable: false)
         client()
         product()
-        issueDate(nullable: false)
-        expireDate(nullable: false)
+        issueDate(nullable: false, shared: 'upToDate')
+        expireDate(nullable: false, validator: { val, obj ->
+            val > obj.issueDate
+        })
         price() // TODO: в БД определить как money
     }
 

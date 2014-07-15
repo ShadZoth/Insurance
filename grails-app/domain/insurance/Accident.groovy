@@ -14,7 +14,7 @@ class Accident {
 
     static constraints = {
         vehicle()
-        dateTime()
+        dateTime shared: 'upToDate'
         damage()
     }
 
