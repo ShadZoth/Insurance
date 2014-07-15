@@ -33,20 +33,30 @@
         <H1 align=center>Страховая компания %companyname%</H1>
     </div>
 
-    <div id="loginForm">
+    <div id="login_Form">
+        <sec:ifNotLoggedIn>
         %{--<H2 align=center>Login Form</H2>--}%
-        <div id="login_fields">
-            <p><input type="text" placeholder="Логин"></p>
-            <p><input type="password" placeholder="Пароль"></p>
-        </div>
+            <g:form id='loginForm' url="/Insurance/j_spring_security_check" method='POST'>
+            <div class="login_fields">
+                <p><input type="text" name='j_username' id='username' placeholder="Логин"/></p>
 
-        <div id="login_buttons">
-            <p><input type="submit" value='Войти'></p>
-            <p><a href="#">Забыли пароль?</a></p>
-        </div>
+                <p><input type="password" placeholder="Пароль" name='j_password' id='password'/></p>
+                </div>
+                <div id="login_buttons">
+                    <p><input type="submit" id="submit" value='Войти'/></p>
+
+                    <p><a href="#">Забыли пароль?</a></p>
+                </div>
+            </g:form>
+
+        </sec:ifNotLoggedIn>
+        <sec:ifLoggedIn>
+            <div id="logout">
+                <p>Logged in as <sec:username/> (<g:link controller='logout'>Logout</g:link>)</p>
+            </div>
+        </sec:ifLoggedIn>
     </div>
 </div>
-
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 

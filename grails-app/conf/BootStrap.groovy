@@ -16,6 +16,7 @@ class BootStrap {
 
         def testUser = new User(username: 'me', password: 'password')
         testUser.save(flush: true)
+        testUser.enabled = true
 
         UserRole.create testUser, adminRole, true
 

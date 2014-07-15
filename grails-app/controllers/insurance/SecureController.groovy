@@ -1,6 +1,10 @@
 package insurance
 
-class SecureController {
+import grails.plugins.springsecurity.Secured
 
-    def index() { }
+class SecureController {
+    @Secured(['ROLE_ADMIN'])
+    def index() {
+        render 'Secure access only'
+    }
 }
