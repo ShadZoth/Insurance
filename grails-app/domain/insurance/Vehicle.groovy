@@ -15,7 +15,7 @@ class Vehicle {
     static constraints = {
         owner()
         model(maxSize: 30)
-        year(min: 1900)
+        year(min: 1900, Calendar.getInstance().get(Calendar.YEAR))
         price()
         category()
         manufacturer()
