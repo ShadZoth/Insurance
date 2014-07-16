@@ -88,10 +88,10 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-analyzers/2.4.1/lucene-analyzers-2.4.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-highlighter/2.4.1/lucene-highlighter-2.4.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/lucene/lucene-core/2.4.1/lucene-core-2.4.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/compass-project/compass/2.2.1/compass-2.2.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.0.7.RELEASE/spring-security-core-3.0.7.RELEASE.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/3.0.7.RELEASE/spring-security-web-3.0.7.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/compass-project/compass/2.2.1/compass-2.2.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
