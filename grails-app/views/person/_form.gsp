@@ -1,121 +1,93 @@
-<%@ page import="insurance.Person" %>
+<%@ page import="insurance.Passport" %>
+<%@ page import="insurance.Client" %>
 
+%{--Продавец--}%
+<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'seller', 'error')} required">
+    <label for="seller">
+        <g:message code="client.seller.label" default="Seller" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:select id="seller" name="seller.id" from="${insurance.User.list().findAll {it.hasRole('ROLE_SELLER')}}" optionKey="id" required="" value="${clientInstance?.seller?.id}" class="many-to-one"/>
+</div>
 
+%{--Client--}%
+%{--Выбор даты, дата регистрации (тут временно и для примера, дата должна цепляться автоматом)--}%
+<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'registrationDate', 'error')} required">
+    <label for="registrationDate">
+        <g:message code="client.registrationDate.label" default="Registration Date"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="registrationDate" precision="day" value="${clientInstance?.registrationDate}"/>
+</div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'registrationDate', 'error')} required">
-	<label for="registrationDate">
-		<g:message code="person.registrationDate.label" default="Registration Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="registrationDate" precision="day"  value="${personInstance?.registrationDate}"  />
+%{--Passport--}%
+%{--Форма, номер паспорта.--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'number', 'error')} required">
+    <label for="number">
+        <g:message code="passport.number.label" default="Number" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="number" required="" value="${passportInstance?.number}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'archived', 'error')} ">
-	<label for="archived">
-		<g:message code="person.archived.label" default="Archived" />
-		
-	</label>
-	<g:checkBox name="archived" value="${personInstance?.archived}" />
+%{--Выбор даты, когда выдан--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'issueDate', 'error')} required">
+    <label for="issueDate">
+        <g:message code="passport.issueDate.label" default="Issue Date" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="issueDate" precision="day"  value="${passportInstance?.issueDate}"  />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'seller', 'error')} required">
-	<label for="seller">
-		<g:message code="person.seller.label" default="Seller" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="seller" name="seller.id" from="${insurance.User.list()}" optionKey="id" required="" value="${personInstance?.seller?.id}" class="many-to-one"/>
+%{--Форма, имя клиента--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'firstName', 'error')} required">
+    <label for="firstName">
+        <g:message code="passport.firstName.label" default="First Name" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="firstName" maxlength="40" required="" value="${passportInstance?.firstName}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'contacts', 'error')} ">
-	<label for="contacts">
-		<g:message code="person.contacts.label" default="Contacts" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${personInstance?.contacts?}" var="c">
-    <li><g:link controller="contact" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="contact" action="create" params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'contact.label', default: 'Contact')])}</g:link>
-</li>
-</ul>
-
+%{--Форма, фамилия клиента--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'lastName', 'error')} required">
+    <label for="lastName">
+        <g:message code="passport.lastName.label" default="Last Name" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="lastName" maxlength="40" required="" value="${passportInstance?.lastName}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'licenses', 'error')} ">
-	<label for="licenses">
-		<g:message code="person.licenses.label" default="Licenses" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${personInstance?.licenses?}" var="l">
-    <li><g:link controller="license" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="license" action="create" params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'license.label', default: 'License')])}</g:link>
-</li>
-</ul>
-
+%{--Форма, отчество клиента--}%
+<div class="fieldcontain" ${hasErrors(bean: passportInstance, field: 'fathName', 'error')} required">
+<label for="fathName">
+    <g:message code="passport.fathName.label" default="Fath Name" />
+    <span class="required-indicator">*</span>
+</label>
+<g:textField name="fathName" maxlength="40" required="" value="${passportInstance?.lastName}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'passports', 'error')} ">
-	<label for="passports">
-		<g:message code="person.passports.label" default="Passports" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${personInstance?.passports?}" var="p">
-    <li><g:link controller="passport" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="passport" action="create" params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'passport.label', default: 'Passport')])}</g:link>
-</li>
-</ul>
-
+%{--Выбор даты, дата рождения--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'birthDate', 'error')} required">
+    <label for="birthDate">
+        <g:message code="passport.birthDate.label" default="Birth Date" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="birthDate" precision="day"  value="${passportInstance?.birthDate}"  />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'vehicles', 'error')} ">
-	<label for="vehicles">
-		<g:message code="person.vehicles.label" default="Vehicles" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${personInstance?.vehicles?}" var="v">
-    <li><g:link controller="vehicle" action="show" id="${v.id}">${v?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="vehicle" action="create" params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'vehicle.label', default: 'Vehicle')])}</g:link>
-</li>
-</ul>
-
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'warrants', 'error')} ">
-	<label for="warrants">
-		<g:message code="person.warrants.label" default="Warrants" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${personInstance?.warrants?}" var="w">
-    <li><g:link controller="warrant" action="show" id="${w.id}">${w?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="warrant" action="create" params="['person.id': personInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'warrant.label', default: 'Warrant')])}</g:link>
-</li>
-</ul>
-
+%{--Список enum, пол--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'sex', 'error')} required">
+    <label for="sex">
+        <g:message code="passport.sex.label" default="Sex" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:select name="sex" from="${insurance.Passport$Sex?.values()}" keys="${insurance.Passport$Sex.values()*.name()}" required="" value="${passportInstance?.sex?.name()}" />
 
 </div>
 
