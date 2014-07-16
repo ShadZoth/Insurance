@@ -22,9 +22,9 @@ class BootStrap {
 
         UserRole.create testUser, adminRole, true
 
-        assert User.count() == 1
-        assert Role.count() == 2
-        assert UserRole.count() == 1
+//        assert User.count() == 1
+//        assert Role.count() == 4
+//        assert UserRole.count() == 1
     }
     def destroy = {
 
