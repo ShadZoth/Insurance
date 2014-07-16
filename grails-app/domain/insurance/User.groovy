@@ -10,7 +10,7 @@ class User {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-    List<User> sellers //BOSS only
+    List<User> sellers //Manager only
 
     List<User> getSellers() {
         if (hasRole('ROLE_MANAGER')) {
@@ -25,6 +25,16 @@ class User {
             this.sellers = sellers
         } else {
             this.sellers = null
+        }
+    }
+
+    User getManager() { // SELLER only
+        if (hasRole('ROLE_SELLER')) {
+            list().find {
+                it.sellers && it.sellers.contains(this)
+            }
+        } else {
+            return null
         }
     }
 
