@@ -19,12 +19,17 @@ class BootStrap {
         testSeller.save(flush: true)
         testSeller.enabled = true
 
+        def testManager = new User(username: 'she', password: 'password')
+        testManager.save(flush: true)
+        testManager.enabled = true
+
         UserRole.create testUser, adminRole, true
         UserRole.create testSeller, sellerRole, true
+        UserRole.create testManager, managerRole, true
 
-        assert User.count() == 2
+        assert User.count() == 3
         assert Role.count() == 4
-        assert UserRole.count() == 2
+        assert UserRole.count() == 3
     }
     def destroy = {
 
