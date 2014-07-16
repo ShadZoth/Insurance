@@ -2,7 +2,7 @@ package insurance
 
 class Client {
     Date registrationDate = new Date(Calendar.getInstance().get(Calendar.YEAR) - 1900, Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
-    Boolean archived
+    Boolean archived = false
     User seller
 
     static belongsTo = User
