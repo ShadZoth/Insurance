@@ -37,11 +37,12 @@
         <sec:ifNotLoggedIn>
         %{--<H2 align=center>Login Form</H2>--}%
             <g:form id='loginForm' url="/Insurance/j_spring_security_check" method='POST'>
-            <div class="login_fields">
-                <p><input type="text" name='j_username' id='username' placeholder="Логин"/></p>
+                <div id="login_fields">
+                    <p><input type="text" name='j_username' id='username' placeholder="Логин"/></p>
 
-                <p><input type="password" placeholder="Пароль" name='j_password' id='password'/></p>
+                    <p><input type="password" placeholder="Пароль" name='j_password' id='password'/></p>
                 </div>
+
                 <div id="login_buttons">
                     <p><input type="submit" id="submit" value='Войти'/></p>
 
@@ -58,10 +59,10 @@
     </div>
 </div>
 
-<div id="search">
+<div id="search_string">
     <form id="searchableForm" name="searchableForm" method="get" action="/Insurance/searchable">
-        <input id="qearch_button" type="submit" value="Найти">
-        <input id="querySearch" type="text" size="50" value="поиск..." name="q">
+        <input id="search_button" type="submit" value="Найти">
+        <input id="querySearch" type="text" size="50" placeholder="поиск..." name="q">
     </form>
 </div>
 
