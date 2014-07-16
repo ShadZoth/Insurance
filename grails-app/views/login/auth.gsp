@@ -47,11 +47,11 @@
     }
 
 	#login #remember_me_holder {
-		padding-left: 50px;
+		padding-left: 45px;
 	}
 
 	#login #submit {
-		margin-left: 15px;
+		margin-left: 70px;
 	}
 
 	#login #remember_me_holder label {
