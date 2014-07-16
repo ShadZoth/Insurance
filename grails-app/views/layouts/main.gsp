@@ -64,10 +64,10 @@
 </div>
 
 <div id="search_string">
-    <form id="searchableForm" name="searchableForm" method="get" action="/Insurance/searchable">
+    <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
         <input id="search_button" type="submit" value="Найти">
-        <input id="querySearch" type="text" size="50" placeholder="поиск..." name="q">
-    </form>
+        <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
+    </g:form>
 </div>
 
 <g:layoutBody/>
