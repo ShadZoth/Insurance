@@ -11,7 +11,9 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 
-	static constraints = {
+    static hasMany = [clients: Client]
+
+    static constraints = {
 		username blank: false, unique: true
 		password blank: false
 	}
@@ -38,4 +40,8 @@ class User {
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
 	}
+
+    String toString() {
+        username
+    }
 }
