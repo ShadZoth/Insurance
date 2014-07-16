@@ -6,7 +6,8 @@ class User {
 
 	String username
 	String password
-	boolean enabled
+    String authority
+    boolean enabled
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
@@ -63,7 +64,12 @@ class User {
     static constraints = {
 		username blank: false, unique: true
 		password blank: false
-	}
+        authority(inList:
+                ['ROLE_ADMIN',
+                 'ROLE_MANAGER',
+                 'ROLE_SELLER',
+                 'ROLE_CALL_CENTER'])
+    }
 
 	static mapping = {
         table('`user`')
@@ -90,5 +96,10 @@ class User {
 
     String toString() {
         username
+    }
+
+    void mergeAuthorities() {
+        UserRole.removeAll(this)
+        UserRole.create(this, Role.findByAuthority(authority), true)
     }
 }
