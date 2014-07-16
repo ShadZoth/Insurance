@@ -28,12 +28,8 @@ class Client {
         registrationDate(nullable: false)
         archived()
         seller(validator: { val, obj ->
-            for (Role r : val.authorities) {
-                if (r.authority.equals("ROLE_SELLER")) {
-                    return true
-                }
-            }
-            return false
+            def authority = "ROLE_SELLER"
+            return val.hasRole(authority)
         })
     }
 

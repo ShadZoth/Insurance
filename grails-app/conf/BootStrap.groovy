@@ -5,12 +5,7 @@ import insurance.UserRole
 
 class BootStrap {
 
-    def init = { servletContext ->
-        def c = new Client()
-        c.registrationDate = new Date()
-        c.archived = true
-        c.save()
-
+    def init = { 
         def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
         def managerRole = new Role(authority: 'ROLE_MANAGER').save(flush: true)
         def sellerRole = new Role(authority: 'ROLE_SELLER').save(flush: true)

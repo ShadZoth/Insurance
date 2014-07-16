@@ -10,6 +10,42 @@ class User {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+    List<User> sellers //Manager only
+
+    List<User> getSellers() {
+        if (hasRole('ROLE_MANAGER')) {
+            return sellers
+        } else {
+            return null
+        }
+    }
+
+    void setSellers(List<User> sellers) {
+        if (hasRole('ROLE_MANAGER')) {
+            this.sellers = sellers
+        } else {
+            this.sellers = null
+        }
+    }
+
+    User getManager() { // SELLER only
+        if (hasRole('ROLE_SELLER')) {
+            list().find {
+                it.sellers && it.sellers.contains(this)
+            }
+        } else {
+            return null
+        }
+    }
+
+    boolean hasRole(String authority) {
+        for (Role r : authorities) {
+            if (r.authority.equals(authority)) {
+                return true
+            }
+        }
+        return false
+    }
 
     static hasMany = [clients: Client]
 
