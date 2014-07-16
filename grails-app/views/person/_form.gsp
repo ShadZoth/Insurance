@@ -25,7 +25,11 @@
 		<g:message code="person.seller.label" default="Seller" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="seller" name="seller.id" from="${insurance.User.list()}" optionKey="id" required="" value="${personInstance?.seller?.id}" class="many-to-one"/>
+    <g:select id="seller" name="seller.id"
+              from="${insurance.User.list().findAll {
+                  it.hasRole('ROLE_SELLER')
+              }}" optionKey="id" required=""
+              value="${personInstance?.seller?.id}" class="many-to-one"/>
 
 </div>
 
