@@ -1,3 +1,4 @@
+import insurance.Client
 import insurance.Role
 import insurance.User
 import insurance.UserRole
