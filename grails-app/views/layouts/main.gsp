@@ -64,11 +64,27 @@
 </div>
 
 <div id="search_string">
-    <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
-        <input id="search_button" type="submit" value="Найти">
-        <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
-    </g:form>
+    <div id="navigation_bar">
+        <sec:ifLoggedIn>
+            <ul id="menu">
+                <li><a href="#">Мои продажи</a></li>
+                <li>
+                    <a href="#">Мои клиенты</a>
+                    <ul>
+                        <li><a href="#">Физические лица</a></li>
+                        <li><a href="#">Юридические лица</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </sec:ifLoggedIn>
+        <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
+            <input id="search_button" type="submit" value="Найти">
+            <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
+        </g:form>
+    </div>
 </div>
+
+
 
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
