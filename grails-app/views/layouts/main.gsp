@@ -65,18 +65,18 @@
 
 <div id="search_string">
     <div id="navigation_bar">
-        <sec:ifLoggedIn>
+        <sec:ifAllGranted roles="ROLE_SELLER">
             <ul id="menu">
-                <li><a href="#">Мои продажи</a></li>
+                <li><g:link action="index" controller="warrant">Мои продажи</g:link></li>
                 <li>
-                    <a href="#">Мои клиенты</a>
+                    <g:link action="index" controller="client">Мои клиенты</g:link>
                     <ul>
-                        <li><a href="#">Физические лица</a></li>
-                        <li><a href="#">Юридические лица</a></li>
+                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
+                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
                     </ul>
                 </li>
             </ul>
-        </sec:ifLoggedIn>
+        </sec:ifAllGranted>
         <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
             <input id="search_button" type="submit" value="Найти">
             <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
