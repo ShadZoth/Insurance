@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
 <a href="#edit-accident" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                default="Skip to content&hellip;"/></a>
 
@@ -35,14 +36,18 @@
     </g:hasErrors>
     <g:form url="[resource: accidentInstance, action: 'update']" method="PUT">
         <g:hiddenField name="version" value="${accidentInstance?.version}"/>
+
+        %{--Форма Person --}%
         <fieldset class="form">
             <g:render template="form"/>
         </fieldset>
+
         <fieldset class="buttons">
             <g:actionSubmit class="save" action="update"
                             value="${message(code: 'default.button.update.label', default: 'Update')}"/>
         </fieldset>
     </g:form>
 </div>
+</sec:ifAnyGranted>
 </body>
 </html>

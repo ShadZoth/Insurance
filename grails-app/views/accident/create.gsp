@@ -5,7 +5,7 @@
     <g:set var="entityName" value="${message(code: 'accident.label', default: 'Accident')}"/>
     <title><g:message code="default.create.label" args="[entityName]"/></title>
 </head>
-
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
 <body>
 <a href="#create-accident" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                  default="Skip to content&hellip;"/></a>
@@ -32,7 +32,6 @@
     </g:hasErrors>
     <g:form url="[resource: accidentInstance, action: 'save']">
         <fieldset class="form">
-            <g:render template="formc"/>
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" class="save"
@@ -40,5 +39,6 @@
         </fieldset>
     </g:form>
 </div>
+</sec:ifAnyGranted>
 </body>
 </html>

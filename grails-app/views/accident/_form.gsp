@@ -4,7 +4,7 @@
 %{--Выбор даты, дата проишествия--}%
 <div class="fieldcontain ${hasErrors(bean: accidentInstance, field: 'dateTime', 'error')} required">
 	<label for="dateTime">
-		<g:message code="accident.dateTime.label" default="Date Time" />
+        <g:message code="accident.dateTime.label" default="Date Time" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker name="dateTime" precision="day"  value="${accidentInstance?.dateTime}"  />
