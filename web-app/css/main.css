@@ -667,6 +667,10 @@ input[type="submit"] {
 #logout a {
     color: #ff8;
 }
+#logout p {
+    margin-top: -10px;
+    padding-top: 5px;
+}
 
 #querySearch {
     width: 200px;
@@ -698,7 +702,7 @@ input[type="submit"] {
     list-style: none;
     float: left;
     height: 26px;
-    width: 180px;
+    width: 155px;
     text-align: center;
     position: relative;
     padding-top: 5px;
@@ -707,12 +711,12 @@ input[type="submit"] {
 }
 #menu li ul {
     list-style: none;
-    width: 180px;
+    width: 155px;
     display: none;
 }
 #menu li ul li {
     height: 27px;
-    width: 180px;
+    width: 155px;
     text-align: center;
     background: #e9e9e9;
 }
@@ -724,7 +728,7 @@ input[type="submit"] {
 #menu li a {
     display: block;
     height: 27px;
-    width: 180px;
+    width: 155px;
     text-decoration: none;
 }
 

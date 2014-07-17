@@ -22,6 +22,7 @@ class BootStrap {
         }.each {
             it.save(flush: true)
             it.mergeAuthorities()
+            it.enabled = true
         }
 
         (1..4).collect {
@@ -31,6 +32,7 @@ class BootStrap {
         }.each {
             it.save(flush: true)
             it.mergeAuthorities()
+            it.enabled = true
         }
 
         (1..2).collect {
@@ -40,6 +42,7 @@ class BootStrap {
         }.each {
             it.save(flush: true)
             it.mergeAuthorities()
+            it.enabled = true
         }
 
         (1..150).each {
