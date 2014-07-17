@@ -18,7 +18,7 @@ class Passport {
         person()
         lastName(maxSize: 40)
         firstName(maxSize: 40)
-        fathName(maxSize: 40)
+        fathName(maxSize: 40, nullable: true)
         birthDate(nullable: false, shared: "upToDate")
         sex()
         issueDate(nullable: false, validator: {
