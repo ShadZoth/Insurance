@@ -27,8 +27,9 @@ class PersonController {
 
     def create() {
         def p = new Person(params)
-        if((springSecurityService.currentUser) && (springSecurityService.currentUser as User).hasRole('ROLE_SELLER')) {
-            p.seller = springSecurityService.currentUser as User
+        def me = (User) springSecurityService.currentUser
+        if(me.hasRole('ROLE_SELLER')) {
+            p.seller = me
         }
         respond p
     }

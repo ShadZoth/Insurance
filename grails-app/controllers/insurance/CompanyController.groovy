@@ -7,6 +7,8 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class CompanyController {
 
+    def springSecurityService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -19,7 +21,12 @@ class CompanyController {
     }
 
     def create() {
-        respond new Company(params)
+        def c = new Company(params)
+        def me = (User) springSecurityService.currentUser
+        if(me.hasRole("ROLE_SELLE") && c.seller == me) {
+            c.seller = me
+        }
+        respond c
     }
 
     @Transactional
