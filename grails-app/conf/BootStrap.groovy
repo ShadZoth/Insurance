@@ -1,7 +1,4 @@
-import insurance.Passport
-import insurance.Person
-import insurance.Role
-import insurance.User
+import insurance.*
 
 class BootStrap {
 
@@ -45,11 +42,9 @@ class BootStrap {
             it.mergeAuthorities()
         }
 
-        (1..150).collect {
-            def sellers = User.list().findAll {
-                it.hasRole('ROLE_SELLER')
-            }
-            def seller = sellers.get(it % sellers.size())
+        (1..150).each {
+            def i = it
+            User seller = findSeller(i)
             def p = new Person(seller: seller)
             p.save(flush: true)
             def birthDate = new Date().toCalendar()
@@ -66,7 +61,22 @@ class BootStrap {
                     issueDate: issueDate.time)
             pass.save(flush: true)
         }
+
+        (151..200).collect {
+            new Company(name: "Company$it",
+                    inn: "${it}${it}${it}${it}",
+                    seller: findSeller(it))
+        }*.save()
     }
+
+    private static User findSeller(int i) {
+        def sellers = User.list().findAll {
+            it.hasRole('ROLE_SELLER')
+        }
+        def seller = sellers.get(i % sellers.size())
+        seller
+    }
+
     def destroy = {
 
     }
