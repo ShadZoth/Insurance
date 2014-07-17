@@ -11,15 +11,17 @@
 
 </div>
 
-%{--Чекбокс, в архиве--}%
-<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'archived', 'error')} ">
-    <label for="archived">
-        <g:message code="client.archived.label" default="Archived"/>
+%{--Чекбокс, в архиве (не нужен)--}%
+%{--<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'archived', 'error')} ">--}%
+    %{--<label for="archived">--}%
+        %{--<g:message code="client.archived.label" default="Archived"/>--}%
 
-    </label>
-    <g:checkBox name="archived" value="${clientInstance?.archived}"/>
+    %{--</label>--}%
+    %{--<g:checkBox name="archived" value="${clientInstance?.archived}"/>--}%
 
-</div>
+%{--</div>--}%
+
+%{----------------------Ссылки не нужны----------------------------------}%
 
 %{--Добавление контактов--}%
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'contacts', 'error')} ">

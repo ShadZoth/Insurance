@@ -7,7 +7,6 @@
            value="${message(code: 'product.label', default: 'Product')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
 </head>
-
 <body>
 <a href="#show-product" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>

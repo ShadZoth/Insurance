@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
 <a href="#list-certificate" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                   default="Skip to content&hellip;"/></a>
 
@@ -71,5 +72,6 @@
         <g:paginate total="${certificateInstanceCount ?: 0}"/>
     </div>
 </div>
+</sec:ifAnyGranted>
 </body>
 </html>

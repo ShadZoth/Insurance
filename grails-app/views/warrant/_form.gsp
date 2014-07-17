@@ -1,15 +1,7 @@
 <%@ page import="insurance.Warrant" %>
 
 
-
-%{--<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'number', 'error')} required">--}%
-	%{--<label for="number">--}%
-		%{--<g:message code="warrant.number.label" default="Number" />--}%
-		%{--<span class="required-indicator">*</span>--}%
-	%{--</label>--}%
-	%{--<g:textField name="number" required="" value="${warrantInstance?.number}"/>--}%
-
-%{--</div>--}%
+%{--Выбор клиента--}%
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
 	<label for="client">
@@ -20,14 +12,16 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'product', 'error')} required">
-	<label for="product">
-		<g:message code="warrant.product.label" default="Product" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="product" name="product.id" from="${insurance.Product.list()}" optionKey="id" required="" value="${warrantInstance?.product?.id}" class="many-to-one"/>
 
-</div>
+%{--Выбор продукта (не нужно)--}%
+%{--<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'product', 'error')} required">--}%
+	%{--<label for="product">--}%
+		%{--<g:message code="warrant.product.label" default="Product" />--}%
+		%{--<span class="required-indicator">*</span>--}%
+	%{--</label>--}%
+	%{--<g:select id="product" name="product.id" from="${insurance.Product.list()}" optionKey="id" required="" value="${warrantInstance?.product?.id}" class="many-to-one"/>--}%
+
+%{--</div>--}%
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'issueDate', 'error')} required">
 	<label for="issueDate">
@@ -73,4 +67,37 @@
 
 
 </div>
+
+%{--Форма, наименование продукта--}%
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'name', 'error')} required">
+    <label for="name">
+        <g:message code="product.name.label" default="Name" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="name" required="" value="${productInstance?.name}"/>
+
+</div>
+
+
+%{------------------------------Чекбоксы, Корпоративный/Индивидуальный----------------------------------------}%
+
+
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'corporate', 'error')} ">
+    <label for="corporate">
+        <g:message code="product.corporate.label" default="Corporate" />
+
+    </label>
+    <g:checkBox name="corporate" value="${productInstance?.corporate}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'individual', 'error')} ">
+    <label for="individual">
+        <g:message code="product.individual.label" default="Individual" />
+
+    </label>
+    <g:checkBox name="individual" value="${productInstance?.individual}" />
+
+</div>
+
 

@@ -3,21 +3,18 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName"
-           value="${message(code: 'license.label', default: 'License')}"/>
+    <g:set var="entityName" value="${message(code: 'license.label', default: 'License')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
 
 <body>
-<a href="#list-license" class="skip" tabindex="-1"><g:message
-        code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<a href="#list-license" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+                                                              default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
     <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message
-                code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message
-                code="default.new.label" args="[entityName]"/></g:link></li>
+        <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                              args="[entityName]"/></g:link></li>
     </ul>
 </div>
 
@@ -30,18 +27,18 @@
         <thead>
         <tr>
 
-            <th><g:message code="license.owner.label" default="Owner"/></th>
+            <g:sortableColumn property="number" title="${message(code: 'license.number.label', default: 'Number')}"/>
 
-            <g:sortableColumn property="number"
-                              title="${message(code: 'license.number.label', default: 'Number')}"/>
+            <th><g:message code="license.owner.label" default="Owner"/></th>
 
             <g:sortableColumn property="issueDate"
                               title="${message(code: 'license.issueDate.label', default: 'Issue Date')}"/>
 
-            <g:sortableColumn property="expirationDate"
-                              title="${message(code: 'license.expirationDate.label', default: 'Expiration Date')}"/>
+            <g:sortableColumn property="a" title="${message(code: 'license.a.label', default: 'A')}"/>
 
-            <th><g:message code="license.cat.label" default="Categories"/></th>
+            <g:sortableColumn property="b" title="${message(code: 'license.b.label', default: 'B')}"/>
+
+            <g:sortableColumn property="c" title="${message(code: 'license.c.label', default: 'C')}"/>
 
         </tr>
         </thead>
@@ -50,16 +47,17 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
-                            id="${licenseInstance.id}">${fieldValue(bean: licenseInstance, field: "owner")}</g:link></td>
+                            id="${licenseInstance.id}">${fieldValue(bean: licenseInstance, field: "number")}</g:link></td>
 
-                <td>${fieldValue(bean: licenseInstance, field: "number")}</td>
+                <td>${fieldValue(bean: licenseInstance, field: "owner")}</td>
 
                 <td><g:formatDate date="${licenseInstance.issueDate}"/></td>
 
-                <td><g:formatDate
-                        date="${licenseInstance.expirationDate}"/></td>
+                <td><g:formatBoolean boolean="${licenseInstance.a}"/></td>
 
-                <td>${licenseInstance.cats()}</td>
+                <td><g:formatBoolean boolean="${licenseInstance.b}"/></td>
+
+                <td><g:formatBoolean boolean="${licenseInstance.c}"/></td>
 
             </tr>
         </g:each>

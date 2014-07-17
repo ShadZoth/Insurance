@@ -7,6 +7,7 @@
            value="${message(code: 'client.label', default: 'Client')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
 
 <body>
 <a href="#list-client" class="skip" tabindex="-1"><g:message
@@ -75,4 +76,5 @@
     </div>
 </div>
 </body>
+</sec:ifAnyGranted>
 </html>
