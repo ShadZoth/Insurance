@@ -1,4 +1,4 @@
-<%@ page import="insurance.Person" %>
+<%@ page import="insurance.User; org.springframework.security.core.context.SecurityContextHolder; org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.Person" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +40,18 @@
         </thead>
         <tbody>
         %{----}%
-        <g:each in="${personInstanceList}" status="i" var="personInstance">
+        <g:each in="${personInstanceList.findAll { person ->
+            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+            if (me.hasRole('ROLE_ADMIN') || me.hasRole("ROLE_CALL_CENTER")) {
+                return true
+            } else if (me.hasRole("ROLE_MANAGER")) {
+                return me.sellers.collect {
+                    it.clients.contains(person)
+                }.contains(true)
+            } else if (me.hasRole("ROLE_SELLER")) {
+                return me.clients.contains(person)
+            }
+        }}" status="i" var="personInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
