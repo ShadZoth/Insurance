@@ -33,6 +33,15 @@ class BootStrap {
             it.save(flush: true)
             it.mergeAuthorities()
         }
+
+        (1..2).collect {
+            new User(username: "call_center$it",
+                    password: 'password',
+                    authority: 'ROLE_CALL_CENTER')
+        }.each {
+            it.save(flush: true)
+            it.mergeAuthorities()
+        }
     }
     def destroy = {
 
