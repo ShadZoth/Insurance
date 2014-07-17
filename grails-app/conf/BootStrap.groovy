@@ -3,11 +3,11 @@ import insurance.User
 
 class BootStrap {
 
-    def init = { 
-        def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
-        def managerRole = new Role(authority: 'ROLE_MANAGER').save(flush: true)
-        def sellerRole = new Role(authority: 'ROLE_SELLER').save(flush: true)
-        def callCenterRole = new Role(authority: 'ROLE_CALL_CENTER').save(flush: true)
+    def init = {
+        new Role(authority: 'ROLE_ADMIN').save(flush: true)
+        new Role(authority: 'ROLE_MANAGER').save(flush: true)
+        new Role(authority: 'ROLE_SELLER').save(flush: true)
+        new Role(authority: 'ROLE_CALL_CENTER').save(flush: true)
 
         def testUser = new User(username: 'me',
                 password: 'password',
