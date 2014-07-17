@@ -95,16 +95,3 @@
 
 </%@ page import="insurance.Passport" %>
 <%@ page import="insurance.Client" %>
-
-%{--Продавец--}%
-<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'seller', 'error')} required">
-    <label for="seller">
-        <g:message code="client.seller.label" default="Seller"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="seller" name="seller.id" from="${insurance.User.list().findAll { it.hasRole('ROLE_SELLER') }}"
-              optionKey="id" required="" value="${clientInstance?.seller?.id}" class="many-to-one"/>
-</div>
-
-%{--Client--}%
-%{--Выбор даты, >
