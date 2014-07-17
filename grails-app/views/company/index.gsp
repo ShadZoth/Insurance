@@ -6,9 +6,10 @@ i<%@ page import="insurance.Company" %>
     <g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
+
 <body>
-<a href="#list-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
+    <a href="#list-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                               default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
@@ -63,6 +64,8 @@ i<%@ page import="insurance.Company" %>
         <g:paginate total="${companyInstanceCount ?: 0}"/>
     </div>
 </div>
-</body>
+    <sec:ifAnyGranted
+            roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
+        </body>
 </sec:ifAnyGranted>
 </html>
