@@ -1,3 +1,5 @@
+import insurance.Passport
+import insurance.Person
 import insurance.Role
 import insurance.User
 
@@ -41,6 +43,28 @@ class BootStrap {
         }.each {
             it.save(flush: true)
             it.mergeAuthorities()
+        }
+
+        (1..150).collect {
+            def sellers = User.list().findAll {
+                it.hasRole('ROLE_SELLER')
+            }
+            def seller = sellers.get(it % sellers.size())
+            def p = new Person(seller: seller)
+            p.save(flush: true)
+            def birthDate = new Date().toCalendar()
+            birthDate.add(Calendar.YEAR, -18)
+            def issueDate = new Date().toCalendar()
+            issueDate.add(Calendar.YEAR, -4)
+            def pass = new Passport(number: it,
+                    person: p,
+                    lastName: "Ivanov$it",
+                    firstName: "Ivan$it",
+                    fathName: "Ivanvich$it",
+                    birthDate: birthDate.time,
+                    sex: Passport.Sex.MALE,
+                    issueDate: issueDate.time)
+            pass.save(flush: true)
         }
     }
     def destroy = {
