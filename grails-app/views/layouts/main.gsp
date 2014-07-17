@@ -61,6 +61,7 @@
                 <sec:ifAllGranted roles="ROLE_ADMIN"><p>Администратор</p></sec:ifAllGranted>
                 <sec:ifAllGranted roles="ROLE_MANAGER"><p>Менеджер</p></sec:ifAllGranted>
                 <sec:ifAllGranted roles="ROLE_SELLER"><p>Продавец</p></sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_CALL_CENTER"><p>Call-центр</p></sec:ifAllGranted>
             </div>
         </sec:ifLoggedIn>
     </div>
@@ -132,6 +133,30 @@
                         <li><g:link action="index" controller="product">Продукты</g:link></li>
                     </ul>
                 </li>
+            </ul>
+        </sec:ifAllGranted>
+        <sec:ifAllGranted roles="ROLE_CALL_CENTER">
+            <ul id="menu">
+                <li>
+                    <g:link action="index" controller="client">Клиенты</g:link>
+                    <ul>
+                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
+                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                    </ul>
+                </li>
+                <li><g:link action="index" controller="accident">Аварии</g:link></li>
+                <li>
+                    <a href="#">Информация</a>
+                    <ul>
+                        <li><g:link action="index" controller="contact">Контакты</g:link></li>
+                        <li><g:link action="index" controller="contact">Вод. права</g:link></li>
+                        <li><g:link action="index" controller="passport">Паспорта</g:link></li>
+                        <li><g:link action="index" controller="payment">Выплаты</g:link></li>
+                        <li><g:link action="index" controller="vehicle">Траспорт</g:link></li>
+                        <li><g:link action="index" controller="warrant">Продажи</g:link></li>
+                    </ul>
+                </li>
+                <li><g:link action="index" controller="price">Цены</g:link></li>
             </ul>
         </sec:ifAllGranted>
         <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
