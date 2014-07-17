@@ -24,6 +24,15 @@ class BootStrap {
             it.save(flush: true)
             it.mergeAuthorities()
         }
+
+        (1..4).collect {
+            new User(username: "seller$it",
+                    password: 'password',
+                    authority: 'ROLE_SELLER')
+        }.each {
+            it.save(flush: true)
+            it.mergeAuthorities()
+        }
     }
     def destroy = {
 
