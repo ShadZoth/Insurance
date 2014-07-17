@@ -7,9 +7,11 @@
            value="${message(code: 'price.label', default: 'Price')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
+
 <body>
-<a href="#list-price" class="skip" tabindex="-1"><g:message
+<sec:ifAnyGranted
+        roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
+    <a href="#list-price" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
@@ -58,6 +60,7 @@
         <g:paginate total="${priceInstanceCount ?: 0}"/>
     </div>
 </div>
-</body>
 </sec:ifAnyGranted>
+</body>
+
 </html>

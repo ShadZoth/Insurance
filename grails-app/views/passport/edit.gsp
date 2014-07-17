@@ -9,7 +9,8 @@
 </head>
 
 <body>
-<a href="#edit-passport" class="skip" tabindex="-1"><g:message
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+    <a href="#edit-passport" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
@@ -47,5 +48,6 @@
         </fieldset>
     </g:form>
 </div>
+</sec:ifAnyGranted>
 </body>
 </html>
