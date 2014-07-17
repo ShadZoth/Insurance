@@ -7,6 +7,8 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class PersonController {
 
+    def springSecurityService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -18,8 +20,17 @@ class PersonController {
         respond personInstance
     }
 
+    /*
+    * Содержит проверку
+    * Если юзер залогинен и он продавец, то задать его по-умлочанию.
+    * */
+
     def create() {
-        respond new Person(params)
+        def p = new Person(params)
+        if((springSecurityService.currentUser) && (springSecurityService.currentUser as User).hasRole('ROLE_SELLER')) {
+            p.seller = springSecurityService.currentUser as User
+        }
+        respond p
     }
 
     @Transactional
