@@ -106,7 +106,7 @@ class UserController {
     @Transactional
     def edit_2(User userInstance)
     {
-
+        [user: userInstance]
     }
 
     @Transactional
