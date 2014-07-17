@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER">
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
 <a href="#create-certificate" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                     default="Skip to content&hellip;"/></a>
 

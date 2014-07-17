@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<sec:ifAnyGranted roles="ROLE_ADMIN">
 <a href="#list-manufacturer" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                    default="Skip to content&hellip;"/></a>
 
@@ -47,5 +48,6 @@
         <g:paginate total="${manufacturerInstanceCount ?: 0}"/>
     </div>
 </div>
+</sec:ifAnyGranted>
 </body>
 </html>

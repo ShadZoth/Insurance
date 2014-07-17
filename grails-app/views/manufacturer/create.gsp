@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<sec:ifAnyGranted roles="ROLE_ADMIN">
 <a href="#create-manufacturer" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                      default="Skip to content&hellip;"/></a>
 
@@ -40,5 +41,6 @@
         </fieldset>
     </g:form>
 </div>
+</sec:ifAnyGranted>
 </body>
 </html>

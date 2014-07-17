@@ -6,7 +6,6 @@
     <g:set var="entityName" value="${message(code: 'manufacturer.label', default: 'Manufacturer')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
 </head>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
 <body>
 <a href="#show-manufacturer" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                    default="Skip to content&hellip;"/></a>
@@ -64,5 +63,4 @@
     </g:form>
 </div>
 </body>
-</sec:ifAnyGranted>
 </html>
