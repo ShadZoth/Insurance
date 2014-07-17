@@ -7,7 +7,7 @@
            value="${message(code: 'product.label', default: 'Product')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_CENTER">
 <body>
 <a href="#list-product" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>

@@ -7,7 +7,7 @@
            value="${message(code: 'vehicle.label', default: 'Vehicle')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_CENTER">
 <body>
 <a href="#list-vehicle" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>

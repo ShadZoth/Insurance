@@ -88,7 +88,7 @@
 
 <body>
 %{--<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>--}%
-
+<sec:ifAnyGranted roles="ROLE_ADMIN">
 <div id="page-body" role="main">
     <div id="controller-list" role="navigation">
         <h2>Available Controllers:</h2>
@@ -121,6 +121,6 @@
         </g:each>
     </ul>
 </div>
-
+</sec:ifAnyGranted>
 </body>
 </html>
