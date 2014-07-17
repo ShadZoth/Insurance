@@ -7,8 +7,10 @@
 		<g:set var="entityName" value="${message(code: 'warrant.label', default: 'Warrant')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
-	<body>
+
+<body>
+<sec:ifAnyGranted
+        roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_SERVICE">
 		<a href="#list-warrant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
@@ -62,6 +64,7 @@
 				<g:paginate total="${warrantInstanceCount ?: 0}" />
 			</div>
 		</div>
-	</body>
 </sec:ifAnyGranted>
+</body>
+
 </html>

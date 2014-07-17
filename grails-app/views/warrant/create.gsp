@@ -6,6 +6,7 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
 		<a href="#create-warrant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
@@ -34,4 +35,5 @@
 			</g:form>
 		</div>
 	</body>
+</sec:ifAnyGranted>
 </html>
