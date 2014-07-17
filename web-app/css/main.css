@@ -388,7 +388,7 @@ input:invalid, select:invalid, textarea:invalid {
     color: #cc0000;
 }
 
-input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
+input:invalid:focus, select:invalid:focus, textarea:navigation_barnvalid:focus {
     -moz-box-shadow: 0 0 0.5em #ffaaaa;
     -webkit-box-shadow: 0 0 0.5em #ffaaaa;
     box-shadow: 0 0 0.5em #ffaaaa;
@@ -674,6 +674,10 @@ input[type="submit"] {
     height: 24px;
 }
 
+#searchableForm{
+    float: right;
+}
+
 #search_button {
     float: right;
     height: 32px;
@@ -683,4 +687,54 @@ input[type="submit"] {
 {
     height: 32px;
     background-image: url(../images/back_search.png);
+    border-bottom: 1px #888899 solid;
+}
+
+
+#menu {
+}
+
+#menu li {
+    list-style: none;
+    float: left;
+    height: 26px;
+    width: 180px;
+    text-align: center;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border: 1px #f3f3ff solid;
+}
+#menu li ul {
+    list-style: none;
+    width: 180px;
+    display: none;
+}
+#menu li ul li {
+    height: 27px;
+    width: 180px;
+    text-align: center;
+    background: #e9e9e9;
+}
+
+#menu li ul li a
+{
+}
+
+#menu li a {
+    display: block;
+    height: 27px;
+    width: 180px;
+    text-decoration: none;
+}
+
+#menu li:hover ul {
+    display: block;
+}
+
+#menu li ul li:hover, #menu li ul li a:hover, #menu li a:hover, li:hover,
+#menu li ul:hover, #menu li ul a:hover, #menu li ul a:hover, li a:hover,
+#menu li ul:first-child
+{
+    background: #fbfbfb;
 }
