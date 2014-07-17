@@ -46,13 +46,13 @@
 	<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
 
 </div>
+%{--<g:if test="${authority == "role_seller"}">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'clients', 'error')} ">
+	<label for="clients">
+		<g:message code="user.clients.label" default="Clients" />
 
-%{--<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'clients', 'error')} ">--}%
-	%{--<label for="clients">--}%
-		%{--<g:message code="user.clients.label" default="Clients" />--}%
-		%{----}%
 	%{--</label>--}%
-	%{----}%
+
 %{--<ul class="one-to-many">--}%
 %{--<g:each in="${userInstance?.clients?}" var="c">--}%
     %{--<li><g:link controller="client" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>--}%
@@ -64,6 +64,7 @@
 
 
 %{--</div>--}%
+%{--</g:if>--}%
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
 	<label for="enabled">

@@ -102,4 +102,17 @@ class UserController {
             '*' { render status: NOT_FOUND }
         }
     }
+
+    @Transactional
+    def edit_2(User userInstance)
+    {
+
+    }
+
+    @Transactional
+    def test(def id1, def id2)
+    {
+        println id1
+        println id2
+    }
 }
