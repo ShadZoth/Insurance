@@ -57,7 +57,10 @@
         </sec:ifNotLoggedIn>
         <sec:ifLoggedIn>
             <div id="logout">
-                <p>Logged in as <sec:username/> (<g:link controller='logout'>Logout</g:link>)</p>
+                <p>Вы вошли как <sec:username/> (<g:link controller='logout'>Выйти</g:link>)</p>
+                <sec:ifAllGranted roles="ROLE_ADMIN"><p>Администратор</p></sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_MANAGER"><p>Менеджер</p></sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_SELLER"><p>Продавец</p></sec:ifAllGranted>
             </div>
         </sec:ifLoggedIn>
     </div>
@@ -73,6 +76,60 @@
                     <ul>
                         <li><g:link action="index" controller="person">Физические лица</g:link></li>
                         <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                    </ul>
+                </li>
+            </ul>
+        </sec:ifAllGranted>
+        <sec:ifAllGranted roles="ROLE_MANAGER">
+            <ul id="menu">
+                <li><g:link action="index" controller="user">Подчиненные</g:link></li>
+                <li>
+                    <g:link action="index" controller="client">Клиенты</g:link>
+                    <ul>
+                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
+                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                    </ul>
+                </li>
+                <li><g:link action="index" controller="warrant">Продажи</g:link></li>
+                <li><g:link action="index" controller="product">Продукты</g:link></li>
+            </ul>
+        </sec:ifAllGranted>
+        <sec:ifAllGranted roles="ROLE_ADMIN">
+            <ul id="menu">
+                <li>
+                    <a href="#">Управление</a>
+                    <ul>
+                        <li><g:link action="index" controller="user">Пользователи</g:link></li>
+                        <li><g:link action="index" controller="console">Консоль</g:link></li>
+                        <li><g:link action="index" controller="developer">Контроллеры</g:link></li>
+                    </ul>
+                </li>
+                <li>
+                    <g:link action="index" controller="client">Клиенты</g:link>
+                    <ul>
+                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
+                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Информация</a>
+                    <ul>
+                        <li><g:link action="index" controller="accident">Аварии</g:link></li>
+                        <li><g:link action="index" controller="contact">Контакты</g:link></li>
+                        <li><g:link action="index" controller="contact">Вод. права</g:link></li>
+                        <li><g:link action="index" controller="passport">Паспорта</g:link></li>
+                        <li><g:link action="index" controller="payment">Выплаты</g:link></li>
+                        <li><g:link action="index" controller="vehicle">Траспорт</g:link></li>
+                        <li><g:link action="index" controller="warrant">Продажи</g:link></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Справочники</a>
+                    <ul>
+                        <li><g:link action="index" controller="manufacturer">Производители</g:link></li>
+                        <li><g:link action="index" controller="contact">Контакты</g:link></li>
+                        <li><g:link action="index" controller="price">Цены</g:link></li>
+                        <li><g:link action="index" controller="product">Продукты</g:link></li>
                     </ul>
                 </li>
             </ul>

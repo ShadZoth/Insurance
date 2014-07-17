@@ -6,43 +6,45 @@
 <head>
     <meta name='layout' content='main'/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title><g:if test="${params.q && params.q?.trim() != ''}">${params.q} -</g:if>Grails Searchable Plugin</title>
+    <title>Поиск</title>
     <style type="text/css">
 
-    #search_page {
+    #search_page_in {
         padding: 10px;
     }
-
-    #header_search form input {
-        padding: .1em;
+    #header_search_in {
+        padding-left: 20px;
+    }
+    #header_search_in form input {
+        padding: 1.5em;
     }
 
-    #header_search .hint {
+    #header_search_in .hint {
         color: gray;
     }
 
-    #header_search h1 a {
+    #header_search_in h1 a {
         text-decoration: none;
         font-family: Georgia, serif;
         color: dimgray;
     }
 
-    #header_search h1 {
+    #header_search_in h1 {
         letter-spacing: -0.1em;
         float: left;
     }
 
-    #header_search h1 span {
+    #header_search_in h1 span {
         font-family: Georgia, serif;
         color: #424242;
     }
 
-    #header_search form {
+    #header_search_in form {
         margin-left: 22em;
         padding-top: .1em;
     }
 
-    .title {
+    #search_page_in .title {
         margin: 1em 0;
         padding: .3em .5em;
         text-align: right;
@@ -50,19 +52,19 @@
         border-top: 1px solid lightblue;
     }
 
-    .result {
+    #search_page_in .result {
         margin-bottom: 1em;
     }
 
-    .result .displayLink {
+    #search_page_in .result .displayLink {
         color: green;
     }
 
-    .result .name {
+    #search_page_in .result .name {
         font-size: larger;
     }
 
-    .paging a.step {
+    #search_page_in .paging a.step {
         padding: 0 .3em;
     }
 
@@ -70,11 +72,11 @@
         font-weight: bold;
     }
 
-    ul {
+    #search_page_in ul {
         margin: 1em 2em;
     }
 
-    li, p {
+    #search_page_in li, p {
         margin-bottom: 1em;
     }
     </style>
@@ -86,9 +88,9 @@
 </head>
 
 <body onload="focusQueryInput();">
-<div id="search_page">
-    <div id="header_search">
-        <h1><a href="http://grails.org/Searchable+Plugin" target="_blank">Grails <span>Searchable</span> Plugin</a></h1>
+<div id="search_page_in">
+    <div id="header_search_in">
+        <h1>Поиск</h1>
         %{--<g:form url='[controller: "searchable", action: "index"]' id="searchableForm" name="searchableForm" method="get">--}%
         %{--<g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Search"/>--}%
         %{--</g:form>--}%
@@ -114,12 +116,8 @@
             <g:if test="${!searchResult?.suggestedQuery}">
                 <p>Советы:</p>
                 <ul>
-                    <li>Попробуйте следующее: <g:link controller="searchable" action="index"
-                                                       params="[q: params.q, suggestQuery: true]">Search again with the <strong>suggestQuery</strong> option</g:link><br/>
-                        <em>Note: Suggestions are only available when classes are mapped with <strong>spellCheck</strong> options, either at the class or property level.<br/>
-                            The simplest way to do this is add <strong>spellCheck "include"</strong> to the domain class searchable mapping closure.<br/>
-                            See the plugin/Compass documentation Mapping sections for details.</em>
-                    </li>
+                    <li>Проверьте корректность введенного запроса</li>
+                    <li>Проверьте, обладаете ли вы достаточным уровнем доступа к запрашиваемым данным</li>
                 </ul>
             </g:if>
         </g:if>
