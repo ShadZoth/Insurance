@@ -117,7 +117,7 @@
                     <ul>
                         <li><g:link action="index" controller="accident">Аварии</g:link></li>
                         <li><g:link action="index" controller="contact">Контакты</g:link></li>
-                        <li><g:link action="index" controller="contact">Вод. права</g:link></li>
+                        <li><g:link action="index" controller="license">Вод. права</g:link></li>
                         <li><g:link action="index" controller="passport">Паспорта</g:link></li>
                         <li><g:link action="index" controller="payment">Выплаты</g:link></li>
                         <li><g:link action="index" controller="vehicle">Траспорт</g:link></li>
@@ -149,7 +149,6 @@
                     <a href="#">Информация</a>
                     <ul>
                         <li><g:link action="index" controller="contact">Контакты</g:link></li>
-                        <li><g:link action="index" controller="contact">Вод. права</g:link></li>
                         <li><g:link action="index" controller="passport">Паспорта</g:link></li>
                         <li><g:link action="index" controller="payment">Выплаты</g:link></li>
                         <li><g:link action="index" controller="vehicle">Траспорт</g:link></li>
