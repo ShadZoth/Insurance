@@ -51,7 +51,7 @@
                         code="price.since.label" default="Since"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="since-label"><g:formatDate
+                      aria-labelledby="since-label"><g:formatDate format="yyyy-MM-dd"
                         date="${priceInstance?.since}"/></span>
 
             </li>

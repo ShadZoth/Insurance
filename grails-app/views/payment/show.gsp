@@ -77,7 +77,7 @@
                         code="payment.date.label" default="Date"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="date-label"><g:formatDate
+                      aria-labelledby="date-label"><g:formatDate format="yyyy-MM-dd"
                         date="${paymentInstance?.date}"/></span>
 
             </li>
