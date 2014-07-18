@@ -51,6 +51,15 @@
             </li>
         </g:if>
 
+        <g:if test="${(warrantInstance?.client).seller}">
+            <li class="fieldcontain">
+                <span id="seller-label" class="property-label"><g:message code="company.seller.label" default="Seller"/></span>
+
+                <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${warrantInstance?.client}"
+                                                                                          field="seller"/></span>
+            </li>
+        </g:if>
+
         <g:if test="${warrantInstance?.product}">
             <li class="fieldcontain">
                 <span id="product-label" class="property-label"><g:message code="warrant.product.label"
