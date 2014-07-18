@@ -2,6 +2,8 @@
 <%@ page import="insurance.Client" %>
 
 %{--Продавец--}%
+%{--Виден только администратору--}%
+<sec:ifAnyGranted roles="ROLE_ADMIN">
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'seller', 'error')} required">
     <label for="seller">
         <g:message code="client.seller.label" default="Seller"/>
@@ -10,6 +12,7 @@
     <g:select id="seller" name="seller.id" from="${insurance.User.list().findAll { it.hasRole('ROLE_SELLER') }}"
               optionKey="id" required="" value="${clientInstance?.seller?.id}" class="many-to-one"/>
 </div>
+</sec:ifAnyGranted>
 
 %{--Client--}%
 %{--Выбор даты, >дата регистрации (тут временно и для примера, дата должна цепляться автоматом)--}%
