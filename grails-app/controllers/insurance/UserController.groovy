@@ -1,6 +1,7 @@
 package insurance
 
 import grails.transaction.Transactional
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
@@ -11,7 +12,14 @@ class UserController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond User.list(params), model: [userInstanceCount: User.count()]
+        // получаем себя
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+
+        def list = User.list(params).findAll {
+            // если я админ, то для всех true, если я менеджер, то только для тех, кто содержится в моих sellers
+            return me.hasRole("ROLE_ADMIN") || me.hasRole("ROLE_MANAGER") && me.sellers.contains(it)
+        };
+        respond list, model: [userInstanceCount: list.size()]
     }
 
     def show(User userInstance) {
