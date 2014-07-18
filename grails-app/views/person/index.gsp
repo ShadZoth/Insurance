@@ -36,6 +36,9 @@
                 <g:sortableColumn property="registrationDate"
                                   title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
 
+
+                <g:sortableColumn property="seller" title="${message(code: "person.seller.label", default: "Seller")}"/>
+
                 <g:sortableColumn property="archived"
                                   title="${message(code: 'person.archived.label', default: 'Archived')}"/>
 
@@ -61,6 +64,8 @@
                                 id="${personInstance.id}">${personInstance}</g:link></td>
 
                     <td>${fieldValue(bean: personInstance, field: "registrationDate")}</td>
+
+                    <td>${fieldValue(bean: personInstance, field: "seller")}</td>
 
                     <td><g:formatBoolean boolean="${personInstance.archived}"/></td>
 
