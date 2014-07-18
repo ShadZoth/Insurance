@@ -36,8 +36,9 @@
                 <g:sortableColumn property="registrationDate"
                                   title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
 
-
-                <g:sortableColumn property="seller" title="${message(code: "person.seller.label", default: "Seller")}"/>
+                <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+                    <g:sortableColumn property="seller" title="${message(code: "person.seller.label", default: "Seller")}"/>
+                </sec:ifAnyGranted>
 
                 <g:sortableColumn property="archived"
                                   title="${message(code: 'person.archived.label', default: 'Archived')}"/>
@@ -54,7 +55,9 @@
 
                     <td>${fieldValue(bean: personInstance, field: "registrationDate")}</td>
 
+                <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
                     <td>${fieldValue(bean: personInstance, field: "seller")}</td>
+                </sec:ifAnyGranted>
 
                     <td><g:formatBoolean boolean="${personInstance.archived}"/></td>
 
