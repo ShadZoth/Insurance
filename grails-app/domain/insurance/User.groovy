@@ -1,6 +1,8 @@
 package insurance
 
-class User {
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+
+class User  {
 
 	transient springSecurityService
 
@@ -48,12 +50,7 @@ class User {
     }
 
     boolean hasRole(String authority) {
-        for (Role r : authorities) {
-            if (r.authority.equals(authority)) {
-                return true
-            }
-        }
-        return false
+        SpringSecurityUtils.authoritiesToRoles(authorities).contains(authority)
     }
 
     static hasMany = [clients: Client]
