@@ -14,8 +14,9 @@ class User  {
 	boolean accountLocked
 	boolean passwordExpired
 
+    def hasRoleService
     List<User> getSellers() {
-        if (hasRole('ROLE_MANAGER')) {
+        if (hasRoleService.serviceMethod(this, 'ROLE_MANAGER')) {
             return ManagerSeller.findAllByManager(this).seller
         } else {
             return null
@@ -30,8 +31,8 @@ class User  {
     }
 
     void addSeller(User seller) {
-        if (hasRole('ROLE_MANAGER')
-                && seller.hasRole('ROLE_SELLER')
+        if (hasRoleService.serviceMethod(this, 'ROLE_MANAGER')
+                && hasRoleService.serviceMethod(seller, 'ROLE_SELLER')
                 && !seller.manager) {
             new ManagerSeller(manager: this, seller: seller).save(flush: true, insert: true)
         }
@@ -42,7 +43,7 @@ class User  {
     }
 
     User getManager() { // SELLER only
-        if (hasRole('ROLE_SELLER')) {
+        if (hasRoleService.serviceMethod(this, 'ROLE_SELLER')) {
             return ManagerSeller.findBySeller(this)?.manager
         } else {
             return null

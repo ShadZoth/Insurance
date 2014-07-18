@@ -26,13 +26,14 @@ class PersonController {
     * Если юзер продавец, то задать его по-умлочанию.
     * */
 
+    def hasRoleService
     def create() {
         def p = new Person(params)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        println me.getClass()
-        if(me?.hasRole('ROLE_SELLER')) {
-            println me
-            p.seller = me
+        if (me != null) {
+            if(hasRoleService.serviceMethod(me, 'ROLE_SELLER')) {
+                p.seller = me
+            }
         }
         respond p
     }

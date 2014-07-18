@@ -20,10 +20,11 @@ class CompanyController {
         respond companyInstance
     }
 
+    def hasRoleService
     def create() {
         def c = new Company(params)
         def me = (User) springSecurityService.currentUser
-        if(me.hasRole("ROLE_SELLE") && c.seller == me) {
+        if(hasRoleService.serviceMethod(me, "ROLE_SELLE") && c.seller == me) {
             c.seller = me
         }
         respond c
