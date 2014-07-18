@@ -33,6 +33,7 @@ class BootStrap {
             it.save(flush: true)
             it.mergeAuthorities()
             it.enabled = true
+            User.findByUsername("manager${(it.id % 2) + 1}").addSeller(it)
         }
 
         (1..2).collect {

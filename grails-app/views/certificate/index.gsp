@@ -9,69 +9,73 @@
 
 <body>
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
-<a href="#list-certificate" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
-                                                                  default="Skip to content&hellip;"/></a>
 
-<div class="nav" role="navigation">
-    <ul>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
-    </ul>
-</div>
+    <a href="#list-certificate" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+                                                                      default="Skip to content&hellip;"/></a>
 
-<div id="list-certificate" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]"/></h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <table>
-        <thead>
-        <tr>
+    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+        <div class="nav" role="navigation">
+            <ul>
+                <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                                      args="[entityName]"/></g:link></li>
+            </ul>
+        </div>                                                default="Skip to content&hellip;"/></a>
+    </sec:ifAnyGranted>
 
-            <g:sortableColumn property="number"
-                              title="${message(code: 'certificate.number.label', default: 'Number')}"/>
+    <div id="list-certificate" class="content scaffold-list" role="main">
+        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
+        <table>
+            <thead>
+            <tr>
 
-            <th><g:message code="certificate.vehicle.label" default="Vehicle"/></th>
+                <g:sortableColumn property="number"
+                                  title="${message(code: 'certificate.number.label', default: 'Number')}"/>
 
-            <g:sortableColumn property="color" title="${message(code: 'certificate.color.label', default: 'Color')}"/>
+                <th><g:message code="certificate.vehicle.label" default="Vehicle"/></th>
 
-            <g:sortableColumn property="issueDate"
-                              title="${message(code: 'certificate.issueDate.label', default: 'Issue Date')}"/>
+                <g:sortableColumn property="color"
+                                  title="${message(code: 'certificate.color.label', default: 'Color')}"/>
 
-            <g:sortableColumn property="ownerFirstName"
-                              title="${message(code: 'certificate.ownerFirstName.label', default: 'Owner First Name')}"/>
+                <g:sortableColumn property="issueDate"
+                                  title="${message(code: 'certificate.issueDate.label', default: 'Issue Date')}"/>
 
-            <g:sortableColumn property="ownerLastName"
-                              title="${message(code: 'certificate.ownerLastName.label', default: 'Owner Last Name')}"/>
+                <g:sortableColumn property="ownerFirstName"
+                                  title="${message(code: 'certificate.ownerFirstName.label', default: 'Owner First Name')}"/>
 
-        </tr>
-        </thead>
-        <tbody>
-        <g:each in="${certificateInstanceList}" status="i" var="certificateInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                <td><g:link action="show"
-                            id="${certificateInstance.id}">${fieldValue(bean: certificateInstance, field: "number")}</g:link></td>
-
-                <td>${fieldValue(bean: certificateInstance, field: "vehicle")}</td>
-
-                <td>${fieldValue(bean: certificateInstance, field: "color")}</td>
-
-                <td><g:formatDate date="${certificateInstance.issueDate}"/></td>
-
-                <td>${fieldValue(bean: certificateInstance, field: "ownerFirstName")}</td>
-
-                <td>${fieldValue(bean: certificateInstance, field: "ownerLastName")}</td>
+                <g:sortableColumn property="ownerLastName"
+                                  title="${message(code: 'certificate.ownerLastName.label', default: 'Owner Last Name')}"/>
 
             </tr>
-        </g:each>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <g:each in="${certificateInstanceList}" status="i" var="certificateInstance">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-    <div class="pagination">
-        <g:paginate total="${certificateInstanceCount ?: 0}"/>
+                    <td><g:link action="show"
+                                id="${certificateInstance.id}">${fieldValue(bean: certificateInstance, field: "number")}</g:link></td>
+
+                    <td>${fieldValue(bean: certificateInstance, field: "vehicle")}</td>
+
+                    <td>${fieldValue(bean: certificateInstance, field: "color")}</td>
+
+                    <td><g:formatDate date="${certificateInstance.issueDate}"/></td>
+
+                    <td>${fieldValue(bean: certificateInstance, field: "ownerFirstName")}</td>
+
+                    <td>${fieldValue(bean: certificateInstance, field: "ownerLastName")}</td>
+
+                </tr>
+            </g:each>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <g:paginate total="${certificateInstanceCount ?: 0}"/>
+        </div>
     </div>
-</div>
 </sec:ifAnyGranted>
 </body>
 </html>
