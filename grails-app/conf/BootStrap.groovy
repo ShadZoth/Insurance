@@ -72,6 +72,9 @@ class BootStrap {
                     inn: "${it}${it}${it}${it}",
                     seller: findSeller(it))
         }*.save()
+
+        new Product(name: "Product1", individual: true, corporate: true).save(flush: true)
+        new Product(name: "Product2", individual: true, corporate: true).save(flush: true)
     }
 
     static def hasRoleService
