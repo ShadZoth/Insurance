@@ -95,6 +95,3 @@
               required="" value="${passportInstance?.sex?.name()}"/>
 
 </div>
-
-</%@ page import="insurance.Passport" %>
-<%@ page import="insurance.Client" %>

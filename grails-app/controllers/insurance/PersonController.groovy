@@ -1,20 +1,29 @@
 package insurance
 
+import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
+
+
 @Transactional(readOnly = true)
 class PersonController {
-
-    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Person.list(params), model: [personInstanceCount: Person.count()]
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+            respond Person.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Person.count()]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) {
+            respond Person.list(params), model: [companyInstanceCount: Person.count()]
+        }
     }
 
     def show(Person personInstance) {
@@ -26,16 +35,13 @@ class PersonController {
     * Если юзер продавец, то задать его по-умлочанию.
     * */
 
-    def hasRoleService
     def create() {
-        def p = new Person(params)
+        def personInstance = new Person(params)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        if (me != null) {
-            if(hasRoleService.serviceMethod(me, 'ROLE_SELLER')) {
-                p.seller = me
-            }
+        if(SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+            personInstance.seller = me
         }
-        respond p
+        respond personInstance
     }
 
     @Transactional
@@ -62,7 +68,10 @@ class PersonController {
     }
 
     def edit(Person personInstance) {
-        respond personInstance
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && personInstance.seller == me) {
+            respond personInstance
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) respond personInstance
     }
 
     @Transactional

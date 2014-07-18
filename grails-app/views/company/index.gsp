@@ -34,6 +34,10 @@ i<%@ page import="insurance.Company" %>
                 <g:sortableColumn property="inn"
                                   title="${message(code: 'company.inn.label', default: 'Inn')}"/>
 
+                <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+                    <g:sortableColumn property="seller" title="${message(code: "company.seller.label", default: "Seller")}"/>
+                </sec:ifAnyGranted>
+
                 <g:sortableColumn property="registrationDate"
                                   title="${message(code: 'company.registrationDate.label', default: 'Registration Date')}"/>
 
@@ -50,6 +54,10 @@ i<%@ page import="insurance.Company" %>
                                 id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "name")}</g:link></td>
 
                     <td>${fieldValue(bean: companyInstance, field: "inn")}</td>
+
+                <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+                    <td>${fieldValue(bean: companyInstance, field: "seller")}</td>
+                </sec:ifAnyGranted>
 
                     <td>${fieldValue(bean: companyInstance, field: "registrationDate")}</td>
 

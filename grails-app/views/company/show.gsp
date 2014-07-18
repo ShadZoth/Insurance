@@ -10,7 +10,7 @@
 <body>
 <a href="#show-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                               default="Skip to content&hellip;"/></a>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER">
     <div class="nav" role="navigation">
         <ul>
             %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>--}%
@@ -68,6 +68,16 @@
 
                 <span class="property-value" aria-labelledby="inn-label"><g:fieldValue bean="${companyInstance}"
                                                                                        field="inn"/></span>
+
+            </li>
+        </g:if>
+
+        <g:if test="${companyInstance?.seller}">
+            <li class="fieldcontain">
+                <span id="seller-label" class="property-label"><g:message code="company.seller.label" default="Seller"/></span>
+
+                <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${companyInstance}"
+                                                                                       field="seller"/></span>
 
             </li>
         </g:if>

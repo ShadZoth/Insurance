@@ -1,33 +1,51 @@
 package insurance
 
+import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
+
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class CompanyController {
 
-    def springSecurityService
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
+    // TODO: Причесать
+
         params.max = Math.min(max ?: 10, 100)
-        respond Company.list(params), model: [companyInstanceCount: Company.count()]
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+            respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) {
+            respond Company.list(params), model: [companyInstanceCount: Company.count()]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER"))
+            respond Company.list(params).findAll{
+                it.seller == me
+            }, model: [companyInstanceCount: Company.count()]
     }
 
     def show(Company companyInstance) {
         respond companyInstance
     }
 
-    def hasRoleService
+    /*
+    * Если пользователь -- продавец, то задать его по-умолчанию в поле seller
+    * */
+
     def create() {
-        def c = new Company(params)
-        def me = (User) springSecurityService.currentUser
-        if(hasRoleService.serviceMethod(me, "ROLE_SELLE") && c.seller == me) {
-            c.seller = me
-        }
-        respond c
+        def companyInstance = new Company(params)
+            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+            if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+                companyInstance.seller = me
+            }
+        respond companyInstance
     }
 
     @Transactional
@@ -54,7 +72,10 @@ class CompanyController {
     }
 
     def edit(Company companyInstance) {
-        respond companyInstance
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        if(SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && companyInstance.seller == me) {
+            respond companyInstance
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) respond companyInstance
     }
 
     @Transactional
