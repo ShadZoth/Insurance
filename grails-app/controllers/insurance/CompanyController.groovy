@@ -29,17 +29,15 @@ class CompanyController {
     }
 
     /*
-    * Если пользователь менеджер и продавец компании
+    * Если пользователь -- продавец, то задать его по-умолчанию в поле seller
     * */
 
     def create() {
         def companyInstance = new Company(params)
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
             if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
                 companyInstance.seller = me
             }
-        }
         respond companyInstance
     }
 
