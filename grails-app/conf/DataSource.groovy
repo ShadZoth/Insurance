@@ -2,7 +2,7 @@ dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "org.postgresql.Driver"
-    username = "postgres"
+    username = "Insurance_user"
     password = "qwerty"
     dialect = org.hibernate.dialect.PostgreSQLDialect
     cache.provider_class='org.hibernate.cache.EhCacheProvider'
