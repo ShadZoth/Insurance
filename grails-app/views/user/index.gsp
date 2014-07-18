@@ -31,9 +31,6 @@
                 <g:sortableColumn property="username"
                                   title="${message(code: 'user.username.label', default: 'Username')}"/>
 
-                <g:sortableColumn property="password"
-                                  title="${message(code: 'user.password.label', default: 'Password')}"/>
-
                 <g:sortableColumn property="authority"
                                   title="${message(code: 'user.authority.label', default: 'Authority')}"/>
 
