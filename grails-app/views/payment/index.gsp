@@ -59,7 +59,7 @@
 
                     <td>${fieldValue(bean: paymentInstance, field: "amount")}</td>
 
-                    <td><g:formatDate date="${paymentInstance.date}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${paymentInstance.date}"/></td>
 
                 </tr>
             </g:each>

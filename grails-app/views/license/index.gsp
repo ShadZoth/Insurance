@@ -54,7 +54,7 @@
 
                     <td>${fieldValue(bean: licenseInstance, field: "owner")}</td>
 
-                    <td><g:formatDate date="${licenseInstance.issueDate}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${licenseInstance.issueDate}"/></td>
 
                     <td><g:formatBoolean boolean="${licenseInstance.a}"/></td>
 

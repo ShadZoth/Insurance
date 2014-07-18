@@ -40,7 +40,7 @@
                         default="Registration Date"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="registrationDate-label"><g:formatDate
+                      aria-labelledby="registrationDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${personInstance?.registrationDate}"/></span>
 
             </li>

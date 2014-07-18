@@ -56,7 +56,7 @@
                 <span id="issueDate-label" class="property-label"><g:message code="license.issueDate.label"
                                                                              default="Issue Date"/></span>
 
-                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${licenseInstance?.issueDate}"/></span>
 
             </li>
@@ -67,7 +67,7 @@
                 <span id="expirationDate-label" class="property-label"><g:message code="license.expirationDate.label"
                                                                                   default="Expiration Date"/></span>
 
-                <span class="property-value" aria-labelledby="expirationDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="expirationDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${licenseInstance?.expirationDate}"/></span>
 
             </li>

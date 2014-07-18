@@ -61,7 +61,7 @@
 
                     <td>${fieldValue(bean: certificateInstance, field: "color")}</td>
 
-                    <td><g:formatDate date="${certificateInstance.issueDate}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${certificateInstance.issueDate}"/></td>
 
                     <td>${fieldValue(bean: certificateInstance, field: "ownerFirstName")}</td>
 

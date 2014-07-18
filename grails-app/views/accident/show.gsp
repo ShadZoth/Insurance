@@ -45,8 +45,8 @@
                 <span id="dateTime-label" class="property-label"><g:message code="accident.dateTime.label"
                                                                             default="Date Time"/></span>
 
-                <span class="property-value" aria-labelledby="dateTime-label"><g:formatDate
-                        date="${accidentInstance?.dateTime}"/></span>
+                <span class="property-value" aria-labelledby="dateTime-label"><g:formatDate format="yyyy-MM-dd"
+                date="${accidentInstance?.dateTime}"/></span>
 
             </li>
         </g:if>

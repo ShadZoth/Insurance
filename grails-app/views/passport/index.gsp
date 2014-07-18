@@ -59,13 +59,13 @@
 
                     <td>${fieldValue(bean: passportInstance, field: "number")}</td>
 
-                    <td><g:formatDate date="${passportInstance.issueDate}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${passportInstance.issueDate}"/></td>
 
                     <td>${fieldValue(bean: passportInstance, field: "firstName")}</td>
 
                     <td>${fieldValue(bean: passportInstance, field: "lastName")}</td>
 
-                    <td><g:formatDate date="${passportInstance.birthDate}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${passportInstance.birthDate}"/></td>
 
                 </tr>
             </g:each>

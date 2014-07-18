@@ -19,7 +19,7 @@ class Accident {
     }
 
     static mapping = {
-        dateTime sqlType: "timestamp without time zone"
+        dateTime sqlType: "date"
         // damage sqlType: "money"
     }
 
