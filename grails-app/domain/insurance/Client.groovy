@@ -24,12 +24,13 @@ class Client {
 
     static hasMany = [vehicles: Vehicle, contacts: Contact, warrants: Warrant]
 
+    def hasRoleService
     static constraints = {
         registrationDate(nullable: false)
         archived()
         seller(validator: { val, obj ->
             def authority = "ROLE_SELLER"
-            return val.hasRole(authority)
+            return hasRoleService.serviceMethod(val, authority)
         })
     }
 

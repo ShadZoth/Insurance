@@ -111,7 +111,7 @@
                     <a href="#">Управление</a>
                     <ul>
                         <li><g:link action="index" controller="user">Пользователи</g:link></li>
-                        <li><g:link action="index" controller="console">Консоль</g:link></li>
+                        %{--<li><g:link action="index" controller="console">Консоль</g:link></li>--}%
                         <li><g:link action="index" controller="developer">Контроллеры</g:link></li>
                     </ul>
                 </li>

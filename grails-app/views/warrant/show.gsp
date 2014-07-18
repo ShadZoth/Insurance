@@ -76,7 +76,7 @@
                 <span id="issueDate-label" class="property-label"><g:message code="warrant.issueDate.label"
                                                                              default="Issue Date"/></span>
 
-                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${warrantInstance?.issueDate}"/></span>
 
             </li>
@@ -87,7 +87,7 @@
                 <span id="expireDate-label" class="property-label"><g:message code="warrant.expireDate.label"
                                                                               default="Expire Date"/></span>
 
-                <span class="property-value" aria-labelledby="expireDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="expireDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${warrantInstance?.expireDate}"/></span>
 
             </li>

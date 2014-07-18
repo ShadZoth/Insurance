@@ -74,9 +74,10 @@ class BootStrap {
         }*.save()
     }
 
+    static def hasRoleService
     private static User findSeller(int i) {
         def sellers = User.list().findAll {
-            it.hasRole('ROLE_SELLER')
+            hasRoleService.serviceMethod(it, 'ROLE_SELLER')
         }
         def seller = sellers.get(i % sellers.size())
         seller

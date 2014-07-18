@@ -1,8 +1,13 @@
 package insurance
 
+import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
+
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class ContactController {
@@ -11,6 +16,17 @@ class ContactController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+
+//        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+
+
+
+            if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+                respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
+            }
+//        }
+
         respond Contact.list(params), model: [contactInstanceCount: Contact.count()]
     }
 
