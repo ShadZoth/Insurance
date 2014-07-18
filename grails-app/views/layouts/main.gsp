@@ -57,11 +57,21 @@
         </sec:ifNotLoggedIn>
         <sec:ifLoggedIn>
             <div id="logout">
-                <p>Вы вошли как <sec:username/> (<g:link controller='logout'>Выйти</g:link>)</p>
-                <sec:ifAllGranted roles="ROLE_ADMIN"><p>Администратор</p></sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_MANAGER"><p>Менеджер</p></sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_SELLER"><p>Продавец</p></sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_CALL_CENTER"><p>Call-центр</p></sec:ifAllGranted>
+                <p>Вы вошли как <sec:username/> (<g:link controller='logout'>
+                    <g:message code="springSecurity.logout.button"
+                               default="Exit"/>
+                </g:link>)</p>
+                <sec:ifAllGranted roles="ROLE_ADMIN"><p><g:message code="role.admin"
+                                                                   default="Admin"/></p>
+                </sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_MANAGER"><p>
+                    <g:message code="role.manager"
+                               default="Manager"/>
+                </p></sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_SELLER"><p><g:message code="role.seller"
+                                                                    default="Seller"/></p></sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_CALL_CENTER"><p><g:message code="role.call-center"
+                                                                         default="Call-center"/></p></sec:ifAllGranted>
             </div>
         </sec:ifLoggedIn>
     </div>
