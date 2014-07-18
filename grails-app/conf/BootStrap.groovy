@@ -47,15 +47,16 @@ class BootStrap {
             it.enabled = true
         }
 
+        def birthDate = new Date().toCalendar()
+        birthDate.add(Calendar.YEAR, -18)
+        def issueDate = new Date().toCalendar()
+        issueDate.add(Calendar.YEAR, -4)
+
         (1..150).each {
             def i = it
             User seller = findSeller(i)
             def p = new Person(seller: seller)
             p.save(flush: true)
-            def birthDate = new Date().toCalendar()
-            birthDate.add(Calendar.YEAR, -18)
-            def issueDate = new Date().toCalendar()
-            issueDate.add(Calendar.YEAR, -4)
             def pass = new Passport(number: it,
                     person: p,
                     lastName: "Ivanov$it",
@@ -72,6 +73,22 @@ class BootStrap {
                     inn: "${it}${it}${it}${it}",
                     seller: findSeller(it))
         }*.save()
+
+        def p = new Product(name: "Product1",
+                individual: true,
+                corporate: false)
+        p.save(flush: true)
+
+        (1..2).collect {
+            def expireDate = new Date().toCalendar()
+            expireDate.add(Calendar.MONTH, 1)
+            new Warrant(issueDate: new Date().toCalendar().time,
+                    expireDate: expireDate.time,
+                    price: 100500,
+                    number: 6538,
+                    client: Person.list()[it],
+                    product: p)
+        }*.save(flush: true)
     }
 
     private static User findSeller(int i) {

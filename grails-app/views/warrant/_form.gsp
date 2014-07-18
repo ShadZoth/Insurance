@@ -1,109 +1,105 @@
 <%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.User; org.springframework.security.core.context.SecurityContextHolder; insurance.Warrant" %>
 
-
+<sec:ifAnyGranted roles="ROLE_ADMIN">
 %{--Выбор клиента--}%
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
-	<label for="client">
-		<g:message code="warrant.client.label" default="Client" />
-		<span class="required-indicator">*</span>
-	</label>
+    <label for="client">
+        <g:message code="warrant.client.label" default="Client"/>
+        <span class="required-indicator">*</span>
+    </label>
     <g:select id="client" name="client.id"
-              from="${insurance.Client.list().findAll {
-                  if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
-                      def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-                      return it.seller == me
-                  } else return SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")
-              }}" optionKey="id" required=""
+              from="${insurance.Client.list()}" optionKey="id" required=""
               value="${warrantInstance?.client?.id}" class="many-to-one"/>
 
 </div>
+</sec:ifAnyGranted>
 
+
+<sec:ifAnyGranted roles="ROLE_SELLER">
+%{--Выбор клиента--}%
+
+    <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
+        <label for="client">
+            <g:message code="warrant.client.label" default="Client"/>
+            <span class="required-indicator">*</span>
+        </label>
+        <g:select id="client" name="client.id"
+                  from="${insurance.Client.findAllBySeller(User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username))}"
+                  optionKey="id" required=""
+                  value="${warrantInstance?.client?.id}" class="many-to-one"/>
+
+    </div>
+</sec:ifAnyGranted>
 
 %{--Выбор продукта (не нужно)--}%
 %{--<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'product', 'error')} required">--}%
-	%{--<label for="product">--}%
-		%{--<g:message code="warrant.product.label" default="Product" />--}%
-		%{--<span class="required-indicator">*</span>--}%
-	%{--</label>--}%
-	%{--<g:select id="product" name="product.id" from="${insurance.Product.list()}" optionKey="id" required="" value="${warrantInstance?.product?.id}" class="many-to-one"/>--}%
+%{--<label for="product">--}%
+%{--<g:message code="warrant.product.label" default="Product" />--}%
+%{--<span class="required-indicator">*</span>--}%
+%{--</label>--}%
+%{--<g:select id="product" name="product.id" from="${insurance.Product.list()}" optionKey="id" required="" value="${warrantInstance?.product?.id}" class="many-to-one"/>--}%
 
 %{--</div>--}%
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'issueDate', 'error')} required">
-	<label for="issueDate">
-		<g:message code="warrant.issueDate.label" default="Issue Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="issueDate" precision="day"  value="${warrantInstance?.issueDate}"  />
+    <label for="issueDate">
+        <g:message code="warrant.issueDate.label" default="Issue Date"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="issueDate" precision="day"
+                  value="${warrantInstance?.issueDate}"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'expireDate', 'error')} required">
-	<label for="expireDate">
-		<g:message code="warrant.expireDate.label" default="Expire Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="expireDate" precision="day"  value="${warrantInstance?.expireDate}"  />
+    <label for="expireDate">
+        <g:message code="warrant.expireDate.label" default="Expire Date"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="expireDate" precision="day"
+                  value="${warrantInstance?.expireDate}"/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'price', 'error')} required">
-	<label for="price">
-		<g:message code="warrant.price.label" default="Price" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="price" value="${fieldValue(bean: warrantInstance, field: 'price')}" required=""/>
+    <label for="price">
+        <g:message code="warrant.price.label" default="Price"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:field name="price"
+             value="${fieldValue(bean: warrantInstance, field: 'price')}"
+             required=""/>
 
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'payments', 'error')} ">
-	<label for="payments">
-		<g:message code="warrant.payments.label" default="Payments" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${warrantInstance?.payments?}" var="p">
-    <li><g:link controller="payment" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="payment" action="create" params="['warrant.id': warrantInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'payment.label', default: 'Payment')])}</g:link>
-</li>
-</ul>
+    <label for="payments">
+        <g:message code="warrant.payments.label" default="Payments"/>
 
+    </label>
+
+    <ul class="one-to-many">
+        <g:each in="${warrantInstance?.payments ?}" var="p">
+            <li><g:link controller="payment" action="show"
+                        id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+        </g:each>
+        <li class="add">
+            <g:link controller="payment" action="create"
+                    params="['warrant.id': warrantInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'payment.label', default: 'Payment')])}</g:link>
+        </li>
+    </ul>
 
 </div>
 
-%{--Форма, наименование продукта--}%
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'name', 'error')} required">
-    <label for="name">
-        <g:message code="product.name.label" default="Name" />
+<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'product', 'error')} required">
+    <label for="product">
+        <g:message code="warrant.product.label" default="Product"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="name" required="" value="${productInstance?.name}"/>
-
-</div>
-
-
-%{------------------------------Чекбоксы, Корпоративный/Индивидуальный----------------------------------------}%
-
-
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'corporate', 'error')} ">
-    <label for="corporate">
-        <g:message code="product.corporate.label" default="Corporate" />
-
-    </label>
-    <g:checkBox name="corporate" value="${productInstance?.corporate}" />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'individual', 'error')} ">
-    <label for="individual">
-        <g:message code="product.individual.label" default="Individual" />
-
-    </label>
-    <g:checkBox name="individual" value="${productInstance?.individual}" />
+    <g:select id="product" name="product.id" from="${insurance.Product.list()}"
+              optionKey="id" required="" value="${warrantInstance?.product?.id}"
+              class="many-to-one"/>
 
 </div>
 
