@@ -1,0 +1,87 @@
+
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder; insurance.User" %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="layout" content="main">
+		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+		<title><g:message code="default.list.label" args="[entityName]" /></title>
+	</head>
+	<body>
+		<a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div class="nav" role="navigation">
+			<ul>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			</ul>
+		</div>
+		<div id="list-user" class="content scaffold-list" role="main">
+			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<g:if test="${flash.message}">
+				<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<table>
+			<thead>
+					<tr>
+					
+						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
+					
+						<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
+					
+						<g:sortableColumn property="authority" title="${message(code: 'user.authority.label', default: 'Authority')}" />
+					
+						<g:sortableColumn property="accountExpired" title="${message(code: 'user.accountExpired.label', default: 'Account Expired')}" />
+					
+						<g:sortableColumn property="accountLocked" title="${message(code: 'user.accountLocked.label', default: 'Account Locked')}" />
+					
+						<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.label', default: 'Enabled')}" />
+					
+					</tr>
+				</thead>
+				<tbody>
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+				<g:each in="${userInstanceList}" status="i" var="userInstance">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
+					
+						<td>${fieldValue(bean: userInstance, field: "password")}</td>
+					
+						<td>${fieldValue(bean: userInstance, field: "authority")}</td>
+					
+						<td><g:formatBoolean boolean="${userInstance.accountExpired}" /></td>
+					
+						<td><g:formatBoolean boolean="${userInstance.accountLocked}" /></td>
+					
+						<td><g:formatBoolean boolean="${userInstance.enabled}" /></td>
+					
+					</tr>
+				</g:each>
+                </sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_MANAGER">
+                    <g:each in="${User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username).getSellers()}" status="i" var="userInstance">
+                        <g:message code="${userInstance.id}"/>
+                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                            <td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
+
+                            <td>${fieldValue(bean: userInstance, field: "password")}</td>
+
+                            <td>${fieldValue(bean: userInstance, field: "authority")}</td>
+
+                            <td><g:formatBoolean boolean="${userInstance.accountExpired}" /></td>
+
+                            <td><g:formatBoolean boolean="${userInstance.accountLocked}" /></td>
+
+                            <td><g:formatBoolean boolean="${userInstance.enabled}" /></td>
+
+                        </tr>
+                    </g:each>
+                </sec:ifAllGranted>
+				</tbody>
+			</table>
+			<div class="pagination">
+				<g:paginate total="${userInstanceCount ?: 0}" />
+			</div>
+		</div>
+	</body>
+</html>
