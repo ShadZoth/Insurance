@@ -16,12 +16,12 @@ class Warrant {
     static constraints = {
         number(editable: false, nullable: false)
         client()
-        product()
+        product() //TODO: Констрейнт individual corporate
         issueDate(nullable: false, shared: 'upToDate')
         expireDate(nullable: false, validator: { val, obj ->
             val > obj.issueDate
         })
-        price() // TODO: в БД определить как money
+        price()
     }
 
     static mapping = {
