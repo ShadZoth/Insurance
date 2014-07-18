@@ -34,6 +34,7 @@
 				</fieldset>
 			</g:form>
 		</div>
-	</body>
 </sec:ifAnyGranted>
+	</body>
+
 </html>

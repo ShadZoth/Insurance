@@ -1,6 +1,8 @@
 package insurance
 
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
@@ -11,7 +13,18 @@ class WarrantController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Warrant.list(params), model: [warrantInstanceCount: Warrant.count()]
+        def res = Warrant.list(params).findAll {
+            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+            def s = new HasRoleService()
+            if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN") || SpringSecurityUtils.ifAnyGranted("ROLE_CALL_CENTER")) {
+                return true
+            } else if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+                return it.client.seller.manager == me
+            } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+                return it.client.seller == me
+            }
+        }
+        respond res, model: [warrantInstanceCount: res.size()]
     }
 
     def show(Warrant warrantInstance) {

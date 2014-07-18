@@ -1,4 +1,4 @@
-<%@ page import="insurance.Warrant" %>
+<%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.User; org.springframework.security.core.context.SecurityContextHolder; insurance.Warrant" %>
 
 
 %{--Выбор клиента--}%
@@ -8,7 +8,14 @@
 		<g:message code="warrant.client.label" default="Client" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="client" name="client.id" from="${insurance.Client.list()}" optionKey="id" required="" value="${warrantInstance?.client?.id}" class="many-to-one"/>
+    <g:select id="client" name="client.id"
+              from="${insurance.Client.list().findAll {
+                  if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+                      def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+                      return it.seller == me
+                  } else return SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")
+              }}" optionKey="id" required=""
+              value="${warrantInstance?.client?.id}" class="many-to-one"/>
 
 </div>
 
