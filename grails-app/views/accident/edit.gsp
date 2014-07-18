@@ -8,8 +8,9 @@
 </head>
 
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
-<a href="#edit-accident" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
+<sec:ifAnyGranted
+        roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_CENTER">
+    <a href="#edit-accident" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                default="Skip to content&hellip;"/></a>
 
 <div class="nav" role="navigation">
