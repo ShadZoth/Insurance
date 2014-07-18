@@ -12,9 +12,10 @@ class UserController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        // получаем себя
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+
         def list = User.list(params).findAll {
-            // получаем себя
-            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
             // если я админ, то для всех true, если я менеджер, то только для тех, кто содержится в моих sellers
             return me.hasRole("ROLE_ADMIN") || me.hasRole("ROLE_MANAGER") && me.sellers.contains(it)
         };

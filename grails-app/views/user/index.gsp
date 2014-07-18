@@ -55,8 +55,6 @@
                     <td><g:link action="show"
                                 id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
 
-                    <td>${fieldValue(bean: userInstance, field: "password")}</td>
-
                     <td>${fieldValue(bean: userInstance, field: "authority")}</td>
 
                     <td><g:formatBoolean boolean="${userInstance.accountExpired}"/></td>
