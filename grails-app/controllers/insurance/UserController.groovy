@@ -12,6 +12,7 @@ class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def hasRoleService
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         // получаем себя
@@ -19,7 +20,8 @@ class UserController {
 
         def list = User.list(params).findAll {
             // если я админ, то для всех true, если я менеджер, то только для тех, кто содержится в моих sellers
-            return me.hasRole("ROLE_ADMIN") || me.hasRole("ROLE_MANAGER") && me.sellers.contains(it)
+            return hasRoleService.serviceMethod(me, 'ROLE_ADMIN') ||
+            hasRoleService.serviceMethod(me, 'ROLE_MANAGER') && me.sellers.contains(it)
         };
         respond list, model: [userInstanceCount: list.size()]
     }
