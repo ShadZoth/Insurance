@@ -1,6 +1,7 @@
 package insurance
 
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
 import static org.springframework.http.HttpStatus.*
 

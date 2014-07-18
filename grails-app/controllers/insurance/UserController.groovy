@@ -110,9 +110,9 @@ class UserController {
     }
 
     @Transactional
-    def test(def id1, def id2)
+    def test(User userInstance, User seller)
     {
-        println id1
-        println id2
+        println userInstance
+        println seller
     }
 }
