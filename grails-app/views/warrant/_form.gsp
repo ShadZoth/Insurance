@@ -1,22 +1,6 @@
 <%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.User; org.springframework.security.core.context.SecurityContextHolder; insurance.Warrant" %>
 
-<sec:ifAnyGranted roles="ROLE_ADMIN">
-%{--Выбор клиента--}%
 
-<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
-    <label for="client">
-        <g:message code="warrant.client.label" default="Client"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="client" name="client.id"
-              from="${insurance.Client.list()}" optionKey="id" required=""
-              value="${warrantInstance?.client?.id}" class="many-to-one"/>
-
-</div>
-</sec:ifAnyGranted>
-
-
-<sec:ifAnyGranted roles="ROLE_SELLER">
 %{--Выбор клиента--}%
 
     <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
@@ -24,13 +8,12 @@
             <g:message code="warrant.client.label" default="Client"/>
             <span class="required-indicator">*</span>
         </label>
-        <g:select id="client" name="client.id"
-                  from="${insurance.Client.findAllBySeller(User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username))}"
+        <g:select id="client" name="client.id" from="${insurance.Client.list()}"
                   optionKey="id" required=""
                   value="${warrantInstance?.client?.id}" class="many-to-one"/>
 
     </div>
-</sec:ifAnyGranted>
+
 
 %{--Выбор продукта (не нужно)--}%
 %{--<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'product', 'error')} required">--}%
