@@ -1,9 +1,11 @@
 package insurance
 
+import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
 import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER'])
 
 @Transactional(readOnly = true)
 class UserController {

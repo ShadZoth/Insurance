@@ -1,8 +1,12 @@
 package insurance
 
+import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
+
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
+
 
 @Transactional(readOnly = true)
 class PassportController {
