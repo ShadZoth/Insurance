@@ -1,6 +1,7 @@
 package insurance
 
 import grails.transaction.Transactional
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
@@ -22,13 +23,15 @@ class PersonController {
 
     /*
     * Содержит проверку
-    * Если юзер залогинен и он продавец, то задать его по-умлочанию.
+    * Если юзер продавец, то задать его по-умлочанию.
     * */
 
     def create() {
         def p = new Person(params)
-        def me = (User) springSecurityService.currentUser
-        if(me.hasRole('ROLE_SELLER')) {
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        println me.getClass()
+        if(me?.hasRole('ROLE_SELLER')) {
+            println me
             p.seller = me
         }
         respond p

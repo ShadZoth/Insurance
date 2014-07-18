@@ -10,7 +10,7 @@
 <body>
 <a href="#show-client" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                              default="Skip to content&hellip;"/></a>
-
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
 <div class="nav" role="navigation">
     <ul>
         %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>--}%
@@ -19,6 +19,7 @@
                                                               args="[entityName]"/></g:link></li>
     </ul>
 </div>
+    </sec:ifAnyGranted>
 
 <div id="show-client" class="content scaffold-show" role="main">
     <h1><g:message code="default.show.label" args="[entityName]"/></h1>
@@ -92,6 +93,7 @@
         </g:if>
 
     </ol>
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
     <g:form url="[resource: clientInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${clientInstance}"><g:message code="default.button.edit.label"
@@ -101,6 +103,8 @@
                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
         </fieldset>
     </g:form>
+    </sec:ifAnyGranted>
+
 </div>
 </body>
 </html>

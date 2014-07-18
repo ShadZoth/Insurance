@@ -13,18 +13,17 @@ class User  {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-    List<User> sellers = []//Manager only
 
     List<User> getSellers() {
         if (hasRole('ROLE_MANAGER')) {
-            return sellers
+            return ManagerSeller.findAllByManager(this).seller
         } else {
             return null
         }
     }
 
     void setSellers(List<User> sellers) {
-        this.sellers = []
+        executeUpdate 'DELETE FROM ManagerSeller WHERE manager=:manager', [manager: this]
         for (User seller : sellers) {
             addSeller(seller)
         }
@@ -34,19 +33,17 @@ class User  {
         if (hasRole('ROLE_MANAGER')
                 && seller.hasRole('ROLE_SELLER')
                 && !seller.manager) {
-            sellers.add(seller)
+            new ManagerSeller(manager: this, seller: seller).save(flush: true, insert: true)
         }
     }
 
     void removeSeller(User seller) {
-        sellers.remove(seller)
+        executeUpdate 'DELETE FROM ManagerSeller WHERE manager=:manager AND seller=:seller', [manager: this, seller: seller]
     }
 
     User getManager() { // SELLER only
         if (hasRole('ROLE_SELLER')) {
-            return list().find {
-                it.sellers && it.sellers.contains(this)
-            }
+            return ManagerSeller.findBySeller(this)?.manager
         } else {
             return null
         }

@@ -26,13 +26,15 @@ class BootStrap {
         }
 
         (1..4).collect {
-            new User(username: "seller$it",
+            [new User(username: "seller$it",
                     password: 'password',
-                    authority: 'ROLE_SELLER')
+                    authority: 'ROLE_SELLER'),
+             User.findByUsername("manager${(it % 2) + 1}")]
         }.each {
-            it.save(flush: true)
-            it.mergeAuthorities()
-            it.enabled = true
+            it[0].save(flush: true)
+            it[0].mergeAuthorities()
+            it[0].enabled = true
+            it[1].addSeller(it[0])
         }
 
         (1..2).collect {
