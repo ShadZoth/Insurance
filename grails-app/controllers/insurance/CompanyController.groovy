@@ -17,11 +17,13 @@ class CompanyController {
     def index(Integer max) {
 
         params.max = Math.min(max ?: 10, 100)
-            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
-            if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
-                respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
-            }
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+            respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) {
+            respond Company.list(params), model: [companyInstanceCount: Company.count()]
+        }
     }
 
     def show(Company companyInstance) {
