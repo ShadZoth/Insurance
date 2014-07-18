@@ -10,9 +10,13 @@ class License {
     Person owner
 
     Date getExpirationDate() {
-        def res = issueDate.toCalendar()
-        res.add(Calendar.YEAR, 10)
-        res.time
+        if (issueDate) {
+            def res = issueDate.toCalendar()
+            res.add(Calendar.YEAR, 10)
+            return res.time
+        } else {
+            return new Date()
+        }
     }
 
     Set<Category> getCategories() {
