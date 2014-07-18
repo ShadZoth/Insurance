@@ -16,6 +16,8 @@ class CompanyController {
 
     def index(Integer max) {
 
+    // TODO: Причесать
+
         params.max = Math.min(max ?: 10, 100)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
@@ -23,7 +25,10 @@ class CompanyController {
             respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) {
             respond Company.list(params), model: [companyInstanceCount: Company.count()]
-        }
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER"))
+            respond Company.list(params).findAll{
+                it.seller == me
+            }, model: [companyInstanceCount: Company.count()]
     }
 
     def show(Company companyInstance) {
