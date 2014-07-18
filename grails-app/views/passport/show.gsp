@@ -64,7 +64,7 @@
                         default="Issue Date"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="issueDate-label"><g:formatDate
+                      aria-labelledby="issueDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${passportInstance?.issueDate}"/></span>
 
             </li>
@@ -103,7 +103,7 @@
                         default="Birth Date"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="birthDate-label"><g:formatDate
+                      aria-labelledby="birthDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${passportInstance?.birthDate}"/></span>
 
             </li>

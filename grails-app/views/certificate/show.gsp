@@ -67,7 +67,7 @@
                 <span id="issueDate-label" class="property-label"><g:message code="certificate.issueDate.label"
                                                                              default="Issue Date"/></span>
 
-                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${certificateInstance?.issueDate}"/></span>
 
             </li>

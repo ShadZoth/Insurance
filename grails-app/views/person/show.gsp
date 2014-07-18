@@ -40,8 +40,18 @@
                         default="Registration Date"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="registrationDate-label"><g:formatDate
+                      aria-labelledby="registrationDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${personInstance?.registrationDate}"/></span>
+
+            </li>
+        </g:if>
+
+        <g:if test="${personInstance?.seller}">
+            <li class="fieldcontain">
+                <span id="seller-label" class="property-label"><g:message code="person.seller.label" default="Seller"/></span>
+
+                <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${personInstance}"
+                                                                                          field="seller"/></span>
 
             </li>
         </g:if>

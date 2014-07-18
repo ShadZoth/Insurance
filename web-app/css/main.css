@@ -696,6 +696,7 @@ input[type="submit"] {
 
 
 #menu {
+    z-index: 100000;
 }
 
 #menu li {
@@ -741,4 +742,5 @@ input[type="submit"] {
 #menu li ul:first-child
 {
     background: #fbfbfb;
+    z-index: 100000;
 }

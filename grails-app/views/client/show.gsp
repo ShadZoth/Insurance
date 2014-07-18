@@ -33,7 +33,7 @@
                 <span id="registrationDate-label" class="property-label"><g:message code="client.registrationDate.label"
                                                                                     default="Registration Date"/></span>
 
-                <span class="property-value" aria-labelledby="registrationDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="registrationDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${clientInstance?.registrationDate}"/></span>
 
             </li>

@@ -34,7 +34,7 @@
                 <span id="registrationDate-label" class="property-label"><g:message
                         code="company.registrationDate.label" default="Registration Date"/></span>
 
-                <span class="property-value" aria-labelledby="registrationDate-label"><g:formatDate
+                <span class="property-value" aria-labelledby="registrationDate-label"><g:formatDate format="yyyy-MM-dd"
                         date="${companyInstance?.registrationDate}"/></span>
 
             </li>
@@ -68,6 +68,16 @@
 
                 <span class="property-value" aria-labelledby="inn-label"><g:fieldValue bean="${companyInstance}"
                                                                                        field="inn"/></span>
+
+            </li>
+        </g:if>
+
+        <g:if test="${companyInstance?.seller}">
+            <li class="fieldcontain">
+                <span id="seller-label" class="property-label"><g:message code="company.seller.label" default="Seller"/></span>
+
+                <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${companyInstance}"
+                                                                                       field="seller"/></span>
 
             </li>
         </g:if>

@@ -46,7 +46,7 @@
                     <td><g:link action="show"
                                 id="${accidentInstance.id}">${fieldValue(bean: accidentInstance, field: "vehicle")}</g:link></td>
 
-                    <td><g:formatDate date="${accidentInstance.dateTime}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd"  date="${accidentInstance.dateTime}"/></td>
 
                     <td>${fieldValue(bean: accidentInstance, field: "damage")}</td>
 
