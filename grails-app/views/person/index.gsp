@@ -36,6 +36,9 @@
                 <g:sortableColumn property="registrationDate"
                                   title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
 
+
+                <g:sortableColumn property="seller" title="${message(code: "person.seller.label", default: "Seller")}"/>
+
                 <g:sortableColumn property="archived"
                                   title="${message(code: 'person.archived.label', default: 'Archived')}"/>
 
@@ -43,24 +46,15 @@
             </thead>
             <tbody>
             %{----}%
-            <g:each in="${personInstanceList.findAll { person ->
-                def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-                if (me.hasRole('ROLE_ADMIN') || me.hasRole("ROLE_CALL_CENTER")) {
-                    return true
-                } else if (me.hasRole("ROLE_MANAGER")) {
-                    return me.sellers.collect {
-                        it.clients.contains(person)
-                    }.contains(true)
-                } else if (me.hasRole("ROLE_SELLER")) {
-                    return me.clients.contains(person)
-                }
-            }}" status="i" var="personInstance">
+            <g:each in="${personInstanceList}" status="i" var="personInstance">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                     <td><g:link action="show"
                                 id="${personInstance.id}">${personInstance}</g:link></td>
 
                     <td>${fieldValue(bean: personInstance, field: "registrationDate")}</td>
+
+                    <td>${fieldValue(bean: personInstance, field: "seller")}</td>
 
                     <td><g:formatBoolean boolean="${personInstance.archived}"/></td>
 
