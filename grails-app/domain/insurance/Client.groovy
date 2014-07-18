@@ -24,7 +24,7 @@ class Client {
 
     static hasMany = [vehicles: Vehicle, contacts: Contact, warrants: Warrant]
 
-    def hasRoleService
+    static def hasRoleService
     static constraints = {
         registrationDate(nullable: false)
         archived()
