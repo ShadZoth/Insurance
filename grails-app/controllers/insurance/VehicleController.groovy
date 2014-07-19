@@ -23,7 +23,7 @@ class VehicleController {
     }
 
     def create() {
-        respond new Vehicle(params)
+        respond new Vehicle(params), model:[vehicleClientId:params["client_id"]]
     }
 
     @Transactional

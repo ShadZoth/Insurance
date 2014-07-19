@@ -34,7 +34,7 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form url="[resource: vehicleInstance, action: 'save']">
+    <g:form url="[resource: vehicleInstance, vehicleClientId: vehicleClientId, action: 'save']">
         <fieldset class="form">
             <g:render template="form"/>
         </fieldset>

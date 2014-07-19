@@ -7,7 +7,7 @@
         <g:message code="vehicle.owner.label" default="Owner" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="owner" name="owner.id" from="${insurance.Client.list()}" optionKey="id" required="" value="${vehicleInstance?.owner?.id}" class="many-to-one"/>
+	<g:select id="owner" name="owner.id" from="${insurance.Client.list()}" optionKey="id" required="" value="${vehicleClientId?:(vehicleInstance?.owner?.id)}" class="many-to-one"/>
 </div>
 
 %{--Список, производитель (марка) ТС. --}%
