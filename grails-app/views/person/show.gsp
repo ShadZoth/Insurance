@@ -41,14 +41,15 @@
 
                 <span class="property-value"
                       aria-labelledby="registrationDate-label"><g:formatDate format="yyyy-MM-dd"
-                        date="${personInstance?.registrationDate}"/></span>
+                                                                             date="${personInstance?.registrationDate}"/></span>
 
             </li>
         </g:if>
 
         <g:if test="${personInstance?.seller}">
             <li class="fieldcontain">
-                <span id="seller-label" class="property-label"><g:message code="person.seller.label" default="Seller"/></span>
+                <span id="seller-label" class="property-label"><g:message code="person.seller.label"
+                                                                          default="Seller"/></span>
 
                 <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${personInstance}"
                                                                                           field="seller"/></span>
@@ -128,7 +129,10 @@
 
             </li>
         </g:if>
-
+        <li class = "fieldcontain">
+            <g:link class="create" controller="vehicle" action="create" params="[client_id:personInstance.id]"><g:message
+                    code="vehicle.add.label" default="Add vehicle"/></g:link>
+        </li>
         <g:if test="${personInstance?.warrants}">
             <li class="fieldcontain">
                 <span id="warrants-label" class="property-label"><g:message
