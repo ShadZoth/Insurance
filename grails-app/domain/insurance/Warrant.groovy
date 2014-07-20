@@ -8,6 +8,7 @@ class Warrant {
     String number
     Client client
     Product product
+    //TODO: Vehicle vehicle??
 
     static belongsTo = [Client, Product]
 
