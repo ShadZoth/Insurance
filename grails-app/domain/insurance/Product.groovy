@@ -8,9 +8,7 @@ class Product {
 
     Boolean individual
 
-    static hasMany = {
-        pricelist: Price
-    }
+    static hasMany = [pricelist: Price]
 
     static constraints = {
         name(nullable: false)

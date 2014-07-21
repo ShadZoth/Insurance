@@ -7,7 +7,10 @@
         <a href="../product/create.gsp"><g:message code="price.product.label" default="Product" /></a>
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="product" name="product.id" from="${insurance.Product.list()}" optionKey="id" required="" value="${priceInstance?.product?.id}" class="many-to-one"/>
+    <g:select id="product" name="product.id" from="${insurance.Product.list()}"
+              optionKey="id" required=""
+              value="${priceProductId ?: (priceInstance?.product?.id)}"
+              class="many-to-one"/>
 
 </div>
 
