@@ -23,7 +23,7 @@ class CertificateController {
     }
 
     def create() {
-        respond new Certificate(params)
+        respond new Certificate(params), model: [certificateVehicleId: params["vehicle_id"]]
     }
 
     @Transactional

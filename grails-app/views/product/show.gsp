@@ -85,11 +85,13 @@
 
             </li>
         </g:if>
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
         <li class="fieldcontain">
             <g:link class="create" controller="price" action="create"
                     params="[product_id: productInstance.id]"><g:message
                     code="price.add.label" default="Add price"/></g:link>
         </li>
+        </sec:ifAnyGranted>
 
     </ol>
 
