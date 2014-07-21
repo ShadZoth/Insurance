@@ -18,11 +18,8 @@
 		<g:message code="company.seller.label" default="Seller" />
 		<span class="required-indicator">*</span>
 	</label>
-    <g:select id="seller" name="seller.id"
-              from="${insurance.User.list().findAll {
-                  it.hasRole('ROLE_SELLER')
-              }}" optionKey="id" required=""
-              value="${companyInstance?.seller?.id}" class="many-to-one"/>
+    <g:usersHavingRole role="ROLE_SELLER" id="seller" name="seller.id"  optionKey="id" required=""
+                           value="${companyInstance?.seller?.id}" class="many-to-one"/>
 
 </div>
 </sec:ifAnyGranted>
