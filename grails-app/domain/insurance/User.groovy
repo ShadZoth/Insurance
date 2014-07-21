@@ -50,10 +50,6 @@ class User  {
         }
     }
 
-    boolean hasRole(String authority) {
-        SpringSecurityUtils.authoritiesToRoles(authorities).contains(authority)
-    }
-
     static hasMany = [clients: Client]
 
     static constraints = {
