@@ -5,8 +5,9 @@ import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 class User  {
 
 	transient springSecurityService
+    def hasRoleService
 
-	String username
+    String username
 	String password
     String authority
     boolean enabled
@@ -14,7 +15,6 @@ class User  {
 	boolean accountLocked
 	boolean passwordExpired
 
-    def hasRoleService
     List<User> getSellers() {
         if (hasRoleService.serviceMethod(this, 'ROLE_MANAGER')) {
             return ManagerSeller.findAllByManager(this).seller
@@ -63,7 +63,13 @@ class User  {
                 ['ROLE_ADMIN',
                  'ROLE_MANAGER',
                  'ROLE_SELLER',
-                 'ROLE_CALL_CENTER'])
+                 'ROLE_CALL_CENTER'],
+                validator: { val, obj ->
+                    if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER')) {
+                        return val == 'ROLE_SELLER'
+                    }
+                    return true
+                })
     }
 
 	static mapping = {

@@ -2,6 +2,7 @@ package insurance
 
 import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
@@ -31,6 +32,8 @@ class UserController {
     }
 
     def create() {
+        //TODO: Добавить значение по умолчанию "ROLE_SELLER", если залогинен
+        //TODO: менеджер
         respond new User(params)
     }
 
@@ -48,6 +51,10 @@ class UserController {
 
         userInstance.save flush: true
         userInstance.mergeAuthorities()
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+            me.addSeller(userInstance)
+        }
 
         request.withFormat {
             form multipartForm {
