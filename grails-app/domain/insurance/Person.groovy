@@ -18,7 +18,7 @@ class Person extends Client {
             }).max(new Comparator<Passport>() {
                 @Override
                 int compare(Passport o1, Passport o2) {
-                    o2.issueDate - o1.issueDate
+                    o1.issueDate - o2.issueDate
                 }
             });
 
