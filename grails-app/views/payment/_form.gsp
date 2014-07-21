@@ -27,7 +27,10 @@
 		<a href="../accident/create.gsp"><g:message code="payment.accident.label" default="Accident" /></a>
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="accident" name="accident.id" from="${insurance.Accident.list()}" optionKey="id" required="" value="${paymentInstance?.accident?.id}" class="many-to-one"/>
+    <g:select id="accident" name="accident.id"
+              from="${insurance.Accident.list()}" optionKey="id" required=""
+              value="${paymentAccidentId ?: (paymentInstance?.accident?.id)}"
+              class="many-to-one"/>
 
 </div>
 
