@@ -53,14 +53,15 @@
             </tr>
             </thead>
             <tbody>
-            <g:each in="${clientInstanceList}" status="i" var="clientInstance">
+            <g:each in="${clientList}" status="i" var="clientInstance">
                 <g:if test="${clientInstance.getClass() != Client.class}">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                         <td><g:link action="show"
                                     id="${clientInstance.id}">${clientInstance}</g:link></td>
 
-                        <td>${fieldValue(bean: clientInstance, field: "registrationDate")}</td>
+                        <td><g:formatDate format="yyyy-MM-dd" date="${clientInstance.registrationDate}"/></td>
+
 
                         <td><g:formatBoolean
                                 boolean="${clientInstance.archived}"/></td>
