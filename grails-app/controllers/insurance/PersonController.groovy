@@ -15,6 +15,7 @@ class PersonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
@@ -27,8 +28,7 @@ class PersonController {
                 respond Person.list(params).findAll {
                     it.seller == me
                 }, model: [companyInstanceCount: Person.count()]
-        } else
-            respond Person.list(params), model: [companyInstanceCount: Person.count()]
+        } else respond Person.list(params), model: [companyInstanceCount: Person.count()]
     }
 
     def show(Person personInstance) {
