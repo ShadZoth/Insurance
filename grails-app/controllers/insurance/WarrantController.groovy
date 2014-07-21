@@ -22,7 +22,8 @@ class WarrantController {
     }
 
     def create() {
-        respond new Warrant(params)
+        respond new Warrant(params),
+                model: [warrantClientId: params["client_id"]]
     }
 
     @Transactional

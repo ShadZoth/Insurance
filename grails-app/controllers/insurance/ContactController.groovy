@@ -35,7 +35,8 @@ class ContactController {
     }
 
     def create() {
-        respond new Contact(params)
+        respond new Contact(params),
+                model: [contactClientId: params["client_id"]]
     }
 
     @Transactional

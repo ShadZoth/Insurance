@@ -23,7 +23,8 @@ class PaymentController {
     }
 
     def create() {
-        respond new Payment(params)
+        respond new Payment(params),
+                model: [paymentAccidentId: params["accident_id"]]
     }
 
     @Transactional
