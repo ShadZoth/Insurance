@@ -33,6 +33,17 @@
 
 </div>
 
+%{--Форма, фамилия клиента--}%
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'lastName', 'error')} required">
+    <label for="lastName">
+        <g:message code="passport.lastName.label" default="Last Name"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="lastName" maxlength="40" required=""
+                 value="${passportInstance?.lastName}"/>
+
+</div>
+
 %{--Форма, имя клиента--}%
 <div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'firstName', 'error')} required">
 	<label for="firstName">
@@ -40,16 +51,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="firstName" maxlength="40" required="" value="${passportInstance?.firstName}"/>
-
-</div>
-
-%{--Форма, фамилия клиента--}%
-<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'lastName', 'error')} required">
-	<label for="lastName">
-		<g:message code="passport.lastName.label" default="Last Name" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="lastName" maxlength="40" required="" value="${passportInstance?.lastName}"/>
 
 </div>
 
