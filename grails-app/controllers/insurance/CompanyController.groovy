@@ -24,7 +24,7 @@ class CompanyController {
                     'in'("seller", me.sellers)
                 }
             }
-            respond theList, model: [companyInstanceCount:(Company.createCriteria().count(){
+            respond theList, model: [companyInstanceCount: (Company.createCriteria().count() {
                 and {
                     'in'("seller", me.sellers)
                 }
@@ -36,7 +36,7 @@ class CompanyController {
                     eq("seller", me)
                 }
             }
-            respond theList, model: [companyInstanceCount: (Company.createCriteria().count{
+            respond theList, model: [companyInstanceCount: (Company.createCriteria().count {
                 and {
                     eq("seller", me)
                 }
@@ -55,10 +55,6 @@ class CompanyController {
 
     def create() {
         def companyInstance = new Company(params)
-            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-            if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
-                companyInstance.seller = me
-            }
         respond companyInstance
     }
 
@@ -87,7 +83,7 @@ class CompanyController {
 
     def edit(Company companyInstance) {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        if(SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && companyInstance.seller == me) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && companyInstance.seller == me) {
             respond companyInstance
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) respond companyInstance
     }

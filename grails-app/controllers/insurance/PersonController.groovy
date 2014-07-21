@@ -26,7 +26,7 @@ class PersonController {
                     'in'("seller", me.sellers)
                 }
             }
-            respond theList, model: [personInstanceCount:(Person.createCriteria().count(){
+            respond theList, model: [personInstanceCount: (Person.createCriteria().count() {
                 and {
                     'in'("seller", me.sellers)
                 }
@@ -34,11 +34,11 @@ class PersonController {
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
 
             def theList = Person.createCriteria().list(params) {
-                    and {
-                        eq("seller", me)
-                    }
+                and {
+                    eq("seller", me)
                 }
-            respond theList, model: [personInstanceCount: (Person.createCriteria().count{
+            }
+            respond theList, model: [personInstanceCount: (Person.createCriteria().count {
                 and {
                     eq("seller", me)
                 }
@@ -58,10 +58,6 @@ class PersonController {
 
     def create() {
         def personInstance = new Person(params)
-        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
-            personInstance.seller = me
-        }
         respond personInstance
     }
 

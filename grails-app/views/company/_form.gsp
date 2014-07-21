@@ -12,17 +12,17 @@
 </div>
 
 %{--Список продавцов, доступно только админу--}%
-<sec:ifAnyGranted roles="ROLE_ADMIN">
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'seller', 'error')} required">
 	<label for="seller">
 		<g:message code="company.seller.label" default="Seller" />
 		<span class="required-indicator">*</span>
 	</label>
-    <g:usersHavingRole role="ROLE_SELLER" id="seller" name="seller.id"  optionKey="id" required=""
+    <g:usersHavingRole role="ROLE_SELLER" id="seller" name="seller.id"
+                       optionKey="id" required=""
+                       onlyMe="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_SELLER')}"
                            value="${companyInstance?.seller?.id}" class="many-to-one"/>
 
 </div>
-</sec:ifAnyGranted>
 
 %{--Форма, Название компании--}%
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'name', 'error')} required">
