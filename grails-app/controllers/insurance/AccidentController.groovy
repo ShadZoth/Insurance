@@ -23,7 +23,7 @@ class AccidentController {
     }
 
     def create() {
-        respond new Accident(params)
+        respond new Accident(params), model: [accidentVehicleId: params["vehicle_id"]]
     }
 
     @Transactional

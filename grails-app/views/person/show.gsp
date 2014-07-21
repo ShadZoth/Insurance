@@ -18,7 +18,8 @@
             %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message--}%
             %{--code="default.home.label"/></a></li>--}%
             <li><g:link class="list" action="index"><g:message
-                    code="default.list.label" args="[entityName]"/></g:link></li>
+                    code="default.list.label"
+                    args="[entityName]"/></g:link></li>
             <li><g:link class="create" action="create"><g:message
                     code="default.new.label" args="[entityName]"/></g:link></li>
         </ul>
@@ -40,19 +41,23 @@
                         default="Registration Date"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="registrationDate-label"><g:formatDate format="yyyy-MM-dd"
-                                                                             date="${personInstance?.registrationDate}"/></span>
+                      aria-labelledby="registrationDate-label"><g:formatDate
+                        format="yyyy-MM-dd"
+                        date="${personInstance?.registrationDate}"/></span>
 
             </li>
         </g:if>
 
         <g:if test="${personInstance?.seller}">
             <li class="fieldcontain">
-                <span id="seller-label" class="property-label"><g:message code="person.seller.label"
-                                                                          default="Seller"/></span>
+                <span id="seller-label" class="property-label"><g:message
+                        code="person.seller.label"
+                        default="Seller"/></span>
 
-                <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${personInstance}"
-                                                                                          field="seller"/></span>
+                <span class="property-value"
+                      aria-labelledby="seller-label"><g:fieldValue
+                        bean="${personInstance}"
+                        field="seller"/></span>
 
             </li>
         </g:if>
@@ -83,6 +88,14 @@
 
             </li>
         </g:if>
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="contact" action="create"
+                        params="[client_id: personInstance.id]"><g:message
+                        code="contact.add.label"
+                        default="Add contact"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
 
         <g:if test="${personInstance?.licenses}">
             <li class="fieldcontain">
@@ -98,6 +111,14 @@
 
             </li>
         </g:if>
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="license" action="create"
+                        params="[person_id: personInstance.id]"><g:message
+                        code="license.add.label"
+                        default="Add license"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
 
         <g:if test="${personInstance?.passports}">
             <li class="fieldcontain">
@@ -114,6 +135,14 @@
 
             </li>
         </g:if>
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="passport" action="create"
+                        params="[person_id: personInstance.id]"><g:message
+                        code="passport.add.label"
+                        default="Add passport"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
 
         <g:if test="${personInstance?.vehicles}">
             <li class="fieldcontain">
@@ -129,10 +158,14 @@
 
             </li>
         </g:if>
-        <li class = "fieldcontain">
-            <g:link class="create" controller="vehicle" action="create" params="[client_id:personInstance.id]"><g:message
-                    code="vehicle.add.label" default="Add vehicle"/></g:link>
-        </li>
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="vehicle" action="create"
+                        params="[client_id: personInstance.id]"><g:message
+                        code="vehicle.add.label"
+                        default="Add vehicle"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
         <g:if test="${personInstance?.warrants}">
             <li class="fieldcontain">
                 <span id="warrants-label" class="property-label"><g:message
@@ -147,15 +180,24 @@
 
             </li>
         </g:if>
-
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="warrant" action="create"
+                        params="[client_id: personInstance.id]"><g:message
+                        code="warrant.add.label"
+                        default="Add warrant"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
     </ol>
 
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
-        <g:form url="[resource: personInstance, action: 'delete']" method="DELETE">
+        <g:form url="[resource: personInstance, action: 'delete']"
+                method="DELETE">
             <fieldset class="buttons">
                 <g:link class="edit" action="edit"
                         resource="${personInstance}"><g:message
-                        code="default.button.edit.label" default="Edit"/></g:link>
+                        code="default.button.edit.label"
+                        default="Edit"/></g:link>
                 <g:actionSubmit class="delete" action="delete"
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>

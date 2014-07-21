@@ -51,25 +51,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'clients', 'error')} ">
-    <label for="clients">
-        <g:message code="user.clients.label" default="Clients"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${userInstance?.clients ?}" var="c">
-            <li><g:link controller="client" action="show"
-                        id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="client" action="create"
-                    params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'client.label', default: 'Client')])}</g:link>
-        </li>
-    </ul>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
     <label for="enabled">
         <g:message code="user.enabled.label" default="Enabled"/>

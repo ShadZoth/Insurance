@@ -59,7 +59,8 @@ i<%@ page import="insurance.Company" %>
                     <td>${fieldValue(bean: companyInstance, field: "seller")}</td>
                 </sec:ifAnyGranted>
 
-                    <td>${fieldValue(bean: companyInstance, field: "registrationDate")}</td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${companyInstance.registrationDate}"/></td>
+
 
                     <td><g:formatBoolean boolean="${companyInstance.archived}"/></td>
 

@@ -23,7 +23,8 @@ class PassportController {
     }
 
     def create() {
-        respond new Passport(params)
+        respond new Passport(params),
+                model: [passportPersonId: params["person_id"]]
     }
 
     @Transactional

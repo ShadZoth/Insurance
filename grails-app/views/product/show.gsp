@@ -70,6 +70,29 @@
             </li>
         </g:if>
 
+        <g:if test="${productInstance?.pricelist}">
+            <li class="fieldcontain">
+                <span id="pricelist-label" class="property-label"><g:message
+                        code="product.pricelist.label"
+                        default="Pricelist"/></span>
+
+                <g:each in="${productInstance.pricelist}" var="p">
+                    <span class="property-value"
+                          aria-labelledby="pricelist-label"><g:link
+                            controller="price" action="show"
+                            id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+                </g:each>
+
+            </li>
+        </g:if>
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+        <li class="fieldcontain">
+            <g:link class="create" controller="price" action="create"
+                    params="[product_id: productInstance.id]"><g:message
+                    code="price.add.label" default="Add price"/></g:link>
+        </li>
+        </sec:ifAnyGranted>
+
     </ol>
 
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER">

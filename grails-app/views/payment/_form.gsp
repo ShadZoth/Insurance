@@ -27,7 +27,10 @@
 		<a href="../accident/create.gsp"><g:message code="payment.accident.label" default="Accident" /></a>
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="accident" name="accident.id" from="${insurance.Accident.list()}" optionKey="id" required="" value="${paymentInstance?.accident?.id}" class="many-to-one"/>
+    <g:select id="accident" name="accident.id"
+              from="${insurance.Accident.list()}" optionKey="id" required=""
+              value="${paymentAccidentId ?: (paymentInstance?.accident?.id)}"
+              class="many-to-one"/>
 
 </div>
 
@@ -37,7 +40,10 @@
 		<a href="../warrant/create.gsp"><g:message code="payment.warrant.label" default="Warrant" /></a>
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="warrant" name="warrant.id" from="${insurance.Warrant.list()}" optionKey="id" required="" value="${paymentInstance?.warrant?.id}" class="many-to-one"/>
+    <g:select id="warrant" name="warrant.id" from="${insurance.Warrant.list()}"
+              optionKey="id" required=""
+              value="${paymentWarrantId ?: (paymentInstance?.warrant?.id)}"
+              class="many-to-one"/>
 
 </div>
 

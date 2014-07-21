@@ -23,7 +23,7 @@ class PriceController {
     }
 
     def create() {
-        respond new Price(params)
+        respond new Price(params), model: [priceProductId: params["product_id"]]
     }
 
     @Transactional

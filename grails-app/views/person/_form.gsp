@@ -1,27 +1,18 @@
 <%@ page import="insurance.Passport" %>
-<%@ page import="insurance.Client" %>
+<%@ page import="insurance.Person" %>
 
 %{--Продавец--}%
 %{--Виден только администратору--}%
-<sec:ifAnyGranted roles="ROLE_ADMIN">
-<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'seller', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: personInstance, field: 'seller', 'error')} required">
     <label for="seller">
-        <g:message code="client.seller.label" default="Seller"/>
+        <g:message code="person.seller.label" default="Seller"/>
         <span class="required-indicator">*</span>
     </label>
     <g:usersHavingRole id="seller" name="seller.id" role="ROLE_SELLER"
-              optionKey="id" required="" value="${clientInstance?.seller?.id}" class="many-to-one"/>
-</div>
-</sec:ifAnyGranted>
-
-%{--Client--}%
-%{--Выбор даты, >дата регистрации (тут временно и для примера, дата должна цепляться автоматом)--}%
-<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'registrationDate', 'error')} required">
-    <label for="registrationDate">
-        <g:message code="client.registrationDate.label" default="Registration Date"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:datePicker name="registrationDate" precision="day" value="${clientInstance?.registrationDate}"/>
+                       onlyMe="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_SELLER')}"
+                       optionKey="id" required=""
+                       value="${personInstance?.seller?.id}"
+                       class="many-to-one"/>
 </div>
 
 %{--Passport--}%

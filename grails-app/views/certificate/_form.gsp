@@ -7,7 +7,10 @@
         <a href="../vehicle/create.gsp"><g:message code="accident.vehicle.label" default="Vehicle" /></a>
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="vehicle" name="vehicle.id" from="${insurance.Vehicle.list()}" optionKey="id" required="" value="${certificateInstance?.vehicle?.id}" class="many-to-one"/>
+    <g:select id="vehicle" name="vehicle.id" from="${insurance.Vehicle.list()}"
+              optionKey="id" required=""
+              value="${certificateVehicleId ?: (certificateInstance?.vehicle?.id)}"
+              class="many-to-one"/>
 
 </div>
 

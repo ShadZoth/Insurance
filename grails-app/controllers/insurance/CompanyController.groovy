@@ -15,20 +15,34 @@ class CompanyController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-
-    // TODO: Причесать
-
         params.max = Math.min(max ?: 10, 100)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
-            respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) {
-            respond Company.list(params), model: [companyInstanceCount: Company.count()]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER"))
-            respond Company.list(params).findAll{
-                it.seller == me
-            }, model: [companyInstanceCount: Company.count()]
+            def theList = Company.createCriteria().list(params) {
+                and {
+                    'in'("seller", me.sellers)
+                }
+            }
+            respond theList, model: [companyInstanceCount: (Company.createCriteria().count() {
+                and {
+                    'in'("seller", me.sellers)
+                }
+            })]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+
+            def theList = Company.createCriteria().list(params) {
+                and {
+                    eq("seller", me)
+                }
+            }
+            respond theList, model: [companyInstanceCount: (Company.createCriteria().count {
+                and {
+                    eq("seller", me)
+                }
+            })]
+        } else
+            respond Company.list(params), model: [companyInstanceCount: (Company.count)]
     }
 
     def show(Company companyInstance) {
@@ -41,10 +55,6 @@ class CompanyController {
 
     def create() {
         def companyInstance = new Company(params)
-            def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-            if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
-                companyInstance.seller = me
-            }
         respond companyInstance
     }
 
@@ -73,7 +83,7 @@ class CompanyController {
 
     def edit(Company companyInstance) {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        if(SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && companyInstance.seller == me) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && companyInstance.seller == me) {
             respond companyInstance
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) respond companyInstance
     }

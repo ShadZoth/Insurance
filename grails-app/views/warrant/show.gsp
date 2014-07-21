@@ -117,7 +117,14 @@
 
             </li>
         </g:if>
-
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <li class="fieldcontain">
+            <g:link class="create" controller="payment" action="create"
+                    params="[warrant_id: warrantInstance.id]">
+                <g:message code="payment.add.label" default="Add payment"/>
+            </g:link>
+        </li>
+        </sec:ifAnyGranted>
     </ol>
 
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
