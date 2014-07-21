@@ -23,10 +23,12 @@ class PersonController {
             respond Person.list(params).findAll {
                 it.seller.manager == me
             }, model: [companyInstanceCount: Person.count()]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER"))
-            respond Person.list(params).findAll {
-                it.seller == me
-            }, model: [companyInstanceCount: Person.count()]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+                respond Person.list(params).findAll {
+                    it.seller == me
+                }, model: [companyInstanceCount: Person.count()]
+        } else
+            respond Person.list(params), model: [companyInstanceCount: Person.count()]
     }
 
     def show(Person personInstance) {
