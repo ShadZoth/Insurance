@@ -10,7 +10,8 @@
         </label>
         <g:select id="client" name="client.id" from="${insurance.Client.list()}"
                   optionKey="id" required=""
-                  value="${warrantInstance?.client?.id}" class="many-to-one"/>
+                  value="${warrantClientId ?: (warrantInstance?.client?.id)}"
+                  class="many-to-one"/>
 
     </div>
 
