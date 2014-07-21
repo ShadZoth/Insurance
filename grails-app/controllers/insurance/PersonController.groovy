@@ -24,7 +24,7 @@ class PersonController {
                 it.seller.manager == me
             }, model: [companyInstanceCount: Person.count()]
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER"))
-            respond Person.list(params).findAll{
+            respond Person.list(params).findAll {
                 it.seller == me
             }, model: [companyInstanceCount: Person.count()]
     }
@@ -41,10 +41,8 @@ class PersonController {
     def create() {
         def personInstance = new Person(params)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        println me
-        if(SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
             personInstance.seller = me
-            println personInstance.seller
         }
         respond personInstance
     }
