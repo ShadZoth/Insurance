@@ -73,6 +73,11 @@
         </div>
     </div>
 </sec:ifAnyGranted>
+
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+    <g:jasperReport jasper="contracts" format="PDF" name="All Races" />
+</sec:ifAnyGranted>
+
 </body>
 
 </html>
