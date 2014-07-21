@@ -6,7 +6,10 @@
         <a href="../client/create.gsp"><g:message code="passport.person.label" default="Person" /></a>
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="person" name="person.id" from="${insurance.Person.list()}" optionKey="id" required="" value="${passportInstance?.person?.id}" class="many-to-one"/>
+    <g:select id="person" name="person.id" from="${insurance.Person.list()}"
+              optionKey="id" required=""
+              value="${passportPersonId ?: (passportInstance?.person?.id)}"
+              class="many-to-one"/>
 
 </div>
 

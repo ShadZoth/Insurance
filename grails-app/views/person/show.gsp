@@ -124,6 +124,11 @@
 
             </li>
         </g:if>
+        <li class="fieldcontain">
+            <g:link class="create" controller="passport" action="create"
+                    params="[person_id: personInstance.id]"><g:message
+                    code="passport.add.label" default="Add passport"/></g:link>
+        </li>
 
         <g:if test="${personInstance?.vehicles}">
             <li class="fieldcontain">
