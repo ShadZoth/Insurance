@@ -2,6 +2,8 @@ package insurance
 
 import grails.plugins.springsecurity.Secured
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
@@ -14,7 +16,33 @@ class WarrantController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Warrant.list(params), model: [warrantInstanceCount: Warrant.count()]
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
+            def theList = Warrant.createCriteria().list(params) {
+                and {
+                    'in'("client", (me.sellers.collect {it.clients}).flatten())
+                }
+            }
+            respond theList, model: [warrantInstanceCount: (Warrant.createCriteria().count() {
+                and {
+                    'in'("client", (me.sellers.collect {it.clients}).flatten())
+                }
+            })]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+
+            def theList = Warrant.createCriteria().list(params) {
+                and {
+                    'in'("client", me.clients)
+                }
+            }
+            respond theList, model: [warrantInstanceCount: (Warrant.createCriteria().count {
+                and {
+                    'in'("client", me.clients)
+                }
+            })]
+        } else
+            respond Warrant.list(params), model: [warrantInstanceCount: (Warrant.count)]
     }
 
     def show(Warrant warrantInstance) {
@@ -22,8 +50,20 @@ class WarrantController {
     }
 
     def create() {
+
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        def theList = null;
+
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+
+            theList = Client.list().findAll({
+                it.seller==me
+            })
+
+        }
+
         respond new Warrant(params),
-                model: [warrantClientId: params["client_id"]]
+                model: [warrantClientId: params["client_id"], myClientList:theList]
     }
 
     @Transactional
@@ -50,7 +90,18 @@ class WarrantController {
     }
 
     def edit(Warrant warrantInstance) {
-        respond warrantInstance
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        def theList = null;
+
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+
+            theList = Client.list().findAll({
+                it.seller==me
+            })
+
+        }
+
+        respond warrantInstance, model: [myClientList:theList]
     }
 
     @Transactional

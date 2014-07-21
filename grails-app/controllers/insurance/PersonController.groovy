@@ -21,14 +21,30 @@ class PersonController {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
-            respond Person.list(params).findAll {
-                it.seller.manager == me
-            }, model: [personInstanceCount: Person.count()]
+            def theList = Person.createCriteria().list(params) {
+                and {
+                    'in'("seller", me.sellers)
+                }
+            }
+            respond theList, model: [personInstanceCount:(Person.createCriteria().count(){
+                and {
+                    'in'("seller", me.sellers)
+                }
+            })]
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
-                respond Person.list(params).findAll {
-                    it.seller == me
-                }, model: [personInstanceCount: Person.count()]
-        } else respond Person.list(params), model: [personInstanceCount: Person.count()]
+
+            def theList = Person.createCriteria().list(params) {
+                    and {
+                        eq("seller", me)
+                    }
+                }
+            respond theList, model: [personInstanceCount: (Person.createCriteria().count{
+                and {
+                    eq("seller", me)
+                }
+            })]
+        } else
+            respond Person.list(params), model: [personInstanceCount: (Person.count)]
     }
 
     def show(Person personInstance) {

@@ -53,7 +53,7 @@
                     <td><g:link action="show"
                                 id="${personInstance.id}">${personInstance}</g:link></td>
 
-                    <td>${fieldValue(bean: personInstance, field: "registrationDate")}</td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${personInstance.registrationDate}"/></td>
 
                 <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
                     <td>${fieldValue(bean: personInstance, field: "seller")}</td>

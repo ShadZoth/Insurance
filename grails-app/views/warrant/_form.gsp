@@ -3,15 +3,15 @@
 
 %{--Выбор клиента--}%
 
-<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
-    <label for="client">
-        <g:message code="warrant.client.label" default="Client"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="client" name="client.id" from="${insurance.Client.list()}"
-              optionKey="id" required=""
-              value="${warrantClientId ?: (warrantInstance?.client?.id)}"
-              class="many-to-one"/>
+    <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
+        <label for="client">
+            <g:message code="warrant.client.label" default="Client"/>
+            <span class="required-indicator">*</span>
+        </label>
+        <g:select id="client" name="client.id" from="${myClientList?:(insurance.Client.list())}"
+                  optionKey="id" required=""
+                  value="${warrantClientId ?: (warrantInstance?.client?.id)}"
+                  class="many-to-one"/>
 
 </div>
 
@@ -54,6 +54,25 @@
     <g:field name="price"
              value="${fieldValue(bean: warrantInstance, field: 'price')}"
              required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'payments', 'error')} ">
+    <label for="payments">
+        <g:message code="warrant.payments.label" default="Payments"/>
+
+    </label>
+
+    <ul class="one-to-many">
+        <g:each in="${warrantInstance?.payments ?}" var="p">
+            <li><g:link controller="payment" action="show"
+                        id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+        </g:each>
+        <li class="add">
+            <g:link controller="payment" action="create"
+                    params="['warrant.id': warrantInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'payment.label', default: 'Payment')])}</g:link>
+        </li>
+    </ul>
 
 </div>
 
