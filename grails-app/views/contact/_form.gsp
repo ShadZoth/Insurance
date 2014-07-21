@@ -17,7 +17,10 @@
         <a href="../person/create.gsp"><g:message code="contact.client.label" default="Client" /></a>
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="client" name="client.id" from="${insurance.Client.list()}" optionKey="id" required="" value="${contactInstance?.client?.id}" class="many-to-one"/>
+    <g:select id="client" name="client.id" from="${insurance.Client.list()}"
+              optionKey="id" required=""
+              value="${contactClientId ?: (contactInstance?.client?.id)}"
+              class="many-to-one"/>
 
 </div>
 

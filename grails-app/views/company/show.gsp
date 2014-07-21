@@ -95,6 +95,11 @@
 
             </li>
         </g:if>
+        <li class="fieldcontain">
+            <g:link class="create" controller="contact" action="create"
+                    params="[client_id: companyInstance.id]"><g:message
+                    code="contact.add.label" default="Add contact"/></g:link>
+        </li>
 
         <g:if test="${companyInstance?.vehicles}">
             <li class="fieldcontain">
