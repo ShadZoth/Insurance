@@ -23,7 +23,8 @@ class LicenseController {
     }
 
     def create() {
-        respond new License(params)
+        respond new License(params),
+                model: [licensePersonId: params["person_id"]]
     }
 
     @Transactional

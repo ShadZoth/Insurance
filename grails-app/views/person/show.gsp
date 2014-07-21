@@ -103,6 +103,11 @@
 
             </li>
         </g:if>
+        <li class="fieldcontain">
+            <g:link class="create" controller="license" action="create"
+                    params="[person_id: personInstance.id]"><g:message
+                    code="license.add.label" default="Add license"/></g:link>
+        </li>
 
         <g:if test="${personInstance?.passports}">
             <li class="fieldcontain">

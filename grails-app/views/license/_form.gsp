@@ -8,7 +8,8 @@
         <span class="required-indicator">*</span>
     </label>
     <g:select id="owner" name="owner.id" from="${insurance.Person.list()}" optionKey="id" required=""
-              value="${licenseInstance?.owner?.id}" class="many-to-one"/>
+              value="${licensePersonId ?: (licenseInstance?.owner?.id)}"
+              class="many-to-one"/>
 
 </div>
 
