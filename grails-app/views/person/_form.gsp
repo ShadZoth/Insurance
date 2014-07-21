@@ -9,7 +9,7 @@
         <g:message code="client.seller.label" default="Seller"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="seller" name="seller.id" from="${insurance.User.list().findAll { it.hasRole('ROLE_SELLER') }}"
+    <g:usersHavingRole id="seller" name="seller.id" role="ROLE_SELLER"
               optionKey="id" required="" value="${clientInstance?.seller?.id}" class="many-to-one"/>
 </div>
 </sec:ifAnyGranted>

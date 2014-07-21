@@ -15,6 +15,7 @@ class PersonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
@@ -22,11 +23,12 @@ class PersonController {
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
             respond Person.list(params).findAll {
                 it.seller.manager == me
-            }, model: [companyInstanceCount: Person.count()]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER"))
-            respond Person.list(params).findAll {
-                it.seller == me
-            }, model: [companyInstanceCount: Person.count()]
+            }, model: [personInstanceCount: Person.count()]
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+                respond Person.list(params).findAll {
+                    it.seller == me
+                }, model: [personInstanceCount: Person.count()]
+        } else respond Person.list(params), model: [personInstanceCount: Person.count()]
     }
 
     def show(Person personInstance) {
