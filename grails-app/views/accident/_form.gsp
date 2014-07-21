@@ -33,7 +33,8 @@
     </label>
     <g:select id="vehicle" name="vehicle.id" from="${insurance.Vehicle.list()}"
               optionKey="id" required=""
-              value="${accidentInstance?.vehicle?.id}" class="many-to-one"/>
+              value="${accidentVehicleId ?: (accidentInstance?.vehicle?.id)}"
+              class="many-to-one"/>
 
 </div>
 

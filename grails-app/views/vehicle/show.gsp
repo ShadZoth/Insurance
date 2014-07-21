@@ -123,6 +123,11 @@
 
             </li>
         </g:if>
+        <li class="fieldcontain">
+            <g:link class="create" controller="accident" action="create"
+                    params="[vehicle_id: vehicleInstance.id]"><g:message
+                    code="accident.add.label" default="Add accident"/></g:link>
+        </li>
 
         <g:if test="${vehicleInstance?.certificates}">
             <li class="fieldcontain">
