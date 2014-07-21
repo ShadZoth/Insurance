@@ -8,7 +8,7 @@
             <g:message code="warrant.client.label" default="Client"/>
             <span class="required-indicator">*</span>
         </label>
-        <g:select id="client" name="client.id" from="${insurance.Client.list()}"
+        <g:select id="client" name="client.id" from="${myClientList?:(insurance.Client.list())}"
                   optionKey="id" required=""
                   value="${warrantClientId ?: (warrantInstance?.client?.id)}"
                   class="many-to-one"/>

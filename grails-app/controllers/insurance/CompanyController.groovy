@@ -19,7 +19,7 @@ class CompanyController {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
-            def theList = Person.createCriteria().list(params) {
+            def theList = Company.createCriteria().list(params) {
                 and {
                     'in'("seller", me.sellers)
                 }
