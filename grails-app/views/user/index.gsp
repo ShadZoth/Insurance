@@ -43,6 +43,9 @@
                 <g:sortableColumn property="enabled"
                                   title="${message(code: 'user.enabled.label', default: 'Enabled')}"/>
 
+                <g:sortableColumn property="manager"
+                                  title="${message(code: 'user.enabled.label', default: 'Manager')}"/>
+
             </tr>
             </thead>
             <tbody>
@@ -59,6 +62,8 @@
                     <td><g:formatBoolean boolean="${userInstance.accountLocked}"/></td>
 
                     <td><g:formatBoolean boolean="${userInstance.enabled}"/></td>
+
+                    <td>${fieldValue(bean: userInstance, field: "manager")}</td>
 
                 </tr>
             </g:each>
