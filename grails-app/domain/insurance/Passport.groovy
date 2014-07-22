@@ -1,6 +1,6 @@
 package insurance
 
-class Passport {
+class Passport implements Comparable<Passport> {
 
     String number
     Person person
@@ -53,5 +53,10 @@ class Passport {
     @Override
     public String toString(){
         "$lastName $firstName $number"
+    }
+
+    @Override
+    int compareTo(Passport o) {
+        issueDate - o.issueDate
     }
 }
