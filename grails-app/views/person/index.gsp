@@ -46,7 +46,6 @@
             </tr>
             </thead>
             <tbody>
-            %{----}%
             <g:each in="${personInstanceList}" status="i" var="personInstance">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 

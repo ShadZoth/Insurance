@@ -63,8 +63,10 @@
                         code="price.value.label" default="Value"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="value-label"><g:fieldValue
-                        bean="${priceInstance}" field="value"/></span>
+                      aria-labelledby="value-label">
+                    <g:fieldValue
+                        bean="${priceInstance}" field="value"/>
+                </span>
 
             </li>
         </g:if>

@@ -59,6 +59,18 @@
             </li>
         </g:if>
 
+
+        <g:if test="${warrantInstance?.vehicle}">
+            <li class="fieldcontain">
+                <span id="vehicle-label" class="property-label"><g:message code="warrant.vehicle.label"
+                                                                           default="Vehicle"/></span>
+
+                <span class="property-value" aria-labelledby="vehicle-label"><g:link controller="vehicle" action="show"
+                                                                                     id="${warrantInstance?.vehicle?.id}">${warrantInstance?.vehicle?.encodeAsHTML()}</g:link></span>
+
+            </li>
+        </g:if>
+
         <g:if test="${warrantInstance?.issueDate}">
             <li class="fieldcontain">
                 <span id="issueDate-label" class="property-label"><g:message code="warrant.issueDate.label"

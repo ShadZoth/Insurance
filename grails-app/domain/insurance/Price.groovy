@@ -1,6 +1,6 @@
 package insurance
 
-class Price {
+class Price implements Comparable<Price> {
 
     Date since
     BigDecimal value
@@ -17,7 +17,7 @@ class Price {
         value() // TODO: в БД определить как money
     }
 
-    static belongsTo = Product
+    static belongsTo = [Product]
 
     static mapping = {
         since sqlType: "date"
@@ -28,6 +28,11 @@ class Price {
 
     @Override
     public String toString() {
-        return "$product:  $value";
+        return "$value руб.";
+    }
+
+    @Override
+    int compareTo(Price o) {
+        since - o.since
     }
 }

@@ -32,7 +32,7 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <ol class="property-list person">
-
+        %{--Дата регистрации--}%
         <g:if test="${personInstance?.registrationDate}">
             <li class="fieldcontain">
                 <span id="registrationDate-label"
@@ -48,6 +48,7 @@
             </li>
         </g:if>
 
+        %{--Продавец--}%
         <g:if test="${personInstance?.seller}">
             <li class="fieldcontain">
                 <span id="seller-label" class="property-label"><g:message
@@ -62,71 +63,14 @@
             </li>
         </g:if>
 
-        <g:if test="${personInstance?.archived}">
-            <li class="fieldcontain">
-                <span id="archived-label" class="property-label"><g:message
-                        code="person.archived.label" default="Archived"/></span>
 
-                <span class="property-value"
-                      aria-labelledby="archived-label"><g:formatBoolean
-                        boolean="${personInstance?.archived}"/></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${personInstance?.contacts}">
-            <li class="fieldcontain">
-                <span id="contacts-label" class="property-label"><g:message
-                        code="person.contacts.label" default="Contacts"/></span>
-
-                <g:each in="${personInstance.contacts}" var="c">
-                    <span class="property-value"
-                          aria-labelledby="contacts-label"><g:link
-                            controller="contact" action="show"
-                            id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-                </g:each>
-
-            </li>
-        </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="contact" action="create"
-                        params="[client_id: personInstance.id]"><g:message
-                        code="contact.add.label"
-                        default="Add contact"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
-
-        <g:if test="${personInstance?.licenses}">
-            <li class="fieldcontain">
-                <span id="licenses-label" class="property-label"><g:message
-                        code="person.licenses.label" default="Licenses"/></span>
-
-                <g:each in="${personInstance.licenses}" var="l">
-                    <span class="property-value"
-                          aria-labelledby="licenses-label"><g:link
-                            controller="license" action="show"
-                            id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-                </g:each>
-
-            </li>
-        </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="license" action="create"
-                        params="[person_id: personInstance.id]"><g:message
-                        code="license.add.label"
-                        default="Add license"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
-
-        <g:if test="${personInstance?.passports}">
+        <g:if test="${personInstance?.sortedPassports}">
             <li class="fieldcontain">
                 <span id="passports-label" class="property-label"><g:message
                         code="person.passports.label"
                         default="Passports"/></span>
 
-                <g:each in="${personInstance.passports}" var="p">
+                <g:each in="${personInstance.sortedPassports}" var="p">
                     <span class="property-value"
                           aria-labelledby="passports-label"><g:link
                             controller="passport" action="show"
@@ -141,6 +85,72 @@
                         params="[person_id: personInstance.id]"><g:message
                         code="passport.add.label"
                         default="Add passport"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
+        %{--Создание контакта--}%
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="contact" action="create"
+                        params="[client_id: personInstance.id]"><g:message
+                        code="contact.add.label"
+                        default="Add contact"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
+        %{--Архивирован--}%
+        <g:if test="${personInstance?.archived}">
+            <li class="fieldcontain">
+                <span id="archived-label" class="property-label"><g:message
+                        code="person.archived.label" default="Archived"/></span>
+
+                <span class="property-value"
+                      aria-labelledby="archived-label"><g:formatBoolean
+                        boolean="${personInstance?.archived}"/></span>
+
+            </li>
+        </g:if>
+
+        %{--Список прав--}%
+        <g:if test="${personInstance?.sortedLicenses}">
+            <li class="fieldcontain">
+                <span id="licenses-label" class="property-label"><g:message
+                        code="person.licenses.label" default="Licenses"/></span>
+
+                <g:each in="${personInstance.sortedLicenses}" var="l">
+                    <span class="property-value"
+                          aria-labelledby="licenses-label"><g:link
+                            controller="license" action="show"
+                            id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
+                </g:each>
+
+            </li>
+        </g:if>
+
+        %{--Добавить права--}%
+        <g:if test="${personInstance?.contacts}">
+            <li class="fieldcontain">
+                <span id="contacts-label" class="property-label"><g:message
+                        code="person.contacts.label" default="Contacts"/></span>
+
+                <g:each in="${personInstance.contacts}" var="c">
+                    <span class="property-value"
+                          aria-labelledby="contacts-label"><g:link
+                            controller="contact" action="show"
+                            id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+                </g:each>
+
+            </li>
+        </g:if>
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="license" action="create"
+                        params="[person_id: personInstance.id]"><g:message
+                        code="license.add.label"
+                        default="Add license"/></g:link>
             </li>
         </sec:ifAnyGranted>
 
