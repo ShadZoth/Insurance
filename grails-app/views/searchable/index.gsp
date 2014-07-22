@@ -6,15 +6,19 @@
 <head>
     <meta name='layout' content='main'/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Поиск</title>
+    <title>
+        <g:message code="searchable.search" default="Search"/>
+    </title>
     <style type="text/css">
 
     #search_page_in {
         padding: 10px;
     }
+
     #header_search_in {
         padding-left: 20px;
     }
+
     #header_search_in form input {
         padding: 1.5em;
     }
@@ -76,7 +80,7 @@
         margin: 1em 2em;
     }
 
-    #search_page_in li, p {
+    #search_page_in li {
         margin-bottom: 1em;
     }
     </style>
@@ -90,7 +94,9 @@
 <body onload="focusQueryInput();">
 <div id="search_page_in">
     <div id="header_search_in">
-        <h1>Поиск</h1>
+        <h1>
+            <g:message code="searchable.search" default="Search"/>
+        </h1>
         %{--<g:form url='[controller: "searchable", action: "index"]' id="searchableForm" name="searchableForm" method="get">--}%
         %{--<g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Search"/>--}%
         %{--</g:form>--}%
@@ -102,8 +108,10 @@
         <div class="title">
             <span>
                 <g:if test="${haveQuery && haveResults}">
-                    Результаты <strong>${searchResult.offset + 1}</strong> - <strong>${searchResult.results.size() + searchResult.offset}</strong> of <strong>${searchResult.total}</strong>
-                    по запросу <strong>${params.q}</strong>
+                    <g:message code="searchable.results" default="Results"/>
+                    <strong>${searchResult.offset + 1}</strong> - <strong>${searchResult.results.size() + searchResult.offset}</strong> of <strong>${searchResult.total}</strong>
+                    <g:message code="searchable.for_your_query" default="for your query "/>
+                    <strong>${params.q}</strong>
                 </g:if>
                 <g:else>
                     &nbsp;
@@ -112,12 +120,20 @@
         </div>
 
         <g:if test="${haveQuery && !haveResults && !parseException}">
-            <p>Ничего не найдено по вашему запросу - <strong>${params.q}</strong></p>
+            <p>
+                <g:message code="searchable.nothingfound" default="Nothing was found for your query "/>
+                <strong>${params.q}</strong></p>
             <g:if test="${!searchResult?.suggestedQuery}">
-                <p>Советы:</p>
+                <p>
+                    <g:message code="searchable.hints" default="Hints:"/></p>
                 <ul>
-                    <li>Проверьте корректность введенного запроса</li>
-                    <li>Проверьте, обладаете ли вы достаточным уровнем доступа к запрашиваемым данным</li>
+                    <li>
+                        <g:message code="searchable.check" default="Correct your query "/>
+                    </li>
+                    <li>
+                        <g:message code="searchable.check_security"
+                                   default="Check that information is available with your security rights"/>
+                    </li>
                 </ul>
             </g:if>
         </g:if>

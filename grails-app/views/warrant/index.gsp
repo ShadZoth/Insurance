@@ -75,7 +75,7 @@
 </sec:ifAnyGranted>
 
 <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-    <g:jasperReport jasper="contracts" format="PDF" name="All Races" />
+    <g:jasperReport jasper="contracts" format="PDF" name="contracts" />
 </sec:ifAnyGranted>
 
 </body>
