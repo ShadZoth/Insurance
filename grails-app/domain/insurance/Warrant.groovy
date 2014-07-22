@@ -8,7 +8,7 @@ class Warrant {
     String number
     Client client
     Product product
-    //TODO: Vehicle vehicle??
+    Vehicle vehicle
 
     static belongsTo = [Client, Product]
 
@@ -23,6 +23,7 @@ class Warrant {
             val > obj.issueDate
         })
         price()
+        vehicle()
     }
 
     static mapping = {

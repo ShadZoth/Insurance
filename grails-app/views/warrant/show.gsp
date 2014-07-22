@@ -11,16 +11,13 @@
 <a href="#show-warrant" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                               default="Skip to content&hellip;"/></a>
 
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
-    <div class="nav" role="navigation">
-        <ul>
-            <li><g:link class="list" action="index"><g:message code="default.list.label"
-                                                               args="[entityName]"/></g:link></li>
-            <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                                  args="[entityName]"/></g:link></li>
-        </ul>
-    </div>
-</sec:ifAnyGranted>
+<div class="nav" role="navigation">
+    <ul>
+        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
+        <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                              args="[entityName]"/></g:link></li>
+    </ul>
+</div>
 
 <div id="show-warrant" class="content scaffold-show" role="main">
     <h1><g:message code="default.show.label" args="[entityName]"/></h1>
@@ -51,15 +48,6 @@
             </li>
         </g:if>
 
-        <g:if test="${(warrantInstance?.client).seller}">
-            <li class="fieldcontain">
-                <span id="seller-label" class="property-label"><g:message code="company.seller.label" default="Seller"/></span>
-
-                <span class="property-value" aria-labelledby="seller-label"><g:fieldValue bean="${warrantInstance?.client}"
-                                                                                          field="seller"/></span>
-            </li>
-        </g:if>
-
         <g:if test="${warrantInstance?.product}">
             <li class="fieldcontain">
                 <span id="product-label" class="property-label"><g:message code="warrant.product.label"
@@ -76,7 +64,7 @@
                 <span id="issueDate-label" class="property-label"><g:message code="warrant.issueDate.label"
                                                                              default="Issue Date"/></span>
 
-                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate format="yyyy-MM-dd"
+                <span class="property-value" aria-labelledby="issueDate-label"><g:formatDate
                         date="${warrantInstance?.issueDate}"/></span>
 
             </li>
@@ -87,7 +75,7 @@
                 <span id="expireDate-label" class="property-label"><g:message code="warrant.expireDate.label"
                                                                               default="Expire Date"/></span>
 
-                <span class="property-value" aria-labelledby="expireDate-label"><g:formatDate format="yyyy-MM-dd"
+                <span class="property-value" aria-labelledby="expireDate-label"><g:formatDate
                         date="${warrantInstance?.expireDate}"/></span>
 
             </li>
@@ -100,6 +88,17 @@
 
                 <span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${warrantInstance}"
                                                                                          field="price"/></span>
+
+            </li>
+        </g:if>
+
+        <g:if test="${warrantInstance?.vehicle}">
+            <li class="fieldcontain">
+                <span id="vehicle-label" class="property-label"><g:message code="warrant.vehicle.label"
+                                                                           default="Vehicle"/></span>
+
+                <span class="property-value" aria-labelledby="vehicle-label"><g:link controller="vehicle" action="show"
+                                                                                     id="${warrantInstance?.vehicle?.id}">${warrantInstance?.vehicle?.encodeAsHTML()}</g:link></span>
 
             </li>
         </g:if>
@@ -117,28 +116,17 @@
 
             </li>
         </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-        <li class="fieldcontain">
-            <g:link class="create" controller="payment" action="create"
-                    params="[warrant_id: warrantInstance.id]">
-                <g:message code="payment.add.label" default="Add payment"/>
-            </g:link>
-        </li>
-        </sec:ifAnyGranted>
-    </ol>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
-        <g:form url="[resource: warrantInstance, action: 'delete']" method="DELETE">
-            <fieldset class="buttons">
-                <g:link class="edit" action="edit" resource="${warrantInstance}"><g:message
-                        code="default.button.edit.label"
-                        default="Edit"/></g:link>
-                <g:actionSubmit class="delete" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-            </fieldset>
-        </g:form>
-    </sec:ifAnyGranted>
+    </ol>
+    <g:form url="[resource: warrantInstance, action: 'delete']" method="DELETE">
+        <fieldset class="buttons">
+            <g:link class="edit" action="edit" resource="${warrantInstance}"><g:message code="default.button.edit.label"
+                                                                                        default="Edit"/></g:link>
+            <g:actionSubmit class="delete" action="delete"
+                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+        </fieldset>
+    </g:form>
 </div>
 </body>
 </html>
