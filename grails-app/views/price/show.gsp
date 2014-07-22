@@ -18,7 +18,8 @@
             %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message--}%
             %{--code="default.home.label"/></a></li>--}%
             <li><g:link class="list" action="index"><g:message
-                    code="default.list.label" args="[entityName]"/></g:link></li>
+                    code="default.list.label"
+                    args="[entityName]"/></g:link></li>
             <li><g:link class="create" action="create"><g:message
                     code="default.new.label" args="[entityName]"/></g:link></li>
         </ul>
@@ -51,7 +52,8 @@
                         code="price.since.label" default="Since"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="since-label"><g:formatDate format="yyyy-MM-dd"
+                      aria-labelledby="since-label"><g:formatDate
+                        format="yyyy-MM-dd"
                         date="${priceInstance?.since}"/></span>
 
             </li>
@@ -65,7 +67,7 @@
                 <span class="property-value"
                       aria-labelledby="value-label">
                     <g:fieldValue
-                        bean="${priceInstance}" field="value"/>
+                            bean="${priceInstance}" field="value"/>
                 </span>
 
             </li>
@@ -73,15 +75,14 @@
 
     </ol>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER">
-        <g:form url="[resource: priceInstance, action: 'delete']" method="DELETE">
+    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+        <g:form url="[resource: priceInstance, action: 'delete']"
+                method="DELETE">
             <fieldset class="buttons">
                 <g:link class="edit" action="edit"
                         resource="${priceInstance}"><g:message
-                        code="default.button.edit.label" default="Edit"/></g:link>
-                <g:actionSubmit class="delete" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                        code="default.button.edit.label"
+                        default="Edit"/></g:link>
             </fieldset>
         </g:form>
     </sec:ifAnyGranted>
