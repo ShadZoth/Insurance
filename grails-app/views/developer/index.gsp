@@ -38,7 +38,6 @@
     #status h1 {
         text-transform: uppercase;
         font-size: 1.1em;
-        margin: 0 0 0.3em;
     }
 
     #page-body {
@@ -50,15 +49,10 @@
     }
 
     h2 {
-        margin-top: 1em;
         margin-bottom: 0.3em;
         font-size: 1em;
     }
 
-    p {
-        line-height: 1.5;
-        margin: 0.25em 0;
-    }
 
     #controller-list ul {
         list-style-position: inside;
@@ -70,19 +64,6 @@
         margin: 0.25em 0;
     }
 
-    @media screen and (max-width: 480px) {
-        #status {
-            display: none;
-        }
-
-        #page-body {
-            margin: 0 1em 1em;
-        }
-
-        #page-body h1 {
-            margin-top: 0;
-        }
-    }
     </style>
 </head>
 

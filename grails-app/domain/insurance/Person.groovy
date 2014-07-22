@@ -4,6 +4,14 @@ class Person extends Client {
 
     static hasMany = [licenses: License, passports: Passport]
 
+    def getSortedLicenses() {
+        licenses?.sort()
+    }
+
+    def getSortedPassports() {
+        passports?.sort()
+    }
+
     static constraints = {
     }
 

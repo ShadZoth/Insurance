@@ -3,24 +3,19 @@ package insurance
 class Product {
 
     String name
-
     Boolean corporate
-
     Boolean individual
 
     static hasMany = [pricelist: Price]
 
+    // Возвращает последнюю цену
     Price getCurrentPrice() {
-        if (pricelist) {
-            return pricelist.max(new Comparator<Price>() {
-                @Override
-                int compare(Price o1, Price o2) {
-                    o1.since - o2.since
-                }
-            });
-        } else {
-            return null
-        }
+        pricelist?.max()
+    }
+
+    // Возвращает цены, отсортированные по дате
+    Price getSortedPricelist() {
+       pricelist?.sort()
     }
 
     static constraints = {

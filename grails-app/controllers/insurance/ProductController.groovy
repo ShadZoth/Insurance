@@ -15,7 +15,8 @@ class ProductController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Product.list(params), model: [productInstanceCount: Product.count()]
+        def price = null
+        respond Product.list(params), model: [productInstanceCount: Product.count(), pricelist: price]
     }
 
     def show(Product productInstance) {
@@ -50,7 +51,8 @@ class ProductController {
     }
 
     def edit(Product productInstance) {
-        respond productInstance
+        def price = null
+        respond productInstance, model: [pricelist: price]
     }
 
     @Transactional

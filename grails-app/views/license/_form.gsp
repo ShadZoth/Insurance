@@ -33,17 +33,6 @@
 
 </div>
 
-%{--Выбор даты, дата окончания--}%
-<div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'expirationDate', 'error')} required">
-    <label for="expirationDate">
-        <g:message code="license.expirationDate.label" default="Expiration Date"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:datePicker name="expirationDate" precision="day" value="${licenseInstance?.expirationDate}"/>
-
-</div>
-
-
 %{-------------------------Чекбоксы. Категории прав------------------------------------------}%
 %{--TODO: сделать в строчку чекбоксы--}%
 

@@ -17,7 +17,13 @@ class Warrant {
     static constraints = {
         number(editable: false, nullable: false)
         client()
-        product() //TODO: Констрейнт individual corporate
+        vehicle(validator: { val, obj -> obj.client.vehicles.contains(val) })
+        product(validator: { val, obj ->
+            switch (obj.client) {
+                case Person: return val.individual; break;
+                case Company: return val.corporate; break;
+            }
+        })
         issueDate(nullable: false, shared: 'upToDate')
         expireDate(nullable: false, validator: { val, obj ->
             val > obj.issueDate

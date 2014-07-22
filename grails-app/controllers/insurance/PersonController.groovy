@@ -13,6 +13,8 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class PersonController {
 
+    def springSecurityService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 
@@ -26,15 +28,20 @@ class PersonController {
                     'in'("seller", me.sellers)
                 }
             }
+            //берем из списка Персонов
             respond theList, model: [personInstanceCount: (Person.createCriteria().count() {
+                // только такие, что
                 and {
+                    // in - поле seller лежит в списке me.sellers
                     'in'("seller", me.sellers)
                 }
             })]
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
-
+            //берем из списка Персонов
             def theList = Person.createCriteria().list(params) {
+                // только такие, что
                 and {
+                    // eq - поле seller равно me
                     eq("seller", me)
                 }
             }

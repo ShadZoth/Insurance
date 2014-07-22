@@ -2,7 +2,7 @@ package insurance
 
 import static insurance.Category.*
 
-class License {
+class License implements Comparable<License> {
 
     String number
     Date issueDate
@@ -132,5 +132,10 @@ class License {
     @Override
     public String toString() {
         "${owner} ${number}"
+    }
+
+    @Override
+    int compareTo(License o) {
+        issueDate - o.issueDate
     }
 }

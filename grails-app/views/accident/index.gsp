@@ -4,7 +4,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'accident.label', default: 'Accident')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="accident.list.label"/></title>
 </head>
 
 <body>
@@ -14,14 +14,13 @@
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_CALL_CENTER">
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                                      args="[entityName]"/></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="accident.new.label" default="New accident"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
 
     <div id="list-accident" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="accident.list.label" default="Accident list"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
