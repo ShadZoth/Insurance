@@ -36,11 +36,8 @@
                 <g:sortableColumn property="issueDate"
                                   title="${message(code: 'license.issueDate.label', default: 'Issue Date')}"/>
 
-                <g:sortableColumn property="a" title="${message(code: 'license.a.label', default: 'A')}"/>
-
-                <g:sortableColumn property="b" title="${message(code: 'license.b.label', default: 'B')}"/>
-
-                <g:sortableColumn property="c" title="${message(code: 'license.c.label', default: 'C')}"/>
+                <th><g:message code="license.categories.label"
+                               default="Categories"/></th>
 
             </tr>
             </thead>
@@ -55,11 +52,7 @@
 
                     <td><g:formatDate format="yyyy-MM-dd" date="${licenseInstance.issueDate}"/></td>
 
-                    <td><g:formatBoolean boolean="${licenseInstance.a}"/></td>
-
-                    <td><g:formatBoolean boolean="${licenseInstance.b}"/></td>
-
-                    <td><g:formatBoolean boolean="${licenseInstance.c}"/></td>
+                    <td><g:message message="${licenseInstance.cats()}"/></td>
 
                 </tr>
             </g:each>
