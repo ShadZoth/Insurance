@@ -26,9 +26,9 @@
 <div id="header">
     %{--Логотиип--}%
     <div id="grailsLogo" role="banner">
-        <a class="home" href="${createLink(uri: '/')}">
+        <g:link controller="home" action="index" class="home">
             <img src="${resource(dir: 'images', file: 'logo.png')}" alt="Grails"/>
-        </a>
+        </g:link>
     </div>
 
     %{--Название компании--}%
@@ -97,10 +97,10 @@
 
     %{--Выбор языка--}%
         <div id="lang">
-            <a href="${createLink(uri: '#')}">
+            <a href="${createLink(uri: '/?lang=en')}">
                 <img width="25" height="20" src="${resource(dir: 'images', file: 'en.png')}" alt="eng"/>
             </a>
-            <a href="${createLink(uri: '#')}">
+            <a href="${createLink(uri: '/?lang=ru_RU')}">
                 <img width="25" height="20" src="${resource(dir: 'images', file: 'rus.png')}" alt="rus"/>
             </a>
 
@@ -118,9 +118,9 @@
                 </g:link>
                 </li>
                 <li>
-                    <g:link action="index" controller="client">
+                    <a href="#">
                         <g:message code="layout.menu.seller.myclients" default="My clients"/>
-                    </g:link>
+                    </a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -138,9 +138,9 @@
                     <g:message code="layout.menu.manager.stuff" default="Stuff"/>
                 </g:link></li>
                 <li>
-                    <g:link action="index" controller="client">
+                    <a href="#">
                         <g:message code="layout.menu.manager.clients" default="Clients"/>
-                    </g:link>
+                    </a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -175,8 +175,8 @@
                     </ul>
                 </li>
                 <li>
-                    <g:link action="index" controller="client">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
+                    <a href="#">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -235,8 +235,8 @@
         <sec:ifAllGranted roles="ROLE_CALL_CENTER">
             <ul id="menu">
                 <li>
-                    <g:link action="index" controller="client">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
+                    <a href="#">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -279,7 +279,6 @@
         </sec:ifAllGranted>
         <sec:ifLoggedIn>
             <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
-
                 <input id="search_button" type="submit" value="${message(code: "searchable.find", default: "Find")}">
                 <input id="querySearch" type="text" size="50" placeholder="${message(code: "searchable.searche", default: "Search...")}" name="q">
             </g:form>

@@ -13,6 +13,8 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class PersonController {
 
+    def springSecurityService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 

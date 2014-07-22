@@ -21,7 +21,7 @@ class Certificate {
     static constraints = {
         number(nullable: false)
         vehicle()
-        color(maxSize: 18, nullable: true)
+        color(maxSize: 18)
         issueDate(nullable: false, shared: 'upToDate')
 //                validator: {val, obj ->
 //                    moreThanLast(val, obj) && upToDate(val)
