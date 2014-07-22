@@ -45,11 +45,6 @@
                 margin: 25px;
 			}
 
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
 
 
 			#controller-list ul {

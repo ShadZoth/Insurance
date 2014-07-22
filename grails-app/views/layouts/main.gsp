@@ -33,7 +33,13 @@
 
     %{--Название компании--}%
     <div id="companyName">
-        <H1 align=center>Страховая компания %companyname%</H1>
+        <H1 align=center>
+            <g:message code="company.name" default="TBI Inc."/>
+        </H1>
+
+        <H2 align="center">
+            <g:message code="company.fullname" default="The Best Insurance"/>
+           </H2>
     </div>
 
     %{--Когда не залогинены--}%
@@ -42,13 +48,13 @@
         %{--<H2 align=center>Login Form</H2>--}%
             <g:form id='loginForm' url="/Insurance/j_spring_security_check" method='POST'>
                 <div id="login_fields">
-                    <p><input type="text" name='j_username' id='username' placeholder="Логин"/></p>
+                    <p><input type="text" name='j_username' id='username' placeholder="${message(code: "springSecurity.login.label", default: "Login")}"/></p>
 
-                    <p><input type="password" placeholder="Пароль" name='j_password' id='password'/></p>
+                    <p><input type="password" placeholder="${message(code: "springSecurity.password.label", default: "Password")}" name='j_password' id='password'/></p>
                 </div>
 
                 <div id="login_buttons">
-                    <p><input type="submit" id="submit" value='Войти'/></p>
+                    <p><input type="submit" id="submit" value='${message(code: "springSecurity.login.button")}'/></p>
 
                     <p id="remember_me_holder">
                         <input type='checkbox' class='chk' name='${rememberMeParameter}'
@@ -63,7 +69,9 @@
     %{--Когода залогинены--}%
         <sec:ifLoggedIn>
             <div id="logout">
-                <p>Вы вошли как <sec:username/>
+                <p>
+                    <g:message code="springSecurity.logout.loggedas" default="You logged as "/>
+                    <sec:username/>
                 (<g:link controller='logout'>
                     <g:message code="springSecurity.logout.button" default="Exit"/>
                 </g:link>)
@@ -105,66 +113,121 @@
     <div id="navigation_bar">
         <sec:ifAllGranted roles="ROLE_SELLER">
             <ul id="menu">
-                <li><g:link action="index" controller="warrant">Мои продажи</g:link></li>
+                <li><g:link action="index" controller="warrant">
+                    <g:message code="layout.menu.seller.mysales" default="My sales"/>
+                </g:link>
+                </li>
                 <li>
-                    <g:link action="index" controller="client">Мои клиенты</g:link>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.seller.myclients" default="My clients"/>
+                    </g:link>
                     <ul>
-                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
-                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                        <li><g:link action="index" controller="person">
+                            <g:message code="layout.menu.seller.persons" default="Persons"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="company">
+                            <g:message code="layout.menu.seller.companies" default="Companies"/>
+                        </g:link></li>
                     </ul>
                 </li>
             </ul>
         </sec:ifAllGranted>
         <sec:ifAllGranted roles="ROLE_MANAGER">
             <ul id="menu">
-                <li><g:link action="index" controller="user">Подчиненные</g:link></li>
+                <li><g:link action="index" controller="user">
+                    <g:message code="layout.menu.manager.stuff" default="Stuff"/>
+                </g:link></li>
                 <li>
-                    <g:link action="index" controller="client">Клиенты</g:link>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/>
+                    </g:link>
                     <ul>
-                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
-                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                        <li><g:link action="index" controller="person">
+                            <g:message code="layout.menu.seller.persons" default="Persons"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="company">
+                            <g:message code="layout.menu.seller.companies" default="Companies"/>
+                        </g:link></li>
                     </ul>
                 </li>
-                <li><g:link action="index" controller="warrant">Продажи</g:link></li>
-                <li><g:link action="index" controller="product">Продукты</g:link></li>
+                <li><g:link action="index" controller="warrant">
+                    <g:message code="layout.menu.manager.sales" default="Sales"/>
+                </g:link></li>
+                <li><g:link action="index" controller="product">
+                    <g:message code="layout.menu.manager.products" default="Products"/>
+                </g:link></li>
             </ul>
         </sec:ifAllGranted>
         <sec:ifAllGranted roles="ROLE_ADMIN">
             <ul id="menu">
                 <li>
-                    <a href="#">Управление</a>
+                    <a href="#">
+                        <g:message code="layout.menu.admin.controls" default="Controls"/>
+                    </a>
                     <ul>
-                        <li><g:link action="index" controller="user">Пользователи</g:link></li>
+                        <li><g:link action="index" controller="user">
+                            <g:message code="layout.menu.admin.users" default="Users"/>
+                        </g:link></li>
                         %{--<li><g:link action="index" controller="console">Консоль</g:link></li>--}%
-                        <li><g:link action="index" controller="developer">Контроллеры</g:link></li>
+                        <li><g:link action="index" controller="developer">
+                            <g:message code="layout.menu.admin.controllers" default="Controllers"/>
+                        </g:link></li>
                     </ul>
                 </li>
                 <li>
-                    <g:link action="index" controller="client">Клиенты</g:link>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                     <ul>
-                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
-                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                        <li><g:link action="index" controller="person">
+                            <g:message code="layout.menu.seller.persons" default="Persons"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="company">
+                            <g:message code="layout.menu.seller.companies" default="Companies"/>
+                        </g:link></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Информация</a>
+                    <a href="#">
+                        <g:message code="layout.menu.admin.information" default="Information"/>
+                    </a>
                     <ul>
-                        <li><g:link action="index" controller="accident">Аварии</g:link></li>
-                        <li><g:link action="index" controller="contact">Контакты</g:link></li>
-                        <li><g:link action="index" controller="license">Вод. права</g:link></li>
-                        <li><g:link action="index" controller="passport">Паспорта</g:link></li>
-                        <li><g:link action="index" controller="payment">Выплаты</g:link></li>
-                        <li><g:link action="index" controller="vehicle">Траспорт</g:link></li>
-                        <li><g:link action="index" controller="warrant">Продажи</g:link></li>
+                        <li><g:link action="index" controller="accident">
+                            <g:message code="layout.menu.admin.accidents" default="Accidents"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="contact">
+                            <g:message code="layout.menu.admin.contacts" default="Contacts"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="license">
+                            <g:message code="layout.menu.admin.license" default="License"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="passport">
+                            <g:message code="layout.menu.admin.passport" default="Passports"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="payment">
+                            <g:message code="layout.menu.admin.payments" default="Payments"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="vehicle">
+                            <g:message code="layout.menu.admin.vehicles" default="Vehicles"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="warrant">
+                            <g:message code="layout.menu.admin.warrants" default="Warrants"/>
+                        </g:link></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Справочники</a>
+                    <a href="#">
+                        <g:message code="layout.menu.admin.handbooks" default="Handbooks"/>
+                    </a>
                     <ul>
-                        <li><g:link action="index" controller="manufacturer">Производители</g:link></li>
-                        <li><g:link action="index" controller="contact">Контакты</g:link></li>
-                        <li><g:link action="index" controller="price">Цены</g:link></li>
-                        <li><g:link action="index" controller="product">Продукты</g:link></li>
+                        <li><g:link action="index" controller="manufacturer">
+                            <g:message code="layout.menu.admin.manufacturers" default="Manufacturers"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="price">
+                            <g:message code="layout.menu.admin.prices" default="Prices"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="product">
+                            <g:message code="layout.menu.admin.products" default="Products"/>
+                        </g:link></li>
                     </ul>
                 </li>
             </ul>
@@ -172,30 +235,53 @@
         <sec:ifAllGranted roles="ROLE_CALL_CENTER">
             <ul id="menu">
                 <li>
-                    <g:link action="index" controller="client">Клиенты</g:link>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                     <ul>
-                        <li><g:link action="index" controller="person">Физические лица</g:link></li>
-                        <li><g:link action="index" controller="company">Юридические лица</g:link></li>
+                        <li><g:link action="index" controller="person">
+                            <g:message code="layout.menu.seller.persons" default="Persons"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="company">
+                            <g:message code="layout.menu.seller.companies" default="Companies"/>
+                        </g:link></li>
                     </ul>
                 </li>
-                <li><g:link action="index" controller="accident">Аварии</g:link></li>
+                <li><g:link action="index" controller="accident">
+                    <g:message code="layout.menu.admin.accidents" default="Accidents"/>
+                </g:link>
+                </li>
                 <li>
-                    <a href="#">Информация</a>
+                    <a href="#">
+                        <g:message code="layout.menu.admin.information" default="Information"/>
+                    </a>
                     <ul>
-                        <li><g:link action="index" controller="contact">Контакты</g:link></li>
-                        <li><g:link action="index" controller="passport">Паспорта</g:link></li>
-                        <li><g:link action="index" controller="payment">Выплаты</g:link></li>
-                        <li><g:link action="index" controller="vehicle">Траспорт</g:link></li>
-                        <li><g:link action="index" controller="warrant">Продажи</g:link></li>
+                        <li><g:link action="index" controller="contact">
+                            <g:message code="layout.menu.admin.contacts" default="Contacts"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="passport">
+                            <g:message code="layout.menu.admin.passport" default="Passports"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="payment">
+                            <g:message code="layout.menu.admin.payments" default="Payments"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="vehicle">
+                            <g:message code="layout.menu.admin.vehicles" default="Vehicles"/>
+                        </g:link></li>
+                        <li><g:link action="index" controller="warrant">
+                            <g:message code="layout.menu.admin.warrants" default="Warrants"/>
+                        </g:link></li>
                     </ul>
                 </li>
-                <li><g:link action="index" controller="price">Цены</g:link></li>
+                <li><g:link action="index" controller="price">
+                    <g:message code="layout.menu.admin.prices" default="Prices"/>
+                </g:link></li>
             </ul>
         </sec:ifAllGranted>
         <sec:ifLoggedIn>
             <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
-                <input id="search_button" type="submit" value="Найти">
-                <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
+
+                <input id="search_button" type="submit" value="${message(code: "searchable.find", default: "Find")}">
+                <input id="querySearch" type="text" size="50" placeholder="${message(code: "searchable.searche", default: "Search...")}" name="q">
             </g:form>
         </sec:ifLoggedIn>
     </div>
