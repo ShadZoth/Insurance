@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contracts" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="475a8ff8-6d21-432f-ad40-d62f47a4fa93">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contracts" language="groovy" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="475a8ff8-6d21-432f-ad40-d62f47a4fa93">
+	<property name="ireport.zoom" value="1.0000000000000118"/>
+	<property name="ireport.x" value="70"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
@@ -40,24 +40,24 @@ WHERE
 	<title>
 		<band height="72">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="526fdcb9-2f73-4165-9878-b478b6418762"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="1191" height="92" backcolor="#006699" uuid="526fdcb9-2f73-4165-9878-b478b6418762"/>
 				<staticText>
-					<reportElement x="251" y="10" width="344" height="43" forecolor="#FFFFFF" uuid="67ab8218-5661-4d60-9c97-9135dca0a7b2"/>
+					<reportElement x="640" y="6" width="518" height="43" forecolor="#FFFFFF" uuid="67ab8218-5661-4d60-9c97-9135dca0a7b2"/>
 					<textElement>
-						<font size="34" isBold="true"/>
+						<font size="34" isBold="true" isItalic="false" isUnderline="false"/>
 					</textElement>
-					<text><![CDATA[Current contracts]]></text>
+					<text><![CDATA[current individual warrants]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="405" y="53" width="180" height="20" forecolor="#FFFFFF" uuid="1f990bbf-73ef-4b76-8566-fb64b2d31eb6"/>
+					<reportElement x="978" y="49" width="180" height="20" forecolor="#FFFFFF" uuid="1f990bbf-73ef-4b76-8566-fb64b2d31eb6"/>
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
-					<text><![CDATA[individual]]></text>
+					<text><![CDATA[]]></text>
 				</staticText>
 				<image>
 					<reportElement x="11" y="6" width="80" height="80" uuid="45711e03-f008-49aa-8a42-149fc7917877"/>
-					<imageExpression><![CDATA["/home/mikhail/IdeaProjects/Insurance/web-app/reports/logo.png"]]></imageExpression>
+					<imageExpression><![CDATA["logo.png"]]></imageExpression>
 				</image>
 			</frame>
 		</band>
@@ -66,156 +66,156 @@ WHERE
 		<band height="13"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="21">
+		<band height="37">
 			<line>
-				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="a30431f6-34fd-4662-94f2-d80e1cb2f184"/>
+				<reportElement x="-20" y="20" width="1188" height="2" forecolor="#666666" uuid="a30431f6-34fd-4662-94f2-d80e1cb2f184"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7b4b564b-04ee-47d5-b270-c78045383ab7"/>
+				<reportElement mode="Opaque" x="0" y="0" width="137" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7b4b564b-04ee-47d5-b270-c78045383ab7"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[warrant_number]]></text>
+				<text><![CDATA[warrant number]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="55" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e62c87f3-1ef6-4344-9e94-24f709494bfa"/>
+				<reportElement mode="Opaque" x="686" y="0" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="808b14b9-4434-4764-b7a5-6333c4962fab"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[passport_number]]></text>
+				<text><![CDATA[issue date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="110" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="526b6d73-44e5-446e-852f-c9847e46410f"/>
+				<reportElement mode="Opaque" x="800" y="0" width="96" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="daa37848-1fcb-4b08-806a-23abd246ecfd"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[passport_last_name]]></text>
+				<text><![CDATA[expire date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="165" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fc0b9339-79e0-465d-a870-51de767add95"/>
+				<reportElement mode="Opaque" x="982" y="0" width="100" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="63af8998-4dab-47f5-bb2c-f4bf7bc482b8"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[passport_first_name]]></text>
+				<text><![CDATA[product name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="220" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a7cd699f-62df-49a5-8a23-d39d6a4b753e"/>
+				<reportElement mode="Opaque" x="1082" y="0" width="66" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fcd15c76-0d5d-427e-bc7c-92eebde016a3"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[passport_fath_name]]></text>
+				<text><![CDATA[price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="275" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="808b14b9-4434-4764-b7a5-6333c4962fab"/>
+				<reportElement mode="Opaque" x="554" y="-1" width="132" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a7cd699f-62df-49a5-8a23-d39d6a4b753e"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[warrant_issue_date]]></text>
+				<text><![CDATA[patronymic name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="330" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="daa37848-1fcb-4b08-806a-23abd246ecfd"/>
+				<reportElement mode="Opaque" x="896" y="0" width="86" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f50e7b60-8be0-4217-8d1d-24db762d9ded"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[warrant_expire_date]]></text>
+				<text><![CDATA[seller]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="385" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f50e7b60-8be0-4217-8d1d-24db762d9ded"/>
+				<reportElement mode="Opaque" x="409" y="0" width="146" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fc0b9339-79e0-465d-a870-51de767add95"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[user_username]]></text>
+				<text><![CDATA[first name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="440" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="63af8998-4dab-47f5-bb2c-f4bf7bc482b8"/>
+				<reportElement mode="Opaque" x="265" y="0" width="144" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="526b6d73-44e5-446e-852f-c9847e46410f"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[product_name]]></text>
+				<text><![CDATA[last name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="495" y="0" width="55" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fcd15c76-0d5d-427e-bc7c-92eebde016a3"/>
+				<reportElement mode="Opaque" x="137" y="0" width="128" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e62c87f3-1ef6-4344-9e94-24f709494bfa"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[warrant_price]]></text>
+				<text><![CDATA[passport number]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20">
+		<band height="29">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="fe2eb3eb-5f17-4b62-b4ad-40caf6a19425"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="23" width="1148" height="1" uuid="fe2eb3eb-5f17-4b62-b4ad-40caf6a19425"/>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="0" width="55" height="20" uuid="c6df044c-e517-463f-8dc8-bd4f04262ae1"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{warrant_number}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="55" y="0" width="55" height="20" uuid="ae31a2b0-0339-44e9-adfc-ea603f902ef1"/>
-				<textElement>
+				<reportElement x="137" y="0" width="128" height="20" uuid="ae31a2b0-0339-44e9-adfc-ea603f902ef1"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_number}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="110" y="0" width="55" height="20" uuid="4a41772d-3ce1-418f-ac5c-b406874901e2"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{passport_last_name}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="165" y="0" width="55" height="20" uuid="048f792c-05fd-4433-b5bd-9c9f68bcba6a"/>
-				<textElement>
+				<reportElement x="409" y="0" width="145" height="20" uuid="048f792c-05fd-4433-b5bd-9c9f68bcba6a"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_first_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="220" y="0" width="55" height="20" uuid="6d3ab211-2bae-44a2-a734-abf402f34f78"/>
-				<textElement>
+				<reportElement x="554" y="0" width="132" height="20" uuid="6d3ab211-2bae-44a2-a734-abf402f34f78"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_fath_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="275" y="0" width="55" height="20" uuid="b2fee635-ad31-414a-bd98-5c4f23e80b1f"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{warrant_issue_date}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="330" y="0" width="55" height="20" uuid="138dd61c-0975-4a4a-8bc5-600955312e61"/>
-				<textElement>
+				<reportElement x="800" y="0" width="96" height="23" uuid="138dd61c-0975-4a4a-8bc5-600955312e61"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{warrant_expire_date}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="385" y="0" width="55" height="20" uuid="5736eaed-dddd-4d06-989b-f10b10704e14"/>
-				<textElement>
+				<reportElement x="896" y="0" width="86" height="23" uuid="5736eaed-dddd-4d06-989b-f10b10704e14"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{user_username}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="440" y="0" width="55" height="20" uuid="4cbd74f6-0f1e-4eb4-9b26-ae0c0e4e4d8d"/>
-				<textElement>
+				<reportElement x="982" y="0" width="100" height="23" uuid="4cbd74f6-0f1e-4eb4-9b26-ae0c0e4e4d8d"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="495" y="0" width="55" height="20" uuid="2cd8a261-6e87-4ed7-ba36-48fc1c99d7f9"/>
-				<textElement>
+				<reportElement x="1082" y="0" width="68" height="23" uuid="2cd8a261-6e87-4ed7-ba36-48fc1c99d7f9"/>
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{warrant_price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="686" y="0" width="114" height="23" uuid="b2fee635-ad31-414a-bd98-5c4f23e80b1f"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{warrant_issue_date}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="265" y="0" width="144" height="20" uuid="4a41772d-3ce1-418f-ac5c-b406874901e2"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{passport_last_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="137" height="20" uuid="c6df044c-e517-463f-8dc8-bd4f04262ae1"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{warrant_number}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
