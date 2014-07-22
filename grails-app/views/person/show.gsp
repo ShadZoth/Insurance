@@ -32,7 +32,7 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <ol class="property-list person">
-        %{--Дата регистрации--}%
+    %{--Дата регистрации--}%
         <g:if test="${personInstance?.registrationDate}">
             <li class="fieldcontain">
                 <span id="registrationDate-label"
@@ -48,7 +48,7 @@
             </li>
         </g:if>
 
-        %{--Продавец--}%
+    %{--Продавец--}%
         <g:if test="${personInstance?.seller}">
             <li class="fieldcontain">
                 <span id="seller-label" class="property-label"><g:message
@@ -89,7 +89,7 @@
         </sec:ifAnyGranted>
 
 
-        %{--Создание контакта--}%
+    %{--Создание контакта--}%
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">
                 <g:link class="create" controller="contact" action="create"
@@ -100,7 +100,7 @@
         </sec:ifAnyGranted>
 
 
-        %{--Архивирован--}%
+    %{--Архивирован--}%
         <g:if test="${personInstance?.archived}">
             <li class="fieldcontain">
                 <span id="archived-label" class="property-label"><g:message
@@ -113,7 +113,7 @@
             </li>
         </g:if>
 
-        %{--Список прав--}%
+    %{--Список прав--}%
         <g:if test="${personInstance?.sortedLicenses}">
             <li class="fieldcontain">
                 <span id="licenses-label" class="property-label"><g:message
@@ -129,7 +129,7 @@
             </li>
         </g:if>
 
-        %{--Добавить права--}%
+    %{--Добавить права--}%
         <g:if test="${personInstance?.contacts}">
             <li class="fieldcontain">
                 <span id="contacts-label" class="property-label"><g:message
@@ -208,9 +208,6 @@
                         resource="${personInstance}"><g:message
                         code="default.button.edit.label"
                         default="Edit"/></g:link>
-                <g:actionSubmit class="delete" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
             </fieldset>
         </g:form>
     </sec:ifAnyGranted>
