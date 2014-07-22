@@ -75,7 +75,7 @@
 
     </ol>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
         <g:form url="[resource: priceInstance, action: 'delete']"
                 method="DELETE">
             <fieldset class="buttons">
