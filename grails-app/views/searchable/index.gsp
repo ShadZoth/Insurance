@@ -76,7 +76,7 @@
         margin: 1em 2em;
     }
 
-    #search_page_in li, p {
+    #search_page_in li {
         margin-bottom: 1em;
     }
     </style>

@@ -22,17 +22,21 @@
 </head>
 
 <body>
+%{--Заголовок--}%
 <div id="header">
+    %{--Логотиип--}%
     <div id="grailsLogo" role="banner">
         <a class="home" href="${createLink(uri: '/')}">
             <img src="${resource(dir: 'images', file: 'logo.png')}" alt="Grails"/>
         </a>
     </div>
 
+    %{--Название компании--}%
     <div id="companyName">
         <H1 align=center>Страховая компания %companyname%</H1>
     </div>
 
+    %{--Когда не залогинены--}%
     <div id="login_Form">
         <sec:ifNotLoggedIn>
         %{--<H2 align=center>Login Form</H2>--}%
@@ -55,28 +59,48 @@
             </g:form>
 
         </sec:ifNotLoggedIn>
+
+    %{--Когода залогинены--}%
         <sec:ifLoggedIn>
             <div id="logout">
-                <p>Вы вошли как <sec:username/> (<g:link controller='logout'>
-                    <g:message code="springSecurity.logout.button"
-                               default="Exit"/>
-                </g:link>)</p>
-                <sec:ifAllGranted roles="ROLE_ADMIN"><p><g:message code="role.admin"
-                                                                   default="Admin"/></p>
+                <p>Вы вошли как <sec:username/>
+                (<g:link controller='logout'>
+                    <g:message code="springSecurity.logout.button" default="Exit"/>
+                </g:link>)
+                </p>
+
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <p><g:message code="role.admin" default="Admin"/></p>
                 </sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_MANAGER"><p>
-                    <g:message code="role.manager"
-                               default="Manager"/>
-                </p></sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_SELLER"><p><g:message code="role.seller"
-                                                                    default="Seller"/></p></sec:ifAllGranted>
-                <sec:ifAllGranted roles="ROLE_CALL_CENTER"><p><g:message code="role.call-center"
-                                                                         default="Call-center"/></p></sec:ifAllGranted>
+
+                <sec:ifAllGranted roles="ROLE_MANAGER">
+                    <p><g:message code="role.manager" default="Manager"/></p>
+                </sec:ifAllGranted>
+
+                <sec:ifAllGranted roles="ROLE_SELLER">
+                    <p><g:message code="role.seller" default="Seller"/></p>
+                </sec:ifAllGranted>
+
+                <sec:ifAllGranted roles="ROLE_CALL_CENTER">
+                    <p><g:message code="role.call-center" default="Call-center"/></p>
+                </sec:ifAllGranted>
             </div>
         </sec:ifLoggedIn>
+
+    %{--Выбор языка--}%
+        <div id="lang">
+            <a href="${createLink(uri: '#')}">
+                <img width="25" height="20" src="${resource(dir: 'images', file: 'en.png')}" alt="eng"/>
+            </a>
+            <a href="${createLink(uri: '#')}">
+                <img width="25" height="20" src="${resource(dir: 'images', file: 'rus.png')}" alt="rus"/>
+            </a>
+
+        </div>
     </div>
 </div>
 
+%{--Строка поиска и меню--}%
 <div id="search_string">
     <div id="navigation_bar">
         <sec:ifAllGranted roles="ROLE_SELLER">
@@ -168,10 +192,12 @@
                 <li><g:link action="index" controller="price">Цены</g:link></li>
             </ul>
         </sec:ifAllGranted>
-        <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
-            <input id="search_button" type="submit" value="Найти">
-            <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
-        </g:form>
+        <sec:ifLoggedIn>
+            <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
+                <input id="search_button" type="submit" value="Найти">
+                <input id="querySearch" type="text" size="50" placeholder="Поиск..." name="q">
+            </g:form>
+        </sec:ifLoggedIn>
     </div>
 </div>
 
