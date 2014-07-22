@@ -617,7 +617,7 @@ a.skip {
 }
 
 #login_Form {
-    padding-top: 25px;
+    padding-top: 10px;
     padding-left: 10px;
     float: right;
     width: 280px;
@@ -667,8 +667,15 @@ input[type="submit"] {
 #logout a {
     color: #ff8;
 }
+
 #logout p {
     margin-top: -10px;
+    padding-top: 5px;
+}
+
+#lang {
+    float: right;
+    width: 260px;
     padding-top: 5px;
 }
 
@@ -678,7 +685,7 @@ input[type="submit"] {
     height: 24px;
 }
 
-#searchableForm{
+#searchableForm {
     float: right;
 }
 
@@ -687,13 +694,11 @@ input[type="submit"] {
     height: 32px;
 }
 
-#search_string
-{
+#search_string {
     height: 32px;
     background-image: url(../images/back_search.png);
     border-bottom: 1px #888899 solid;
 }
-
 
 #menu {
     z-index: 100000;
@@ -710,11 +715,13 @@ input[type="submit"] {
     padding-bottom: 1px;
     border: 1px #f3f3ff solid;
 }
+
 #menu li ul {
     list-style: none;
     width: 155px;
     display: none;
 }
+
 #menu li ul li {
     height: 27px;
     width: 155px;
@@ -722,8 +729,7 @@ input[type="submit"] {
     background: #e9e9e9;
 }
 
-#menu li ul li a
-{
+#menu li ul li a {
 }
 
 #menu li a {
@@ -739,8 +745,9 @@ input[type="submit"] {
 
 #menu li ul li:hover, #menu li ul li a:hover, #menu li a:hover, li:hover,
 #menu li ul:hover, #menu li ul a:hover, #menu li ul a:hover, li a:hover,
-#menu li ul:first-child
-{
+#menu li ul:first-child {
     background: #fbfbfb;
     z-index: 100000;
 }
+
+
