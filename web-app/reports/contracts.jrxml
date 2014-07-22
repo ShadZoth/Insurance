@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contracts" language="groovy" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="475a8ff8-6d21-432f-ad40-d62f47a4fa93">
-	<property name="ireport.zoom" value="1.0000000000000118"/>
-	<property name="ireport.x" value="70"/>
+	<property name="ireport.zoom" value="0.9090909090909228"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
      warrant."expire_date" AS warrant_expire_date,
      warrant."issue_date" AS warrant_issue_date,
@@ -14,50 +14,55 @@
      passport."first_name" AS passport_first_name,
      passport."number" AS passport_number,
      product."name" AS product_name,
-     passport."last_name" AS passport_last_name
+     passport."last_name" AS passport_last_name,
+     certificate."number" AS certificate_number
 FROM
      "public"."client" client INNER JOIN "public"."warrant" warrant ON client."id" = warrant."client_id"
      INNER JOIN "public"."user" "user" ON client."seller_id" = "user"."id"
      INNER JOIN "public"."passport" passport ON client."id" = passport."person_id"
+     INNER JOIN "public"."vehicle" vehicle ON client."id" = vehicle."owner_id"
+     AND vehicle."id" = warrant."vehicle_id"
+     INNER JOIN "public"."certificate" certificate ON vehicle."id" = certificate."vehicle_id"
      INNER JOIN "public"."product" product ON warrant."product_id" = product."id"
 WHERE
      now()::date BETWEEN warrant.issue_date AND warrant.expire_date
  AND passport.issue_date >= ( SELECT MAX(issue_date) FROM "public"."passport" inner_passport WHERE passport."id" = inner_passport."id" )]]>
 	</queryString>
-	<field name="warrant_number" class="java.lang.String"/>
-	<field name="passport_number" class="java.lang.String"/>
-	<field name="passport_last_name" class="java.lang.String"/>
-	<field name="passport_first_name" class="java.lang.String"/>
-	<field name="passport_fath_name" class="java.lang.String"/>
-	<field name="warrant_issue_date" class="java.sql.Date"/>
 	<field name="warrant_expire_date" class="java.sql.Date"/>
-	<field name="user_username" class="java.lang.String"/>
-	<field name="product_name" class="java.lang.String"/>
+	<field name="warrant_issue_date" class="java.sql.Date"/>
+	<field name="warrant_number" class="java.lang.String"/>
 	<field name="warrant_price" class="java.math.BigDecimal"/>
+	<field name="user_username" class="java.lang.String"/>
+	<field name="passport_fath_name" class="java.lang.String"/>
+	<field name="passport_first_name" class="java.lang.String"/>
+	<field name="passport_number" class="java.lang.String"/>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="passport_last_name" class="java.lang.String"/>
+	<field name="certificate_number" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
 	<title>
-		<band height="72">
+		<band height="73">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="1191" height="92" backcolor="#006699" uuid="526fdcb9-2f73-4165-9878-b478b6418762"/>
+				<reportElement mode="Opaque" x="-20" y="-19" width="1191" height="92" backcolor="#006699" uuid="526fdcb9-2f73-4165-9878-b478b6418762"/>
 				<staticText>
-					<reportElement x="640" y="6" width="518" height="43" forecolor="#FFFFFF" uuid="67ab8218-5661-4d60-9c97-9135dca0a7b2"/>
+					<reportElement x="732" y="19" width="438" height="43" forecolor="#FFFFFF" uuid="67ab8218-5661-4d60-9c97-9135dca0a7b2"/>
 					<textElement>
 						<font size="34" isBold="true" isItalic="false" isUnderline="false"/>
 					</textElement>
 					<text><![CDATA[current individual warrants]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="978" y="49" width="180" height="20" forecolor="#FFFFFF" uuid="1f990bbf-73ef-4b76-8566-fb64b2d31eb6"/>
+					<reportElement x="120" y="35" width="180" height="20" forecolor="#FFFFFF" uuid="1f990bbf-73ef-4b76-8566-fb64b2d31eb6"/>
 					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
+						<font size="14" isBold="true" isItalic="false"/>
 					</textElement>
-					<text><![CDATA[]]></text>
+					<text><![CDATA[ЗБС СТРАХОВАНИЕ]]></text>
 				</staticText>
 				<image>
 					<reportElement x="11" y="6" width="80" height="80" uuid="45711e03-f008-49aa-8a42-149fc7917877"/>
-					<imageExpression><![CDATA["logo.png"]]></imageExpression>
+					<imageExpression><![CDATA["web-app/images/logo.png"]]></imageExpression>
 				</image>
 			</frame>
 		</band>
@@ -68,10 +73,10 @@ WHERE
 	<columnHeader>
 		<band height="37">
 			<line>
-				<reportElement x="-20" y="20" width="1188" height="2" forecolor="#666666" uuid="a30431f6-34fd-4662-94f2-d80e1cb2f184"/>
+				<reportElement x="-20" y="20" width="1191" height="1" forecolor="#666666" uuid="a30431f6-34fd-4662-94f2-d80e1cb2f184"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="137" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7b4b564b-04ee-47d5-b270-c78045383ab7"/>
+				<reportElement mode="Opaque" x="0" y="1" width="137" height="19" forecolor="#006699" backcolor="#E6E6E6" uuid="7b4b564b-04ee-47d5-b270-c78045383ab7"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -106,11 +111,11 @@ WHERE
 				<text><![CDATA[price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="554" y="-1" width="132" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a7cd699f-62df-49a5-8a23-d39d6a4b753e"/>
+				<reportElement mode="Opaque" x="554" y="0" width="132" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a7cd699f-62df-49a5-8a23-d39d6a4b753e"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[patronymic name]]></text>
+				<text><![CDATA[license plate]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="896" y="0" width="86" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f50e7b60-8be0-4217-8d1d-24db762d9ded"/>
@@ -166,14 +171,14 @@ WHERE
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{passport_fath_name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{certificate_number}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" >
 				<reportElement x="800" y="0" width="96" height="23" uuid="138dd61c-0975-4a4a-8bc5-600955312e61"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{warrant_expire_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM-dd-yyyy").format($F{warrant_expire_date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="896" y="0" width="86" height="23" uuid="5736eaed-dddd-4d06-989b-f10b10704e14"/>
@@ -201,7 +206,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{warrant_issue_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM-dd-yyyy").format($F{warrant_issue_date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="265" y="0" width="144" height="20" uuid="4a41772d-3ce1-418f-ac5c-b406874901e2"/>
