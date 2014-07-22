@@ -90,11 +90,11 @@
 
 		<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
 			<p>
-				<input type='text' class='text_' name='j_username' id='username' placeholder="Логин"/>
+				<input type='text' class='text_' name='j_username' id='username' placeholder="${message(code: "springSecurity.login.label", default: "Login")}"/>
 			</p>
 
 			<p>
-				<input type='password' class='text_' name='j_password' id='password' placeholder="Пароль"/>
+				<input type='password' class='text_' name='j_password' id='password' placeholder="${message(code: "springSecurity.password.label", default: "Password")}"/>
 			</p>
 
 			<p id="remember_me_holder">
