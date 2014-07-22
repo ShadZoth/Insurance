@@ -6,6 +6,7 @@ import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
+
 @Secured(['ROLE_ADMIN', 'ROLE_MANAGER'])
 
 @Transactional(readOnly = true)
@@ -20,15 +21,36 @@ class UserController {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
         def list = User.list(params).findAll {
-            // если я админ, то для всех true, если я менеджер, то только для тех, кто содержится в моих sellers
-            return hasRoleService.serviceMethod(me, 'ROLE_ADMIN') ||
-            hasRoleService.serviceMethod(me, 'ROLE_MANAGER') && me.sellers.contains(it)
+            // если я админ, то для всех true, если я менеджер, то только для тех, кто содержится в моих sellers и продавцы без менеджера
+            if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN')) {
+                return true
+            } else if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER') && hasRoleService.serviceMethod(it, 'ROLE_SELLER')) {
+                if (!it.manager) {
+                    return true
+                }
+                if (it.manager == me) {
+                    return true
+                }
+            }
+            return false
         };
         respond list, model: [userInstanceCount: list.size()]
     }
 
     def show(User userInstance) {
         respond userInstance
+    }
+
+    @Transactional
+    def addManager(User userInstance) {
+        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
+        me.addSeller(userInstance)
+        request.withFormat {
+            form multipartForm {
+                redirect userInstance
+            }
+            '*' { respond userInstance }
+        }
     }
 
     def create() {
