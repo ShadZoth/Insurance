@@ -26,9 +26,9 @@
 <div id="header">
     %{--Логотиип--}%
     <div id="grailsLogo" role="banner">
-        <a class="home" href="${createLink(uri: '/')}">
+        <g:link controller="home" action="index" class="home">
             <img src="${resource(dir: 'images', file: 'logo.png')}" alt="Grails"/>
-        </a>
+        </g:link>
     </div>
 
     %{--Название компании--}%
@@ -97,10 +97,10 @@
 
     %{--Выбор языка--}%
         <div id="lang">
-            <a href="${createLink(uri: '#')}">
+            <a href="${createLink(uri: '/?lang=en')}">
                 <img width="25" height="20" src="${resource(dir: 'images', file: 'en.png')}" alt="eng"/>
             </a>
-            <a href="${createLink(uri: '#')}">
+            <a href="${createLink(uri: '/?lang=ru_RU')}">
                 <img width="25" height="20" src="${resource(dir: 'images', file: 'rus.png')}" alt="rus"/>
             </a>
 
@@ -279,7 +279,6 @@
         </sec:ifAllGranted>
         <sec:ifLoggedIn>
             <g:form id="searchableForm" name="searchableForm" method="get" controller="searchable" action="index">
-
                 <input id="search_button" type="submit" value="${message(code: "searchable.find", default: "Find")}">
                 <input id="querySearch" type="text" size="50" placeholder="${message(code: "searchable.searche", default: "Search...")}" name="q">
             </g:form>
