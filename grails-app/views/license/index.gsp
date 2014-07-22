@@ -4,7 +4,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'license.label', default: 'License')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="license.list.label"/></title>
 </head>
 
 <body>
@@ -14,14 +14,13 @@
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                                      args="[entityName]"/></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="license.create.label"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
 
     <div id="list-license" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="license.list.label"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>

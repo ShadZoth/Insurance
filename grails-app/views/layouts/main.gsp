@@ -118,9 +118,9 @@
                 </g:link>
                 </li>
                 <li>
-                    <g:link action="index" controller="client">
+                    <a href="#">
                         <g:message code="layout.menu.seller.myclients" default="My clients"/>
-                    </g:link>
+                    </a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -138,9 +138,9 @@
                     <g:message code="layout.menu.manager.stuff" default="Stuff"/>
                 </g:link></li>
                 <li>
-                    <g:link action="index" controller="client">
+                    <a href="#">
                         <g:message code="layout.menu.manager.clients" default="Clients"/>
-                    </g:link>
+                    </a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -175,8 +175,8 @@
                     </ul>
                 </li>
                 <li>
-                    <g:link action="index" controller="client">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
+                    <a href="#">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
@@ -235,8 +235,8 @@
         <sec:ifAllGranted roles="ROLE_CALL_CENTER">
             <ul id="menu">
                 <li>
-                    <g:link action="index" controller="client">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
+                    <a href="#">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></a>
                     <ul>
                         <li><g:link action="index" controller="person">
                             <g:message code="layout.menu.seller.persons" default="Persons"/>
