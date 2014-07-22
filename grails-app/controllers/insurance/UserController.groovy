@@ -15,26 +15,39 @@ class UserController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def hasRoleService
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         // получаем себя
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
-        def list = User.list(params).findAll {
-            // если я админ, то для всех true, если я менеджер, то только для тех, кто содержится в моих sellers и продавцы без менеджера
-            if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN')) {
-                return true
-            } else if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER') && hasRoleService.serviceMethod(it, 'ROLE_SELLER')) {
-                if (!it.manager) {
-                    return true
-                }
-                if (it.manager == me) {
-                    return true
+        if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER')) {
+            def list = User.createCriteria().list(params) {
+                or {
+                    'in'("username", (me.sellers.collect { it.username }).flatten())
+                    and {
+                        'in'("username", User.list().findAll {
+                            it.manager == null;
+                        }.username)
+                        eq("authority", "ROLE_SELLER")
+                    }
                 }
             }
-            return false
-        };
-        respond list, model: [userInstanceCount: list.size()]
+            respond list, model: [userInstanceCount: User.createCriteria().count(){
+                or {
+                    'in'("username", (me.sellers.collect { it.username }).flatten())
+
+                    and {
+                        'in'("username", User.list().findAll {
+                            it.manager == null;
+                        }.username)
+                        eq("authority", "ROLE_SELLER")
+                    }
+                }
+            }]
+        } else if (SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN')) {
+            respond User.list(params), model: [userInstanceCount: User.count()]
+        }
     }
 
     def show(User userInstance) {
@@ -143,4 +156,5 @@ class UserController {
             '*' { render status: NOT_FOUND }
         }
     }
+
 }
