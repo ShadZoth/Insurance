@@ -36,75 +36,60 @@
 %{-------------------------Чекбоксы. Категории прав------------------------------------------}%
 %{--TODO: сделать в строчку чекбоксы--}%
 
-<ul>
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'a', 'error')} ">
-            <label for="a">
-                <g:message code="license.a.label" default="A"/>
+<div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'a', 'error')} ">
+        <label for="a">
+            <g:message code="license.a.label" default="A"/>
 
-            </label>
-            <g:checkBox name="a" value="${licenseInstance?.a}"/>
+        </label>
+        <g:checkBox name="a" value="${licenseInstance?.a}"/>
 
-        </div>
-    </li>
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'b', 'error')} ">
-            <label for="b">
-                <g:message code="license.b.label" default="B"/>
+    </div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'b', 'error')} ">
+        <label for="b">
+            <g:message code="license.b.label" default="B"/>
 
-            </label>
-            <g:checkBox name="b" value="${licenseInstance?.b}"/>
+        </label>
+        <g:checkBox name="b" value="${licenseInstance?.b}"/>
 
-        </div>
-    </li>
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'c', 'error')} ">
-            <label for="c">
-                <g:message code="license.c.label" default="C"/>
+    </div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'c', 'error')} ">
+        <label for="c">
+            <g:message code="license.c.label" default="C"/>
 
-            </label>
-            <g:checkBox name="c" value="${licenseInstance?.c}"/>
+        </label>
+        <g:checkBox name="c" value="${licenseInstance?.c}"/>
 
-        </div>
-    </li>
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'd', 'error')} ">
-            <label for="d">
-                <g:message code="license.d.label" default="D"/>
+    </div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'd', 'error')} ">
+        <label for="d">
+            <g:message code="license.d.label" default="D"/>
 
-            </label>
-            <g:checkBox name="d" value="${licenseInstance?.d}"/>
+        </label>
+        <g:checkBox name="d" value="${licenseInstance?.d}"/>
 
-        </div>
-    </li>
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'e', 'error')} ">
-            <label for="e">
-                <g:message code="license.e.label" default="E"/>
+    </div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'e', 'error')} ">
+        <label for="e">
+            <g:message code="license.e.label" default="E"/>
 
-            </label>
-            <g:checkBox name="e" value="${licenseInstance?.e}"/>
+        </label>
+        <g:checkBox name="e" value="${licenseInstance?.e}"/>
 
-        </div>
-    </li>
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'tb', 'error')} ">
-            <label for="tb">
-                <g:message code="license.tb.label" default="Tb"/>
+    </div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'tb', 'error')} ">
+        <label for="tb">
+            <g:message code="license.tb.label" default="Tb"/>
 
-            </label>
-            <g:checkBox name="tb" value="${licenseInstance?.tb}"/>
+        </label>
+        <g:checkBox name="tb" value="${licenseInstance?.tb}"/>
 
-        </div>
-    </li>
+    </div>
+    <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'tm', 'error')} ">
+        <label for="tm">
+            <g:message code="license.tm.label" default="Tm"/>
 
-    <li>
-        <div class="fieldcontain ${hasErrors(bean: licenseInstance, field: 'tm', 'error')} ">
-            <label for="tm">
-                <g:message code="license.tm.label" default="Tm"/>
-
-            </label>
-            <g:checkBox name="tm" value="${licenseInstance?.tm}"/>
-        </div>
-    </li>
-</ul>
+        </label>
+        <g:checkBox name="tm" value="${licenseInstance?.tm}"/>
+    </div>
+</div>
