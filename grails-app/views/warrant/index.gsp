@@ -63,9 +63,9 @@
 
                         <td>${fieldValue(bean: warrantInstance, field: "product")}</td>
 
-                        <td><g:formatDate date="${warrantInstance.issueDate}"/></td>
+                        <td><g:formatDate format="yyyy-MM-dd" date="${warrantInstance.issueDate}"/></td>
 
-                        <td><g:formatDate date="${warrantInstance.expireDate}"/></td>
+                        <td><g:formatDate format="yyyy-MM-dd" date="${warrantInstance.expireDate}"/></td>
 
                     </tr>
                 </g:each>
