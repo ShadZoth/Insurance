@@ -3,6 +3,8 @@
 	<property name="ireport.zoom" value="1.000000000000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="warrant_id" isForPrompting="false" class="java.lang.String">
+    </parameter>
 	<queryString>
 		<![CDATA[SELECT
      warrant."expire_date" AS warrant_expire_date,
@@ -31,7 +33,13 @@ FROM
      INNER JOIN "public"."manufacturer" manufacturer ON vehicle."manufacturer_id" = manufacturer."id"
      INNER JOIN "public"."product" product ON warrant."product_id" = product."id"
 WHERE
-     passport.issue_date >= ( SELECT MAX(issue_date) FROM "public"."passport" inner_passport WHERE passport."id" = inner_passport."id" )]]>
+
+     warrant.id = $P{warrant_id}::bigint
+     AND
+     passport.issue_date >= ( SELECT MAX(issue_date) FROM "public"."passport" inner_passport WHERE passport."id" = inner_passport."id" )
+
+
+     ]]>
 	</queryString>
 	<field name="warrant_expire_date" class="java.sql.Date"/>
 	<field name="warrant_issue_date" class="java.sql.Date"/>
@@ -63,7 +71,7 @@ WHERE
 				</staticText>
 				<image>
 					<reportElement x="20" y="5" width="80" height="80" uuid="c777a715-3b27-49dd-a6c5-de19c695f764"/>
-					<imageExpression><![CDATA["C:\\Users\\mikhail.fomichev\\Desktop\\Insurance_lastClone\\web-app\\images\\logo.png"]]></imageExpression>
+					<imageExpression><![CDATA["web-app/images/logo.png"]]></imageExpression>
 				</image>
 			</frame>
 		</band>
