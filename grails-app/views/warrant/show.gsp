@@ -169,7 +169,7 @@
     </g:form>
 </div>
 <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-    <g:jasperReport jasper="product" format="PDF" name="product" warrant_id = "${warrantInstance.id}" >
+    <g:jasperReport jasper="product" format="PDF" warrant_id = "${warrantInstance.id}" >
         <input type="hidden" name="warrant_id" value="${warrantInstance?.id}" />
     </g:jasperReport>
 </sec:ifAnyGranted>
