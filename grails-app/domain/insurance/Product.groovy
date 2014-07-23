@@ -14,7 +14,7 @@ class Product {
     }
 
     // Возвращает цены, отсортированные по дате
-    Price getSortedPricelist() {
+    def getSortedPricelist() {
        pricelist?.sort()
     }
 
