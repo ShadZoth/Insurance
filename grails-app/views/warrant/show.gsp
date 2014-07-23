@@ -97,7 +97,8 @@
 
                 <span class="property-value"
                       aria-labelledby="issueDate-label"><g:formatDate
-                        date="${warrantInstance?.issueDate}"/></span>
+                        format="yyyy-MM-dd"
+                        date="${warrantInstance.issueDate}"/></span>
 
             </li>
         </g:if>
@@ -110,7 +111,8 @@
 
                 <span class="property-value"
                       aria-labelledby="expireDate-label"><g:formatDate
-                        date="${warrantInstance?.expireDate}"/></span>
+                        format="yyyy-MM-dd"
+                        date="${warrantInstance.expireDate}"/></span>
 
             </li>
         </g:if>
