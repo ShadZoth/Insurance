@@ -15,7 +15,6 @@
 <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
     <div class="nav" role="navigation">
         <ul>
-            code="default.home.label"/></a></li>
             <li><g:link class="list" action="index"><g:message
                     code="default.list.label"
                     args="[entityName]"/></g:link></li>
