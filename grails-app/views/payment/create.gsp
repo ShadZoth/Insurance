@@ -17,8 +17,8 @@
     <div class="nav" role="navigation">
         <ul>
             <li><g:link class="list" action="index"><g:message
-                    code="default.list.label"
-                    args="[entityName]"/></g:link></li>
+                    code="payment.list.label"
+                    default="Payments list"/></g:link></li>
         </ul>
     </div>
 

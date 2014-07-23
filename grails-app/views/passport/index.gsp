@@ -17,7 +17,7 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message
-                        code="default.new.label" args="[entityName]"/></g:link></li>
+                        code="passport.new.label" default="New passport"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>

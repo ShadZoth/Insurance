@@ -2,6 +2,92 @@ import insurance.*
 
 class BootStrap {
 
+    // Временно тут, потом надо перенести (или нет)
+
+    Random rand = new Random()
+
+    List surnames = [
+            "Иванов" ,
+            "Петров" ,
+            "Сидоров" ,
+            "Сидельников" ,
+            "Кувшинкин" ,
+            "Шмаков" ,
+            "Борискин" ,
+            "Кучиев" ,
+            "Лужин" ,
+            "Слякотин" ,
+            "Пономарев" ,
+            "Кизяков" ,
+            "Соротников" ,
+            "Фомичёв" ,
+            "Исаков" ,
+            "Дмитриев" ,
+            "Васильев" ,
+            "Телегин" ,
+            "Магомедалиев" ,
+            "Ибрянов" ,
+            "Цмакалов"
+    ]
+
+    List manNames = [
+            "Александр" ,
+            "Виктор" ,
+            "Семен" ,
+            "Григорий" ,
+            "Георгий" ,
+            "Василий" ,
+            "Иван" ,
+            "Алексей" ,
+            "Гаврила" ,
+            "Магомед" ,
+            "Абдула" ,
+            "Александр" ,
+            "Дмитрий" ,
+            "Сергей" ,
+            "Михаил" ,
+            "Мавродий" ,
+            "Борис" ,
+            "Аркадий"
+    ]
+
+    List womanNames = [
+            "Кристина" ,
+            "Мария" ,
+            "Анфиса" ,
+            "Изольда" ,
+            "Даздраперма" ,
+            "Людмила" ,
+            "Надежда" ,
+            "Наталия" ,
+            "Наталья" ,
+            "Екатерина" ,
+            "Марина" ,
+            "Зульфия" ,
+            "Полина" ,
+            "Ольга" ,
+            "Анастасия" ,
+            "Валерия"
+
+    ]
+
+    List universalFathNames = [
+            "Борисов" ,
+            "Кириллов" ,
+            "Семенов" ,
+            "Витальев" ,
+            "Дмитриев" ,
+            "Аркадьев" ,
+            "Григорьев" ,
+            "Казбеков" ,
+            "Олегов" ,
+            "Эдгаров" ,
+            "Анатольев" ,
+            "Максимов"
+    ]
+
+    List sexer = ["на" , "ич" , "а"]
+
     def init = {
         new Role(authority: 'ROLE_ADMIN').save(flush: true)
         new Role(authority: 'ROLE_MANAGER').save(flush: true)
@@ -47,9 +133,10 @@ class BootStrap {
             it.enabled = true
         }
 
-        (1..150).each {
-            def i = it
-            User seller = findSeller(i)
+
+        // Генерит мужчин (быдлокод)
+        (1..75).each {
+            User seller = findSeller(it)
             def p = new Person(seller: seller)
             p.save(flush: true)
             def birthDate = new Date().toCalendar()
@@ -58,18 +145,39 @@ class BootStrap {
             issueDate.add(Calendar.YEAR, -4)
             def pass = new Passport(number: it,
                     person: p,
-                    lastName: "Ivanov$it",
-                    firstName: "Ivan$it",
-                    fathName: "Ivanvich$it",
+                    lastName: surnames.get(rand.nextInt(surnames.size())),
+                    firstName: manNames.get(rand.nextInt(manNames.size())),
+                    fathName: "${universalFathNames.get(rand.nextInt(universalFathNames.size()))}${sexer.get(1)}",
                     birthDate: birthDate.time,
                     sex: Passport.Sex.MALE,
                     issueDate: issueDate.time)
             pass.save(flush: true)
         }
 
+
+        // Генерит женщин (быдлокод)
+        (76..150).each {
+            User seller = findSeller(it)
+            def p = new Person(seller: seller)
+            p.save(flush: true)
+            def birthDate = new Date().toCalendar()
+            birthDate.add(Calendar.YEAR, -18)
+            def issueDate = new Date().toCalendar()
+            issueDate.add(Calendar.YEAR, -4)
+            def pass = new Passport(number: it,
+                    person: p,
+                    lastName: "${surnames.get(rand.nextInt(surnames.size()))}${sexer.get(2)}",
+                    firstName: womanNames.get(rand.nextInt(womanNames.size())),
+                    fathName: "${universalFathNames.get(rand.nextInt(universalFathNames.size()))}${sexer.get(0)}",
+                    birthDate: birthDate.time,
+                    sex: Passport.Sex.FEMALE,
+                    issueDate: issueDate.time)
+            pass.save(flush: true)
+        }
+
         (151..200).collect {
             new Company(name: "Company$it",
-                    inn: "${it}${it}${it}${it}",
+                    inn: "${it}${it}${it}${it}", // Сделать рандом
                     seller: findSeller(it))
         }*.save()
 
