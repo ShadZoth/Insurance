@@ -2,91 +2,96 @@ import insurance.*
 
 class BootStrap {
 
-    // Временно тут, потом надо перенести (или нет)
-
     Random rand = new Random()
 
     List surnames = [
-            "Иванов" ,
-            "Петров" ,
-            "Сидоров" ,
-            "Сидельников" ,
-            "Кувшинкин" ,
-            "Шмаков" ,
-            "Борискин" ,
-            "Кучиев" ,
-            "Лужин" ,
-            "Слякотин" ,
-            "Пономарев" ,
-            "Кизяков" ,
-            "Соротников" ,
-            "Фомичёв" ,
-            "Исаков" ,
-            "Дмитриев" ,
-            "Васильев" ,
-            "Телегин" ,
-            "Магомедалиев" ,
-            "Ибрянов" ,
-            "Цмакалов"
+            "Ivanov" ,
+            "Petrov" ,
+            "Sidorov" ,
+            "Sidel'nikov" ,
+            "Kuvshivkin" ,
+            "Shmakov" ,
+            "Boriskin" ,
+            "Kuchiev" ,
+            "Luzhin" ,
+            "Slyakotin" ,
+            "Ponomaryov" ,
+            "Kizyakov" ,
+            "Sorotnikov" ,
+            "Fomichov" ,
+            "Isakov" ,
+            "Dmitriev" ,
+            "Vasil'ev" ,
+            "Telegin" ,
+            "Magomedaliev" ,
+            "Ibtyanov" ,
+            "Tsmakalov",
+            "Barishnikov",
+            "Seleznev",
+            "Pasternakov"
     ]
 
     List manNames = [
-            "Александр" ,
-            "Виктор" ,
-            "Семен" ,
-            "Григорий" ,
-            "Георгий" ,
-            "Василий" ,
-            "Иван" ,
-            "Алексей" ,
-            "Гаврила" ,
-            "Магомед" ,
-            "Абдула" ,
-            "Александр" ,
-            "Дмитрий" ,
-            "Сергей" ,
-            "Михаил" ,
-            "Мавродий" ,
-            "Борис" ,
-            "Аркадий"
+            "Alexandr",
+            "Victor" ,
+            "Semyon" ,
+            "Grirogiy" ,
+            "Georgiy" ,
+            "Vasiliy" ,
+            "Ivan" ,
+            "Aleksey" ,
+            "Gavrila" ,
+            "Magomed" ,
+            "Abdyla" ,
+            "Aleksandr" ,
+            "Dmitriy" ,
+            "Sergey" ,
+            "Mihail" ,
+            "Mavrodiy" ,
+            "Boris" ,
+            "Arkadiy",
+            "Oleg",
+            "Veniamin",
+            "Linus"
     ]
 
     List womanNames = [
-            "Кристина" ,
-            "Мария" ,
-            "Анфиса" ,
-            "Изольда" ,
-            "Даздраперма" ,
-            "Людмила" ,
-            "Надежда" ,
-            "Наталия" ,
-            "Наталья" ,
-            "Екатерина" ,
-            "Марина" ,
-            "Зульфия" ,
-            "Полина" ,
-            "Ольга" ,
-            "Анастасия" ,
-            "Валерия"
+            "Kristina" ,
+            "Mariya" ,
+            "Anfisa" ,
+            "Izol'da" ,
+            "Dazdraperma" ,
+            "Lyudmila" ,
+            "Nadezhda" ,
+            "Nataliya" ,
+            "Natal'ya" ,
+            "Ekaterina" ,
+            "Marina" ,
+            "Zulphiya" ,
+            "Polina" ,
+            "Ol'ga" ,
+            "Anastasiya" ,
+            "Valeriya"
 
     ]
 
     List universalFathNames = [
-            "Борисов" ,
-            "Кириллов" ,
-            "Семенов" ,
-            "Витальев" ,
-            "Дмитриев" ,
-            "Аркадьев" ,
-            "Григорьев" ,
-            "Казбеков" ,
-            "Олегов" ,
-            "Эдгаров" ,
-            "Анатольев" ,
-            "Максимов"
+            "Borisov" ,
+            "Kirillov" ,
+            "Semyonov" ,
+            "Vitaliev" ,
+            "Dmitriev" ,
+            "Arkad'ev" ,
+            "Grigor'ev" ,
+            "Kazbekov" ,
+            "Olegov" ,
+            "Edgarov" ,
+            "Anatol'ev" ,
+            "Maximov",
+            "Leontyev"
     ]
 
-    List sexer = ["на" , "ич" , "а"]
+    List sexer = ["na" , "ich" , "a"]
 
     def init = {
         new Role(authority: 'ROLE_ADMIN').save(flush: true)
