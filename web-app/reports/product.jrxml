@@ -238,7 +238,7 @@ WHERE
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Patronymic:]]></text>
+				<text><![CDATA[Middle name:]]></text>
 			</staticText>
 			<line>
 				<reportElement x="17" y="161" width="523" height="1" forecolor="#666666" uuid="49ca5c6b-dc36-4fc8-aaff-1e9699b3a095"/>
@@ -368,7 +368,7 @@ WHERE
 				<textElement textAlignment="Justified">
 					<font size="14" isBold="false"/>
 				</textElement>
-				<text><![CDATA[I promise to execute all rules which are declared in the product document. In case of any accident I must send to "TBI LTD" as soon as posible, for instance I will call +7 (901) 258 - 45 - 26. I recognize that "TBI LTD" is not responsible for damage which will be caused by a drunk driver or for mercenary motives. In addition I understand that in all cases I can get reparation of damages for one accident once. I confirm that insurance details, which are indicated above, are true.]]></text>
+				<text><![CDATA[I promise to execute all rules which are declared in the product document. In case of any accident I must send to "TBI LTD" as soon as possible, for instance I will call +7 (800) 772 - 45 - 26. I recognize that "TBI LTD" is not responsible for damage which will be caused by a drunk driver or for mercenary motives. In addition I understand that in all cases I can get reparation of damages for one accident once. I confirm that insurance details, which are indicated above, are correct.]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

@@ -38,7 +38,7 @@
                                   title="${message(code: 'product.individual.label', default: 'Individual')}"/>
 
                 <g:sortableColumn property="value"
-                                  title="${message(code: 'price.value.label', default: 'Value')}"/>
+                                  title="${message(code: 'price.value.label', default: 'Price')}"/>
 
             </tr>
             </thead>
