@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'vehicle.label', default: 'Vehicle')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="vehicle.list.title" default="Vehicles list"/></title>
 </head>
 <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_CENTER">
     <body>
@@ -16,13 +16,13 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message
-                        code="default.new.label" args="[entityName]"/></g:link></li>
+                        code="vehicle.new.label" default="New Vehicle"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
 
     <div id="list-vehicle" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="vehicle.list.label" default="Vehicles list"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>

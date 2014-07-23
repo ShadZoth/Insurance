@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'passport.label', default: 'Passport')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="passport.list.title" default="Passports list"/></title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
     </sec:ifAnyGranted>
 
     <div id="list-passport" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="passport.list.label" default="Passports list"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>

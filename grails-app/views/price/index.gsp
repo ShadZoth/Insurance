@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'price.label', default: 'Price')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="price.list.label" default="Pricelist"/></title>
 </head>
 
 <body>
@@ -18,13 +18,13 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message
-                        code="default.new.label" args="[entityName]"/></g:link></li>
+                        code="price.new.label" default="New price"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
 
     <div id="list-price" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="price.list.label" default="Pricelist"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>

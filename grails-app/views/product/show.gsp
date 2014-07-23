@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'product.label', default: 'Product')}"/>
-    <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <title><g:message code="product.show.label" default="Product"/></title>
 </head>
 
 <body>
@@ -15,18 +15,16 @@
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER">
     <div class="nav" role="navigation">
         <ul>
-            %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message--}%
-            %{--code="default.home.label"/></a></li>--}%
             <li><g:link class="list" action="index"><g:message
-                    code="default.list.label" args="[entityName]"/></g:link></li>
+                    code="product.list.label" default="Products list"/></g:link></li>
             <li><g:link class="create" action="create"><g:message
-                    code="default.new.label" args="[entityName]"/></g:link></li>
+                    code="product.new.label" default="New product"/></g:link></li>
         </ul>
     </div>
 </sec:ifAnyGranted>
 
 <div id="show-product" class="content scaffold-show" role="main">
-    <h1><g:message code="default.show.label" args="[entityName]"/></h1>
+    <h1><g:message code="product.show.label" default="Product"/></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -44,7 +42,7 @@
             </li>
         </g:if>
 
-        %{--TODO: исправить. --}%
+        %{--TODO: исправить верстку.--}%
         %{--Corporate/Individual--}%
         <li class="fieldcontain">
 
@@ -60,7 +58,7 @@
 
 
         %{--Список цен--}%
-        <g:if test="${productInstance?.sortedPricelist}">
+        <g:if test="${productInstance?.sortedPricelist} != null">
             <li class="fieldcontain">
                 <span id="pricelist-label" class="property-label"><g:message
                         code="product.pricelist.label"

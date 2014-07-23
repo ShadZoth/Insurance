@@ -4,7 +4,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'warrant.label', default: 'Warrant')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="warrant.list.label" default="Warrants list"/></title>
 </head>
 
 <body>
@@ -16,14 +16,14 @@
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                                      args="[entityName]"/></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="warrant.new.label"
+                                                                      default="New warrant"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
 
 <div id="list-warrant" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+    <h1><g:message code="warrant.list.label" default="Warrants list"/></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>

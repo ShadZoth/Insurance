@@ -15,7 +15,6 @@
 <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_CALL_CENTER">
     <div class="nav" role="navigation">
         <ul>
-            %{-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>--}%
             <li><g:link class="list" action="index"><g:message code="accident.list.label"/></g:link></li>
             <li><g:link class="create" action="create"><g:message code="accident.new.label" default="New accident"/></g:link></li>
         </ul>

@@ -32,6 +32,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'contacts', 'error')} ">
     <label for="contacts">
+        %{--TODO: Разобраться в проблеме--}%
         <g:message code="client.contacts.label" default="Contacts"/>
 
     </label>
@@ -50,6 +51,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'vehicles', 'error')} ">
     <label for="vehicles">
+        %{--TODO: Разобраться в проблеме--}%
         <g:message code="client.vehicles.label" default="Vehicles"/>
 
     </label>
@@ -68,6 +70,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'warrants', 'error')} ">
     <label for="warrants">
+        %{--TODO: разобраться в проблеме--}%
         <g:message code="client.warrants.label" default="Warrants"/>
 
     </label>

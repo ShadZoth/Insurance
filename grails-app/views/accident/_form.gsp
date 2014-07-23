@@ -20,7 +20,7 @@
     </label>
     <g:field name="damage"
              value="${fieldValue(bean: accidentInstance, field: 'damage')}"
-             required=""/>
+             required="" type=""/>
 
 </div>
 

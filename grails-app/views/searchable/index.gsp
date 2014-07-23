@@ -9,81 +9,7 @@
     <title>
         <g:message code="searchable.search" default="Search"/>
     </title>
-    <style type="text/css">
-
-    #search_page_in {
-        padding: 10px;
-    }
-
-    #header_search_in {
-        padding-left: 20px;
-    }
-
-    #header_search_in form input {
-        padding: 1.5em;
-    }
-
-    #header_search_in .hint {
-        color: gray;
-    }
-
-    #header_search_in h1 a {
-        text-decoration: none;
-        font-family: Georgia, serif;
-        color: dimgray;
-    }
-
-    #header_search_in h1 {
-        letter-spacing: -0.1em;
-        float: left;
-    }
-
-    #header_search_in h1 span {
-        font-family: Georgia, serif;
-        color: #424242;
-    }
-
-    #header_search_in form {
-        margin-left: 22em;
-        padding-top: .1em;
-    }
-
-    #search_page_in .title {
-        margin: 1em 0;
-        padding: .3em .5em;
-        text-align: right;
-        background-color: seashell;
-        border-top: 1px solid lightblue;
-    }
-
-    #search_page_in .result {
-        margin-bottom: 1em;
-    }
-
-    #search_page_in .result .displayLink {
-        color: green;
-    }
-
-    #search_page_in .result .name {
-        font-size: larger;
-    }
-
-    #search_page_in .paging a.step {
-        padding: 0 .3em;
-    }
-
-    .paging span.currentStep {
-        font-weight: bold;
-    }
-
-    #search_page_in ul {
-        margin: 1em 2em;
-    }
-
-    #search_page_in li {
-        margin-bottom: 1em;
-    }
-    </style>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'searchable.css')}" type="text/css"/>
     <script type="text/javascript">
         var focusQueryInput = function () {
             document.getElementById("querySearch").focus();
@@ -97,6 +23,7 @@
         <h1>
             <g:message code="searchable.search" default="Search"/>
         </h1>
+        %{--TODO: DAFUCK?--}%
         %{--<g:form url='[controller: "searchable", action: "index"]' id="searchableForm" name="searchableForm" method="get">--}%
         %{--<g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Search"/>--}%
         %{--</g:form>--}%
@@ -144,16 +71,33 @@
         </g:if>
 
         <g:if test="${parseException}">
-            <p>Your query - <strong>${params.q}</strong> - is not valid.</p>
+            %{--TODO проверить работоспособность--}%
+            %{--В случае неработоспособности конструкции
+            заменить ее на две переменные по две стороны от params:
+            <p>
+                <g:message code="назначить.переменную.1" default="Your query "/>
+                "<strong>${params.q}</strong>"
+                <g:message code="назначить.переменную.2" default=" is not valid"/>
+            </p>
+            или найти способ применения подобной конструкции
+            --}%
 
-            <p>Suggestions:</p>
+            %{--Вариант первый--}%
+            <p><g:message code="searchable.err.query"><strong>${params.q}</strong></g:message></p>
+
+            %{--Вариант второй
+            <p><g:message code="searchable.err.query"/><strong>${params.q}</strong></p>
+            --}%
+
+            <p><g:message code="searchable.suggestions" default="Suggestions:"/></p>
             <ul>
-                <li>Fix the query: see <a
+                <li><g:message code="searchable.err.suggestion" default="Fix the query: see "/><a
                         href="http://lucene.apache.org/java/docs/queryparsersyntax.html">Lucene query syntax</a> for examples
                 </li>
                 <g:if test="${LuceneUtils.queryHasSpecialCharacters(params.q)}">
                     <li>Remove special characters like <strong>" - [ ]</strong>, before searching, eg, <em><strong>${LuceneUtils.cleanQuery(params.q)}</strong>
                     </em><br/>
+                        %{--тут--}%
                         <em>Use the Searchable Plugin's <strong>LuceneUtils#cleanQuery</strong> helper method for this: <g:link
                                 controller="searchable" action="index"
                                 params="[q: LuceneUtils.cleanQuery(params.q)]">Search again with special characters removed</g:link>

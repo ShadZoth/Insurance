@@ -1,6 +1,5 @@
 <%@ page import="insurance.Certificate" %>
 
-
 %{--Выбор ТС. Название пункта содержит ссылку на создание ТС.--}%
 <div class="fieldcontain ${hasErrors(bean: certificateInstance, field: 'vehicle', 'error')} required">
     <label for="vehicle">
@@ -11,7 +10,6 @@
               optionKey="id" required=""
               value="${certificateVehicleId ?: (certificateInstance?.vehicle?.id)}"
               class="many-to-one"/>
-
 </div>
 
 %{--Форма, номер сертификата--}%

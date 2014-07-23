@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'payment.label', default: 'Payment')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="payment.list.label" default="Payments list"/></title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
     </sec:ifAnyGranted>
 
     <div id="list-payment" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="payment.list.label" default="Payments list"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>

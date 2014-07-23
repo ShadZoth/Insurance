@@ -44,7 +44,7 @@
     </label>
     <g:field name="price"
              value="${fieldValue(bean: warrantInstance, field: 'price')}"
-             required=""/>
+             required="" type=""/>
 
 </div>
 
