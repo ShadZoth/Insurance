@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>
-        %{--TODO проверить--}%
         <g:if env="development"><g:message code="err.gre" default="Grails Runtime Exception"/></g:if>
         <g:else><g:message code="err.error" default="Error"/></g:else>
     </title>

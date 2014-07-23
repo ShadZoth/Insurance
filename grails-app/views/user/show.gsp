@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'user.label', default: 'User')}"/>
-    <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <title><g:message code="user.show.label" default="User"/></title>
 </head>
 
 <body>
@@ -15,14 +15,14 @@
 <div class="nav" role="navigation">
     <ul>
         <li><g:link class="list" action="index"><g:message
-                code="default.list.label" args="[entityName]"/></g:link></li>
+                code="user.list.label" default="Users list"/></g:link></li>
         <li><g:link class="create" action="create"><g:message
-                code="default.new.label" args="[entityName]"/></g:link></li>
+                code="user.new.label" default="New user"/></g:link></li>
     </ul>
 </div>
 
 <div id="show-user" class="content scaffold-show" role="main">
-    <h1><g:message code="default.show.label" args="[entityName]"/></h1>
+    <h1><g:message code="user.show.label" default="User"/></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>

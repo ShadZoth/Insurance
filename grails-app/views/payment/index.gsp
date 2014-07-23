@@ -19,7 +19,7 @@
             <ul>
                 <li>
                     <g:link class="create" action="create">
-                        <g:message code="default.new.label" args="[entityName]"/>
+                        <g:message code="payment.new.label" default="New payment"/>
                     </g:link>
                 </li>
             </ul>
