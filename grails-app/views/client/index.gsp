@@ -14,10 +14,10 @@
             code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
-    <div class="nav" role="navigation">
-        <ul>
-        %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message
-                code="default.home.label"/></a></li>--}%
+        <div class="nav" role="navigation">
+            <ul>
+                %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message
+                        code="default.home.label"/></a></li>--}%
 
                 <g:set var="personName" value="${message(code: 'person.label', default: 'Person')}"/>
                 <g:set var="companyName" value="${message(code: 'company.label', default: 'Company')}"/>
@@ -28,8 +28,8 @@
                 <li><g:link class="create" action="create" params="[cl: 'company']">
                     <g:message code="default.new.label" args="[companyName]"/></g:link>
                 </li>
-        </ul>
-    </div>
+            </ul>
+        </div>
     </sec:ifAnyGranted>
 
     <div id="list-client" class="content scaffold-list" role="main">
@@ -37,43 +37,46 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
-                <th><g:message code="clients.iden.label"
-                               default="Identification"/></th>
 
-                <g:sortableColumn property="registrationDate"
-                                  title="${message(code: 'client.registrationDate.label', default: 'Registration Date')}"/>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
+                    <th><g:message code="clients.iden.label"
+                                   default="Identification"/></th>
 
-                <g:sortableColumn property="archived"
-                                  title="${message(code: 'client.archived.label', default: 'Archived')}"/>
+                    <g:sortableColumn property="registrationDate"
+                                      title="${message(code: 'client.registrationDate.label', default: 'Registration Date')}"/>
 
-                <th><g:message code="clients.type.label" default="Type"/></th>
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${clientList}" status="i" var="clientInstance">
-                <g:if test="${clientInstance.getClass() != Client.class}">
-                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <g:sortableColumn property="archived"
+                                      title="${message(code: 'client.archived.label', default: 'Archived')}"/>
 
-                        <td><g:link action="show"
-                                    id="${clientInstance.id}">${clientInstance}</g:link></td>
+                    <th><g:message code="clients.type.label" default="Type"/></th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${clientList}" status="i" var="clientInstance">
+                    <g:if test="${clientInstance.getClass() != Client.class}">
+                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                        <td><g:formatDate format="yyyy-MM-dd" date="${clientInstance.registrationDate}"/></td>
+                            <td><g:link action="show"
+                                        id="${clientInstance.id}">${clientInstance}</g:link></td>
+
+                            <td><g:formatDate format="yyyy-MM-dd" date="${clientInstance.registrationDate}"/></td>
 
 
-                        <td><g:formatBoolean
-                                boolean="${clientInstance.archived}"/></td>
+                            <td><g:formatBoolean
+                                    boolean="${clientInstance.archived}"/></td>
 
-                        <td>${clientInstance.getClass().getCanonicalName()}</td>
+                            <td>${clientInstance.getClass().getCanonicalName()}</td>
 
-                    </tr>
-                </g:if>
+                        </tr>
+                    </g:if>
 
-            </g:each>
-            </tbody>
-        </table>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${clientInstanceCount ?: 0}"/>

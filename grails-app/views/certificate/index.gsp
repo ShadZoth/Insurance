@@ -26,50 +26,53 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <g:sortableColumn property="number"
-                                  title="${message(code: 'certificate.number.label', default: 'Number')}"/>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <th><g:message code="certificate.vehicle.label" default="Vehicle"/></th>
+                    <g:sortableColumn property="number"
+                                      title="${message(code: 'certificate.number.label', default: 'Number')}"/>
 
-                <g:sortableColumn property="color"
-                                  title="${message(code: 'certificate.color.label', default: 'Color')}"/>
+                    <th><g:message code="certificate.vehicle.label" default="Vehicle"/></th>
 
-                <g:sortableColumn property="issueDate"
-                                  title="${message(code: 'certificate.issueDate.label', default: 'Issue Date')}"/>
+                    <g:sortableColumn property="color"
+                                      title="${message(code: 'certificate.color.label', default: 'Color')}"/>
 
-                <g:sortableColumn property="ownerFirstName"
-                                  title="${message(code: 'certificate.ownerFirstName.label', default: 'Owner First Name')}"/>
+                    <g:sortableColumn property="issueDate"
+                                      title="${message(code: 'certificate.issueDate.label', default: 'Issue Date')}"/>
 
-                <g:sortableColumn property="ownerLastName"
-                                  title="${message(code: 'certificate.ownerLastName.label', default: 'Owner Last Name')}"/>
+                    <g:sortableColumn property="ownerFirstName"
+                                      title="${message(code: 'certificate.ownerFirstName.label', default: 'Owner First Name')}"/>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${certificateInstanceList}" status="i" var="certificateInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                    <td><g:link action="show"
-                                id="${certificateInstance.id}">${fieldValue(bean: certificateInstance, field: "number")}</g:link></td>
-
-                    <td>${fieldValue(bean: certificateInstance, field: "vehicle")}</td>
-
-                    <td>${fieldValue(bean: certificateInstance, field: "color")}</td>
-
-                    <td><g:formatDate format="yyyy-MM-dd" date="${certificateInstance.issueDate}"/></td>
-
-                    <td>${fieldValue(bean: certificateInstance, field: "ownerFirstName")}</td>
-
-                    <td>${fieldValue(bean: certificateInstance, field: "ownerLastName")}</td>
+                    <g:sortableColumn property="ownerLastName"
+                                      title="${message(code: 'certificate.ownerLastName.label', default: 'Owner Last Name')}"/>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${certificateInstanceList}" status="i" var="certificateInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${certificateInstance.id}">${fieldValue(bean: certificateInstance, field: "number")}</g:link></td>
+
+                        <td>${fieldValue(bean: certificateInstance, field: "vehicle")}</td>
+
+                        <td>${fieldValue(bean: certificateInstance, field: "color")}</td>
+
+                        <td><g:formatDate format="yyyy-MM-dd" date="${certificateInstance.issueDate}"/></td>
+
+                        <td>${fieldValue(bean: certificateInstance, field: "ownerFirstName")}</td>
+
+                        <td>${fieldValue(bean: certificateInstance, field: "ownerLastName")}</td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${certificateInstanceCount ?: 0}"/>
