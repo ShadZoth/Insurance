@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="product" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f999cb7-a57a-4596-90fb-7ef95f2161ac">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.000000000000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -53,7 +53,7 @@ WHERE
 	<title>
 		<band height="72">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="596" height="91" backcolor="#006699" uuid="639a3891-54a6-44ba-a92c-0b8c4f6421b2"/>
+				<reportElement mode="Opaque" x="-21" y="-21" width="596" height="91" backcolor="#006699" uuid="639a3891-54a6-44ba-a92c-0b8c4f6421b2"/>
 				<staticText>
 					<reportElement x="164" y="20" width="421" height="43" forecolor="#FFFFFF" uuid="82492029-3a80-49de-8349-e9a6cc6b0156"/>
 					<textElement>
@@ -77,251 +77,251 @@ WHERE
 	<detail>
 		<band height="382">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="89" width="258" height="20" uuid="92331dc4-3c85-41c4-8bcc-98bfe4d09f7d"/>
+				<reportElement x="282" y="89" width="258" height="20" uuid="92331dc4-3c85-41c4-8bcc-98bfe4d09f7d"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_first_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="65" width="258" height="20" uuid="a6781898-10f0-47f4-8285-ffe94cad8eb0"/>
+				<reportElement x="282" y="65" width="258" height="20" uuid="a6781898-10f0-47f4-8285-ffe94cad8eb0"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_last_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="290" width="257" height="21" uuid="4dc99cff-d827-4a73-bfbc-49b7be4afb55"/>
+				<reportElement x="282" y="290" width="257" height="21" uuid="4dc99cff-d827-4a73-bfbc-49b7be4afb55"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{warrant_issue_date}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="286" y="322" width="258" height="20" uuid="5a2a78e1-3a85-406f-a792-f362f413edc4"/>
+				<reportElement x="281" y="322" width="258" height="20" uuid="5a2a78e1-3a85-406f-a792-f362f413edc4"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{warrant_expire_date}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="280" y="7" width="189" height="20" uuid="80de220e-2ab8-42a5-93ab-c9986dea3121"/>
+				<reportElement x="275" y="7" width="189" height="20" uuid="80de220e-2ab8-42a5-93ab-c9986dea3121"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{warrant_number}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="286" y="350" width="257" height="20" uuid="db58dae9-ca1a-42e4-90f7-e40c7cb34e37"/>
+				<reportElement x="281" y="350" width="257" height="20" uuid="db58dae9-ca1a-42e4-90f7-e40c7cb34e37"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{warrant_price}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="138" width="258" height="23" uuid="beb231ef-0a5e-4e96-89d0-ca04af80b1c2"/>
+				<reportElement x="282" y="138" width="258" height="23" uuid="beb231ef-0a5e-4e96-89d0-ca04af80b1c2"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_number}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="186" width="258" height="20" uuid="89dd3327-b78e-41de-a7a2-e7c28ebbb026"/>
+				<reportElement x="282" y="186" width="258" height="20" uuid="89dd3327-b78e-41de-a7a2-e7c28ebbb026"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehicle_model}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="163" width="258" height="20" uuid="5eb0a979-ae1c-4d2c-9c0b-273e48c0e486"/>
+				<reportElement x="282" y="163" width="258" height="20" uuid="5eb0a979-ae1c-4d2c-9c0b-273e48c0e486"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{manufacturer_name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="209" width="258" height="20" uuid="8abc8433-aae3-483e-b7b7-f8fb83729364"/>
+				<reportElement x="282" y="209" width="258" height="20" uuid="8abc8433-aae3-483e-b7b7-f8fb83729364"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{certificate_number}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="140" width="116" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ca115ec0-181d-4b30-b65b-49eb4128ed56"/>
+				<reportElement mode="Opaque" x="19" y="140" width="116" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ca115ec0-181d-4b30-b65b-49eb4128ed56"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Passport number:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="263" width="258" height="21" uuid="e02f9162-ca4e-4339-8b3d-dedfd15d3b42"/>
+				<reportElement x="282" y="263" width="258" height="21" uuid="e02f9162-ca4e-4339-8b3d-dedfd15d3b42"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="144" y="7" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3332cf86-de23-4ca7-9315-4ca8eec3849e"/>
+				<reportElement mode="Opaque" x="139" y="7" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3332cf86-de23-4ca7-9315-4ca8eec3849e"/>
 				<textElement textAlignment="Right">
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Insurance number:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="23" y="38" width="522" height="1" forecolor="#666666" uuid="90380686-be78-4522-972f-3150ed269255"/>
+				<reportElement x="18" y="38" width="522" height="1" forecolor="#666666" uuid="90380686-be78-4522-972f-3150ed269255"/>
 			</line>
 			<line>
-				<reportElement x="545" y="38" width="1" height="24" forecolor="#666666" uuid="1ada0336-28ea-4b43-9630-cc5dbbad64aa"/>
+				<reportElement x="540" y="38" width="1" height="24" forecolor="#666666" uuid="1ada0336-28ea-4b43-9630-cc5dbbad64aa"/>
 			</line>
 			<line>
-				<reportElement x="22" y="61" width="523" height="1" forecolor="#666666" uuid="fc5ce03a-f5c0-4f1a-aae1-3014bcd9a4b3"/>
+				<reportElement x="17" y="61" width="523" height="1" forecolor="#666666" uuid="fc5ce03a-f5c0-4f1a-aae1-3014bcd9a4b3"/>
 			</line>
 			<line>
-				<reportElement x="22" y="38" width="1" height="24" forecolor="#666666" uuid="378cd5c4-1b15-498b-82bc-1cc8ae46ae08"/>
+				<reportElement x="17" y="38" width="1" height="24" forecolor="#666666" uuid="378cd5c4-1b15-498b-82bc-1cc8ae46ae08"/>
 			</line>
 			<line>
-				<reportElement x="284" y="62" width="1" height="167" forecolor="#666666" uuid="c915cf1f-0f7d-4a8c-a24c-c508159e0ebe"/>
+				<reportElement x="279" y="62" width="1" height="167" forecolor="#666666" uuid="c915cf1f-0f7d-4a8c-a24c-c508159e0ebe"/>
 			</line>
 			<line>
-				<reportElement x="22" y="62" width="1" height="167" forecolor="#666666" uuid="bc558881-2287-4580-a266-83fee85011dd"/>
+				<reportElement x="17" y="62" width="1" height="167" forecolor="#666666" uuid="bc558881-2287-4580-a266-83fee85011dd"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="40" width="521" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="970173f2-b254-46d3-981c-4a961a3bb8b9"/>
+				<reportElement mode="Opaque" x="19" y="40" width="521" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="970173f2-b254-46d3-981c-4a961a3bb8b9"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Client details:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="65" width="118" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="24dfb532-6328-49c1-a0f6-616ab7c95f3f"/>
+				<reportElement mode="Opaque" x="19" y="65" width="118" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="24dfb532-6328-49c1-a0f6-616ab7c95f3f"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Last name:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="22" y="87" width="523" height="1" forecolor="#666666" uuid="9a4ad76f-dca2-4c0a-8a6e-f54812a6462e"/>
+				<reportElement x="17" y="87" width="523" height="1" forecolor="#666666" uuid="9a4ad76f-dca2-4c0a-8a6e-f54812a6462e"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="90" width="130" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f960d854-64c3-4dc9-9b87-136298ff1dc9"/>
+				<reportElement mode="Opaque" x="19" y="90" width="130" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f960d854-64c3-4dc9-9b87-136298ff1dc9"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[First name:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="23" y="112" width="523" height="1" forecolor="#666666" uuid="9347e56e-134e-469f-8935-61ef12b05600"/>
+				<reportElement x="18" y="112" width="523" height="1" forecolor="#666666" uuid="9347e56e-134e-469f-8935-61ef12b05600"/>
 			</line>
 			<line>
-				<reportElement x="545" y="62" width="1" height="167" forecolor="#666666" uuid="30f5091e-1e89-4239-8588-34aa0f371a41"/>
+				<reportElement x="540" y="62" width="1" height="167" forecolor="#666666" uuid="30f5091e-1e89-4239-8588-34aa0f371a41"/>
 			</line>
 			<line>
-				<reportElement x="22" y="137" width="523" height="1" forecolor="#666666" uuid="54481af0-26da-49d3-8373-c4eb50b01c41"/>
+				<reportElement x="17" y="137" width="523" height="1" forecolor="#666666" uuid="54481af0-26da-49d3-8373-c4eb50b01c41"/>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="287" y="116" width="258" height="20" uuid="bdbca3fb-0550-405c-b4d8-e91cdd77d0de"/>
+				<reportElement x="282" y="116" width="258" height="20" uuid="bdbca3fb-0550-405c-b4d8-e91cdd77d0de"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{passport_fath_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="116" width="130" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9af3cffc-8a40-4ddf-8305-b1624b03d701"/>
+				<reportElement mode="Opaque" x="19" y="116" width="130" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9af3cffc-8a40-4ddf-8305-b1624b03d701"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Patronymic:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="22" y="161" width="523" height="1" forecolor="#666666" uuid="49ca5c6b-dc36-4fc8-aaff-1e9699b3a095"/>
+				<reportElement x="17" y="161" width="523" height="1" forecolor="#666666" uuid="49ca5c6b-dc36-4fc8-aaff-1e9699b3a095"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="163" width="254" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="6bae2ecb-0c1b-4aa4-bdc8-ffe3c93b2a6d"/>
+				<reportElement mode="Opaque" x="19" y="163" width="254" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="6bae2ecb-0c1b-4aa4-bdc8-ffe3c93b2a6d"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Vehicle manufacturer:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="22" y="184" width="523" height="1" forecolor="#666666" uuid="f08d7e35-5de5-4378-972b-345376aabce2"/>
+				<reportElement x="17" y="184" width="523" height="1" forecolor="#666666" uuid="f08d7e35-5de5-4378-972b-345376aabce2"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="187" width="260" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="923e7b30-6a44-46b6-8bd6-80a61fae1cfb"/>
+				<reportElement mode="Opaque" x="19" y="187" width="260" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="923e7b30-6a44-46b6-8bd6-80a61fae1cfb"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Vehicle model:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="22" y="208" width="523" height="1" forecolor="#666666" uuid="0d3acbaf-3c56-49fc-92a4-42390fa90b64"/>
+				<reportElement x="17" y="208" width="523" height="1" forecolor="#666666" uuid="0d3acbaf-3c56-49fc-92a4-42390fa90b64"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="209" width="260" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e40aca48-4417-4718-b04e-64770df78fa2"/>
+				<reportElement mode="Opaque" x="19" y="209" width="260" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e40aca48-4417-4718-b04e-64770df78fa2"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[License plate:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="22" y="229" width="523" height="1" forecolor="#666666" uuid="e6185c85-8781-420d-a678-7c9513a8ebdf"/>
+				<reportElement x="17" y="229" width="523" height="1" forecolor="#666666" uuid="e6185c85-8781-420d-a678-7c9513a8ebdf"/>
 			</line>
 			<line>
-				<reportElement x="23" y="242" width="522" height="1" forecolor="#666666" uuid="5dd5a039-bed4-46ad-a834-3882cb291066"/>
+				<reportElement x="18" y="242" width="522" height="1" forecolor="#666666" uuid="5dd5a039-bed4-46ad-a834-3882cb291066"/>
 			</line>
 			<line>
-				<reportElement x="22" y="242" width="1" height="134" forecolor="#666666" uuid="eed8f36a-d5b0-4eb2-8466-2548be14379e"/>
+				<reportElement x="17" y="242" width="1" height="134" forecolor="#666666" uuid="eed8f36a-d5b0-4eb2-8466-2548be14379e"/>
 			</line>
 			<line>
-				<reportElement x="23" y="261" width="522" height="1" forecolor="#666666" uuid="a10af9b3-0dc7-4323-ba93-509b5b3955ea"/>
+				<reportElement x="18" y="261" width="522" height="1" forecolor="#666666" uuid="a10af9b3-0dc7-4323-ba93-509b5b3955ea"/>
 			</line>
 			<line>
-				<reportElement x="545" y="243" width="1" height="134" forecolor="#666666" uuid="a0b4bb2a-a6e7-407a-bcc7-6c65a09c050a"/>
+				<reportElement x="540" y="243" width="1" height="134" forecolor="#666666" uuid="a0b4bb2a-a6e7-407a-bcc7-6c65a09c050a"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="23" y="243" width="521" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="7d5705db-f97e-4cfe-b452-f4ab7d7d8b44"/>
+				<reportElement mode="Opaque" x="18" y="243" width="521" height="18" forecolor="#000000" backcolor="#FFFFFF" uuid="7d5705db-f97e-4cfe-b452-f4ab7d7d8b44"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Insurance details:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="284" y="262" width="1" height="115" forecolor="#666666" uuid="c003a161-a341-477e-894d-a4508b1a1bf5"/>
+				<reportElement x="279" y="262" width="1" height="115" forecolor="#666666" uuid="c003a161-a341-477e-894d-a4508b1a1bf5"/>
 			</line>
 			<line>
-				<reportElement x="23" y="285" width="522" height="1" forecolor="#666666" uuid="fcaee555-b83a-4cf6-857f-1a30288c2efe"/>
+				<reportElement x="18" y="285" width="522" height="1" forecolor="#666666" uuid="fcaee555-b83a-4cf6-857f-1a30288c2efe"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="263" width="260" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b5cd83ed-fecb-42a2-865c-7d4e74745095"/>
+				<reportElement mode="Opaque" x="19" y="263" width="260" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b5cd83ed-fecb-42a2-865c-7d4e74745095"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Product name:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="23" y="314" width="523" height="1" forecolor="#666666" uuid="47a2b82b-7175-411e-9130-8864e5105548"/>
+				<reportElement x="18" y="314" width="523" height="1" forecolor="#666666" uuid="47a2b82b-7175-411e-9130-8864e5105548"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="291" width="259" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9938f197-deec-4de0-aa9c-e5f3c1b2f647"/>
+				<reportElement mode="Opaque" x="19" y="291" width="259" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9938f197-deec-4de0-aa9c-e5f3c1b2f647"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Issue date:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="23" y="344" width="523" height="1" forecolor="#666666" uuid="326f835d-008e-43c2-95ac-5230848d1e8f"/>
+				<reportElement x="18" y="344" width="523" height="1" forecolor="#666666" uuid="326f835d-008e-43c2-95ac-5230848d1e8f"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="322" width="258" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="af20ee84-071e-4f1b-8a9f-4cd16f6b7462"/>
+				<reportElement mode="Opaque" x="19" y="322" width="258" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="af20ee84-071e-4f1b-8a9f-4cd16f6b7462"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Expire date:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="22" y="376" width="523" height="1" forecolor="#666666" uuid="b2cc7510-d3eb-4918-8603-1bfa6b950ab0"/>
+				<reportElement x="17" y="376" width="523" height="1" forecolor="#666666" uuid="b2cc7510-d3eb-4918-8603-1bfa6b950ab0"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="24" y="351" width="258" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="37e45bfe-e67a-4215-b36e-1f214b344080"/>
+				<reportElement mode="Opaque" x="19" y="351" width="258" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="37e45bfe-e67a-4215-b36e-1f214b344080"/>
 				<textElement>
 					<font size="14" isBold="false"/>
 				</textElement>
@@ -333,69 +333,34 @@ WHERE
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="278">
-			<textField pattern="MM-dd-yyyy" isBlankWhenNull="false">
-				<reportElement x="4" y="262" width="100" height="13" uuid="6fbe29da-d164-4f28-9862-f3de9f5f7d30"/>
+		<band height="323">
+			<textField pattern="dd-MM-yyyy" isBlankWhenNull="false">
+				<reportElement x="17" y="303" width="100" height="13" uuid="6fbe29da-d164-4f28-9862-f3de9f5f7d30"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="247" y="211" width="284" height="20" uuid="81318b86-100d-4e03-b5f7-b95c0927f9e1"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{passport_first_name}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="247" y="185" width="283" height="20" uuid="8d19b4f6-f117-41f5-9424-e9e22b0d8112"/>
+				<reportElement x="224" y="208" width="317" height="20" uuid="8d19b4f6-f117-41f5-9424-e9e22b0d8112"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{full_name}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="246" y="237" width="285" height="20" uuid="86b540fa-3d2a-4442-b6d3-171a25550efe"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{passport_fath_name}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement mode="Opaque" x="9" y="13" width="536" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f1245ddd-c657-4f4c-bc75-df57cb86591e"/>
-				<textElement textAlignment="Justified">
-					<font size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[I promise to execute all rules which are declared in the product document. In case of ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="9" y="33" width="536" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="70f08cec-dc1f-4df7-bf79-348db7883507"/>
-				<textElement textAlignment="Justified">
-					<font size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[accident I must send to "TBI LTD" as soon as posible, for instance I will call]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="10" y="53" width="536" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="485a1349-7a0d-4e63-92af-b49485ff910a"/>
-				<textElement>
-					<font size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[+7 (901) 258 - 45 -26. I recognize that "TBI LTD" is not responsible for damage which]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="10" y="73" width="536" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8ef00310-a7c1-4c61-bcdb-954c91334c66"/>
-				<textElement>
-					<font size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[would be caused by a drunk driver or for mercenary motives.]]></text>
-			</staticText>
 			<line>
-				<reportElement x="144" y="210" width="77" height="1" forecolor="#666666" uuid="cbbe3c5f-4524-4fba-b653-fb0ba531dd7a"/>
+				<reportElement x="141" y="224" width="77" height="1" forecolor="#666666" uuid="cbbe3c5f-4524-4fba-b653-fb0ba531dd7a"/>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="22" y="185" width="116" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a882562f-8a21-4593-9145-567d9de9ad82"/>
+				<reportElement mode="Opaque" x="17" y="208" width="118" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a882562f-8a21-4593-9145-567d9de9ad82"/>
 				<textElement textAlignment="Justified">
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Client's signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="19" y="13" width="522" height="127" forecolor="#000000" backcolor="#FFFFFF" uuid="f1245ddd-c657-4f4c-bc75-df57cb86591e"/>
+				<textElement textAlignment="Justified">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[I promise to execute all rules which are declared in the product document. In case of any accident I must send to "TBI LTD" as soon as posible, for instance I will call +7 (901) 258 - 45 - 26. I recognize that "TBI LTD" is not responsible for damage which will be caused by a drunk driver or for mercenary motives. In addition I understand that in all cases I can get reparation of damages for one accident once. I confirm that insurance details, which are indicated above, are true.]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

@@ -168,9 +168,8 @@
         </fieldset>
     </g:form>
 </div>
-
 <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-    <g:jasperReport jasper="contract" format="PDF" name="contract" warrant_id = "${warrantInstance.id}" />
+    <g:jasperReport jasper="product" format="PDF" name="product" warrant_id = "${warrantInstance.id}" />
 </sec:ifAnyGranted>
 
 </body>
