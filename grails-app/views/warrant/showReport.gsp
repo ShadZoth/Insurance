@@ -8,11 +8,11 @@
 <body>
 <g:if test="${certificateFail}">
     <g:message code="warrant.showReport.certificateFail.label"
-               default="Insured car should have at least one certificate"/>
+               default="Insured vehicle should have at least one certificate"/>
 </g:if>
 <g:if test="${companyFail}">
     <g:message code="warrant.showReport.companyFail.label"
-               default="Only contracts with persons can be printed"
+               default="Only contracts with persons can be printed"/>
 </g:if>
 <g:if test="${!certificateFail && !companyFail}">
     <g:message code="warrant.showReport.success.label"
