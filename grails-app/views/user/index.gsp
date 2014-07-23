@@ -24,52 +24,54 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <g:sortableColumn property="username"
-                                  title="${message(code: 'user.username.label', default: 'Username')}"/>
+                    <g:sortableColumn property="username"
+                                      title="${message(code: 'user.username.label', default: 'Username')}"/>
 
-                <g:sortableColumn property="authority"
-                                  title="${message(code: 'user.authority.label', default: 'Authority')}"/>
+                    <g:sortableColumn property="authority"
+                                      title="${message(code: 'user.authority.label', default: 'Authority')}"/>
 
-                <g:sortableColumn property="accountExpired"
-                                  title="${message(code: 'user.accountExpired.label', default: 'Account Expired')}"/>
+                    <g:sortableColumn property="accountExpired"
+                                      title="${message(code: 'user.accountExpired.label', default: 'Account Expired')}"/>
 
-                <g:sortableColumn property="accountLocked"
-                                  title="${message(code: 'user.accountLocked.label', default: 'Account Locked')}"/>
+                    <g:sortableColumn property="accountLocked"
+                                      title="${message(code: 'user.accountLocked.label', default: 'Account Locked')}"/>
 
-                <g:sortableColumn property="enabled"
-                                  title="${message(code: 'user.enabled.label', default: 'Enabled')}"/>
+                    <g:sortableColumn property="enabled"
+                                      title="${message(code: 'user.enabled.label', default: 'Enabled')}"/>
 
-                <g:sortableColumn property="manager"
-                                  title="${message(code: 'user.enabled.label', default: 'Manager')}"/>
-
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${userInstanceList}" status="i" var="userInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                    <td><g:link action="show"
-                                id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
-
-                    <td>${fieldValue(bean: userInstance, field: "authority")}</td>
-
-                    <td><g:formatBoolean boolean="${userInstance.accountExpired}"/></td>
-
-                    <td><g:formatBoolean boolean="${userInstance.accountLocked}"/></td>
-
-                    <td><g:formatBoolean boolean="${userInstance.enabled}"/></td>
-
-                    <td>${fieldValue(bean: userInstance, field: "manager")}</td>
+                    <g:sortableColumn property="manager"
+                                      title="${message(code: 'user.enabled.label', default: 'Manager')}"/>
 
                 </tr>
-            </g:each>
+                </thead>
+                <tbody>
+                <g:each in="${userInstanceList}" status="i" var="userInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            </tbody>
-        </table>
+                        <td><g:link action="show"
+                                    id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
+
+                        <td>${fieldValue(bean: userInstance, field: "authority")}</td>
+
+                        <td><g:formatBoolean boolean="${userInstance.accountExpired}"/></td>
+
+                        <td><g:formatBoolean boolean="${userInstance.accountLocked}"/></td>
+
+                        <td><g:formatBoolean boolean="${userInstance.enabled}"/></td>
+
+                        <td>${fieldValue(bean: userInstance, field: "manager")}</td>
+
+                    </tr>
+                </g:each>
+
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${userInstanceCount ?: 0}"/>

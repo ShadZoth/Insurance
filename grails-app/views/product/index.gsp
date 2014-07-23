@@ -23,40 +23,43 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <table>
-        <thead>
-        <tr>
 
-            <g:sortableColumn property="name" title="${message(code: 'product.name.label', default: 'Name')}"/>
+    <div id="scrolls">
+        <table>
+            <thead>
+            <tr>
 
-            <g:sortableColumn property="corporate"
-                              title="${message(code: 'product.corporate.label', default: 'Corporate')}"/>
+                <g:sortableColumn property="name" title="${message(code: 'product.name.label', default: 'Name')}"/>
 
-            <g:sortableColumn property="individual"
-                              title="${message(code: 'product.individual.label', default: 'Individual')}"/>
+                <g:sortableColumn property="corporate"
+                                  title="${message(code: 'product.corporate.label', default: 'Corporate')}"/>
 
-            <g:sortableColumn property="value"
-                              title="${message(code: 'price.value.label', default: 'Value')}"/>
+                <g:sortableColumn property="individual"
+                                  title="${message(code: 'product.individual.label', default: 'Individual')}"/>
 
-        </tr>
-        </thead>
-        <tbody>
-        <g:each in="${productInstanceList}" status="i" var="productInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                <td><g:link action="show"
-                            id="${productInstance.id}">${fieldValue(bean: productInstance, field: "name")}</g:link></td>
-
-                <td><g:formatBoolean boolean="${productInstance.corporate}"/></td>
-
-                <td><g:formatBoolean boolean="${productInstance.individual}"/></td>
-
-                <td>${productInstance.currentPrice?.value}</td>
+                <g:sortableColumn property="value"
+                                  title="${message(code: 'price.value.label', default: 'Value')}"/>
 
             </tr>
-        </g:each>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <g:each in="${productInstanceList}" status="i" var="productInstance">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                    <td><g:link action="show"
+                                id="${productInstance.id}">${fieldValue(bean: productInstance, field: "name")}</g:link></td>
+
+                    <td><g:formatBoolean boolean="${productInstance.corporate}"/></td>
+
+                    <td><g:formatBoolean boolean="${productInstance.individual}"/></td>
+
+                    <td>${productInstance.currentPrice?.value}</td>
+
+                </tr>
+            </g:each>
+            </tbody>
+        </table>
+    </div>
 
     <div class="pagination">
         <g:paginate total="${productInstanceCount ?: 0}"/>

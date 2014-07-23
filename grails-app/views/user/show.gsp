@@ -148,21 +148,22 @@
 
     </ol>
 
+    <sec:ifAnyGranted roles="ROLE_MANAGER">
+        <g:if test="${!userInstance?.manager}">
+            <g:form url="[resource: userInstance, action: 'addManager']">
+                <fieldset id="add_manager">
+                    <g:submitButton name="addManager" class="addManager"
+                                    value="${message(code: 'default.button.addManager.label', default: 'Add me as manager')}"/>
+                </fieldset>
+            </g:form>
+        </g:if>
+    </sec:ifAnyGranted>
+
     <g:form url="[resource: userInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit"
                     resource="${userInstance}"><g:message
                     code="default.button.edit.label" default="Edit"/></g:link>
-            <sec:ifAnyGranted roles="ROLE_MANAGER">
-                <g:if test="${!userInstance?.manager}">
-                    <g:form url="[resource: userInstance, action: 'addManager']">
-                        <fieldset class="buttons">
-                            <g:submitButton name="addManager" class="addManager"
-                                            value="${message(code: 'default.button.addManager.label', default: 'Add me as manager')}"/>
-                        </fieldset>
-                    </g:form>
-                </g:if>
-            </sec:ifAnyGranted>
         </fieldset>
     </g:form>
 </div>

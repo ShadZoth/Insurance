@@ -14,7 +14,8 @@
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_CALL_CENTER">
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="create"><g:message code="accident.new.label" default="New accident"/></g:link></li>
+                <li><g:link class="create" action="create"><g:message code="accident.new.label"
+                                                                      default="New accident"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
@@ -24,35 +25,39 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <th><g:message code="accident.vehicle.label" default="Vehicle"/></th>
 
-                <g:sortableColumn property="dateTime"
-                                  title="${message(code: 'accident.dateTime.label', default: 'Date Time')}"/>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <g:sortableColumn property="damage"
-                                  title="${message(code: 'accident.damage.label', default: 'Damage')}"/>
+                    <th><g:message code="accident.vehicle.label" default="Vehicle"/></th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${accidentInstanceList}" status="i" var="accidentInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <g:sortableColumn property="dateTime"
+                                      title="${message(code: 'accident.dateTime.label', default: 'Date Time')}"/>
 
-                    <td><g:link action="show"
-                                id="${accidentInstance.id}">${fieldValue(bean: accidentInstance, field: "vehicle")}</g:link></td>
-
-                    <td><g:formatDate format="yyyy-MM-dd"  date="${accidentInstance.dateTime}"/></td>
-
-                    <td>${fieldValue(bean: accidentInstance, field: "damage")}</td>
+                    <g:sortableColumn property="damage"
+                                      title="${message(code: 'accident.damage.label', default: 'Damage')}"/>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${accidentInstanceList}" status="i" var="accidentInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${accidentInstance.id}">${fieldValue(bean: accidentInstance, field: "vehicle")}</g:link></td>
+
+                        <td><g:formatDate format="yyyy-MM-dd" date="${accidentInstance.dateTime}"/></td>
+
+                        <td>${fieldValue(bean: accidentInstance, field: "damage")}</td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${accidentInstanceCount ?: 0}"/>

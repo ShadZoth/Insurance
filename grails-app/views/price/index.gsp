@@ -28,35 +28,39 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <th><g:message code="price.product.label" default="Product"/></th>
 
-                <g:sortableColumn property="since"
-                                  title="${message(code: 'price.since.label', default: 'Since')}"/>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <g:sortableColumn property="value"
-                                  title="${message(code: 'price.value.label', default: 'Value')}"/>
+                    <th><g:message code="price.product.label" default="Product"/></th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${priceInstanceList}" status="i" var="priceInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <g:sortableColumn property="since"
+                                      title="${message(code: 'price.since.label', default: 'Since')}"/>
 
-                    <td><g:link action="show"
-                                id="${priceInstance.id}">${fieldValue(bean: priceInstance, field: "product")}</g:link></td>
-
-                    <td><g:formatDate format="yyyy-MM-dd" date="${priceInstance.since}"/></td>
-
-                    <td>${fieldValue(bean: priceInstance, field: "value")}</td>
+                    <g:sortableColumn property="value"
+                                      title="${message(code: 'price.value.label', default: 'Value')}"/>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${priceInstanceList}" status="i" var="priceInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${priceInstance.id}">${fieldValue(bean: priceInstance, field: "product")}</g:link></td>
+
+                        <td><g:formatDate format="yyyy-MM-dd" date="${priceInstance.since}"/></td>
+
+                        <td>${fieldValue(bean: priceInstance, field: "value")}</td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${priceInstanceCount ?: 0}"/>

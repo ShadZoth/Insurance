@@ -26,50 +26,53 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <th><g:message code="vehicle.owner.label" default="Owner"/></th>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <g:sortableColumn property="model"
-                                  title="${message(code: 'vehicle.model.label', default: 'Model')}"/>
+                    <th><g:message code="vehicle.owner.label" default="Owner"/></th>
 
-                <g:sortableColumn property="year"
-                                  title="${message(code: 'vehicle.year.label', default: 'Year')}"/>
+                    <g:sortableColumn property="model"
+                                      title="${message(code: 'vehicle.model.label', default: 'Model')}"/>
 
-                <g:sortableColumn property="price"
-                                  title="${message(code: 'vehicle.price.label', default: 'Price')}"/>
+                    <g:sortableColumn property="year"
+                                      title="${message(code: 'vehicle.year.label', default: 'Year')}"/>
 
-                <g:sortableColumn property="category"
-                                  title="${message(code: 'vehicle.category.label', default: 'Category')}"/>
+                    <g:sortableColumn property="price"
+                                      title="${message(code: 'vehicle.price.label', default: 'Price')}"/>
 
-                <th><g:message code="vehicle.manufacturer.label"
-                               default="Manufacturer"/></th>
+                    <g:sortableColumn property="category"
+                                      title="${message(code: 'vehicle.category.label', default: 'Category')}"/>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${vehicleInstanceList}" status="i" var="vehicleInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                    <td><g:link action="show"
-                                id="${vehicleInstance.id}">${fieldValue(bean: vehicleInstance, field: "owner")}</g:link></td>
-
-                    <td>${fieldValue(bean: vehicleInstance, field: "model")}</td>
-
-                    <td>${fieldValue(bean: vehicleInstance, field: "year")}</td>
-
-                    <td>${fieldValue(bean: vehicleInstance, field: "price")}</td>
-
-                    <td>${fieldValue(bean: vehicleInstance, field: "category")}</td>
-
-                    <td>${fieldValue(bean: vehicleInstance, field: "manufacturer")}</td>
+                    <th><g:message code="vehicle.manufacturer.label"
+                                   default="Manufacturer"/></th>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${vehicleInstanceList}" status="i" var="vehicleInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${vehicleInstance.id}">${fieldValue(bean: vehicleInstance, field: "owner")}</g:link></td>
+
+                        <td>${fieldValue(bean: vehicleInstance, field: "model")}</td>
+
+                        <td>${fieldValue(bean: vehicleInstance, field: "year")}</td>
+
+                        <td>${fieldValue(bean: vehicleInstance, field: "price")}</td>
+
+                        <td>${fieldValue(bean: vehicleInstance, field: "category")}</td>
+
+                        <td>${fieldValue(bean: vehicleInstance, field: "manufacturer")}</td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${vehicleInstanceCount ?: 0}"/>

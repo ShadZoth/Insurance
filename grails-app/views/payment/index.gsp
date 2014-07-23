@@ -31,40 +31,44 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <th><g:message code="payment.warrant.label" default="Warrant"/></th>
 
-                <th><g:message code="payment.accident.label"
-                               default="Accident"/></th>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <g:sortableColumn property="amount"
-                                  title="${message(code: 'payment.amount.label', default: 'Amount')}"/>
+                    <th><g:message code="payment.warrant.label" default="Warrant"/></th>
 
-                <g:sortableColumn property="date"
-                                  title="${message(code: 'payment.date.label', default: 'Date')}"/>
+                    <th><g:message code="payment.accident.label"
+                                   default="Accident"/></th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${paymentInstanceList}" status="i" var="paymentInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <g:sortableColumn property="amount"
+                                      title="${message(code: 'payment.amount.label', default: 'Amount')}"/>
 
-                    <td><g:link action="show"
-                                id="${paymentInstance.id}">${fieldValue(bean: paymentInstance, field: "warrant")}</g:link></td>
-
-                    <td>${fieldValue(bean: paymentInstance, field: "accident")}</td>
-
-                    <td>${fieldValue(bean: paymentInstance, field: "amount")}</td>
-
-                    <td><g:formatDate format="yyyy-MM-dd" date="${paymentInstance.date}"/></td>
+                    <g:sortableColumn property="date"
+                                      title="${message(code: 'payment.date.label', default: 'Date')}"/>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${paymentInstanceList}" status="i" var="paymentInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${paymentInstance.id}">${fieldValue(bean: paymentInstance, field: "warrant")}</g:link></td>
+
+                        <td>${fieldValue(bean: paymentInstance, field: "accident")}</td>
+
+                        <td>${fieldValue(bean: paymentInstance, field: "amount")}</td>
+
+                        <td><g:formatDate format="yyyy-MM-dd" date="${paymentInstance.date}"/></td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${paymentInstanceCount ?: 0}"/>
