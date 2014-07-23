@@ -21,8 +21,8 @@ class BootStrap {
             "Fomichov" ,
             "Isakov" ,
             "Dmitriev" ,
-            "Vasil'ev" ,
-            "Telegin" ,
+            "Gavrilov" ,
+            "Bazhenov" ,
             "Magomedaliev" ,
             "Ibtyanov" ,
             "Tsmakalov",
@@ -203,7 +203,7 @@ class BootStrap {
 
         // Генерирует названия компаний и ИНН (быдлокод не меньший, чем выше)
         (151..200).collect {
-            new Company(name: "${companiesNameParts.get(rand.nextInt(companiesNameParts.size()))}${companiesNameParts.get(rand.nextInt(companiesNameParts.size()))}${companiesNameParts.get(rand.nextInt(companiesNameParts.size()))}".capitalize(),
+            new Company(name: nextName,
                     inn: "${it}${1000000000 - rand.nextInt(99999999)}",
                     seller: findSeller(it))
         }*.save()
@@ -267,6 +267,14 @@ class BootStrap {
          "Wolseley"].collect {
             new Manufacturer(name: it)
         }*.save()
+    }
+
+    private String getNextName() {
+        "${nextSyllable}${nextSyllable}${nextSyllable}".capitalize()
+    }
+
+    private getNextSyllable() {
+        companiesNameParts.get(rand.nextInt(companiesNameParts.size()))
     }
 
     static def hasRoleService
