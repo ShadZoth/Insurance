@@ -178,7 +178,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("MM-dd-yyyy").format($F{warrant_expire_date})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-mm-yyyy").format($F{warrant_expire_date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="896" y="0" width="86" height="23" uuid="5736eaed-dddd-4d06-989b-f10b10704e14"/>
@@ -206,7 +206,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("MM-dd-yyyy").format($F{warrant_issue_date})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{warrant_issue_date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="265" y="0" width="144" height="20" uuid="4a41772d-3ce1-418f-ac5c-b406874901e2"/>

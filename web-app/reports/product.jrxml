@@ -103,14 +103,14 @@ WHERE
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{warrant_issue_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{warrant_issue_date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="281" y="322" width="258" height="20" uuid="5a2a78e1-3a85-406f-a792-f362f413edc4"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{warrant_expire_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format($F{warrant_issue_date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="275" y="7" width="189" height="20" uuid="80de220e-2ab8-42a5-93ab-c9986dea3121"/>
