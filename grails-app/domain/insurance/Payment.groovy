@@ -16,7 +16,7 @@ class Payment {
         accident validator: { val, obj ->
             val.vehicle == obj.warrant.vehicle
         }
-        amount(nullable: false)
+        amount(nullable: false, min: 0.0)
         date(nullable: false)
     }
 
