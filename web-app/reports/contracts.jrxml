@@ -58,7 +58,7 @@ WHERE
 					<textElement textAlignment="Right">
 						<font size="14" isBold="true" isItalic="false"/>
 					</textElement>
-					<text><![CDATA[ЗБС СТРАХОВАНИЕ]]></text>
+					<text><![CDATA[TBI LTD]]></text>
 				</staticText>
 				<image>
 					<reportElement x="11" y="6" width="80" height="80" uuid="45711e03-f008-49aa-8a42-149fc7917877"/>
