@@ -162,7 +162,7 @@
                     resource="${warrantInstance}"><g:message
                     code="default.button.edit.label"
                     default="Edit"/></g:link>
-            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
                 <g:link class="edit" action="showReport"
                         resource="${warrantInstance}">
                     <g:message code="warrant.show.report.label"
