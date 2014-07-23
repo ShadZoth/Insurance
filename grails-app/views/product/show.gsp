@@ -30,8 +30,8 @@
     </g:if>
     <ol class="property-list product">
 
-        %{--Название продукта--}%
-        <g:if test="${productInstance?.name} && ${productInstance?.corporate} && ${productInstance?.individual}">
+    %{--Название продукта--}%
+        <g:if test="${productInstance?.name}">
             <li class="fieldcontain">
                 <span id="name-label" class="property-label"><g:message
                         code="product.name.label" default="Name"/></span>
@@ -42,22 +42,28 @@
             </li>
         </g:if>
 
-        %{--TODO: исправить верстку.--}%
-        %{--Corporate/Individual--}%
-        <li class="fieldcontain">
+    %{--TODO: исправить верстку.--}%
+    %{--Corporate/Individual--}%
 
-            <g:if test="${productInstance?.corporate} && ${productInstance?.individual}">
-                <span id="corporate-label" class="property-label"><g:message
-                        code="product.corporate.label"
-                        default="Corporate"/>
+            <g:if test="${productInstance?.individual}">
+                <li class="fieldcontain">
+                <span id="individual-label" class="property-label">
                     <g:message
-                        code="product.individual.label"
-                        default="Individual"/></span>
+                            code="product.individual.label"
+                            default="Individual"/></span>
+                </li>
             </g:if>
-        </li>
+            <g:if test="${productInstance?.corporate}">
+                <li class="fieldcontain">
+                        <span id="corporate-label" class="property-label">
+                    <g:message
+                            code="product.corporate.label"
+                            default="Corporate"/></span>
+                </li>
+            </g:if>
 
 
-        %{--Список цен--}%
+    %{--Список цен--}%
         <g:if test="${productInstance?.sortedPricelist}">
             <li class="fieldcontain">
                 <span id="pricelist-label" class="property-label"><g:message
@@ -74,11 +80,11 @@
             </li>
         </g:if>
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-        <li class="fieldcontain">
-            <g:link class="create" controller="price" action="create"
-                    params="[product_id: productInstance.id]"><g:message
-                    code="price.add.label" default="Add price"/></g:link>
-        </li>
+            <li class="fieldcontain">
+                <g:link class="create" controller="price" action="create"
+                        params="[product_id: productInstance.id]"><g:message
+                        code="price.add.label" default="Add price"/></g:link>
+            </li>
         </sec:ifAnyGranted>
 
     </ol>

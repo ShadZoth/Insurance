@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'accident.label', default: 'Accident')}"/>
-    <title><g:message code="default.create.label" args="[entityName]"/></title>
+    <title><g:message code="accident.create.label" default="Add accident"/></title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 </div>
 
 <div id="create-accident" class="content scaffold-create" role="main">
-    <h1><g:message code="default.create.label" args="[entityName]"/></h1>
+    <h1><g:message code="accident.create.label" default="Add accident"/></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>

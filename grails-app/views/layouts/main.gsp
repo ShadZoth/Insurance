@@ -130,6 +130,9 @@
                         </g:link></li>
                     </ul>
                 </li>
+                <li><g:link action="index" controller="product">
+                    <g:message code="layout.menu.admin.products" default="Products"/>
+                </g:link></li>
             </ul>
         </sec:ifAllGranted>
         <sec:ifAllGranted roles="ROLE_MANAGER">

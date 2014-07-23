@@ -52,7 +52,7 @@ class Passport implements Comparable<Passport> {
 
     @Override
     public String toString(){
-        "$lastName $firstName $number"
+        "$lastName $firstName, $number"
     }
 
     @Override
