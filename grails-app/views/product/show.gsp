@@ -58,7 +58,7 @@
 
 
         %{--Список цен--}%
-        <g:if test="${productInstance?.sortedPricelist} != null">
+        <g:if test="${productInstance?.sortedPricelist}">
             <li class="fieldcontain">
                 <span id="pricelist-label" class="property-label"><g:message
                         code="product.pricelist.label"
