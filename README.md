@@ -6,8 +6,7 @@ The practical task is creating a prototype of CRM system for an undefine insuran
 The system has 4 roles: administrator, manager, seller and the call center
 employee.
 
-Managers has sellers that obey him. Administrator can connect any seller to
-any manager and managers can choose sellers that does not have manager. //TODO: Проверить, что в системе именно так  
+Managers has sellers that obey him. Managers can choose sellers that does not have manager.
 
 The system has 13 main basic entities: accident, certificate, company, contact,
 license, manufacturer, passport, payment, person, price, product, vehicle and
