@@ -80,7 +80,7 @@
 
 
     <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-        <g:jasperReport jasper="contracts" format="PDF" name="contracts"/>
+        <g:jasperReport jasper="contracts" format="PDF"/>
     </sec:ifAnyGranted>
 
 </sec:ifAnyGranted>
