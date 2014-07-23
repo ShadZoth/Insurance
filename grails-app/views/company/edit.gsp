@@ -16,7 +16,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><g:link class="list" action="index"><g:message code="company.index.label"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="certificate.create.label"/></g:link></li>
+        <li><g:link class="create" action="create"><g:message code="company.create.label"/></g:link></li>
     </ul>
 </div>
 

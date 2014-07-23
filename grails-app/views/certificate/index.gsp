@@ -35,7 +35,8 @@
                     <g:sortableColumn property="number"
                                       title="${message(code: 'certificate.number.label', default: 'Number')}"/>
 
-                    <th><g:message code="certificate.vehicle.label" default="Vehicle"/></th>
+                    <g:sortableColumn property="vehicle"
+                                      title="${message(code: 'certificate.vehicle.label', default: 'Vehicle')}"/>
 
                     <g:sortableColumn property="color"
                                       title="${message(code: 'certificate.color.label', default: 'Color')}"/>

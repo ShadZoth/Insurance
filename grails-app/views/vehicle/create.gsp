@@ -4,7 +4,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'vehicle.label', default: 'Vehicle')}"/>
-    <title><g:message code="vehicle.list.title" default="Vehicle"/></title>
+    <title><g:message code="vehicle.create.label" default="Vehicle"/></title>
 </head>
 
 <body>
