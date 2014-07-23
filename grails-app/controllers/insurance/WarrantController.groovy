@@ -49,6 +49,10 @@ class WarrantController {
         respond warrantInstance
     }
 
+    def showReport(Warrant warrantInstance) {
+        respond warrantInstance, model: [certificateFail: !warrantInstance?.vehicle?.certificates, companyFail: warrantInstance?.client?.getClass() == Company]
+    }
+
     def create() {
 
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
