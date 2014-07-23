@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 	<meta name='layout' content='main'/>
+    %{--TODO: придумать перевод--}%
 	<title><g:message code="springSecurity.login.title"/></title>
 	<style type='text/css' media='screen'>
 	#login {

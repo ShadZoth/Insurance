@@ -22,33 +22,37 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <g:sortableColumn property="value" title="${message(code: 'contact.value.label', default: 'Value')}"/>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <th><g:message code="contact.client.label" default="Client"/></th>
+                    <g:sortableColumn property="value"
+                                      title="${message(code: 'contact.value.label', default: 'Value')}"/>
 
-                <g:sortableColumn property="type" title="${message(code: 'contact.type.label', default: 'Type')}"/>
+                    <th><g:message code="contact.client.label" default="Client"/></th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${contactInstanceList}" status="i" var="contactInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                    <td><g:link action="show"
-                                id="${contactInstance.id}">${fieldValue(bean: contactInstance, field: "value")}</g:link></td>
-
-                    <td>${fieldValue(bean: contactInstance, field: "client")}</td>
-
-                    <td>${fieldValue(bean: contactInstance, field: "type")}</td>
+                    <g:sortableColumn property="type" title="${message(code: 'contact.type.label', default: 'Type')}"/>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${contactInstanceList}" status="i" var="contactInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${contactInstance.id}">${fieldValue(bean: contactInstance, field: "value")}</g:link></td>
+
+                        <td>${fieldValue(bean: contactInstance, field: "client")}</td>
+
+                        <td>${fieldValue(bean: contactInstance, field: "type")}</td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${contactInstanceCount ?: 0}"/>

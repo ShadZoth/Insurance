@@ -14,7 +14,7 @@ class Product {
     }
 
     // Возвращает цены, отсортированные по дате
-    Price getSortedPricelist() {
+    def getSortedPricelist() {
        pricelist?.sort()
     }
 
@@ -28,6 +28,6 @@ class Product {
 
     @Override
     public String toString() {
-        return name;
+        name
     }
 }

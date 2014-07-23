@@ -24,47 +24,43 @@
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
 
-                <g:sortableColumn property="number"
-                                  title="${message(code: 'license.number.label', default: 'Number')}"/>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
 
-                <th><g:message code="license.owner.label" default="Owner"/></th>
+                    <g:sortableColumn property="number"
+                                      title="${message(code: 'license.number.label', default: 'Number')}"/>
 
-                <g:sortableColumn property="issueDate"
-                                  title="${message(code: 'license.issueDate.label', default: 'Issue Date')}"/>
+                    <th><g:message code="license.owner.label" default="Owner"/></th>
 
-                <g:sortableColumn property="a" title="${message(code: 'license.a.label', default: 'A')}"/>
+                    <g:sortableColumn property="issueDate"
+                                      title="${message(code: 'license.issueDate.label', default: 'Issue Date')}"/>
 
-                <g:sortableColumn property="b" title="${message(code: 'license.b.label', default: 'B')}"/>
-
-                <g:sortableColumn property="c" title="${message(code: 'license.c.label', default: 'C')}"/>
-
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${licenseInstanceList}" status="i" var="licenseInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                    <td><g:link action="show"
-                                id="${licenseInstance.id}">${fieldValue(bean: licenseInstance, field: "number")}</g:link></td>
-
-                    <td>${fieldValue(bean: licenseInstance, field: "owner")}</td>
-
-                    <td><g:formatDate format="yyyy-MM-dd" date="${licenseInstance.issueDate}"/></td>
-
-                    <td><g:formatBoolean boolean="${licenseInstance.a}"/></td>
-
-                    <td><g:formatBoolean boolean="${licenseInstance.b}"/></td>
-
-                    <td><g:formatBoolean boolean="${licenseInstance.c}"/></td>
+                    <th><g:message code="license.categories.label"
+                                   default="Categories"/></th>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${licenseInstanceList}" status="i" var="licenseInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${licenseInstance.id}">${fieldValue(bean: licenseInstance, field: "number")}</g:link></td>
+
+                        <td>${fieldValue(bean: licenseInstance, field: "owner")}</td>
+
+                        <td><g:formatDate format="yyyy-MM-dd" date="${licenseInstance.issueDate}"/></td>
+
+                        <td><g:message message="${licenseInstance.cats()}"/></td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
 
         <div class="pagination">
             <g:paginate total="${licenseInstanceCount ?: 0}"/>

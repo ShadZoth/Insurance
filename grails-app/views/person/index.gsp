@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName"
            value="${message(code: 'person.label', default: 'Person')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <title><g:message code="person.list.label" default="Persons list"/></title>
 </head>
 
 <body>
@@ -17,53 +17,58 @@
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message
-                        code="default.new.label" args="[entityName]"/></g:link></li>
+                        code="person.new.label" default="New person"/></g:link></li>
             </ul>
         </div>
     </sec:ifAnyGranted>
 
     <div id="list-person" class="content scaffold-list" role="main">
-        <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+        <h1><g:message code="person.list.label" default="Persons list"/></h1>
         <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
         </g:if>
-        <table>
-            <thead>
-            <tr>
-                <th><g:message code="person.name.label"
-                               default="Name"/></th>
 
-                <g:sortableColumn property="registrationDate"
-                                  title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
 
-                <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-                    <g:sortableColumn property="seller" title="${message(code: "person.seller.label", default: "Seller")}"/>
-                </sec:ifAnyGranted>
+        <div id="scrolls">
+            <table>
+                <thead>
+                <tr>
+                    <th><g:message code="person.name.label"
+                                   default="Name"/></th>
 
-                <g:sortableColumn property="archived"
-                                  title="${message(code: 'person.archived.label', default: 'Archived')}"/>
+                    <g:sortableColumn property="registrationDate"
+                                      title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
 
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${personInstanceList}" status="i" var="personInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+                        <g:sortableColumn property="seller"
+                                          title="${message(code: "person.seller.label", default: "Seller")}"/>
+                    </sec:ifAnyGranted>
 
-                    <td><g:link action="show"
-                                id="${personInstance.id}">${personInstance}</g:link></td>
-
-                    <td><g:formatDate format="yyyy-MM-dd" date="${personInstance.registrationDate}"/></td>
-
-                <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-                    <td>${fieldValue(bean: personInstance, field: "seller")}</td>
-                </sec:ifAnyGranted>
-
-                    <td><g:formatBoolean boolean="${personInstance.archived}"/></td>
+                    <g:sortableColumn property="archived"
+                                      title="${message(code: 'person.archived.label', default: 'Archived')}"/>
 
                 </tr>
-            </g:each>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <g:each in="${personInstanceList}" status="i" var="personInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                        <td><g:link action="show"
+                                    id="${personInstance.id}">${personInstance}</g:link></td>
+
+                        <td><g:formatDate format="yyyy-MM-dd" date="${personInstance.registrationDate}"/></td>
+
+                        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+                            <td>${fieldValue(bean: personInstance, field: "seller")}</td>
+                        </sec:ifAnyGranted>
+
+                        <td><g:formatBoolean boolean="${personInstance.archived}"/></td>
+
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
         %{--TODO: уточнить значение, предположительно -- ограничение--}%
         <div class="pagination">
             <g:paginate total="${personInstanceCount ?: 0}"/>

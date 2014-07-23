@@ -49,7 +49,7 @@
         <g:message code="price.value.label" default="Value" />
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="value" value="${fieldValue(bean: priceInstance, field: 'value')}" required=""/>
+    <g:field name="value" value="${fieldValue(bean: priceInstance, field: 'value')}" required="" type=""/>
 
 </div>
 

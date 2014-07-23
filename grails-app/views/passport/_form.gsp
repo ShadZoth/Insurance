@@ -1,9 +1,9 @@
 <%@ page import="insurance.Passport" %>
 
-%{--Выбор клиента. Название пункта содержит ссылку на создание клиента.--}%
+%{--Выбор клиента.--}%
 <div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'person', 'error')} required">
 	<label for="person">
-        <a href="../client/create.gsp"><g:message code="passport.person.label" default="Person" /></a>
+        <g:message code="passport.person.label" default="Person" />
 		<span class="required-indicator">*</span>
 	</label>
     <g:select id="person" name="person.id" from="${insurance.Person.list()}"
@@ -83,4 +83,5 @@
 	<g:select name="sex" from="${insurance.Passport$Sex?.values()}" keys="${insurance.Passport$Sex.values()*.name()}" required="" value="${passportInstance?.sex?.name()}" />
 
 </div>
+
 
