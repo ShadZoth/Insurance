@@ -37,8 +37,8 @@ WHERE
      warrant.id = $P{warrant_id}::bigint
      AND
      passport.issue_date >= ( SELECT MAX(issue_date) FROM "public"."passport" inner_passport WHERE passport."id" = inner_passport."id" )
-
-
+     AND
+     certificate.issue_date >= ( SELECT MAX(issue_date) FROM "public"."certificate" inner_certificate WHERE certificate."id" = inner_certificate."id" )
      ]]>
 	</queryString>
 	<field name="warrant_expire_date" class="java.sql.Date"/>

@@ -26,7 +26,11 @@ FROM
      INNER JOIN "public"."product" product ON warrant."product_id" = product."id"
 WHERE
      now()::date BETWEEN warrant.issue_date AND warrant.expire_date
- AND passport.issue_date >= ( SELECT MAX(issue_date) FROM "public"."passport" inner_passport WHERE passport."id" = inner_passport."id" )]]>
+     AND
+     passport.issue_date >= ( SELECT MAX(issue_date) FROM "public"."passport" inner_passport WHERE passport."id" = inner_passport."id" )
+     AND
+     certificate.issue_date >= ( SELECT MAX(issue_date) FROM "public"."certificate" inner_certificate WHERE certificate."id" = inner_certificate."id" )
+ ]]>
 	</queryString>
 	<field name="warrant_expire_date" class="java.sql.Date"/>
 	<field name="warrant_issue_date" class="java.sql.Date"/>
