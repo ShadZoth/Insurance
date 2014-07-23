@@ -14,7 +14,7 @@ class Price implements Comparable<Price> {
             def res = val >= lil
             return res
         }
-        value() // TODO: в БД определить как money
+        value(min: 0.0) // TODO: в БД определить как money
     }
 
     static belongsTo = [Product]

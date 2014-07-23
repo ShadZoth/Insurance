@@ -28,7 +28,7 @@ class Certificate {
 //                })
         ownerFirstName(nullable: false, maxSize: 30)
         ownerLastName(nullable: false, maxSize: 30)
-        vin(maxSize: 17)
+        vin(minSize: 17, maxSize: 17)
     }
 
 
