@@ -1,6 +1,7 @@
 Insurance
 =========
-//TODO: Написать вступление
+This repository is designed for summer practical work of four students. 
+The practical task is creating a prototype of CRM system for an undefine insurance company.
 
 The system has 4 roles: administrator, manager, seller and the call center
 employee.
@@ -21,7 +22,7 @@ clients, manager can see only clients that assigned to sellers that obeys
 the manager. Seller can see only clients that assigned to him.
 
 Any client can have a list of contacts. There are three types of contacts:
-address, telephone number and email. //TODO: Описать обязательные контакты, если мы решили их делать
+address, telephone number and email. 
 
 Any client can have a list of vehicles that the clients owns.
 
