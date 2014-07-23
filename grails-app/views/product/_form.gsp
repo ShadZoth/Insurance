@@ -1,4 +1,4 @@
-<%@ page import="insurance.Product; insurance.Price" %>
+<%@ page import="insurance.Product" %>
 
 
 %{--Форма, наименование продукта--}%
