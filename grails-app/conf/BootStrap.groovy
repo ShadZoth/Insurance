@@ -93,6 +93,27 @@ class BootStrap {
 
     List sexer = ["na" , "ich" , "a"]
 
+    List companiesNameParts = [
+            "ko",
+            "pa",
+            "za",
+            "cha",
+            "gri",
+            "bee",
+            "zui",
+            "chi",
+            "pjo",
+            "go",
+            "loo",
+            "stro",
+            "chto",
+            "ber",
+            "dang",
+            "uber",
+            "croy",
+            "bon"
+    ]
+
     def init = {
         new Role(authority: 'ROLE_ADMIN').save(flush: true)
         new Role(authority: 'ROLE_MANAGER').save(flush: true)
@@ -139,7 +160,7 @@ class BootStrap {
         }
 
 
-        // Генерит мужчин (быдлокод)
+        // Генерирует мужчин (быдлокод)
         (1..75).each {
             User seller = findSeller(it)
             def p = new Person(seller: seller)
@@ -160,7 +181,7 @@ class BootStrap {
         }
 
 
-        // Генерит женщин (быдлокод)
+        // Генерирует женщин (быдлокод)
         (76..150).each {
             User seller = findSeller(it)
             def p = new Person(seller: seller)
@@ -180,9 +201,10 @@ class BootStrap {
             pass.save(flush: true)
         }
 
+        // Генерирует названия компаний и ИНН (быдлокод не меньший, чем выше)
         (151..200).collect {
-            new Company(name: "Company$it",
-                    inn: "${it}${it}${it}${it}", // Сделать рандом
+            new Company(name: "${companiesNameParts.get(rand.nextInt(companiesNameParts.size()))}${companiesNameParts.get(rand.nextInt(companiesNameParts.size()))}${companiesNameParts.get(rand.nextInt(companiesNameParts.size()))}".capitalize(),
+                    inn: "${it}${1000000000 - rand.nextInt(99999999)}",
                     seller: findSeller(it))
         }*.save()
 

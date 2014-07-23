@@ -16,9 +16,6 @@
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
         <div class="nav" role="navigation">
             <ul>
-                %{--<li><a class="home" href="${createLink(uri: '/')}"><g:message
-                        code="default.home.label"/></a></li>--}%
-
                 <g:set var="personName" value="${message(code: 'person.label', default: 'Person')}"/>
                 <g:set var="companyName" value="${message(code: 'company.label', default: 'Company')}"/>
 

@@ -162,17 +162,16 @@
                     resource="${warrantInstance}"><g:message
                     code="default.button.edit.label"
                     default="Edit"/></g:link>
-            <g:actionSubmit class="delete" action="delete"
-                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+                <g:link class="edit" action="showReport"
+                        resource="${warrantInstance}">
+                    <g:message code="warrant.show.report.label"
+                               default="Print a contract"/>
+                </g:link>
+            </sec:ifAnyGranted>
         </fieldset>
     </g:form>
 </div>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-    <g:jasperReport jasper="product" format="PDF" warrant_id = "${warrantInstance.id}" >
-        <input type="hidden" name="warrant_id" value="${warrantInstance?.id}" />
-    </g:jasperReport>
-</sec:ifAnyGranted>
 
 </body>
 </html>
