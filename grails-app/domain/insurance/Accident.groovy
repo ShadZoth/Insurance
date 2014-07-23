@@ -5,6 +5,7 @@ class Accident {
     Date dateTime
     BigDecimal damage
     Vehicle vehicle
+    String comments
 
     static searchable = true
 
@@ -16,6 +17,7 @@ class Accident {
         vehicle()
         dateTime shared: 'upToDate'
         damage()
+        comments(maxSize: 2800)
     }
 
     static mapping = {
