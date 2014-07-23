@@ -10,8 +10,12 @@ class Payment {
     static belongsTo = [Accident, Warrant]
 
     static constraints = {
-        warrant()
-        accident()
+        warrant validator: { val, obj ->
+            val.vehicle == obj.accident.vehicle
+        }
+        accident validator: { val, obj ->
+            val.vehicle == obj.warrant.vehicle
+        }
         amount(nullable: false)
         date(nullable: false)
     }
