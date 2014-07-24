@@ -3,6 +3,8 @@
 	<property name="ireport.zoom" value="0.9090909090909228"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="realPath" isForPrompting="false" class="java.lang.String">
+            </parameter>
 	<queryString>
 		<![CDATA[SELECT
      warrant."expire_date" AS warrant_expire_date,
@@ -66,7 +68,7 @@ WHERE
 				</staticText>
 				<image>
 					<reportElement x="11" y="6" width="80" height="80" uuid="45711e03-f008-49aa-8a42-149fc7917877"/>
-					<imageExpression><![CDATA["web-app/images/logo.png"]]></imageExpression>
+					<imageExpression><![CDATA[$P{realPath} + "logo.png"]]></imageExpression>
 				</image>
 			</frame>
 		</band>
