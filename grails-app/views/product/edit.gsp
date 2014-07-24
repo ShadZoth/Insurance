@@ -17,9 +17,13 @@
     <ul>
         <li><g:link class="list" action="index"><g:message
                 code="product.list.label" default="Products list"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message
+
+    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
+    <li><g:link class="create" action="create"><g:message
                 code="product.new.label" default="New product"/></g:link></li>
-    </ul>
+    </sec:ifAnyGranted>
+
+</ul>
 </div>
 
 <div id="edit-product" class="content scaffold-edit" role="main">

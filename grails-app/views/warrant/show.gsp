@@ -158,10 +158,11 @@
     </ol>
     <g:form url="[resource: warrantInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit"
-                    resource="${warrantInstance}"><g:message
-                    code="default.button.edit.label"
-                    default="Edit"/></g:link>
+            %{--todo ВЕРНУТЬ ОБРАТНО, УБРАН В СВЯЗИ СО СКРЫТИЕм БАГА--}%
+            %{--<g:link class="edit" action="edit"--}%
+                    %{--resource="${warrantInstance}"><g:message--}%
+                    %{--code="default.button.edit.label"--}%
+                    %{--default="Edit"/></g:link>--}%
             <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
                 <g:link class="edit" action="showReport"
                         resource="${warrantInstance}">

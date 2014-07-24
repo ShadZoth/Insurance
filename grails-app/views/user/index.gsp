@@ -45,7 +45,7 @@
                                       title="${message(code: 'user.enabled.label', default: 'Enabled')}"/>
 
                     <g:sortableColumn property="manager"
-                                      title="${message(code: 'user.enabled.label', default: 'Manager')}"/>
+                                      title="${message(code: 'user.manager.label', default: 'Manager')}"/>
 
                 </tr>
                 </thead>

@@ -17,8 +17,10 @@
         <ul>
             <li><g:link class="list" action="index"><g:message
                     code="company.index.label"/></g:link></li>
+            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li><g:link class="create" action="create"><g:message
                     code="company.create.label"/></g:link></li>
+            </sec:ifAnyGranted>
         </ul>
     </div>
 </sec:ifAnyGranted>
@@ -114,14 +116,6 @@
 
             </li>
         </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="contact" action="create"
-                        params="[client_id: companyInstance.id]"><g:message
-                        code="contact.add.label"
-                        default="Add contact"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
 
         <g:if test="${companyInstance?.vehicles}">
             <li class="fieldcontain">
@@ -139,14 +133,6 @@
 
             </li>
         </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="vehicle" action="create"
-                        params="[client_id: companyInstance.id]"><g:message
-                        code="vehicle.add.label"
-                        default="Add vehicle"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
 
         <g:if test="${companyInstance?.warrants}">
             <li class="fieldcontain">
@@ -164,6 +150,29 @@
 
             </li>
         </g:if>
+
+        %{--iugfhjfhgkjsdhfl--}%
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="contact" action="create"
+                        params="[client_id: companyInstance.id]"><g:message
+                        code="contact.add.label"
+                        default="Add contact"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="vehicle" action="create"
+                        params="[client_id: companyInstance.id]"><g:message
+                        code="vehicle.add.label"
+                        default="Add vehicle"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">
                 <g:link class="create" controller="warrant" action="create"

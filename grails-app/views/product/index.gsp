@@ -10,13 +10,14 @@
 <body>
 <a href="#list-product" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                               default="Skip to content&hellip;"/></a>
-
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
 <div class="nav" role="navigation">
     <ul>
         <li><g:link class="create" action="create"><g:message code="product.new.label"
                                                               default="New product"/></g:link></li>
     </ul>
 </div>
+</sec:ifAnyGranted>
 
 <div id="list-product" class="content scaffold-list" role="main">
     <h1><g:message code="product.list.label" default="Products list"/></h1>

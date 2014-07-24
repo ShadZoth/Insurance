@@ -2,7 +2,6 @@
 
 
 %{--Выбор клиента--}%
-
 <div class="fieldcontain ${hasErrors(bean: warrantInstance, field: 'client', 'error')} required">
     <label for="client">
         <g:message code="warrant.client.label" default="Client"/>
@@ -13,7 +12,6 @@
               optionKey="id" required=""
               value="${warrantClientId ?: (warrantInstance?.client?.id)}"
               class="many-to-one"/>
-
 </div>
 
 

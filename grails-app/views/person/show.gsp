@@ -77,16 +77,6 @@
             </li>
         </g:if>
 
-
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="passport" action="create"
-                        params="[person_id: personInstance.id]"><g:message
-                        code="passport.add.label"
-                        default="Add passport"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
-
     %{--Список контактов--}%
         <g:if test="${personInstance?.contacts}">
             <li class="fieldcontain">
@@ -102,18 +92,6 @@
 
             </li>
         </g:if>
-
-    %{--Создание контакта--}%
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="contact" action="create"
-                        params="[client_id: personInstance.id]"><g:message
-                        code="contact.add.label"
-                        default="Add contact"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
-
-
 
     %{--Архивирован--}%
         <g:if test="${personInstance?.archived}">
@@ -147,18 +125,6 @@
         </g:if>
 
 
-
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="license" action="create"
-                        params="[person_id: personInstance.id]"><g:message
-                        code="license.add.label"
-                        default="Add license"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
-
-
-
         <g:if test="${personInstance?.vehicles}">
             <li class="fieldcontain">
                 <span id="vehicles-label" class="property-label"><g:message
@@ -173,14 +139,7 @@
 
             </li>
         </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="vehicle" action="create"
-                        params="[client_id: personInstance.id]"><g:message
-                        code="vehicle.add.label"
-                        default="Add vehicle"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
+
         <g:if test="${personInstance?.warrants}">
             <li class="fieldcontain">
                 <span id="warrants-label" class="property-label"><g:message
@@ -195,6 +154,56 @@
 
             </li>
         </g:if>
+
+        %{--ОООТ СЮДА--}%
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="passport" action="create"
+                        params="[person_id: personInstance.id]"><g:message
+                        code="passport.add.label"
+                        default="Add passport"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
+
+    %{--Создание контакта--}%
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="contact" action="create"
+                        params="[client_id: personInstance.id]"><g:message
+                        code="contact.add.label"
+                        default="Add contact"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
+
+
+
+
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="license" action="create"
+                        params="[person_id: personInstance.id]"><g:message
+                        code="license.add.label"
+                        default="Add license"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
+
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="vehicle" action="create"
+                        params="[client_id: personInstance.id]"><g:message
+                        code="vehicle.add.label"
+                        default="Add vehicle"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">
                 <g:link class="create" controller="warrant" action="create"

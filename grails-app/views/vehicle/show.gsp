@@ -121,13 +121,7 @@
 
             </li>
         </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_CALL_CENTER">
-        <li class="fieldcontain">
-            <g:link class="create" controller="accident" action="create"
-                    params="[vehicle_id: vehicleInstance.id]"><g:message
-                    code="accident.add.label" default="Add accident"/></g:link>
-        </li>
-        </sec:ifAnyGranted>
+
 
         <g:if test="${vehicleInstance?.certificates}">
             <li class="fieldcontain">
@@ -144,6 +138,15 @@
 
             </li>
         </g:if>
+
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_CALL_CENTER">
+            <li class="fieldcontain">
+                <g:link class="create" controller="accident" action="create"
+                        params="[vehicle_id: vehicleInstance.id]"><g:message
+                        code="accident.add.label" default="Add accident"/></g:link>
+            </li>
+        </sec:ifAnyGranted>
+
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">
                 <g:link class="create" controller="certificate" action="create"
