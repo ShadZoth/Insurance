@@ -5,6 +5,8 @@
 	<property name="ireport.y" value="0"/>
 	<parameter name="warrant_id" isForPrompting="false" class="java.lang.String">
     </parameter>
+    <parameter name="realPath" isForPrompting="false" class="java.lang.String">
+        </parameter>
 	<queryString>
 		<![CDATA[SELECT
      warrant."expire_date" AS warrant_expire_date,
@@ -71,7 +73,7 @@ WHERE
 				</staticText>
 				<image>
 					<reportElement x="20" y="5" width="80" height="80" uuid="c777a715-3b27-49dd-a6c5-de19c695f764"/>
-					<imageExpression><![CDATA["web-app/images/logo.png"]]></imageExpression>
+					<imageExpression><![CDATA[$P{realPath} + "\\logo.png"]]></imageExpression>
 				</image>
 			</frame>
 		</band>

@@ -15,6 +15,7 @@ class WarrantController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        def realPath = servletContext.getRealPath("/reports/images/")
         params.max = Math.min(max ?: 10, 100)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
@@ -28,7 +29,7 @@ class WarrantController {
                 and {
                     'in'("client", (me.sellers.collect {it.clients}).flatten())
                 }
-            })]
+            }), realPath:realPath]
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
 
             def theList = Warrant.createCriteria().list(params) {
@@ -42,7 +43,7 @@ class WarrantController {
                 }
             })]
         } else
-            respond Warrant.list(params), model: [warrantInstanceCount: (Warrant.count)]
+            respond Warrant.list(params), model: [warrantInstanceCount: (Warrant.count), realPath:realPath]
     }
 
     def show(Warrant warrantInstance) {
@@ -50,7 +51,8 @@ class WarrantController {
     }
 
     def showReport(Warrant warrantInstance) {
-        respond warrantInstance, model: [certificateFail: !warrantInstance?.vehicle?.certificates, companyFail: warrantInstance?.client?.getClass() == Company]
+        def realPath = servletContext.getRealPath("/reports/images/")
+        respond warrantInstance, model: [certificateFail: !warrantInstance?.vehicle?.certificates, companyFail: warrantInstance?.client?.getClass() == Company, realPath:realPath]
     }
 
     def create() {

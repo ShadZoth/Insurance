@@ -26,8 +26,10 @@
             <g:message code="warrant.showReport.success.label"
                        default="Contract is ready to be printed"/>
             <g:jasperReport jasper="product" format="PDF"
-                            warrant_id="${warrantInstance.id}">
+                            warrant_id="${warrantInstance.id}"
+                            realPath="${realPath}">
                 <input type="hidden" name="warrant_id" value="${warrantInstance?.id}"/>
+                <input type="hidden" name="realPath" value="${realPath}"/>
             </g:jasperReport>
         </g:if>
         </p>

@@ -80,7 +80,9 @@
 
 
     <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-        <g:jasperReport jasper="contracts" format="PDF"/>
+        <g:jasperReport jasper="contracts" format="PDF" realPath="${realPath}">
+            <input type="hidden" name="realPath" value="${realPath}"/>
+        </g:jasperReport>
     </sec:ifAnyGranted>
 
 </sec:ifAnyGranted>
