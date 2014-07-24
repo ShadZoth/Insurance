@@ -197,7 +197,7 @@
         </sec:ifAnyGranted>
     </ol>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN">
         <g:form url="[resource: personInstance, action: 'delete']"
                 method="DELETE">
             <fieldset class="buttons">
