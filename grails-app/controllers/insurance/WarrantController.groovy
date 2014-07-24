@@ -15,7 +15,7 @@ class WarrantController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        def realPath = servletContext.getRealPath("/reports/images/")
+        def realPath = servletContext.getRealPath("/reports/images/") + File.separator
         params.max = Math.min(max ?: 10, 100)
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
 
@@ -51,7 +51,7 @@ class WarrantController {
     }
 
     def showReport(Warrant warrantInstance) {
-        def realPath = servletContext.getRealPath("/reports/images/")
+        def realPath = servletContext.getRealPath("/reports/images/") + File.separator
         respond warrantInstance, model: [certificateFail: !warrantInstance?.vehicle?.certificates, companyFail: warrantInstance?.client?.getClass() == Company, realPath:realPath]
     }
 
