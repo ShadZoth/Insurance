@@ -19,7 +19,7 @@ class Certificate {
     static searchable = true
 
     static constraints = {
-        number(nullable: false)
+        number(nullable: false, unique: true)
         vehicle()
         color(maxSize: 18)
         issueDate(nullable: false, shared: 'upToDate')
