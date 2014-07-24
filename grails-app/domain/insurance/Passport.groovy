@@ -29,7 +29,7 @@ class Passport implements Comparable<Passport> {
         })
     }
 
-    private static enum Sex {
+    static enum Sex {
         MALE("Мужской"), FEMALE("Женский")
 
         Sex(String s) {
