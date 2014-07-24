@@ -14,7 +14,7 @@ class Passport implements Comparable<Passport> {
     static belongsTo = Person
 
     static constraints = {
-        number(nullable: false)
+        number(nullable: false, unique: true)
         person()
         lastName(maxSize: 40)
         firstName(maxSize: 40)
