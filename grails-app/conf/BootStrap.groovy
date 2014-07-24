@@ -208,7 +208,7 @@ class BootStrap {
                     seller: findSeller(it))
         }*.save()
 
-        ["OSAGO, KASKO"].each {
+        ["OSAGO", "KASKO"].each {
             def p = new Product(name: it, individual: true, corporate: true)
             p.save(flush: true)
             new Price(value: 1500, since: new Date().toCalendar().time, product: p).save()
