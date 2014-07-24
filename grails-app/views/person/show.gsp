@@ -76,6 +76,8 @@
 
             </li>
         </g:if>
+
+
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">
                 <g:link class="create" controller="passport" action="create"
@@ -85,6 +87,21 @@
             </li>
         </sec:ifAnyGranted>
 
+    %{--Список контактов--}%
+        <g:if test="${personInstance?.contacts}">
+            <li class="fieldcontain">
+                <span id="contacts-label" class="property-label"><g:message
+                        code="person.contacts.label" default="Contacts"/></span>
+
+                <g:each in="${personInstance.contacts}" var="c">
+                    <span class="property-value"
+                          aria-labelledby="contacts-label"><g:link
+                            controller="contact" action="show"
+                            id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+                </g:each>
+
+            </li>
+        </g:if>
 
     %{--Создание контакта--}%
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
@@ -95,6 +112,7 @@
                         default="Add contact"/></g:link>
             </li>
         </sec:ifAnyGranted>
+
 
 
     %{--Архивирован--}%
@@ -109,6 +127,8 @@
 
             </li>
         </g:if>
+
+
 
     %{--Список прав--}%
         <g:if test="${personInstance?.sortedLicenses}">
@@ -126,21 +146,7 @@
             </li>
         </g:if>
 
-    %{--Добавить права--}%
-        <g:if test="${personInstance?.contacts}">
-            <li class="fieldcontain">
-                <span id="contacts-label" class="property-label"><g:message
-                        code="person.contacts.label" default="Contacts"/></span>
 
-                <g:each in="${personInstance.contacts}" var="c">
-                    <span class="property-value"
-                          aria-labelledby="contacts-label"><g:link
-                            controller="contact" action="show"
-                            id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-                </g:each>
-
-            </li>
-        </g:if>
 
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">
@@ -150,6 +156,8 @@
                         default="Add license"/></g:link>
             </li>
         </sec:ifAnyGranted>
+
+
 
         <g:if test="${personInstance?.vehicles}">
             <li class="fieldcontain">

@@ -1,16 +1,5 @@
 <%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.Company" %>
 
-
-%{--Выбор даты, дата регистрации--}%
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'registrationDate', 'error')} required">
-	<label for="registrationDate">
-		<g:message code="company.registrationDate.label" default="Registration Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="registrationDate" precision="day"  value="${companyInstance?.registrationDate}"  />
-
-</div>
-
 %{--Список продавцов, доступно только админу--}%
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'seller', 'error')} required">
 	<label for="seller">

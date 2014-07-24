@@ -19,7 +19,7 @@
                     code="payment.list.label"
                     default="Payments list"/></g:link></li>
             <li><g:link class="create" action="create"><g:message
-                    code="default.new.label" args="[entityName]"/></g:link></li>
+                    code="payment.new.label" default="New payment"/></g:link></li>
         </ul>
     </div>
 </sec:ifAnyGranted>
