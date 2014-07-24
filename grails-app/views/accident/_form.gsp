@@ -38,3 +38,16 @@
 
 </div>
 
+
+%{--Форма комментария к аварии--}%
+<div class="fieldcontain ${hasErrors(bean: accidentInstance, field: 'comments', 'error')} required">
+    <label for="comments">
+        <g:message code="accident.comments.label" default="Comments"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textArea name="comments"
+             value="${fieldValue(bean: accidentInstance, field: 'comments')}"
+             required="" type=""/>
+
+</div>
+

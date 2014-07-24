@@ -52,7 +52,6 @@
                       aria-labelledby="dateTime-label"><g:formatDate
                         format="yyyy-MM-dd"
                         date="${accidentInstance?.dateTime}"/></span>
-
             </li>
         </g:if>
 
@@ -70,6 +69,21 @@
             </li>
         </g:if>
 
+        <g:if test="${accidentInstance?.damage}">
+            <li class="fieldcontain">
+                <span id="comments-label" class="property-label"><g:message
+                        code="accident.comments.label"
+                        default="Comments"/></span>
+
+                <span class="property-value"
+                      aria-labelledby="comments-label"><g:fieldValue
+                        bean="${accidentInstance}"
+                        field="comments"/></span>
+
+            </li>
+        </g:if>
+
+
         <g:if test="${accidentInstance?.payments}">
             <li class="fieldcontain">
                 <span id="payments-label" class="property-label"><g:message
@@ -86,6 +100,8 @@
 
             </li>
         </g:if>
+
+
 
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
             <li class="fieldcontain">

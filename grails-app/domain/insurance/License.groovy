@@ -116,7 +116,7 @@ class License implements Comparable<License> {
     static searchable = true
 
     static constraints = {
-        number(nullable: false)
+        number(nullable: false, unique: true)
         owner()
         issueDate(nullable: false, shared: 'upToDate')
         expirationDate()

@@ -20,7 +20,7 @@ class Certificate {
     static searchable = true
 
     static constraints = {
-        number(nullable: false, validator: { val, obj ->
+        number(nullable: false, unique: true, validator: { val, obj ->
             Boolean m = false
             val.toUpperCase().find(licensePlateRegexp) {
                 match -> m = match
@@ -32,7 +32,7 @@ class Certificate {
         issueDate(nullable: false, shared: 'upToDate')
         ownerFirstName(nullable: false, maxSize: 30)
         ownerLastName(nullable: false, maxSize: 30)
-        vin(maxSize: 17)
+        vin(minSize: 17, maxSize: 17)
     }
 
 
