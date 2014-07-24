@@ -1,4 +1,4 @@
-<%@ page import="insurance.Company" %>
+<%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.Company" %>
 
 
 %{--Выбор даты, дата регистрации--}%
@@ -19,9 +19,8 @@
 	</label>
     <g:usersHavingRole role="ROLE_SELLER" id="seller" name="seller.id"
                        optionKey="id" required=""
-                       onlyMe="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_SELLER')}"
+                       onlyMe="${SpringSecurityUtils.ifAnyGranted('ROLE_SELLER')}"
                            value="${companyInstance?.seller?.id}" class="many-to-one"/>
-
 </div>
 
 %{--Форма, Название компании--}%
