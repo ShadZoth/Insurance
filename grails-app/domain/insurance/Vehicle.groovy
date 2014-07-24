@@ -16,7 +16,7 @@ class Vehicle {
         owner()
         model(maxSize: 30)
         year(min: 1900, max: Calendar.getInstance().get(Calendar.YEAR))
-        price()
+        price(min: 0.0)
         category()
         manufacturer()
     }

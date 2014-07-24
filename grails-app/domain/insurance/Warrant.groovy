@@ -28,7 +28,7 @@ class Warrant {
         expireDate(nullable: false, validator: { val, obj ->
             val > obj.issueDate
         })
-        price()
+        price(min: 0.0)
         vehicle()
     }
 

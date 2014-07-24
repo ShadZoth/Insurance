@@ -637,7 +637,7 @@ a.skip {
 
 #companyName {
     /*padding-top: 10px;*/
-    width: 560px;
+    width: 540px;
     float: left;
 }
 
@@ -654,7 +654,7 @@ a.skip {
     padding-top: 10px;
     padding-left: 10px;
     float: right;
-    width: 280px;
+    width: 300px;
     color: #ffffff;
 }
 
@@ -686,7 +686,7 @@ input[type="submit"] {
 
 #login_buttons {
     float: left;
-    width: 150px;
+    width: 170px;
 }
 
 #login_buttons a {
@@ -709,7 +709,7 @@ input[type="submit"] {
 
 #lang {
     float: right;
-    width: 260px;
+    width: 300px;
     padding-top: 5px;
 }
 

@@ -9,6 +9,7 @@ class Certificate {
     String ownerLastName
     String vin
     Vehicle vehicle
+    static def licensePlateRegexp = ~/([ABEKMHOPCTYXАВЕКМНОРСТУХ]{1}\d{3}[ABEKMHOPCTYXАВЕКМНОРСТУХ]{2}(\d{2,3}))|([ABEKMHOPCTYXАВЕКМНОРСТУХ]{2}\d{3}(\d{2,3}))|([ABEKMHOPCTYXАВЕКМНОРСТУХ]{2}\d{4}(\d{2,3}))|(\d{4}[ABEKMHOPCTYXАВЕКМНОРСТУХ]{2}(\d{2,3}))/
 
     static belongsTo = Vehicle
 
@@ -19,16 +20,19 @@ class Certificate {
     static searchable = true
 
     static constraints = {
-        number(nullable: false)
+        number(nullable: false, unique: true, validator: { val, obj ->
+            Boolean m = false
+            val.toUpperCase().find(licensePlateRegexp) {
+                match -> m = match
+            }
+            m
+        })
         vehicle()
         color(maxSize: 18)
         issueDate(nullable: false, shared: 'upToDate')
-//                validator: {val, obj ->
-//                    moreThanLast(val, obj) && upToDate(val)
-//                })
         ownerFirstName(nullable: false, maxSize: 30)
         ownerLastName(nullable: false, maxSize: 30)
-        vin(maxSize: 17)
+        vin(minSize: 17, maxSize: 17)
     }
 
 
