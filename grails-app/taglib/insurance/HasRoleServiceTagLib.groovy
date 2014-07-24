@@ -8,7 +8,7 @@ class HasRoleServiceTagLib {
     def usersHavingRole = { attrs ->
        out << g.select([id: attrs.id, name: attrs.name, from:
                User.list().findAll {
-                   //Если требуется только текущей пользователь
+                   //Если требуется только текущий пользователь
                    if (attrs.onlyMe) {
                        def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
                        return it == me
