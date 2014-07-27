@@ -102,7 +102,7 @@ class WarrantController {
         if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
 
             theList = Client.list().findAll({
-                it.seller==me
+                it.seller.id == me.id
             })
 
         }
