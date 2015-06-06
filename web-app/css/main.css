@@ -1,4 +1,4 @@
-/* FONT STACK */
+﻿/* FONT STACK */
 body,
 input, select, textarea {
     /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
@@ -642,11 +642,11 @@ a.skip {
 }
 
 #companyName h1 {
-    color: #ffffff;
+    color: #000000;
     font-size: 24pt;
 }
 #companyName h2 {
-    color: #ffffff;
+    color: #000000;
     font-size: 12pt;
 }
 
@@ -655,7 +655,7 @@ a.skip {
     padding-left: 10px;
     float: right;
     width: 300px;
-    color: #ffffff;
+    color: #000000;
 }
 
 #login_Form a {
@@ -695,7 +695,7 @@ input[type="submit"] {
 
 #logout {
     padding-top: 25px;
-    color: #ffffff;
+    color: #000000;
 }
 
 #logout a {
