@@ -1,5 +1,5 @@
 Insurance
- =========
+=========
 This repository is designed for summer practical work of four students.
 The practical task is creating a prototype of CRM system for an undefine insurance company.		
 		
