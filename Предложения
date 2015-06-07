@@ -11,10 +11,10 @@ Client        - переименовать поле seller в dispatcher или 
 Company       - убрать extends Client
                 добавить контактные данные
 Contact       - good as is
-License       - good as is
+License       - удалить
 ManagerSeller - удалить
 Manufacturer  - good as is
-Passport      - good as is
+Passport      - good as is (принадлежит Person)
 Payment       - удалить
 Person        - сделать интерфейсом (абстрактным классом)
                 убрать extends Client
