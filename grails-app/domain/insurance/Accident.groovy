@@ -1,6 +1,6 @@
 package insurance
 
-class Accident {
+class Accident {//***
 
     Date dateTime
     BigDecimal damage
