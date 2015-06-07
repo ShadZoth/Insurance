@@ -20,7 +20,7 @@
      certificate."number" AS certificate_number
 FROM
      "public"."client" client INNER JOIN "public"."warrant" warrant ON client."id" = warrant."client_id"
-     INNER JOIN "public"."user" "user" ON client."seller_id" = "user"."id"
+     INNER JOIN "public"."user" "user" ON client."dispatcher_id" = "user"."id"
      INNER JOIN "public"."passport" passport ON client."id" = passport."person_id"
      INNER JOIN "public"."vehicle" vehicle ON client."id" = vehicle."owner_id"
      AND vehicle."id" = warrant."vehicle_id"
@@ -128,7 +128,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[seller]]></text>
+				<text><![CDATA[dispatcher]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="409" y="0" width="146" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fc0b9339-79e0-465d-a870-51de767add95"/>

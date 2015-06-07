@@ -8,10 +8,10 @@ i<%@ page import="insurance.Company" %>
 </head>
 
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_DISPATCHER, ROLE_CALL_CENTER">
     <a href="#list-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                   default="Skip to content&hellip;"/></a>
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_DISPATCHER">
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message code="company.create.label"/></g:link></li>
@@ -37,8 +37,8 @@ i<%@ page import="insurance.Company" %>
                                       title="${message(code: 'company.inn.label', default: 'Inn')}"/>
 
                     <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-                        <g:sortableColumn property="seller"
-                                          title="${message(code: "company.seller.label", default: "Seller")}"/>
+                        <g:sortableColumn property="dispatcher"
+                                          title="${message(code: "company.dispatcher.label", default: "Dispatcher")}"/>
                     </sec:ifAnyGranted>
 
                     <g:sortableColumn property="registrationDate"
@@ -59,7 +59,7 @@ i<%@ page import="insurance.Company" %>
                         <td>${fieldValue(bean: companyInstance, field: "inn")}</td>
 
                         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-                            <td>${fieldValue(bean: companyInstance, field: "seller")}</td>
+                            <td>${fieldValue(bean: companyInstance, field: "dispatcher")}</td>
                         </sec:ifAnyGranted>
 
                         <td><g:formatDate format="yyyy-MM-dd" date="${companyInstance.registrationDate}"/></td>

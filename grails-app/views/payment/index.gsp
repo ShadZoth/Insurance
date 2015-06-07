@@ -9,12 +9,12 @@
 </head>
 
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_CENTER">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_DISPATCHER, ROLE_CALL_CENTER">
     <a href="#list-payment" class="skip" tabindex="-1">
         <g:message code="default.link.skip.label" default="Skip to content&hellip;"/>
     </a>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
         <div class="nav" role="navigation">
             <ul>
                 <li>

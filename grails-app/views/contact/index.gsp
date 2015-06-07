@@ -6,11 +6,11 @@
     <g:set var="entityName" value="${message(code: 'contact.label', default: 'Contact')}"/>
     <title><g:message code="contact.index.label"/></title>
 </head>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_DISPATCHER, ROLE_CALL_CENTER">
     <body>
     <a href="#list-contact" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                   default="Skip to content&hellip;"/></a>
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_DISPATCHER">
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message code="contact.create.label"/></g:link></li>

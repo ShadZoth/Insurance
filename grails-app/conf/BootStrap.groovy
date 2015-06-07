@@ -19,7 +19,7 @@ class BootStrap {
             "Kizyakov" ,
             "Sorotnikov" ,
             "Fomichov" ,
-            "Isakov" ,
+            "Iskakov" ,
             "Dmitriev" ,
             "Gavrilov" ,
             "Bazhenov" ,
@@ -117,7 +117,7 @@ class BootStrap {
     def init = {
         new Role(authority: 'ROLE_ADMIN').save(flush: true)
         new Role(authority: 'ROLE_MANAGER').save(flush: true)
-        new Role(authority: 'ROLE_SELLER').save(flush: true)
+        new Role(authority: 'ROLE_DISPATCHER').save(flush: true)
         new Role(authority: 'ROLE_CALL_CENTER').save(flush: true)
 
         def testUser = new User(username: 'me',
@@ -138,15 +138,15 @@ class BootStrap {
         }
 
         (1..4).collect {
-            [new User(username: "seller$it",
+            [new User(username: "dispatcher$it",
                     password: 'password',
-                    authority: 'ROLE_SELLER'),
+                    authority: 'ROLE_DISPATCHER'),
              User.findByUsername("manager${(it % 2) + 1}")]
         }.each {
             it[0].save(flush: true)
             it[0].mergeAuthorities()
             it[0].enabled = true
-            it[1].addSeller(it[0])
+            it[1].addDispatcher(it[0])
         }
 
         (1..2).collect {
@@ -162,15 +162,15 @@ class BootStrap {
 
         // Генерирует мужчин (быдлокод)
         (1..75).each {
-            User seller = findSeller(it)
-            def p = new Person(seller: seller)
-            p.save(flush: true)
+            User dispatcher = findDispatcher(it)
+            def c = new Client(dispatcher: dispatcher)
+            c.save(flush: true)
             def birthDate = new Date().toCalendar()
             birthDate.add(Calendar.YEAR, -18)
             def issueDate = new Date().toCalendar()
             issueDate.add(Calendar.YEAR, -4)
             def pass = new Passport(number: it,
-                    person: p,
+                    person: c,
                     lastName: surnames.get(rand.nextInt(surnames.size())),
                     firstName: manNames.get(rand.nextInt(manNames.size())),
                     fathName: "${universalFathNames.get(rand.nextInt(universalFathNames.size()))}${sexer.get(1)}",
@@ -183,15 +183,15 @@ class BootStrap {
 
         // Генерирует женщин (быдлокод)
         (76..150).each {
-            User seller = findSeller(it)
-            def p = new Person(seller: seller)
-            p.save(flush: true)
+            User dispatcher = findDispatcher(it)
+            def c = new Client(dispatcher: dispatcher)
+            c.save(flush: true)
             def birthDate = new Date().toCalendar()
             birthDate.add(Calendar.YEAR, -18)
             def issueDate = new Date().toCalendar()
             issueDate.add(Calendar.YEAR, -4)
             def pass = new Passport(number: it,
-                    person: p,
+                    person: c,
                     lastName: "${surnames.get(rand.nextInt(surnames.size()))}${sexer.get(2)}",
                     firstName: womanNames.get(rand.nextInt(womanNames.size())),
                     fathName: "${universalFathNames.get(rand.nextInt(universalFathNames.size()))}${sexer.get(0)}",
@@ -202,12 +202,12 @@ class BootStrap {
         }
 
         // Генерирует названия компаний и ИНН (быдлокод не меньший, чем выше)
-        (151..200).collect {
+      /*  (151..200).collect {
             new Company(name: nextName,
                     inn: "${it}${1000000000 - rand.nextInt(99999999)}",
-                    seller: findSeller(it))
+                    dispatcher: findDispatcher(it))
         }*.save()
-
+        */
         ["OSAGO", "KASKO"].each {
             def p = new Product(name: it, individual: true, corporate: true)
             p.save(flush: true)
@@ -281,12 +281,12 @@ class BootStrap {
     }
 
     static def hasRoleService
-    private static User findSeller(int i) {
-        def sellers = User.list().findAll {
-            hasRoleService.serviceMethod(it, 'ROLE_SELLER')
+    private static User findDispatcher(int i) {
+        def dispatchers = User.list().findAll {
+            hasRoleService.serviceMethod(it, 'ROLE_DISPATCHER')
         }
-        def seller = sellers.get(i % sellers.size())
-        seller
+        def dispatcher = dispatchers.get(i % dispatchers.size())
+        dispatcher
     }
 
     def destroy = {

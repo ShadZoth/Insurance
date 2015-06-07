@@ -1,15 +1,15 @@
 <%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils; insurance.Company" %>
 
 %{--Список продавцов, доступно только админу--}%
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'seller', 'error')} required">
-	<label for="seller">
-		<g:message code="company.seller.label" default="Seller" />
+<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'dispatcher', 'error')} required">
+	<label for="dispatcher">
+		<g:message code="company.dispatcher.label" default="Dispatcher" />
 		<span class="required-indicator">*</span>
 	</label>
-    <g:usersHavingRole role="ROLE_SELLER" id="seller" name="seller.id"
+    <g:usersHavingRole role="ROLE_DISPATCHER" id="dispatcher" name="dispatcher.id"
                        optionKey="id" required=""
-                       onlyMe="${SpringSecurityUtils.ifAnyGranted('ROLE_SELLER')}"
-                           value="${companyInstance?.seller?.id}" class="many-to-one"/>
+                       onlyMe="${SpringSecurityUtils.ifAnyGranted('ROLE_DISPATCHER')}"
+                           value="${companyInstance?.dispatcher?.id}" class="many-to-one"/>
 </div>
 
 %{--Форма, Название компании--}%

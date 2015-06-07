@@ -1,12 +1,11 @@
 package insurance
 
 import grails.plugins.springsecurity.Secured
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
-
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class ClientController {
@@ -19,16 +18,11 @@ class ClientController {
     }
 
     def show(Client clientInstance) {
-        if (clientInstance.getClass().equals(Person.class)) {
-            redirect controller: 'person', action: 'show', id: clientInstance.id
-        } else if (clientInstance.getClass().equals(Company.class)) {
-            redirect controller: 'company', action: 'show', id: clientInstance.id
-        } else
-            respond clientInstance
+        respond clientInstance
     }
 
     def create() {
-        redirect controller: params.cl, action: 'create'
+        respond new Client(params)
     }
 
     @Transactional
@@ -55,12 +49,7 @@ class ClientController {
     }
 
     def edit(Client clientInstance) {
-        if (clientInstance.getClass().equals(Person.class)) {
-            redirect controller: 'person', action: 'edit', id: clientInstance.id
-        } else if (clientInstance.getClass().equals(Company.class)) {
-            redirect controller: 'company', action: 'edit', id: clientInstance.id
-        } else
-            respond clientInstance
+        respond clientInstance
     }
 
     @Transactional

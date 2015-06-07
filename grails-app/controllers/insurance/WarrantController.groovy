@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class WarrantController {
@@ -22,15 +22,15 @@ class WarrantController {
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
             def theList = Warrant.createCriteria().list(params) {
                 and {
-                    'in'("client", (me.sellers.collect {it.clients}).flatten())
+                    'in'("client", (me.dispatchers.collect {it.clients}).flatten())
                 }
             }
             respond theList, model: [warrantInstanceCount: (Warrant.createCriteria().count() {
                 and {
-                    'in'("client", (me.sellers.collect {it.clients}).flatten())
+                    'in'("client", (me.dispatchers.collect {it.clients}).flatten())
                 }
             }), realPath:realPath]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER")) {
 
             def theList = Warrant.createCriteria().list(params) {
                 and {
@@ -60,10 +60,10 @@ class WarrantController {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
         def theList = null;
 
-        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER")) {
 
             theList = Client.list().findAll({
-                it.seller==me
+                it.dispatcher==me
             })
 
         }
@@ -99,10 +99,10 @@ class WarrantController {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
         def theList = null;
 
-        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER")) {
 
             theList = Client.list().findAll({
-                it.seller.id == me.id
+                it.dispatcher.id == me.id
             })
 
         }

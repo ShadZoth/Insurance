@@ -120,7 +120,7 @@
             </li>
         </g:if>
 
-        <g:if test="${userInstance?.authority == "ROLE_SELLER"}">
+        <g:if test="${userInstance?.authority == "ROLE_DISPATCHER"}">
             <g:if test="${userInstance?.manager}">
                 <li class="fieldcontain">
                     <span id="manager-label" class="property-label"><g:message

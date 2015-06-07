@@ -27,7 +27,7 @@
     </label>
     <g:select name="authority"
               from="${userInstance.constraints.authority.inList.findAll {
-                  return org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER") ? it.equals("ROLE_SELLER") : true
+                  return org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER") ? it.equals("ROLE_DISPATCHER") : true
               }}" required="" value="${userInstance?.authority}"
               valueMessagePrefix="user.authority"/>
 

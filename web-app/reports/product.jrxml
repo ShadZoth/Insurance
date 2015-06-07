@@ -28,7 +28,7 @@
 FROM
      "public"."client" client INNER JOIN "public"."passport" passport ON client."id" = passport."person_id"
      INNER JOIN "public"."warrant" warrant ON client."id" = warrant."client_id"
-     INNER JOIN "public"."user" "user" ON client."seller_id" = "user"."id"
+     INNER JOIN "public"."user" "user" ON client."dispatcher_id" = "user"."id"
      INNER JOIN "public"."vehicle" vehicle ON client."id" = vehicle."owner_id"
      AND vehicle."id" = warrant."vehicle_id"
      INNER JOIN "public"."certificate" certificate ON vehicle."id" = certificate."vehicle_id"

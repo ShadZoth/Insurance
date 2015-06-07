@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_SELLER, ROLE_CALL_CENTER">
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_MANAGER,ROLE_DISPATCHER, ROLE_CALL_CENTER">
     <a href="#list-accident" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                    default="Skip to content&hellip;"/></a>
     <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_CALL_CENTER">

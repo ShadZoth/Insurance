@@ -12,7 +12,7 @@
 <a href="#show-person" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_DISPATCHER">
     <div class="nav" role="navigation">
         <ul>
             <li><g:link class="list" action="index"><g:message
@@ -46,16 +46,16 @@
         </g:if>
 
     %{--Продавец--}%
-        <g:if test="${personInstance?.seller}">
+        <g:if test="${personInstance?.dispatcher}">
             <li class="fieldcontain">
-                <span id="seller-label" class="property-label"><g:message
-                        code="person.seller.label"
-                        default="Seller"/></span>
+                <span id="dispatcher-label" class="property-label"><g:message
+                        code="person.dispatcher.label"
+                        default="Dispatcher"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="seller-label"><g:fieldValue
+                      aria-labelledby="dispatcher-label"><g:fieldValue
                         bean="${personInstance}"
-                        field="seller"/></span>
+                        field="dispatcher"/></span>
 
             </li>
         </g:if>
@@ -157,7 +157,7 @@
 
         %{--ОООТ СЮДА--}%
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="passport" action="create"
                         params="[person_id: personInstance.id]"><g:message
@@ -169,7 +169,7 @@
 
 
     %{--Создание контакта--}%
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="contact" action="create"
                         params="[client_id: personInstance.id]"><g:message
@@ -184,7 +184,7 @@
 
 
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="license" action="create"
                         params="[person_id: personInstance.id]"><g:message
@@ -195,7 +195,7 @@
 
 
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="vehicle" action="create"
                         params="[client_id: personInstance.id]"><g:message
@@ -204,7 +204,7 @@
             </li>
         </sec:ifAnyGranted>
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="warrant" action="create"
                         params="[client_id: personInstance.id]"><g:message

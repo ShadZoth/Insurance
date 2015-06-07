@@ -15,36 +15,36 @@ class User  {
 	boolean accountLocked
 	boolean passwordExpired
 
-    List<User> getSellers() {
+    List<User> getDispatchers() {
         if (hasRoleService.serviceMethod(this, 'ROLE_MANAGER')) {
-            return ManagerSeller.findAllByManager(this).seller
+            return ManagerDispatcher.findAllByManager(this).dispatcher
         } else {
             return null
         }
     }
 
-    void setSellers(List<User> sellers) {
-        executeUpdate 'DELETE FROM ManagerSeller WHERE manager=:manager', [manager: this]
-        for (User seller : sellers) {
-            addSeller(seller)
+    void setDispatchers(List<User> dispatchers) {
+        executeUpdate 'DELETE FROM ManagerDispatcher WHERE manager=:manager', [manager: this]
+        for (User dispatcher : dispatchers) {
+            addDispatcher(dispatcher)
         }
     }
 
-    void addSeller(User seller) {
+    void addDispatcher(User dispatcher) {
         if (hasRoleService.serviceMethod(this, 'ROLE_MANAGER')
-                && hasRoleService.serviceMethod(seller, 'ROLE_SELLER')
-                && !seller.manager) {
-            new ManagerSeller(manager: this, seller: seller).save(flush: true, insert: true)
+                && hasRoleService.serviceMethod(dispatcher, 'ROLE_DISPATCHER')
+                && !dispatcher.manager) {
+            new ManagerDispatcher(manager: this, dispatcher: dispatcher).save(flush: true, insert: true)
         }
     }
 
-    void removeSeller(User seller) {
-        executeUpdate 'DELETE FROM ManagerSeller WHERE manager=:manager AND seller=:seller', [manager: this, seller: seller]
+    void removeDispatcher(User dispatcher) {
+        executeUpdate 'DELETE FROM ManagerDispatcher WHERE manager=:manager AND dispatcher=:dispatcher', [manager: this, dispatcher: dispatcher]
     }
 
     User getManager() { // SELLER only
-        if (hasRoleService.serviceMethod(this, 'ROLE_SELLER')) {
-            return ManagerSeller.findBySeller(this)?.manager
+        if (hasRoleService.serviceMethod(this, 'ROLE_DISPATCHER')) {
+            return ManagerDispatcher.findByDispatcher(this)?.manager
         } else {
             return null
         }
@@ -58,11 +58,11 @@ class User  {
         authority(inList:
                 ['ROLE_ADMIN',
                  'ROLE_MANAGER',
-                 'ROLE_SELLER',
+                 'ROLE_DISPATCHER',
                  'ROLE_CALL_CENTER'],
                 validator: { val, obj ->
                     if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER')) {
-                        return val == 'ROLE_SELLER'
+                        return val == 'ROLE_DISPATCHER'
                     }
                     return true
                 })

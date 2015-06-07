@@ -1,18 +1,15 @@
 package insurance
 
-class Person extends Client {
+class Person {
 
-    static hasMany = [licenses: License, passports: Passport]
-
-    def getSortedLicenses() {
-        licenses?.sort()
-    }
+    static hasMany = [passports: Passport]
 
     def getSortedPassports() {
         passports?.sort()
     }
 
     static constraints = {
+        passports(size: 1..100)
     }
 
 

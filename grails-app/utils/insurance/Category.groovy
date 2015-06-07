@@ -1,7 +1,7 @@
 package insurance
 
 public enum Category {
-    A(1), B(2), C(4), D(8), E(16), M(32), Tb(64), Tm(128)
+    SEDAN(1), HATCHBACK(2), WAGON(4), VAN(8)
 
     def value
 

@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class ContactController {
@@ -23,7 +23,7 @@ class ContactController {
 
 
             if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
-                respond Company.list(params).findAll { it.seller.manager == me }, model: [companyInstanceCount: Company.count()]
+                respond Company.list(params).findAll { it.dispatcher.manager == me }, model: [companyInstanceCount: Company.count()]
             }
 //        }
 

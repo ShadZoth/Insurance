@@ -7,7 +7,7 @@
 		<title><g:message code="warrant.edit.label" default="Edit warrant" /></title>
 	</head>
 	<body>
-    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
 		<a href="#edit-warrant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>

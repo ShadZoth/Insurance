@@ -12,12 +12,12 @@
 <a href="#show-company" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label"
         default="Skip to content&hellip;"/></a>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_DISPATCHER">
     <div class="nav" role="navigation">
         <ul>
             <li><g:link class="list" action="index"><g:message
                     code="company.index.label"/></g:link></li>
-            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li><g:link class="create" action="create"><g:message
                     code="company.create.label"/></g:link></li>
             </sec:ifAnyGranted>
@@ -87,15 +87,15 @@
             </li>
         </g:if>
 
-        <g:if test="${companyInstance?.seller}">
+        <g:if test="${companyInstance?.dispatcher}">
             <li class="fieldcontain">
-                <span id="seller-label" class="property-label"><g:message
-                        code="company.seller.label" default="Seller"/></span>
+                <span id="dispatcher-label" class="property-label"><g:message
+                        code="company.dispatcher.label" default="Dispatcher"/></span>
 
                 <span class="property-value"
-                      aria-labelledby="seller-label"><g:fieldValue
+                      aria-labelledby="dispatcher-label"><g:fieldValue
                         bean="${companyInstance}"
-                        field="seller"/></span>
+                        field="dispatcher"/></span>
 
             </li>
         </g:if>
@@ -153,7 +153,7 @@
 
         %{--iugfhjfhgkjsdhfl--}%
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="contact" action="create"
                         params="[client_id: companyInstance.id]"><g:message
@@ -163,7 +163,7 @@
         </sec:ifAnyGranted>
 
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="vehicle" action="create"
                         params="[client_id: companyInstance.id]"><g:message
@@ -173,7 +173,7 @@
         </sec:ifAnyGranted>
 
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="warrant" action="create"
                         params="[client_id: companyInstance.id]"><g:message
@@ -183,7 +183,7 @@
         </sec:ifAnyGranted>
     </ol>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_DISPATCHER">
         <g:form url="[resource: companyInstance, action: 'delete']"
                 method="DELETE">
             <fieldset class="buttons">

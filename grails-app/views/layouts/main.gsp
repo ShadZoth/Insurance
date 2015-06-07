@@ -85,8 +85,8 @@
                     <p><g:message code="role.manager" default="Manager"/></p>
                 </sec:ifAllGranted>
 
-                <sec:ifAllGranted roles="ROLE_SELLER">
-                    <p><g:message code="role.seller" default="Seller"/></p>
+                <sec:ifAllGranted roles="ROLE_DISPATCHER">
+                    <p><g:message code="role.dispatcher" default="Dispatcher"/></p>
                 </sec:ifAllGranted>
 
                 <sec:ifAllGranted roles="ROLE_CALL_CENTER">
@@ -111,24 +111,15 @@
 %{--Строка поиска и меню--}%
 <div id="search_string">
     <div id="navigation_bar">
-        <sec:ifAllGranted roles="ROLE_SELLER">
+        <sec:ifAllGranted roles="ROLE_DISPATCHER">
             <ul id="menu">
-                <li><g:link action="index" controller="warrant">
-                    <g:message code="layout.menu.seller.mysales" default="My sales"/>
+                <li><g:link action="index" controller="service">
+                    <g:message code="layout.menu.dispatcher.mysales" default="My sales"/>
                 </g:link>
                 </li>
                 <li>
-                    <a href="#">
-                        <g:message code="layout.menu.seller.myclients" default="My clients"/>
-                    </a>
-                    <ul>
-                        <li><g:link action="index" controller="person">
-                            <g:message code="layout.menu.seller.persons" default="Persons"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="company">
-                            <g:message code="layout.menu.seller.companies" default="Companies"/>
-                        </g:link></li>
-                    </ul>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                 </li>
                 <li><g:link action="index" controller="product">
                     <g:message code="layout.menu.admin.products" default="Products"/>
@@ -141,19 +132,10 @@
                     <g:message code="layout.menu.manager.stuff" default="Stuff"/>
                 </g:link></li>
                 <li>
-                    <a href="#">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/>
-                    </a>
-                    <ul>
-                        <li><g:link action="index" controller="person">
-                            <g:message code="layout.menu.seller.persons" default="Persons"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="company">
-                            <g:message code="layout.menu.seller.companies" default="Companies"/>
-                        </g:link></li>
-                    </ul>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                 </li>
-                <li><g:link action="index" controller="warrant">
+                <li><g:link action="index" controller="service">
                     <g:message code="layout.menu.manager.sales" default="Sales"/>
                 </g:link></li>
                 <li><g:link action="index" controller="product">
@@ -178,22 +160,17 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/></a>
-                    <ul>
-                        <li><g:link action="index" controller="person">
-                            <g:message code="layout.menu.seller.persons" default="Persons"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="company">
-                            <g:message code="layout.menu.seller.companies" default="Companies"/>
-                        </g:link></li>
-                    </ul>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                 </li>
                 <li>
                     <a href="#">
                         <g:message code="layout.menu.admin.information" default="Information"/>
                     </a>
                     <ul>
+                        <li><g:link action="index" controller="driver">
+                            <g:message code="layout.menu.admin.drivers" default="Drivers"/>
+                        </g:link></li>
                         <li><g:link action="index" controller="accident">
                             <g:message code="layout.menu.admin.accidents" default="Accidents"/>
                         </g:link></li>
@@ -212,8 +189,8 @@
                         <li><g:link action="index" controller="vehicle">
                             <g:message code="layout.menu.admin.vehicles" default="Vehicles"/>
                         </g:link></li>
-                        <li><g:link action="index" controller="warrant">
-                            <g:message code="layout.menu.admin.warrants" default="Warrants"/>
+                        <li><g:link action="index" controller="service">
+                            <g:message code="layout.menu.admin.services" default="Services"/>
                         </g:link></li>
                     </ul>
                 </li>
@@ -238,16 +215,8 @@
         <sec:ifAllGranted roles="ROLE_CALL_CENTER">
             <ul id="menu">
                 <li>
-                    <a href="#">
-                        <g:message code="layout.menu.manager.clients" default="Clients"/></a>
-                    <ul>
-                        <li><g:link action="index" controller="person">
-                            <g:message code="layout.menu.seller.persons" default="Persons"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="company">
-                            <g:message code="layout.menu.seller.companies" default="Companies"/>
-                        </g:link></li>
-                    </ul>
+                    <g:link action="index" controller="client">
+                        <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                 </li>
                 <li><g:link action="index" controller="accident">
                     <g:message code="layout.menu.admin.accidents" default="Accidents"/>
@@ -270,8 +239,8 @@
                         <li><g:link action="index" controller="vehicle">
                             <g:message code="layout.menu.admin.vehicles" default="Vehicles"/>
                         </g:link></li>
-                        <li><g:link action="index" controller="warrant">
-                            <g:message code="layout.menu.admin.warrants" default="Warrants"/>
+                        <li><g:link action="index" controller="service">
+                            <g:message code="layout.menu.admin.services" default="Services"/>
                         </g:link></li>
                     </ul>
                 </li>

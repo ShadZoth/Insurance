@@ -4,28 +4,21 @@ class Vehicle {
 
     String model
     int year
-    BigDecimal price
     Category category
-    Client owner
+    Driver owner
     Manufacturer manufacturer
 
-    static belongsTo = [Client, Manufacturer]
+    static belongsTo = [Driver, Manufacturer]
     static hasMany = [accidents: Accident, certificates: Certificate]
 
     static constraints = {
-        owner()
         model(maxSize: 30)
         year(min: 1900, max: Calendar.getInstance().get(Calendar.YEAR))
-        price(min: 0.0)
         category()
         manufacturer()
     }
 
     static searchable = true
-
-    /*static mapping = {
-        price sqlType: "money"
-    }*/
 
 
     @Override

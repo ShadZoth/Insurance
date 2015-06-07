@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class CompanyController {
@@ -21,24 +21,24 @@ class CompanyController {
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
             def theList = Company.createCriteria().list(params) {
                 and {
-                    'in'("seller", me.sellers)
+                    'in'("dispatcher", me.dispatchers)
                 }
             }
             respond theList, model: [companyInstanceCount: (Company.createCriteria().count() {
                 and {
-                    'in'("seller", me.sellers)
+                    'in'("dispatcher", me.dispatchers)
                 }
             })]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER")) {
 
             def theList = Company.createCriteria().list(params) {
                 and {
-                    eq("seller", me)
+                    eq("dispatcher", me)
                 }
             }
             respond theList, model: [companyInstanceCount: (Company.createCriteria().count {
                 and {
-                    eq("seller", me)
+                    eq("dispatcher", me)
                 }
             })]
         } else
@@ -50,7 +50,7 @@ class CompanyController {
     }
 
     /*
-    * Если пользователь -- продавец, то задать его по-умолчанию в поле seller
+    * Если пользователь -- продавец, то задать его по-умолчанию в поле dispatcher
     * */
 
     def create() {
@@ -83,7 +83,7 @@ class CompanyController {
 
     def edit(Company companyInstance) {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && companyInstance.seller == me) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER") && companyInstance.dispatcher == me) {
             respond companyInstance
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) respond companyInstance
     }

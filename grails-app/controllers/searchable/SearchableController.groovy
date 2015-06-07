@@ -43,36 +43,36 @@ class SearchableController {
                 } else if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER')) {
                     def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
                     switch (it) {
-                        case Accident: return (it as Accident).vehicle.owner.seller?.manager == me; break;
-                        case Certificate: return (it as Certificate).vehicle.owner.seller?.manager == me; break;
-                        case Company: return (it as Company).seller?.manager == me; break;
-                        case Contact: return (it as Contact).client.seller?.manager == me; break;
-                        case License: return (it as License).owner.seller?.manager == me; break;
+                        case Accident: return (it as Accident).vehicle.owner.dispatcher?.manager == me; break;
+                        case Certificate: return (it as Certificate).vehicle.owner.dispatcher?.manager == me; break;
+                        case Company: return (it as Company).dispatcher?.manager == me; break;
+                        case Contact: return (it as Contact).client.dispatcher?.manager == me; break;
+                        case License: return (it as License).owner.dispatcher?.manager == me; break;
                         case Manufacturer: return false; break;
-                        case Passport: return (it as Passport).person.seller?.manager == me; break;
-                        case Payment: return (it as Payment).warrant.client.seller?.manager == me; break;
-                        case Person: return (it as Person).seller?.manager == me; break;
+                        case Passport: return (it as Passport).person.dispatcher?.manager == me; break;
+                        case Payment: return (it as Payment).warrant.client.dispatcher?.manager == me; break;
+                        case Person: return (it as Person).dispatcher?.manager == me; break;
                         case Price: return true; break;
                         case Product: return true; break;
-                        case Vehicle: return (it as Vehicle).owner.seller?.manager == me; break;
-                        case Warrant: return (it as Warrant).client.seller?.manager == me; break;
+                        case Vehicle: return (it as Vehicle).owner.dispatcher?.manager == me; break;
+                        case Warrant: return (it as Warrant).client.dispatcher?.manager == me; break;
                     }
-                } else if (SpringSecurityUtils.ifAnyGranted('ROLE_SELLER')) {
+                } else if (SpringSecurityUtils.ifAnyGranted('ROLE_DISPATCHER')) {
                     def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
                     switch (it) {
-                        case Accident: return (it as Accident).vehicle.owner.seller == me; break;
-                        case Certificate: return (it as Certificate).vehicle.owner.seller == me; break;
-                        case Company: return (it as Company).seller == me; break;
-                        case Contact: return (it as Contact).client.seller == me; break;
-                        case License: return (it as License).owner.seller == me; break;
+                        case Accident: return (it as Accident).vehicle.owner.dispatcher == me; break;
+                        case Certificate: return (it as Certificate).vehicle.owner.dispatcher == me; break;
+                        case Company: return (it as Company).dispatcher == me; break;
+                        case Contact: return (it as Contact).client.dispatcher == me; break;
+                        case License: return (it as License).owner.dispatcher == me; break;
                         case Manufacturer: return false; break;
-                        case Passport: return (it as Passport).person.seller == me; break;
-                        case Payment: return (it as Payment).warrant.client.seller == me; break;
-                        case Person: return (it as Person).seller == me; break;
+                        case Passport: return (it as Passport).person.dispatcher == me; break;
+                        case Payment: return (it as Payment).warrant.client.dispatcher == me; break;
+                        case Person: return (it as Person).dispatcher == me; break;
                         case Price: return true; break;
                         case Product: return true; break;
-                        case Vehicle: return (it as Vehicle).owner.seller == me; break;
-                        case Warrant: return (it as Warrant).client.seller == me; break;
+                        case Vehicle: return (it as Vehicle).owner.dispatcher == me; break;
+                        case Warrant: return (it as Warrant).client.dispatcher == me; break;
                     }
                 }
             }*/]

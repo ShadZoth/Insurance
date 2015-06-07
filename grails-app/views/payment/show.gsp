@@ -12,7 +12,7 @@
 <a href="#show-payment" class="skip" tabindex="-1"><g:message
         code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
     <div class="nav" role="navigation">
         <ul>
             <li><g:link class="list" action="index"><g:message
@@ -85,7 +85,7 @@
 
     </ol>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
         <g:form url="[resource: paymentInstance, action: 'delete']"
                 method="DELETE">
             <fieldset class="buttons">

@@ -146,7 +146,7 @@
 
             </li>
         </g:if>
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="payment" action="create"
                         params="[warrant_id: warrantInstance.id]"><g:message
@@ -162,7 +162,7 @@
                     resource="${warrantInstance}"><g:message
                     code="default.button.edit.label"
                     default="Edit"/></g:link>
-            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+            <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
                 <g:link class="edit" action="showReport"
                         resource="${warrantInstance}">
                     <g:message code="warrant.show.report.label"

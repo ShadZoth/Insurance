@@ -1,9 +1,9 @@
 package insurance
 
-class ManagerSeller {
+class ManagerDispatcher {
 
     User manager
-    User seller
+    User dispatcher
 
     static constraints = {
     }

@@ -24,24 +24,24 @@ class UserController {
         if (SpringSecurityUtils.ifAnyGranted('ROLE_MANAGER')) {
             def list = User.createCriteria().list(params) {
                 or {
-                    'in'("username", (me.sellers.collect { it.username }).flatten())
+                    'in'("username", (me.dispatchers.collect { it.username }).flatten())
                     and {
                         'in'("username", User.list().findAll {
                             it.manager == null;
                         }.username)
-                        eq("authority", "ROLE_SELLER")
+                        eq("authority", "ROLE_DISPATCHER")
                     }
                 }
             }
             respond list, model: [userInstanceCount: User.createCriteria().count(){
                 or {
-                    'in'("username", (me.sellers.collect { it.username }).flatten())
+                    'in'("username", (me.dispatchers.collect { it.username }).flatten())
 
                     and {
                         'in'("username", User.list().findAll {
                             it.manager == null;
                         }.username)
-                        eq("authority", "ROLE_SELLER")
+                        eq("authority", "ROLE_DISPATCHER")
                     }
                 }
             }]
@@ -57,7 +57,7 @@ class UserController {
     @Transactional
     def addManager(User userInstance) {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        me.addSeller(userInstance)
+        me.addDispatcher(userInstance)
         request.withFormat {
             form multipartForm {
                 redirect userInstance
@@ -67,7 +67,7 @@ class UserController {
     }
 
     def create() {
-        //TODO: Добавить значение по умолчанию "ROLE_SELLER", если залогинен
+        //TODO: Добавить значение по умолчанию "ROLE_DISPATCHER", если залогинен
         //TODO: менеджер
         respond new User(params)
     }
@@ -88,7 +88,7 @@ class UserController {
         userInstance.mergeAuthorities()
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
             def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-            me.addSeller(userInstance)
+            me.addDispatcher(userInstance)
         }
 
         request.withFormat {

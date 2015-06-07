@@ -9,11 +9,11 @@
 </head>
 
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_SELLER, ROLE_CALL_CENTER">
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER, ROLE_DISPATCHER, ROLE_CALL_CENTER">
     <a href="#list-person" class="skip" tabindex="-1"><g:message
             code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SELLER">
+    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_DISPATCHER">
         <div class="nav" role="navigation">
             <ul>
                 <li><g:link class="create" action="create"><g:message
@@ -40,8 +40,8 @@
                                       title="${message(code: 'person.registrationDate.label', default: 'Registration Date')}"/>
 
                     <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-                        <g:sortableColumn property="seller"
-                                          title="${message(code: "person.seller.label", default: "Seller")}"/>
+                        <g:sortableColumn property="dispatcher"
+                                          title="${message(code: "person.dispatcher.label", default: "Dispatcher")}"/>
                     </sec:ifAnyGranted>
 
                     <g:sortableColumn property="archived"
@@ -59,7 +59,7 @@
                         <td><g:formatDate format="yyyy-MM-dd" date="${personInstance.registrationDate}"/></td>
 
                         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-                            <td>${fieldValue(bean: personInstance, field: "seller")}</td>
+                            <td>${fieldValue(bean: personInstance, field: "dispatcher")}</td>
                         </sec:ifAnyGranted>
 
                         <td><g:formatBoolean boolean="${personInstance.archived}"/></td>

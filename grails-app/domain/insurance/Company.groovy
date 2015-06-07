@@ -1,6 +1,6 @@
 package insurance
 
-class Company extends Client {
+class Company {
 
     String name
     String inn

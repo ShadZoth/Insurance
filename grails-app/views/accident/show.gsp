@@ -103,7 +103,7 @@
 
 
 
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SELLER">
+        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">
                 <g:link class="create" controller="payment" action="create"
                         params="[accident_id: accidentInstance.id]"><g:message

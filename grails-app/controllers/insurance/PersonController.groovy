@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_SELLER', 'ROLE_CALL_CENTER'])
+@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 
 
 @Transactional(readOnly = true)
@@ -25,29 +25,29 @@ class PersonController {
         if (SpringSecurityUtils.ifAnyGranted("ROLE_MANAGER")) {
             def theList = Person.createCriteria().list(params) {
                 and {
-                    'in'("seller", me.sellers)
+                    'in'("dispatcher", me.dispatchers)
                 }
             }
             //берем из списка Персонов
             respond theList, model: [personInstanceCount: (Person.createCriteria().count() {
                 // только такие, что
                 and {
-                    // in - поле seller лежит в списке me.sellers
-                    'in'("seller", me.sellers)
+                    // in - поле dispatcher лежит в списке me.dispatchers
+                    'in'("dispatcher", me.dispatchers)
                 }
             })]
-        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER")) {
+        } else if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER")) {
             //берем из списка Персонов
             def theList = Person.createCriteria().list(params) {
                 // только такие, что
                 and {
-                    // eq - поле seller равно me
-                    eq("seller", me)
+                    // eq - поле dispatcher равно me
+                    eq("dispatcher", me)
                 }
             }
             respond theList, model: [personInstanceCount: (Person.createCriteria().count {
                 and {
-                    eq("seller", me)
+                    eq("dispatcher", me)
                 }
             })]
         } else
@@ -93,7 +93,7 @@ class PersonController {
 
     def edit(Person personInstance) {
         def me = User.findByUsername(SecurityContextHolder.getContext().getAuthentication().getPrincipal().username)
-        if (SpringSecurityUtils.ifAnyGranted("ROLE_SELLER") && personInstance.seller == me) {
+        if (SpringSecurityUtils.ifAnyGranted("ROLE_DISPATCHER") && personInstance.dispatcher == me) {
             respond personInstance
         } else if (SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")) respond personInstance
     }
