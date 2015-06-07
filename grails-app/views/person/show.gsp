@@ -45,22 +45,6 @@
             </li>
         </g:if>
 
-    %{--Продавец--}%
-        <g:if test="${personInstance?.dispatcher}">
-            <li class="fieldcontain">
-                <span id="dispatcher-label" class="property-label"><g:message
-                        code="person.dispatcher.label"
-                        default="Dispatcher"/></span>
-
-                <span class="property-value"
-                      aria-labelledby="dispatcher-label"><g:fieldValue
-                        bean="${personInstance}"
-                        field="dispatcher"/></span>
-
-            </li>
-        </g:if>
-
-
         <g:if test="${personInstance?.sortedPassports}">
             <li class="fieldcontain">
                 <span id="passports-label" class="property-label"><g:message

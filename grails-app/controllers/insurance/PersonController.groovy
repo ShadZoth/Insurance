@@ -55,6 +55,11 @@ class PersonController {
     }
 
     def show(Person personInstance) {
+        if (personInstance instanceof Client) {
+            redirect controller: 'client', action: 'show', id: personInstance.id
+        } else if (personInstance instanceof Driver) {
+            redirect controller: 'driver', action: 'show', id: personInstance.id
+        }
         respond personInstance
     }
 

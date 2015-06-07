@@ -26,14 +26,10 @@
 						<th><g:message code="service.client.label" default="Client" /></th>
 					
 						<g:sortableColumn property="expectedStartTime" title="${message(code: 'service.expectedStartTime.label', default: 'Expected Start Time')}" />
-					
-						<g:sortableColumn property="addressStart" title="${message(code: 'service.addressStart.label', default: 'Address Start')}" />
-					
-						<g:sortableColumn property="addressEnd" title="${message(code: 'service.addressEnd.label', default: 'Address End')}" />
-					
+
 						<th><g:message code="service.driver.label" default="Driver" /></th>
-					
-						<g:sortableColumn property="endTime" title="${message(code: 'service.endTime.label', default: 'End Time')}" />
+
+						<th><g:message code="service.price.label" default="Price" /></th>
 					
 					</tr>
 				</thead>
@@ -42,17 +38,13 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${serviceInstance.id}">${fieldValue(bean: serviceInstance, field: "client")}</g:link></td>
-					
+
 						<td><g:formatDate date="${serviceInstance.expectedStartTime}" /></td>
-					
-						<td>${fieldValue(bean: serviceInstance, field: "addressStart")}</td>
-					
-						<td>${fieldValue(bean: serviceInstance, field: "addressEnd")}</td>
-					
+
 						<td>${fieldValue(bean: serviceInstance, field: "driver")}</td>
-					
-						<td><g:formatDate date="${serviceInstance.endTime}" /></td>
-					
+
+						<td>${fieldValue(bean: serviceInstance, field: "price")}</td>
+
 					</tr>
 				</g:each>
 				</tbody>
