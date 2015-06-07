@@ -1,0 +1,50 @@
+==========================================================================================
+-------------------------------СУЩЕСТВУЮЩИЕ ДОМЕННЫЕ КЛАССЫ-------------------------------
+==========================================================================================
+Accident      - удалить
+Certificate   - good as is
+Client        - переименовать поле seller в dispatcher или удалить
+                кто помнит, что значило belongsTo = User?
+                почему toString возвращает ""?
+                имплементировать интерфейс (унаследовать абстрактный класс) Person
+                заменить значение hasMany на [services: Service]
+Company       - убрать extends Client
+                добавить контактные данные
+Contact       - good as is
+License       - good as is
+ManagerSeller - удалить
+Manufacturer  - good as is
+Passport      - good as is
+Payment       - удалить
+Person        - сделать интерфейсом (абстрактным классом)
+                убрать extends Client
+                удалить поле licenses
+Price         - good as is
+Product       - убрать поле corporate
+                убрать поле individual
+Role          - good as is
+User          - убрать метод getSellers
+                убрать метод setSellers
+                убрать метод addSeller
+                убрать метод removeSeller
+                убрать метод getManager
+UserRole      - good as is
+Vehicle       - изменить тип поля owner на Driver
+                убрать из toString год выпуска и добавить цвет
+Warrant       - удалить
+==========================================================================================
+-----------------------------------НОВЫЕ ДОМЕННЫЕ КЛАССЫ----------------------------------
+==========================================================================================
+Driver        - наследует интерфейс Person
+                добавить hasMany   = [licenses: Licence]
+Service       - добавить belongsTo = [Client, Product, User]
+                добавить поле Client           client
+                добавить поле Product         product
+                добавить поле User         dispatcher
+                добавить поле String departureAddress
+                добавить поле String   arrivalAddress
+                добавить поле Date      departureTime
+                добавить поле Date         actualTime
+                добавить поле Date       expectedTime
+                добавить поле String      delayReason
+                добавить метод getPrice, вычисляющий цену (время поездки на цену продукта)
