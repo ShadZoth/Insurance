@@ -57,18 +57,6 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${vehicleInstance?.accidents}">
-				<li class="fieldcontain">
-					<span id="accidents-label" class="property-label"><g:message code="vehicle.accidents.label" default="Accidents" /></span>
-					
-						<g:each in="${vehicleInstance.accidents}" var="a">
-						<span class="property-value" aria-labelledby="accidents-label"><g:link controller="accident" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${vehicleInstance?.certificates}">
 				<li class="fieldcontain">
 					<span id="certificates-label" class="property-label"><g:message code="vehicle.certificates.label" default="Certificates" /></span>

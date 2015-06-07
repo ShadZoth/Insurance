@@ -9,7 +9,7 @@ class Vehicle {
     Manufacturer manufacturer
 
     static belongsTo = [Driver, Manufacturer]
-    static hasMany = [accidents: Accident, certificates: Certificate]
+    static hasMany = [certificates: Certificate]
 
     static constraints = {
         model(maxSize: 30)

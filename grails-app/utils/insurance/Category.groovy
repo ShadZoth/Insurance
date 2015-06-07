@@ -1,7 +1,7 @@
 package insurance
 
 public enum Category {
-    SEDAN(1), HATCHBACK(2), WAGON(4), VAN(8)
+    CONDITIONER(1), SMOKING(2), CHILDREN(4), HUGEBACK(8), VAN(16), PREMIUM(32), DISABLED(64), VIP(128)
 
     def value
 

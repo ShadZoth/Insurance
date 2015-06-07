@@ -3,7 +3,7 @@
 %{--Выбор ТС. Название пункта содержит ссылку на создание ТС.--}%
 <div class="fieldcontain ${hasErrors(bean: certificateInstance, field: 'vehicle', 'error')} required">
     <label for="vehicle">
-        <a href="../vehicle/create.gsp"><g:message code="accident.vehicle.label" default="Vehicle" /></a>
+        <a href="../vehicle/create.gsp"><g:message code="certificate.vehicle.label" default="Vehicle" /></a>
         <span class="required-indicator">*</span>
     </label>
     <g:select id="vehicle" name="vehicle.id" from="${insurance.Vehicle.list()}"

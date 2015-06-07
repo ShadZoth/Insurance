@@ -40,6 +40,6 @@ class Client extends Person {
 
     @Override
     public String toString() {
-        return "";
+        return getSortedPassports()?.get(0)?.toString();
     }
 }

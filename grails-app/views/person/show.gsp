@@ -109,22 +109,6 @@
 
 
     %{--Список прав--}%
-        <g:if test="${personInstance?.sortedLicenses}">
-            <li class="fieldcontain">
-                <span id="licenses-label" class="property-label"><g:message
-                        code="person.licenses.label" default="Licenses"/></span>
-
-                <g:each in="${personInstance.sortedLicenses}" var="l">
-                    <span class="property-value"
-                          aria-labelledby="licenses-label"><g:link
-                            controller="license" action="show"
-                            id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-                </g:each>
-
-            </li>
-        </g:if>
-
-
         <g:if test="${personInstance?.vehicles}">
             <li class="fieldcontain">
                 <span id="vehicles-label" class="property-label"><g:message
@@ -177,23 +161,6 @@
                         default="Add contact"/></g:link>
             </li>
         </sec:ifAnyGranted>
-
-
-
-
-
-
-
-        <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
-            <li class="fieldcontain">
-                <g:link class="create" controller="license" action="create"
-                        params="[person_id: personInstance.id]"><g:message
-                        code="license.add.label"
-                        default="Add license"/></g:link>
-            </li>
-        </sec:ifAnyGranted>
-
-
 
         <sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_DISPATCHER">
             <li class="fieldcontain">

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
     %{--Шрифт--}%
-    <link href='http://fonts.googleapis.com/css?family=Lora&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <g:layoutHead/>
     <g:javascript library="application"/>
     <r:layoutResources/>
@@ -171,22 +171,13 @@
                         <li><g:link action="index" controller="driver">
                             <g:message code="layout.menu.admin.drivers" default="Drivers"/>
                         </g:link></li>
-                        <li><g:link action="index" controller="accident">
-                            <g:message code="layout.menu.admin.accidents" default="Accidents"/>
-                        </g:link></li>
                         <li><g:link action="index" controller="contact">
                             <g:message code="layout.menu.admin.contacts" default="Contacts"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="license">
-                            <g:message code="layout.menu.admin.license" default="License"/>
                         </g:link></li>
                         <li><g:link action="index" controller="passport">
                             <g:message code="layout.menu.admin.passport" default="Passports"/>
                         </g:link></li>
-                        <li><g:link action="index" controller="payment">
-                            <g:message code="layout.menu.admin.payments" default="Payments"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="vehicle">
+                       <li><g:link action="index" controller="vehicle">
                             <g:message code="layout.menu.admin.vehicles" default="Vehicles"/>
                         </g:link></li>
                         <li><g:link action="index" controller="service">
@@ -218,10 +209,6 @@
                     <g:link action="index" controller="client">
                         <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                 </li>
-                <li><g:link action="index" controller="accident">
-                    <g:message code="layout.menu.admin.accidents" default="Accidents"/>
-                </g:link>
-                </li>
                 <li>
                     <a href="#">
                         <g:message code="layout.menu.admin.information" default="Information"/>
@@ -232,9 +219,6 @@
                         </g:link></li>
                         <li><g:link action="index" controller="passport">
                             <g:message code="layout.menu.admin.passport" default="Passports"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="payment">
-                            <g:message code="layout.menu.admin.payments" default="Payments"/>
                         </g:link></li>
                         <li><g:link action="index" controller="vehicle">
                             <g:message code="layout.menu.admin.vehicles" default="Vehicles"/>

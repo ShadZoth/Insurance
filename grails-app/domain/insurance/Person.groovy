@@ -9,7 +9,7 @@ class Person {
     }
 
     static constraints = {
-        passports(size: 1..100)
+        // TODO: check pasport
     }
 
 

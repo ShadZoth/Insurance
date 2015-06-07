@@ -11,16 +11,16 @@ class Driver extends Person {
     Integer getPricePerMinute() {
         if (vehicle) {
             switch (vehicle.category) {
-                case Category.SEDAN:
+                case Category.CONDITIONER:
                     return 10;
-                case Category.HATCHBACK:
+                case Category.PREMIUM:
                     return 15;
-                case Category.WAGON:
+                case Category.HUGEBACK:
                     return 20;
                 case Category.VAN:
                     return 35;
                 default:
-                    return 0;
+                    return 100;
             }
         }
         return 0;

@@ -12,8 +12,6 @@ class Warrant {
 
     static belongsTo = [Client, Product]
 
-    static hasMany = [payments: Payment]
-
     static constraints = {
         number(editable: false, nullable: false)
         client()
