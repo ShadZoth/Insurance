@@ -22,13 +22,20 @@
 			</g:if>
 			<ol class="property-list client">
 			
-				<g:if test="${clientInstance?.passports}">
+				<g:if test="${clientInstance?.firstName}">
 				<li class="fieldcontain">
-					<span id="passports-label" class="property-label"><g:message code="client.passports.label" default="Passports" /></span>
+					<span id="firstName-label" class="property-label"><g:message code="client.firstName.label" default="First Name" /></span>
 					
-						<g:each in="${clientInstance.passports}" var="p">
-						<span class="property-value" aria-labelledby="passports-label"><g:link controller="passport" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${clientInstance}" field="firstName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${clientInstance?.lastName}">
+				<li class="fieldcontain">
+					<span id="lastName-label" class="property-label"><g:message code="client.lastName.label" default="Last Name" /></span>
+					
+						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${clientInstance}" field="lastName"/></span>
 					
 				</li>
 				</g:if>

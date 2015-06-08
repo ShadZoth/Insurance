@@ -2,30 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'passports', 'error')} ">
-	<label for="passports">
-		<g:message code="client.passports.label" default="Passports" />
-		
+<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'firstName', 'error')} required">
+	<label for="firstName">
+		<g:message code="client.firstName.label" default="First Name" />
+		<span class="required-indicator">*</span>
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${clientInstance?.passports?}" var="p">
-    <li><g:link controller="passport" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="passport" action="create" params="['client.id': clientInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'passport.label', default: 'Passport')])}</g:link>
-</li>
-</ul>
-
+	<g:textField name="firstName" required="" value="${clientInstance?.firstName}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'registrationDate', 'error')} required">
-	<label for="registrationDate">
-		<g:message code="client.registrationDate.label" default="Registration Date" />
+<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'lastName', 'error')} required">
+	<label for="lastName">
+		<g:message code="client.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="registrationDate" precision="day"  value="${clientInstance?.registrationDate}"  />
+	<g:textField name="lastName" required="" value="${clientInstance?.lastName}"/>
 
 </div>
 
@@ -43,7 +34,7 @@
 		<g:message code="client.dispatcher.label" default="Dispatcher" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="dispatcher" name="dispatcher.id" from="${insurance.User.list()}" optionKey="id" required="" value="${clientInstance?.dispatcher?.id}" class="many-to-one"/>
+	<g:select id="dispatcher" name="dispatcher.id" from="${insurance.User.list().findAll {it.hasRoleService.serviceMethod(it, 'ROLE_DISPATCHER')}}" optionKey="id" required="" value="${clientInstance?.dispatcher?.id}" class="many-to-one"/>
 
 </div>
 

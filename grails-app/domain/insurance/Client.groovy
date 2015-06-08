@@ -2,8 +2,12 @@ package insurance
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
-class Client extends Person {
-    Date registrationDate = new Date(Calendar.getInstance().get(Calendar.YEAR) - 1900, Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
+class Client {
+    String firstName;
+    String lastName;
+    Date registrationDate = new Date(Calendar.getInstance().get(Calendar.YEAR) - 1900,
+            Calendar.getInstance().get(Calendar.MONTH),
+            Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
     Boolean archived = false
     User dispatcher
 
@@ -14,7 +18,7 @@ class Client extends Person {
     }
 
     void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate
+        //Cannot be changed
     }
 
     static searchable = true
@@ -28,6 +32,8 @@ class Client extends Person {
 
     //def hasRoleService
     static constraints = {
+        firstName()
+        lastName()
         registrationDate(nullable: false)
         archived()
         dispatcher(validator: { val, obj ->
@@ -40,6 +46,6 @@ class Client extends Person {
 
     @Override
     public String toString() {
-        return getSortedPassports()?.get(0)?.toString();
+        return "$firstName $lastName";
     }
 }

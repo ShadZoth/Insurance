@@ -23,6 +23,10 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="firstName" title="${message(code: 'client.firstName.label', default: 'First Name')}" />
+					
+						<g:sortableColumn property="lastName" title="${message(code: 'client.lastName.label', default: 'Last Name')}" />
+					
 						<g:sortableColumn property="registrationDate" title="${message(code: 'client.registrationDate.label', default: 'Registration Date')}" />
 					
 						<g:sortableColumn property="archived" title="${message(code: 'client.archived.label', default: 'Archived')}" />
@@ -35,7 +39,11 @@
 				<g:each in="${clientInstanceList}" status="i" var="clientInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean: clientInstance, field: "registrationDate")}</g:link></td>
+						<td><g:link action="show" id="${clientInstance.id}">${fieldValue(bean: clientInstance, field: "firstName")}</g:link></td>
+					
+						<td>${fieldValue(bean: clientInstance, field: "lastName")}</td>
+					
+						<td><g:formatDate date="${clientInstance.registrationDate}" /></td>
 					
 						<td><g:formatBoolean boolean="${clientInstance.archived}" /></td>
 					
