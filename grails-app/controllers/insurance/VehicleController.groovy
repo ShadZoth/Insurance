@@ -11,6 +11,8 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class VehicleController {
 
+    static def messageSource
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {

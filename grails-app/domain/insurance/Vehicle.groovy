@@ -74,6 +74,15 @@ class Vehicle {
         updateCategories(Category.VIP, val)
     }
 
+    def getCategories() {
+        if (categories) {
+            def string = categories.toString()
+            return string.substring(1, string.length() - 1)
+        } else {
+            return " - ";
+        }
+    }
+
     def updateCategories(Category category, boolean val) {
         if (checkCategories(category)) {
             if (!val) {

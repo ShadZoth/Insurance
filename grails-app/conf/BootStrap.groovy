@@ -180,12 +180,13 @@ class BootStrap {
         }
 
         // Генерирует названия компаний и ИНН (быдлокод не меньший, чем выше)
-      /*  (151..200).collect {
-            new Company(name: nextName,
+        (151..200).collect {
+            new Company(
+                    name: nextName,
                     inn: "${it}${1000000000 - rand.nextInt(99999999)}",
-                    dispatcher: findDispatcher(it))
+            )
         }*.save()
-        */
+
         ["OSAGO", "KASKO"].each {
             def p = new Product(name: it, individual: true, corporate: true)
             p.save(flush: true)
@@ -248,6 +249,15 @@ class BootStrap {
          "Wolseley"].collect {
             new Manufacturer(name: it)
         }*.save()
+
+        def driver = new Driver()
+        driver.save()
+        new Vehicle(
+                owner: driver,
+                year: 2007,
+                manufacturer: Manufacturer.findByName("TVR"),
+                model: "Sylvan"
+        ).save()
     }
 
     private String getNextName() {
