@@ -12,7 +12,7 @@ hibernate {
     cache.use_query_cache = false
     cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory' // Hibernate 3
 //    cache.region.factory_class = 'org.hibernate.cache.ehcache.EhCacheRegionFactory' // Hibernate 4
-    singleSession = true // configure OSIV singleSession mode
+    singleSession = true // configure Ohttps://github.com/ShadZoth/Insurance/commit/72f94f8b2ba42e17ecf2a81f2441984bfed74e3aSIV singleSession mode
 }
 
 // environment specific settings
@@ -20,10 +20,10 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url="jdbc:postgresql://localhost:5432/Insurance"
+            url="jdbc:postgresql://localhost:5432/postgres"
             driverClassName = "org.postgresql.Driver"
-            username = "postgres"
-            password = "qwerty"
+            username = "User"
+            password = ""
         }
     }
     test {

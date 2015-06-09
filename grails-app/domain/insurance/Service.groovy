@@ -8,11 +8,120 @@ class Service {
     Date realStartTime
     Date endTime
     Driver driver
+    List<Category> cats = []
+    Company otherCompany
+
+    boolean isConditioner() {
+        checkCategories(Category.CONDITIONER)
+    }
+
+    void setConditioner(boolean val) {
+        updateCategories(Category.CONDITIONER, val)
+    }
+
+    boolean isSmoking() {
+        checkCategories(Category.SMOKING)
+    }
+
+    void setSmoking(boolean val) {
+        updateCategories(Category.SMOKING, val)
+    }
+
+    boolean isChildren() {
+        checkCategories(Category.CHILDREN)
+    }
+
+    void setChildren(boolean val) {
+        updateCategories(Category.CHILDREN, val)
+    }
+
+    boolean isHugeBack() {
+        checkCategories(Category.HUGEBACK)
+    }
+
+    void setHugeBack(boolean val) {
+        updateCategories(Category.HUGEBACK, val)
+    }
+
+    boolean isVan() {
+        checkCategories(Category.VAN)
+    }
+
+    void setVan(boolean val) {
+        updateCategories(Category.VAN, val)
+    }
+
+    boolean isPremium() {
+        checkCategories(Category.PREMIUM)
+    }
+
+    void setPremium(boolean val) {
+        updateCategories(Category.PREMIUM, val)
+    }
+
+    boolean isDisabled() {
+        checkCategories(Category.DISABLED)
+    }
+
+    void setDisabled(boolean val) {
+        updateCategories(Category.DISABLED, val)
+    }
+
+    boolean isVip() {
+        checkCategories(Category.VIP)
+    }
+
+    void setVip(boolean val) {
+        updateCategories(Category.VIP, val)
+    }
+
+    def getCategories() {
+        if (cats) {
+            def string = cats.toString()
+            return string.substring(1, string.length() - 1)
+        } else {
+            return " - ";
+        }
+    }
+
+    def updateCategories(Category category, boolean val) {
+        if (checkCategories(category)) {
+            if (!val) {
+                cats.remove(category)
+            }
+        } else if (val) {
+            cats.add(category)
+        }
+    }
+
+    boolean checkCategories(Category category) {
+        cats.contains(category)
+    }
 
     static constraints = {
         client(nullable: false)
         expectedStartTime(nullable: false)
         addressStart(nullable: false)
+        driver (
+                nullable: true,
+                validator: { val, obj ->
+                    def res = true
+                    if (val) {
+                        obj.cats.each {
+                            res &= val?.vehicle?.cats?.contains(it)
+                        }
+                    }
+                    res
+                }
+        )
+        otherCompany(
+                nullable: true,
+                validator: { val, obj ->
+                    return !(val && obj.realStartTime)
+                }
+        )
+        realStartTime(nullable: true)
+        endTime(nullable: true)
     }
 
     static mapping = {
@@ -26,8 +135,8 @@ class Service {
         return id;
     }
 
-    int getPrice() {
-        return driver.pricePerMinute * ((endTime.getTime() - realStartTime.getTime()) / 1000 / 60);
+    def getPrice() {
+        (driver && endTime && realStartTime) ? driver?.pricePerMinute * ((endTime?.getTime() - realStartTime?.getTime()) / 1000 / 60) : null
     }
 
     static searchable = true

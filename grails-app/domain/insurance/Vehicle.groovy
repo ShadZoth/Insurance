@@ -4,7 +4,7 @@ class Vehicle {
 
     String model
     int year
-    List<Category> categories = []
+    List<Category> cats = []
     Driver owner
     Manufacturer manufacturer
 
@@ -75,8 +75,8 @@ class Vehicle {
     }
 
     def getCategories() {
-        if (categories) {
-            def string = categories.toString()
+        if (cats) {
+            def string = cats.toString()
             return string.substring(1, string.length() - 1)
         } else {
             return " - ";
@@ -86,15 +86,15 @@ class Vehicle {
     def updateCategories(Category category, boolean val) {
         if (checkCategories(category)) {
             if (!val) {
-                categories.remove(category)
+                cats.remove(category)
             }
         } else if (val) {
-            categories.add(category)
+            cats.add(category)
         }
     }
 
     boolean checkCategories(Category category) {
-        categories.contains(category)
+        cats.contains(category)
     }
 
     static belongsTo = [Driver, Manufacturer]
