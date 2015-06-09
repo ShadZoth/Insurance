@@ -175,7 +175,7 @@ class BootStrap {
             User dispatcher = findDispatcher(it)
             def c = new Client(dispatcher: dispatcher,
                     lastName: "${surnames.get(rand.nextInt(surnames.size()))}${sexer.get(2)}",
-                    firstName: womanNames.get(rand.nextInt(womanNames.size())),)
+                    firstName: womanNames.get(rand.nextInt(womanNames.size())))
             c.save(flush: true)
         }
 
