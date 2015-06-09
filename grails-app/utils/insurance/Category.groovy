@@ -1,7 +1,7 @@
 package insurance
 
 public enum Category {
-    //TODO: Другие цены?
+    //TODO: Р”СЂСѓРіРёРµ С†РµРЅС‹?
     CONDITIONER(10),
     SMOKING(10),
     CHILDREN(10),
