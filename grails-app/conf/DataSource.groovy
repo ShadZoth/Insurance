@@ -20,10 +20,10 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url="jdbc:postgresql://localhost:5432/Insurance"
+            url="jdbc:postgresql://localhost:5432/postgres"
             driverClassName = "org.postgresql.Driver"
-            username = "postgres"
-            password = "qwerty"
+            username = "User"
+            password = ""
         }
     }
     test {
