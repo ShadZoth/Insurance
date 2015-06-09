@@ -9,7 +9,7 @@ class Driver extends Person {
     }
 
     Integer getPricePerMinute() {
-        int res = 100 //TODO: Другая цена?
+        int res = 100 //TODO: Р”СЂСѓРіР°СЏ С†РµРЅР°?
         vehicle?.categories?.each {
             res += it.price
         }
