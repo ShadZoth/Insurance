@@ -163,42 +163,20 @@ class BootStrap {
         // Генерирует мужчин (быдлокод)
         (1..75).each {
             User dispatcher = findDispatcher(it)
-            def c = new Client(dispatcher: dispatcher)
-            c.save(flush: true)
-            def birthDate = new Date().toCalendar()
-            birthDate.add(Calendar.YEAR, -18)
-            def issueDate = new Date().toCalendar()
-            issueDate.add(Calendar.YEAR, -4)
-            def pass = new Passport(number: it,
-                    person: c,
+            def c = new Client(dispatcher: dispatcher,
                     lastName: surnames.get(rand.nextInt(surnames.size())),
-                    firstName: manNames.get(rand.nextInt(manNames.size())),
-                    fathName: "${universalFathNames.get(rand.nextInt(universalFathNames.size()))}${sexer.get(1)}",
-                    birthDate: birthDate.time,
-                    sex: Passport.Sex.MALE,
-                    issueDate: issueDate.time)
-            pass.save(flush: true)
+                    firstName: manNames.get(rand.nextInt(manNames.size())))
+            c.save(flush: true)
         }
 
 
         // Генерирует женщин (быдлокод)
         (76..150).each {
             User dispatcher = findDispatcher(it)
-            def c = new Client(dispatcher: dispatcher)
-            c.save(flush: true)
-            def birthDate = new Date().toCalendar()
-            birthDate.add(Calendar.YEAR, -18)
-            def issueDate = new Date().toCalendar()
-            issueDate.add(Calendar.YEAR, -4)
-            def pass = new Passport(number: it,
-                    person: c,
+            def c = new Client(dispatcher: dispatcher,
                     lastName: "${surnames.get(rand.nextInt(surnames.size()))}${sexer.get(2)}",
-                    firstName: womanNames.get(rand.nextInt(womanNames.size())),
-                    fathName: "${universalFathNames.get(rand.nextInt(universalFathNames.size()))}${sexer.get(0)}",
-                    birthDate: birthDate.time,
-                    sex: Passport.Sex.FEMALE,
-                    issueDate: issueDate.time)
-            pass.save(flush: true)
+                    firstName: womanNames.get(rand.nextInt(womanNames.size())),)
+            c.save(flush: true)
         }
 
         // Генерирует названия компаний и ИНН (быдлокод не меньший, чем выше)
