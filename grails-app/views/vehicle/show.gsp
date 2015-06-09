@@ -40,15 +40,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${vehicleInstance?.category}">
-				<li class="fieldcontain">
-					<span id="category-label" class="property-label"><g:message code="vehicle.category.label" default="Category" /></span>
-					
-						<span class="property-value" aria-labelledby="category-label"><g:fieldValue bean="${vehicleInstance}" field="category"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${vehicleInstance?.manufacturer}">
 				<li class="fieldcontain">
 					<span id="manufacturer-label" class="property-label"><g:message code="vehicle.manufacturer.label" default="Manufacturer" /></span>
@@ -57,6 +48,16 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${vehicleInstance?.owner}">
+					<li class="fieldcontain">
+						<span id="owner-label" class="property-label"><g:message code="vehicle.owner.label" default="Owner" /></span>
+
+						<span class="property-value" aria-labelledby="owner-label"><g:link controller="driver" action="show" id="${vehicleInstance?.owner?.id}">${vehicleInstance?.owner?.encodeAsHTML()}</g:link></span>
+
+					</li>
+				</g:if>
+
 				<g:if test="${vehicleInstance?.certificates}">
 				<li class="fieldcontain">
 					<span id="certificates-label" class="property-label"><g:message code="vehicle.certificates.label" default="Certificates" /></span>
@@ -68,11 +69,74 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${vehicleInstance?.owner}">
+				<g:if test="${vehicleInstance?.children}">
 				<li class="fieldcontain">
-					<span id="owner-label" class="property-label"><g:message code="vehicle.owner.label" default="Owner" /></span>
+					<span id="children-label" class="property-label"><g:message code="vehicle.children.label" default="Children" /></span>
 					
-						<span class="property-value" aria-labelledby="owner-label"><g:link controller="driver" action="show" id="${vehicleInstance?.owner?.id}">${vehicleInstance?.owner?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="children-label"><g:formatBoolean boolean="${vehicleInstance?.children}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.conditioner}">
+				<li class="fieldcontain">
+					<span id="conditioner-label" class="property-label"><g:message code="vehicle.conditioner.label" default="Conditioner" /></span>
+					
+						<span class="property-value" aria-labelledby="conditioner-label"><g:formatBoolean boolean="${vehicleInstance?.conditioner}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.disabled}">
+				<li class="fieldcontain">
+					<span id="disabled-label" class="property-label"><g:message code="vehicle.disabled.label" default="Disabled" /></span>
+					
+						<span class="property-value" aria-labelledby="disabled-label"><g:formatBoolean boolean="${vehicleInstance?.disabled}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.hugeBack}">
+				<li class="fieldcontain">
+					<span id="hugeBack-label" class="property-label"><g:message code="vehicle.hugeBack.label" default="Huge Back" /></span>
+					
+						<span class="property-value" aria-labelledby="hugeBack-label"><g:formatBoolean boolean="${vehicleInstance?.hugeBack}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.premium}">
+				<li class="fieldcontain">
+					<span id="premium-label" class="property-label"><g:message code="vehicle.premium.label" default="Premium" /></span>
+					
+						<span class="property-value" aria-labelledby="premium-label"><g:formatBoolean boolean="${vehicleInstance?.premium}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.smoking}">
+				<li class="fieldcontain">
+					<span id="smoking-label" class="property-label"><g:message code="vehicle.smoking.label" default="Smoking" /></span>
+					
+						<span class="property-value" aria-labelledby="smoking-label"><g:formatBoolean boolean="${vehicleInstance?.smoking}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.van}">
+				<li class="fieldcontain">
+					<span id="van-label" class="property-label"><g:message code="vehicle.van.label" default="Van" /></span>
+					
+						<span class="property-value" aria-labelledby="van-label"><g:formatBoolean boolean="${vehicleInstance?.van}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${vehicleInstance?.vip}">
+				<li class="fieldcontain">
+					<span id="vip-label" class="property-label"><g:message code="vehicle.vip.label" default="Vip" /></span>
+					
+						<span class="property-value" aria-labelledby="vip-label"><g:formatBoolean boolean="${vehicleInstance?.vip}" /></span>
 					
 				</li>
 				</g:if>

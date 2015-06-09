@@ -27,11 +27,11 @@
 					
 						<g:sortableColumn property="year" title="${message(code: 'vehicle.year.label', default: 'Year')}" />
 					
-						<g:sortableColumn property="category" title="${message(code: 'vehicle.category.label', default: 'Category')}" />
-					
 						<th><g:message code="vehicle.manufacturer.label" default="Manufacturer" /></th>
 					
 						<th><g:message code="vehicle.owner.label" default="Owner" /></th>
+
+						<th><g:message code="vehicle.categories.label" default="Categories" /> </th>
 					
 					</tr>
 				</thead>
@@ -43,11 +43,11 @@
 					
 						<td>${fieldValue(bean: vehicleInstance, field: "year")}</td>
 					
-						<td>${fieldValue(bean: vehicleInstance, field: "category")}</td>
-					
 						<td>${fieldValue(bean: vehicleInstance, field: "manufacturer")}</td>
 					
 						<td>${fieldValue(bean: vehicleInstance, field: "owner")}</td>
+
+						<td>${fieldValue(bean: vehicleInstance, field: "categories")}</td>
 					
 					</tr>
 				</g:each>
