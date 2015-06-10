@@ -123,7 +123,13 @@ class Service {
         driver (
                 nullable: true,
                 validator: { val, obj ->
-                    vldt(val, obj)
+                    def res = true
+                    if (val) {
+                        obj.cats.each {
+                            res &= val?.vehicle?.cats?.contains(it)
+                        }
+                    }
+                    res
                 }
         )
         otherCompany(
