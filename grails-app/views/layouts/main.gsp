@@ -115,16 +115,13 @@
         <sec:ifAllGranted roles="ROLE_DISPATCHER">
             <ul id="menu">
                 <li><g:link action="index" controller="service">
-                    <g:message code="layout.menu.dispatcher.mysales" default="My sales"/>
+                    <g:message code="layout.menu.admin.services" default="My services"/>
                 </g:link>
                 </li>
                 <li>
                     <g:link action="index" controller="client">
                         <g:message code="layout.menu.manager.clients" default="Clients"/></g:link>
                 </li>
-                <li><g:link action="index" controller="product">
-                    <g:message code="layout.menu.admin.products" default="Products"/>
-                </g:link></li>
             </ul>
         </sec:ifAllGranted>
         <sec:ifAllGranted roles="ROLE_MANAGER">
@@ -193,12 +190,6 @@
                     <ul>
                         <li><g:link action="index" controller="manufacturer">
                             <g:message code="layout.menu.admin.manufacturers" default="Manufacturers"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="price">
-                            <g:message code="layout.menu.admin.prices" default="Prices"/>
-                        </g:link></li>
-                        <li><g:link action="index" controller="product">
-                            <g:message code="layout.menu.admin.products" default="Products"/>
                         </g:link></li>
                     </ul>
                 </li>

@@ -38,7 +38,7 @@
 				<tbody>
 				<g:each in="${serviceInstanceList}" status="i" var="serviceInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${serviceInstance.id}">${fieldValue(bean: serviceInstance, field: "client")}</g:link></td>
 
 						<td><g:formatDate date="${serviceInstance.expectedStartTime}" /></td>
@@ -59,7 +59,6 @@
 						<g:else>
 							<td><g:link class="show" action="show" id="${serviceInstance.id}"><g:message code="service.show.label" /></g:link></td>
 						</g:else>
-
 					</tr>
 				</g:each>
 				</tbody>

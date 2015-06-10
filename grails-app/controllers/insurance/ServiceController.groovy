@@ -1,11 +1,8 @@
 package insurance
 
-import grails.plugins.springsecurity.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 
 @Transactional(readOnly = true)
 class ServiceController {
@@ -23,6 +20,18 @@ class ServiceController {
 
     def create() {
         respond new Service(params)
+    }
+
+    def adddriver(Service serviceInstance) {
+        respond serviceInstance
+    }
+
+    def start_service(Service serviceInstance) {
+        respond serviceInstance
+    }
+
+    def end_service(Service serviceInstance) {
+        respond serviceInstance
     }
 
     @Transactional
@@ -49,18 +58,6 @@ class ServiceController {
     }
 
     def edit(Service serviceInstance) {
-        respond serviceInstance
-    }
-
-    def adddriver(Service serviceInstance) {
-        respond serviceInstance
-    }
-
-    def start_service(Service serviceInstance) {
-        respond serviceInstance
-    }
-
-    def end_service(Service serviceInstance) {
         respond serviceInstance
     }
 

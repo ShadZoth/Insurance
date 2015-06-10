@@ -29,12 +29,13 @@
 			<g:form url="[resource:serviceInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${serviceInstance?.version}" />
 				<fieldset class="form">
-					<div class="fieldcontain ${hasErrors(bean: serviceInstance, field: 'driver', 'error')} required">
+
+					<div class="fieldcontain ${hasErrors(bean: serviceInstance, field: 'driver', 'error')} ">
 						<label for="driver">
 							<g:message code="service.driver.label" default="Driver" />
-							<span class="required-indicator">*</span>
+
 						</label>
-						<g:select id="driver" name="driver.id" from="${serviceInstance.getAvailableDrivers()}" optionKey="id" required="" value="${serviceInstance?.driver?.id}" class="many-to-one"/>
+						<g:select id="driver" name="driver.id" from="${serviceInstance.getValidDrivers()}" optionKey="id" value="${serviceInstance?.driver?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 					</div>
 				</fieldset>

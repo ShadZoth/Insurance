@@ -49,20 +49,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${serviceInstance?.addressEnd}">
-				<li class="fieldcontain">
-					<span id="addressEnd-label" class="property-label"><g:message code="service.addressEnd.label" default="Address End" /></span>
-					
-						<span class="property-value" aria-labelledby="addressEnd-label"><g:fieldValue bean="${serviceInstance}" field="addressEnd"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${serviceInstance?.driver}">
 				<li class="fieldcontain">
 					<span id="driver-label" class="property-label"><g:message code="service.driver.label" default="Driver" /></span>
 					
 						<span class="property-value" aria-labelledby="driver-label"><g:link controller="driver" action="show" id="${serviceInstance?.driver?.id}">${serviceInstance?.driver?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.otherCompany}">
+				<li class="fieldcontain">
+					<span id="otherCompany-label" class="property-label"><g:message code="service.otherCompany.label" default="Other Company" /></span>
+					
+						<span class="property-value" aria-labelledby="otherCompany-label"><g:link controller="company" action="show" id="${serviceInstance?.otherCompany?.id}">${serviceInstance?.otherCompany?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.realStartTime}">
+				<li class="fieldcontain">
+					<span id="realStartTime-label" class="property-label"><g:message code="service.realStartTime.label" default="Real Start Time" /></span>
+					
+						<span class="property-value" aria-labelledby="realStartTime-label"><g:formatDate date="${serviceInstance?.realStartTime}" /></span>
 					
 				</li>
 				</g:if>
@@ -76,11 +85,83 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${serviceInstance?.realStartTime}">
+				<g:if test="${serviceInstance?.addressEnd}">
 				<li class="fieldcontain">
-					<span id="realStartTime-label" class="property-label"><g:message code="service.realStartTime.label" default="Real Start Time" /></span>
+					<span id="addressEnd-label" class="property-label"><g:message code="service.addressEnd.label" default="Address End" /></span>
 					
-						<span class="property-value" aria-labelledby="realStartTime-label"><g:formatDate date="${serviceInstance?.realStartTime}"/></span>
+						<span class="property-value" aria-labelledby="addressEnd-label"><g:fieldValue bean="${serviceInstance}" field="addressEnd"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.children}">
+				<li class="fieldcontain">
+					<span id="children-label" class="property-label"><g:message code="service.children.label" default="Children" /></span>
+					
+						<span class="property-value" aria-labelledby="children-label"><g:formatBoolean boolean="${serviceInstance?.children}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.conditioner}">
+				<li class="fieldcontain">
+					<span id="conditioner-label" class="property-label"><g:message code="service.conditioner.label" default="Conditioner" /></span>
+					
+						<span class="property-value" aria-labelledby="conditioner-label"><g:formatBoolean boolean="${serviceInstance?.conditioner}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.disabled}">
+				<li class="fieldcontain">
+					<span id="disabled-label" class="property-label"><g:message code="service.disabled.label" default="Disabled" /></span>
+					
+						<span class="property-value" aria-labelledby="disabled-label"><g:formatBoolean boolean="${serviceInstance?.disabled}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.hugeBack}">
+				<li class="fieldcontain">
+					<span id="hugeBack-label" class="property-label"><g:message code="service.hugeBack.label" default="Huge Back" /></span>
+					
+						<span class="property-value" aria-labelledby="hugeBack-label"><g:formatBoolean boolean="${serviceInstance?.hugeBack}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.premium}">
+				<li class="fieldcontain">
+					<span id="premium-label" class="property-label"><g:message code="service.premium.label" default="Premium" /></span>
+					
+						<span class="property-value" aria-labelledby="premium-label"><g:formatBoolean boolean="${serviceInstance?.premium}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.smoking}">
+				<li class="fieldcontain">
+					<span id="smoking-label" class="property-label"><g:message code="service.smoking.label" default="Smoking" /></span>
+					
+						<span class="property-value" aria-labelledby="smoking-label"><g:formatBoolean boolean="${serviceInstance?.smoking}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.van}">
+				<li class="fieldcontain">
+					<span id="van-label" class="property-label"><g:message code="service.van.label" default="Van" /></span>
+					
+						<span class="property-value" aria-labelledby="van-label"><g:formatBoolean boolean="${serviceInstance?.van}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${serviceInstance?.vip}">
+				<li class="fieldcontain">
+					<span id="vip-label" class="property-label"><g:message code="service.vip.label" default="Vip" /></span>
+					
+						<span class="property-value" aria-labelledby="vip-label"><g:formatBoolean boolean="${serviceInstance?.vip}" /></span>
 					
 				</li>
 				</g:if>
@@ -102,7 +183,8 @@
 
 					</li>
 				</g:if>
-			
+
+
 			</ol>
 			<g:form url="[resource:serviceInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
