@@ -1,6 +1,16 @@
 <%@ page import="insurance.Driver" %>
 
 
+
+<div class="fieldcontain ${hasErrors(bean: driverInstance, field: 'vehicle', 'error')} ">
+	<label for="vehicle">
+		<g:message code="driver.vehicle.label" default="Vehicle" />
+		
+	</label>
+	<g:select id="vehicle" name="vehicle.id" from="${insurance.Vehicle.list()}" optionKey="id" value="${driverInstance?.vehicle?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: driverInstance, field: 'passports', 'error')} ">
 	<label for="passports">
 		<g:message code="driver.passports.label" default="Passports" />

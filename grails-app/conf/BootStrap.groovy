@@ -187,12 +187,6 @@ class BootStrap {
             )
         }*.save()
 
-        ["OSAGO", "KASKO"].each {
-            def p = new Product(name: it, individual: true, corporate: true)
-            p.save(flush: true)
-            new Price(value: (it.equals("KASKO")?3500:1500), since: new Date().toCalendar().time, product: p).save()
-        }
-
         ["Holden",
          "Tickford",
          "Ford Performance Vehicles",

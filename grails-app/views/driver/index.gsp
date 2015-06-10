@@ -22,20 +22,20 @@
 			<table>
 			<thead>
 					<tr>
-						<th><g:message code="number" default="Number" /></th>
-						<th><g:message code="passport.label" default="Current passport" /></th>
+
+						<g:sortableColumn property="name" title="${message(code: 'driver.name.label', default: 'Name')}" />
+
 						<th><g:message code="driver.vehicle.label" default="Vehicle" /></th>
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${driverInstanceList}" status="i" var="driverInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td><g:link action="show" id="${driverInstance.id}">${fieldValue(bean: driverInstance, field: "id")}</g:link></td>
-						<td><g:link action="show" id="${driverInstance.id}">${
+					
+						<td><g:link action="show" id="${driverInstance.id}">${fieldValue(bean: driverInstance, field: "name")}</g:link></td>
 
-							((Driver)driverInstance).getSortedPassports()[0]
-						}</g:link></td>
-						<td><g:link action="show" id="${driverInstance.id}">${fieldValue(bean: driverInstance, field: "vehicle")}</g:link></td>
+						<td>${fieldValue(bean: driverInstance, field: "vehicle")}</td>
 					
 					</tr>
 				</g:each>

@@ -21,11 +21,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list driver">
-				<li class="fieldcontain">
-					<span id="id-label" class="property-label"><g:message code="number" default="Number" /></span>
-					<span class="property-value" aria-labelledby="vehicle-label">${driverInstance.id}</span>
-				</li>
-
+			
 				<g:if test="${driverInstance?.vehicle}">
 				<li class="fieldcontain">
 					<span id="vehicle-label" class="property-label"><g:message code="driver.vehicle.label" default="Vehicle" /></span>

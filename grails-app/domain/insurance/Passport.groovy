@@ -3,7 +3,7 @@ package insurance
 class Passport implements Comparable<Passport> {
 
     String number
-    Person person
+    Driver person
     String lastName
     String firstName
     String fathName
@@ -11,7 +11,7 @@ class Passport implements Comparable<Passport> {
     Date issueDate
     Sex sex
 
-    static belongsTo = Person
+    static belongsTo = Driver
 
     static constraints = {
         number(nullable: false, unique: true)

@@ -1,11 +1,10 @@
 package insurance
 
-import grails.plugins.springsecurity.Secured
+
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Secured(['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_CALL_CENTER'])
 @Transactional(readOnly = true)
 class DriverController {
 
@@ -13,7 +12,7 @@ class DriverController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Driver.list(params), model: [driverInstanceCount: Driver.count()]
+        respond Driver.list(params), model:[driverInstanceCount: Driver.count()]
     }
 
     def show(Driver driverInstance) {
@@ -32,11 +31,11 @@ class DriverController {
         }
 
         if (driverInstance.hasErrors()) {
-            respond driverInstance.errors, view: 'create'
+            respond driverInstance.errors, view:'create'
             return
         }
 
-        driverInstance.save flush: true
+        driverInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -59,18 +58,18 @@ class DriverController {
         }
 
         if (driverInstance.hasErrors()) {
-            respond driverInstance.errors, view: 'edit'
+            respond driverInstance.errors, view:'edit'
             return
         }
 
-        driverInstance.save flush: true
+        driverInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Driver.label', default: 'Driver'), driverInstance.id])
                 redirect driverInstance
             }
-            '*' { respond driverInstance, [status: OK] }
+            '*'{ respond driverInstance, [status: OK] }
         }
     }
 
@@ -82,14 +81,14 @@ class DriverController {
             return
         }
 
-        driverInstance.delete flush: true
+        driverInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Driver.label', default: 'Driver'), driverInstance.id])
-                redirect action: "index", method: "GET"
+                redirect action:"index", method:"GET"
             }
-            '*' { render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -99,7 +98,7 @@ class DriverController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'driver.label', default: 'Driver'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*' { render status: NOT_FOUND }
+            '*'{ render status: NOT_FOUND }
         }
     }
 }
