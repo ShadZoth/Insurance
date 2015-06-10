@@ -102,11 +102,11 @@ class Service {
 
     def getValidDrivers() {
         Driver.list().find {
-            validate(it, this)
+            vldt(it, this)
         }
     }
 
-    def validate(Driver d, Service s) {
+    boolean vldt(Driver d, Service s) {
         def res = true
         if (d) {
             s.cats.each {
@@ -123,7 +123,7 @@ class Service {
         driver (
                 nullable: true,
                 validator: { val, obj ->
-                    validate(val, obj)
+                    vldt(val, obj)
                 }
         )
         otherCompany(

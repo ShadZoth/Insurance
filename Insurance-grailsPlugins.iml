@@ -7,8 +7,6 @@
           <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.8/web-app" relative="/" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/console-1.4.4/web-app" relative="/" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/console-1.4.4/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/searchable-0.6.8/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jasper-1.8.0/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jasper-1.8.0/grails-app/views" relative="/" />
@@ -33,11 +31,6 @@
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.7/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.7/grails-app/services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.7/grails-app/taglib" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/target/work/plugins/console-1.4.4">
-      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/console-1.4.4/grails-app/controllers" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/console-1.4.4/grails-app/services" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/console-1.4.4/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/src/groovy" isTestSource="false" />
