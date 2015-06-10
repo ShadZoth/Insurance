@@ -80,9 +80,27 @@
 				<li class="fieldcontain">
 					<span id="realStartTime-label" class="property-label"><g:message code="service.realStartTime.label" default="Real Start Time" /></span>
 					
-						<span class="property-value" aria-labelledby="realStartTime-label"><g:formatDate date="${serviceInstance?.realStartTime}" /></span>
+						<span class="property-value" aria-labelledby="realStartTime-label"><g:formatDate date="${serviceInstance?.realStartTime}"/></span>
 					
 				</li>
+				</g:if>
+
+				<g:if test="${serviceInstance?.price}">
+					<li class="fieldcontain">
+						<span id="price-label" class="property-label"><g:message code="service.price.label" default="Price" /></span>
+
+						<span class="property-value" aria-labelledby="addressEnd-label"><g:fieldValue bean="${serviceInstance}" field="price"/></span>
+
+					</li>
+				</g:if>
+
+				<g:if test="${serviceInstance?.duration}">
+					<li class="fieldcontain">
+						<span id="duration-label" class="property-label"><g:message code="service.duration.label" default="Duration (min)" /></span>
+
+						<span class="property-value" aria-labelledby="addressEnd-label"><g:fieldValue bean="${serviceInstance}" field="duration"/></span>
+
+					</li>
 				</g:if>
 			
 			</ol>

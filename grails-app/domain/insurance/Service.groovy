@@ -1,5 +1,7 @@
 package insurance
 
+import groovy.util.logging.Log4j
+
 class Service {
     Client client
     String addressStart
@@ -135,8 +137,35 @@ class Service {
         return id;
     }
 
-    def getPrice() {
-        (driver && endTime && realStartTime) ? driver?.pricePerMinute * ((endTime?.getTime() - realStartTime?.getTime()) / 1000 / 60) : null
+    int getDuration() {
+        if (endTime && realStartTime) {
+            (endTime?.getTime() - realStartTime?.getTime()) / 1000 / 60
+        } else {
+            return 0
+        }
+    }
+
+
+    String getPrice() {
+        if (endTime && realStartTime) {
+            return (driver && endTime && realStartTime) ? driver?.pricePerMinute * duration : null
+        } else {
+            return '0'
+        }
+    }
+
+    def getAvailableDrivers() {
+        def busyDrivers = Service.where {
+            realStartTime == null || endTime != null
+        }.list()?.driver?.id
+
+        for (def a : busyDrivers) {
+            Log4j.println(a)
+        }
+
+        return Driver.where {
+            busyDrivers.contains(id) == false
+        }
     }
 
     static searchable = true

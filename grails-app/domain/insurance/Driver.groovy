@@ -1,7 +1,6 @@
 package insurance
 
 class Driver extends Person {
-
     static hasOne = [vehicle:Vehicle]
 
     static constraints = {
@@ -10,7 +9,7 @@ class Driver extends Person {
 
     Integer getPricePerMinute() {
         int res = 100 //TODO: Другая цена?
-        vehicle?.categories?.each {
+        vehicle?.cats?.each {
             res += it.price
         }
         res

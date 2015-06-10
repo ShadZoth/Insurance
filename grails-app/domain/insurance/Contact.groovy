@@ -1,10 +1,12 @@
 package insurance
 
 class Contact {
-
     String value
-    Client client
     ContactType type
+
+    boolean deleted
+    static transients = [ 'deleted' ]
+    static belongsTo = [client:Client]
 
     String getEmail() {
         if (type == ContactType.EMAIL) {
@@ -16,7 +18,6 @@ class Contact {
 
     static searchable = true
 
-    static belongsTo = Client
 
     static constraints = {
         value()
@@ -25,7 +26,7 @@ class Contact {
         type()
     }
 
-    private static enum ContactType {
+    public static enum ContactType {
         ADDRESS("Адрес"), PHONE("Телефон"), EMAIL("Электронная почта")
 
         ContactType(String s) {
@@ -33,6 +34,10 @@ class Contact {
         }
 
         String russian
+
+        String getKey(){
+            name()
+        }
 
         String toString() {
             russian

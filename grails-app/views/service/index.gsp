@@ -30,6 +30,8 @@
 						<th><g:message code="service.driver.label" default="Driver" /></th>
 
 						<th><g:message code="service.price.label" default="Price" /></th>
+
+						<th><g:message code="service.action.label" default="Action" /></th>
 					
 					</tr>
 				</thead>
@@ -44,6 +46,19 @@
 						<td>${fieldValue(bean: serviceInstance, field: "driver")}</td>
 
 						<td>${fieldValue(bean: serviceInstance, field: "price")}</td>
+
+						<g:if test="${!serviceInstance.driver}">
+							<td><g:link class="edit" action="adddriver" id="${serviceInstance.id}"><g:message code="Принять" /></g:link></td>
+						</g:if>
+						<g:elseif test="${!serviceInstance.realStartTime}">
+							<td><g:link class="edit" action="start_service" id="${serviceInstance.id}"><g:message code="Начать" /></g:link></td>
+						</g:elseif>
+						<g:elseif test="${!serviceInstance.endTime}">
+							<td><g:link class="edit" action="end_service" id="${serviceInstance.id}"><g:message code="Завершить" /></g:link></td>
+						</g:elseif>
+						<g:else>
+							<td><g:link class="show" action="show" id="${serviceInstance.id}"><g:message code="Просмотреть" /></g:link></td>
+						</g:else>
 
 					</tr>
 				</g:each>

@@ -52,6 +52,18 @@ class ServiceController {
         respond serviceInstance
     }
 
+    def adddriver(Service serviceInstance) {
+        respond serviceInstance
+    }
+
+    def start_service(Service serviceInstance) {
+        respond serviceInstance
+    }
+
+    def end_service(Service serviceInstance) {
+        respond serviceInstance
+    }
+
     @Transactional
     def update(Service serviceInstance) {
         if (serviceInstance == null) {

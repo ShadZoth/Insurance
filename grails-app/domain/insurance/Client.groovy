@@ -26,6 +26,7 @@ class Client {
     static mapping = {
         tablePerHierarchy(true)
         registrationDate sqlType: "date"
+        contacts cascade: "all-delete-orphan"
     }
 
     static hasMany = [contacts: Contact]

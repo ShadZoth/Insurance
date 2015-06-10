@@ -16,7 +16,7 @@
 		<g:message code="service.expectedStartTime.label" default="Expected Start Time" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="expectedStartTime" precision="day"  value="${serviceInstance?.expectedStartTime}"  />
+	<g:datePicker name="expectedStartTime" precision="minute"  value="${serviceInstance?.expectedStartTime}"  />
 
 </div>
 
@@ -47,21 +47,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: serviceInstance, field: 'endTime', 'error')} required">
-	<label for="endTime">
-		<g:message code="service.endTime.label" default="End Time" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="endTime" precision="day"  value="${serviceInstance?.endTime}"  />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: serviceInstance, field: 'realStartTime', 'error')} required">
 	<label for="realStartTime">
 		<g:message code="service.realStartTime.label" default="Real Start Time" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="realStartTime" precision="day"  value="${serviceInstance?.realStartTime}"  />
+	<g:datePicker name="realStartTime" precision="minute"  value="${serviceInstance?.realStartTime}"  />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: serviceInstance, field: 'endTime', 'error')} required">
+	<label for="endTime">
+		<g:message code="service.endTime.label" default="End Time" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="endTime" precision="minute"  value="${serviceInstance?.endTime}"  />
 
 </div>
 

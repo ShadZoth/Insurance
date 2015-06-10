@@ -18,6 +18,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <g:layoutHead/>
     <g:javascript library="application"/>
+    <g:javascript library="jquery" plugin="jquery"/>
     <r:layoutResources/>
 </head>
 
