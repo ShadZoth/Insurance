@@ -43,7 +43,7 @@
 					
 						<td><g:link action="show" id="${passportInstance.id}">${fieldValue(bean: passportInstance, field: "number")}</g:link></td>
 					
-						<td>${fieldValue(bean: passportInstance, field: "person")}</td>
+						<td>${fieldValue(bean: passportInstance, field: "driver")}</td>
 					
 						<td>${fieldValue(bean: passportInstance, field: "lastName")}</td>
 					

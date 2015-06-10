@@ -48,16 +48,16 @@
 						<td>${fieldValue(bean: serviceInstance, field: "price")}</td>
 
 						<g:if test="${!serviceInstance.driver}">
-							<td><g:link class="edit" action="adddriver" id="${serviceInstance.id}"><g:message code="Принять" /></g:link></td>
+							<td><g:link class="edit" action="adddriver" id="${serviceInstance.id}"><g:message code="service.accept.label" /></g:link></td>
 						</g:if>
 						<g:elseif test="${!serviceInstance.realStartTime}">
-							<td><g:link class="edit" action="start_service" id="${serviceInstance.id}"><g:message code="Начать" /></g:link></td>
+							<td><g:link class="edit" action="start_service" id="${serviceInstance.id}"><g:message code="service.start.label" /></g:link></td>
 						</g:elseif>
 						<g:elseif test="${!serviceInstance.endTime}">
-							<td><g:link class="edit" action="end_service" id="${serviceInstance.id}"><g:message code="Завершить" /></g:link></td>
+							<td><g:link class="edit" action="end_service" id="${serviceInstance.id}"><g:message code="service.end.label" /></g:link></td>
 						</g:elseif>
 						<g:else>
-							<td><g:link class="show" action="show" id="${serviceInstance.id}"><g:message code="Просмотреть" /></g:link></td>
+							<td><g:link class="show" action="show" id="${serviceInstance.id}"><g:message code="service.show.label" /></g:link></td>
 						</g:else>
 
 					</tr>

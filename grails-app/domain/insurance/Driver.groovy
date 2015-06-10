@@ -33,7 +33,7 @@ class Driver {
 
         if (passports) {
             Passport passport = passports.findAll({
-                it.person.id == id
+                it.driver.id == id
                 it.issueDate
             }).max(new Comparator<Passport>() {
                 @Override

@@ -49,7 +49,7 @@ class SearchableController {
                         case Contact: return (it as Contact).client.dispatcher?.manager == me; break;
                         case License: return (it as License).owner.dispatcher?.manager == me; break;
                         case Manufacturer: return false; break;
-                        case Passport: return (it as Passport).person.dispatcher?.manager == me; break;
+                        case Passport: return (it as Passport).driver.dispatcher?.manager == me; break;
                         case Payment: return (it as Payment).warrant.client.dispatcher?.manager == me; break;
                         case Person: return (it as Person).dispatcher?.manager == me; break;
                         case Price: return true; break;
@@ -66,7 +66,7 @@ class SearchableController {
                         case Contact: return (it as Contact).client.dispatcher == me; break;
                         case License: return (it as License).owner.dispatcher == me; break;
                         case Manufacturer: return false; break;
-                        case Passport: return (it as Passport).person.dispatcher == me; break;
+                        case Passport: return (it as Passport).driver.dispatcher == me; break;
                         case Payment: return (it as Payment).warrant.client.dispatcher == me; break;
                         case Person: return (it as Person).dispatcher == me; break;
                         case Price: return true; break;

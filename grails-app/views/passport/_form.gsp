@@ -11,7 +11,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'person', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: passportInstance, field: 'driver', 'error')} required">
 	<label for="person">
 		<g:message code="passport.person.label" default="Person" />
 		<span class="required-indicator">*</span>
