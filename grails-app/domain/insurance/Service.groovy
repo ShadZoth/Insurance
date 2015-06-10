@@ -126,12 +126,6 @@ class Service {
         endTime(nullable: true)
     }
 
-    static mapping = {
-        expectedStartTime sqlType: "date"
-        realStartTime sqlType: "date"
-        endTime sqlType: "date"
-    }
-
     @Override
     public String toString() {
         return id;
