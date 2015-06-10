@@ -100,6 +100,22 @@ class Service {
         cats.contains(category)
     }
 
+    def getValidDrivers() {
+        Driver.list().find {
+            validate(it, this)
+        }
+    }
+
+    def validate(Driver d, Service s) {
+        def res = true
+        if (d) {
+            s.cats.each {
+                res &= d?.vehicle?.cats?.contains(it)
+            }
+        }
+        res
+    }
+
     static constraints = {
         client(nullable: false)
         expectedStartTime(nullable: false)
@@ -107,13 +123,7 @@ class Service {
         driver (
                 nullable: true,
                 validator: { val, obj ->
-                    def res = true
-                    if (val) {
-                        obj.cats.each {
-                            res &= val?.vehicle?.cats?.contains(it)
-                        }
-                    }
-                    res
+                    validate(val, obj)
                 }
         )
         otherCompany(
